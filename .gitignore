@@ -1,0 +1,7 @@
+/node_modules
+/build
+/dist
+/.vscode
+package-lock.json
+sftp-config.json
+melsytech.code-workspace
