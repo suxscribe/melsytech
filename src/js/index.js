@@ -1,16 +1,22 @@
-import '@babel/polyfill';
 import UIkit from 'uikit';
 import Icons from 'uikit/dist/js/uikit-icons';
-import cssVars from 'css-vars-ponyfill';
-import objectFitImages from 'object-fit-images';
 
 window.UIkit = UIkit; // fix not difined bug
-
-cssVars({
-  // Options...
-});
 
 // loads the Icon plugin
 UIkit.use(Icons);
 
-document.addEventListener('DOMContentLoaded', () => {});
+function requireAll(r) {
+  r.keys().forEach(r);
+}
+
+requireAll(require.context('../svg/', true, /\.svg$/));
+
+// document.addEventListener('DOMContentLoaded', () => {
+//   UIkit.util.on('.header__dropdown', 'beforehide', function(e) {
+//     // do something
+//     console.log(e);
+//     e.preventDefault();
+//     e.target.classList.add('classssss');
+//   });
+// });

@@ -6,9 +6,54 @@
   box-sizing: inherit;
 }
 
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+canvas,
+img,
+video {
+  /* 1 */
+  max-width: 100%;
+  /* 2 */
+  height: auto;
+  /* 3 */
+  box-sizing: border-box;
+}
+/* 4 */
+@supports (display: block) {
+  svg {
+    max-width: 100%;
+    height: auto;
+    box-sizing: border-box;
+  }
+}
+svg:not(:root) {
+  overflow: hidden;
+}
+
+iframe {
+  border: 0;
+}
+
+/*
+ * Reset margin for nested lists
+ */
+
+ul > li > ul,
+ul > li > ol,
+ol > li > ol,
+ol > li > ul {
+  margin: 0;
+}
+/////
+
 html {
-  // This defines what 1rem is
-  font-size: 62.5%;
+  font-size: 62.5%; // 1rem = 10px
   overflow-x: hidden;
 }
 
@@ -17,8 +62,9 @@ html {
 body {
   // font-size: var(--font-size);
   // background-image: url(../images/om.jpg);
-  font-weight: 400;
   // line-height: var(--line-height);
+  font-weight: 500;
+  color: $color-black;
   max-width: 100vw;
   overflow-x: hidden;
   display: flex;
@@ -30,4 +76,10 @@ body {
 .main {
   flex: 1 1 auto;
   overflow: hidden;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
 }

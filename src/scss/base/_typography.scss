@@ -1,0 +1,44 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+  @include font-body;
+}
+
+a {
+  color: $color-black;
+  text-underline-offset: 0.4em;
+  text-decoration-color: rgba($color-red, 0.4);
+  transition: all var(--transition);
+
+  &:hover {
+    text-decoration-color: rgba($color-red, 0);
+    text-underline-offset: 0.7em;
+    color: $color-red;
+  }
+  &:focus {
+    // text-decoration: underline solid rgba(0,0,0,0.1);
+  }
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 700;
+}
+
+h1,
+.uk-h1 {
+  @include font-h1;
+}
+
+h2,
+.uk-h2 {
+  @include font-h2;
+}
+
+h3 {
+  @include font-h3;
+}
+
+h4 {
+}

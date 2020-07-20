@@ -6,6 +6,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
+
 const autoprefixer = require('autoprefixer');
 
 function generateHtmlPlugins(templateDir) {
@@ -22,6 +24,10 @@ function generateHtmlPlugins(templateDir) {
   });
 }
 
+const PAGES_DIR = './src/pug/pages/';
+const PAGES = fs
+  .readdirSync(PAGES_DIR)
+  .filter((fileName) => fileName.endsWith('.pug'));
 const htmlPlugins = generateHtmlPlugins('./src/html/views');
 
 const config = {
@@ -69,11 +75,12 @@ const config = {
               ident: 'postcss',
               sourceMap: true,
               plugins: () => [
-                autoprefixer({ grid: true }),
+                // autoprefixer({ grid: true }),
                 require('cssnano')({
                   preset: [
                     'default',
                     {
+                      calc: false,
                       discardComments: {
                         removeAll: true,
                       },
@@ -96,6 +103,18 @@ const config = {
         include: path.resolve(__dirname, 'src/html/includes'),
         use: ['raw-loader'],
       },
+      {
+        test: /\.pug$/,
+        loader: 'pug-loader',
+      },
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: 'svg-sprite-loader',
+          },
+        ],
+      },
     ],
   },
   plugins: [
@@ -116,6 +135,14 @@ const config = {
         to: './assets',
       },
     ]),
+    new SpriteLoaderPlugin({ plainSprite: true }),
+    ...PAGES.map(
+      (page) =>
+        new HtmlWebpackPlugin({
+          template: `${PAGES_DIR}/${page}`,
+          filename: `./${page.replace(/\.pug/, '.html')}`,
+        })
+    ),
   ].concat(htmlPlugins),
 };
 

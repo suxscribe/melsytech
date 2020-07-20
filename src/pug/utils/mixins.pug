@@ -1,0 +1,8 @@
+mixin item(title, descr)
+  .item
+    h2.item-title= title
+    p.item-descr= descr
+
+mixin svg(args)
+    svg&attributes(attributes)
+        use(xlink:href=`#${args.name}`)

@@ -1,0 +1,27 @@
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+  @return $number;
+}
+
+/*
+  $minSize,
+  $maxSize,
+  $minView,
+  $maxView,
+  $dimension - w or h for vw or vh
+
+*/
+@function responsive-value($minSize, $maxSize, $minView, $maxView, $dimension) {
+  @return calc(
+    #{$minSize} + (#{strip-unit($maxSize)} - #{strip-unit($minSize)}) * (
+        100v#{$dimension} - #{$minView}
+      ) / (#{strip-unit($maxView)} - #{strip-unit($minView)})
+  );
+}
+
+@function percent-view($size, $maxView, $dimension) {
+  $result: strip-unit($size) / strip-unit($maxView) * 100;
+  @return $result + v + $dimension;
+}

@@ -1,0 +1,225 @@
+@mixin font-h1 {
+  $fhd-base-size: 5 * $base-font-size;
+  $tablet-base-size: $fhd-base-size * 0.6;
+
+  font-size: 4rem;
+  line-height: 1.12;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+
+  @media (min-width: $breakpoint-small) {
+    font-size: calc(
+      #{responsive-value(
+          $tablet-base-size / 2,
+          $fhd-base-size / 2,
+          $breakpoint-small,
+          $fhd-width,
+          'w'
+        )} + #{responsive-value(
+          $tablet-base-size / 2,
+          $fhd-base-size / 2,
+          $mobile-min-height,
+          $fhd-height,
+          'h'
+        )}
+    );
+  }
+}
+
+@mixin font-h2 {
+  $fhd-base-size: 3.4 * $base-font-size;
+  $tablet-base-size: $fhd-base-size * 0.6;
+
+  font-size: 2.8rem;
+  line-height: 1.18;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+
+  @media (min-width: $breakpoint-small) {
+    font-size: calc(
+      #{responsive-value(
+          $tablet-base-size / 2,
+          $fhd-base-size / 2,
+          $breakpoint-small,
+          $fhd-width,
+          'w'
+        )} + #{responsive-value(
+          $tablet-base-size / 2,
+          $fhd-base-size / 2,
+          $mobile-min-height,
+          $fhd-height,
+          'h'
+        )}
+    );
+  }
+}
+
+@mixin font-h3 {
+  $fhd-base-size: 2.3 * $base-font-size;
+  $tablet-base-size: $fhd-base-size * 0.6;
+
+  font-size: 2rem;
+  line-height: 1.48;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+
+  @media (min-width: $breakpoint-small) {
+    font-size: calc(
+      #{responsive-value(
+          $tablet-base-size / 2,
+          $fhd-base-size / 2,
+          $breakpoint-small,
+          $fhd-width,
+          'w'
+        )} + #{responsive-value(
+          $tablet-base-size / 2,
+          $fhd-base-size / 2,
+          $mobile-min-height,
+          $fhd-height,
+          'h'
+        )}
+    );
+  }
+}
+
+@mixin font-lead {
+  $fhd-base-size: 2.3 * $base-font-size;
+  $tablet-base-size: $fhd-base-size * 0.6;
+
+  font-size: 2rem;
+  line-height: 1.48;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+
+  @media (min-width: $breakpoint-small) {
+    font-size: calc(
+      #{responsive-value(
+          $tablet-base-size / 2,
+          $fhd-base-size / 2,
+          $breakpoint-small,
+          $fhd-width,
+          'w'
+        )} + #{responsive-value(
+          $tablet-base-size / 2,
+          $fhd-base-size / 2,
+          $mobile-min-height,
+          $fhd-height,
+          'h'
+        )}
+    );
+  }
+}
+
+@mixin font-body {
+  $fhd-base-size: 1.9 * $base-font-size;
+  $tablet-base-size: $fhd-base-size * 0.7;
+
+  // font-size: 1.6rem;
+  line-height: 1.68;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+
+  // @media (min-width: $breakpoint-small) {
+  //   font-size: calc(
+  //     #{responsive-value(
+  //         $tablet-base-size / 2,
+  //         $fhd-base-size / 2,
+  //         $breakpoint-small,
+  //         $fhd-width,
+  //         'w'
+  //       )} + #{responsive-value(
+  //         $tablet-base-size / 2,
+  //         $fhd-base-size / 2,
+  //         $mobile-min-height,
+  //         $fhd-height,
+  //         'h'
+  //       )}
+  //   );
+  // }
+}
+
+@mixin font-base {
+  $fhd-base-size: 1.9 * $base-font-size;
+  $tablet-base-size: $fhd-base-size * 0.7;
+
+  font-size: 1.6rem;
+  line-height: 1.68;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+
+  @media (min-width: $breakpoint-small) {
+    font-size: calc(
+      #{responsive-value(
+          $tablet-base-size / 2,
+          $fhd-base-size / 2,
+          $breakpoint-small,
+          $fhd-width,
+          'w'
+        )} + #{responsive-value(
+          $tablet-base-size / 2,
+          $fhd-base-size / 2,
+          $mobile-min-height,
+          $fhd-height,
+          'h'
+        )}
+    );
+  }
+}
+
+@mixin font-small {
+  $fhd-base-size: 1.6 * $base-font-size;
+  $tablet-base-size: $fhd-base-size * 0.8;
+
+  font-size: 1.6rem;
+  line-height: 1.5;
+  font-weight: 500;
+  letter-spacing: 0;
+
+  @media (min-width: $breakpoint-small) {
+    font-size: calc(
+      #{responsive-value(
+          $tablet-base-size / 2,
+          $fhd-base-size / 2,
+          $breakpoint-small,
+          $fhd-width,
+          'w'
+        )} + #{responsive-value(
+          $tablet-base-size / 2,
+          $fhd-base-size / 2,
+          $mobile-min-height,
+          $fhd-height,
+          'h'
+        )}
+    );
+  }
+}
+@mixin font-menu {
+  $fhd-base-size: 1.4 * $base-font-size;
+  $tablet-base-size: $fhd-base-size * 0.6;
+
+  font-size: 1.4rem;
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+
+  text-decoration: none;
+  color: $color-white;
+  text-transform: uppercase;
+
+  &:hover {
+    text-decoration: none;
+    color: $color-white;
+  }
+
+  @media (min-width: $breakpoint-small) {
+    font-size: calc(
+      #{responsive-value(
+          $tablet-base-size,
+          $fhd-base-size,
+          $breakpoint-small,
+          $fhd-width,
+          'w'
+        )}
+    );
+  }
+}
