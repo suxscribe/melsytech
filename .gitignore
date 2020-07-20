@@ -102,3 +102,11 @@ dist
 
 # TernJS port file
 .tern-port
+
+
+/.vscode
+package-lock.json
+sftp-config.json
+melsytech.sublime-workspace
+melsytech.sublime-project
+melsytech.code-workspace
