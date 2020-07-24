@@ -1,0 +1,20 @@
+.simplebar-track.simplebar-vertical {
+  top: 0;
+  width: 4px;
+  background: rgba($color-gray, 0.1);
+}
+.simplebar-scrollbar:before {
+  position: absolute;
+  content: '';
+  background: rgba($color-red, 0.4);
+  border-radius: 0;
+  left: 0;
+  right: 0;
+  opacity: 1;
+  transition: opacity var(--transition);
+}
+.simplebar-scrollbar.simplebar-visible:before {
+  /* When hovered, remove all transitions from drag handle */
+  opacity: 1;
+  transition: opacity 0s linear;
+}

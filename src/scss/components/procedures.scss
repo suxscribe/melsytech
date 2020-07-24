@@ -1,0 +1,85 @@
+.procedures {
+  &__left {
+  }
+
+  &__slider {
+    height: 100%;
+
+    &-nav {
+    }
+
+    &-right {
+      &-item {
+        $slide-width: 604px;
+        $slide-height: 550px;
+
+        // margin-right: percent-view(56px, $fhd-width, 'w');
+        box-sizing: border-box;
+        padding-right: percent-view(56px, $fhd-width, 'w');
+        width: calc((100% - #{$right-margin} + #{$column-margin}) / 2);
+
+        // width: calc(
+        //   #{responsive-value(
+        //       $slide-width / 4,
+        //       $slide-width / 2,
+        //       $breakpoint-small,
+        //       $fhd-width,
+        //       'w'
+        //     )} + #{responsive-value(
+        //       $slide-width / 4,
+        //       $slide-width / 2,
+        //       $breakpoint-small,
+        //       $fhd-height,
+        //       'h'
+        //     )}
+        // );
+
+        height: calc(
+          #{responsive-value(
+              $slide-height / 4,
+              $slide-height / 2,
+              $breakpoint-small,
+              $fhd-width,
+              'w'
+            )} + #{responsive-value(
+              $slide-height / 4,
+              $slide-height / 2,
+              $breakpoint-small,
+              $fhd-height,
+              'h'
+            )}
+        );
+
+        opacity: 0.6;
+        transition: all var(--transition);
+
+        &.swiper-slide-active {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &__slide {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    &-top {
+      flex: 1 0 60%;
+    }
+
+    &-bottom {
+      flex: 0 0 40%;
+    }
+  }
+  &__teaser {
+    display: block;
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}

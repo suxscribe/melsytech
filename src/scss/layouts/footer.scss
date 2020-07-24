@@ -1,4 +1,66 @@
 .footer {
   flex: 0 0 auto;
+  display: flex;
   background: var(--color-light);
+
+  padding: percent-view(120px, $fhd-height, 'h') $container-margin percent-view(134px, $fhd-height, 'h') $container-margin;
+
+  &__column {
+    flex: 0 1 auto;
+    padding-right: $column-margin;
+
+    &:last-child {
+      padding-right: 0;
+    }
+
+    &--logo {
+      flex: 0 0 calc(#{$column-width} * 2);
+      width: calc(#{$column-width} * 2);
+    }
+
+
+
+  }
+
+  &__nav {
+    margin-bottom: percent-view(18px, $fhd-height, 'h');
+
+    & a {
+      color: rgba($color-gray, 0.6);
+      text-decoration: none;
+    }
+
+    &-section {
+      
+      margin-bottom: percent-view(42px, $fhd-height, 'h');
+
+      & a {
+        @include font-small;
+        text-decoration: none;
+
+      color: $color-black;
+      text-transform: uppercase;
+      }
+    }
+  }
+
+  &__phone {
+    margin-bottom: percent-view(17px, $fhd-height, 'h');
+
+    & a {
+      text-decoration: none;
+    }
+    
+  }
+  &__email {
+    margin-bottom: percent-view(62px, $fhd-height, 'h');
+
+    & a {
+      text-decoration: none;
+    }
+  }
+  &__address {
+    color: rgba($color-gray, 0.6);
+
+  }
 }

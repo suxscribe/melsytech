@@ -139,20 +139,33 @@ $offcanvas-bar-background: #fff;
 }
 
 ////////////////////////////////////////////////////////
+@import 'swiper/swiper.scss';
+@import 'swiper/components/effect-fade/effect-fade.scss';
+@import '/node_modules/simplebar/dist/simplebar.css';
 
 @import 'abstract/mixins';
-@import 'abstract/variables'; //base vars and styles
 @import 'abstract/functions';
+@import 'abstract/variables'; //base vars and styles
+
+@import 'vendor/simplebar.scss'; //simplebar override
+
 @import 'base/base';
 @import 'base/fonts';
 @import 'base/typography';
 @import 'base/animations';
 
-@import 'swiper/swiper.scss';
-
 @import 'layouts/header';
 @import 'layouts/footer';
 
 @import 'components/button';
+@import 'components/intro.scss';
+@import 'components/product.scss';
+@import 'components/section';
+@import 'components/slider';
+@import 'components/advantages';
+@import 'components/procedures';
+@import 'components/reviews';
+@import 'components/partners';
+@import 'components/news';
 
 @import 'pages/index';

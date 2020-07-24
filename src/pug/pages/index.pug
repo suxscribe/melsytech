@@ -1,27 +1,162 @@
 extends ../layout/main
 
 block variables
-  - var title = 'Webpack + Pug';
-  - var description = 'Description for Webpack + Pug';
-  - var pageClass = 'index-page';
+  - var title = 'Melsytech';
+  - var description = 'Description';
+  - var pageClass = 'page--index';
 
 block content
-  section.showcase
-    .showcase__container
-      +item('item title', 'item descr')
-      +item('item title', 'item descr')
-      +item('item title', 'item descr')
-      p 
-        | Lorem ipsum dolor sit amet. 
-        a(href="/") Lorem, ipsum.
-        | So what.
-  example-component
+  .ruler--right
+  section.intro
+    .intro__bg
+      img(src="../assets/intro-bg.jpg", alt="Melsytech")
+    .intro__content
+      .intro__content-1
+        p 
+          | Разработка и&nbsp;поставка полупроводниковых 
+          span лазерных систем 
+          | для эстетической медицины, промышленного применения и&nbsp;научных целей
+      .intro__content-2
+        p МеЛСиТек международный разработчик, производитель и&nbsp;поставщик лазерных систем промышленного и&nbsp;медицинского назначения
+    a(href="#").intro__scrolldown
+      .intro__scrolldown-icon
+        +svg({ name: 'arrow-down' })
+      span Прокрутите вниз
+  
+  section.index__catalog.section
+    .section__top 
+      .index__catalog-subtitle.section__subtitle Каталог
+    .index__catalog-left.section__left
+      h1.index__catalog-title.section__title Лазерные Системы MAGIC
+      a(href="/").index__catalog-link.section__link Перейти в Каталог
+    .index__catalog-right.section__right
+      .index__catalog-slideshow-wrap
+        div(uk-slider).index__catalog-slideshow
+          .uk-slider-container
+            ul(class="uk-slider-items uk-grid")
+              li.index__catalog-slideshow-item: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
+              li.index__catalog-slideshow-item: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
+              li.index__catalog-slideshow-item: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
+              li.index__catalog-slideshow-item: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
+              li.index__catalog-slideshow-item: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
+              li.index__catalog-slideshow-item: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
+          .index__catalog-slideshow-nav
+            a(href="#",uk-slider-item="previous").slider__arrow.slider__arrow--left
+              +svg({ name: 'slider-arrow-left'})
+            a(href="#",uk-slider-item="next").slider__arrow.slider__arrow--right
+              +svg({ name: 'slider-arrow-right'})
+  
+  section.section.section--advantages
+    .section__subtitle Преимущества
+    .section__top
+      h1.section__title.advantages__title
+        | Благодаря новому 
+        span инженерному решению 
+        | и 
+        span передовым 
+        | технологиям, лазеры MAGIC 
+        span лишены недостатков 
+        | других косметологических лазеров
+    .section__left
+      ul(uk-switcher="connect:.advantages__items; animation: uk-animation-slide-left-medium, uk-animation-slide-right-medium").advantages__list
+        li: a(href="/").advantages__list-item Неограниченный ресурс
+          +svg({name: 'arrow-right'})
+        li: a(href="/").advantages__list-item Сервисная поддержка
+          +svg({name: 'arrow-right'})
+        li: a(href="/").advantages__list-item Надежность и безопасность
+          +svg({name: 'arrow-right'})
+        li: a(href="/").advantages__list-item Клиническое обучение
+          +svg({name: 'arrow-right'})
+        li: a(href="/").advantages__list-item Ценовая политика
+          +svg({name: 'arrow-right'})
+    .advantages__items.section__right.uk-switcher
+      li: +advantage-item('Без расходных материалов на оборудование', 'В отличие от аналогов, медицинские лазеры MAGIC не имеет сменных узлов, расходные материалы не требуются, а его стоимость в 2,5-3 раза дешевле. Благодаря этому вы получаете невероятно низкую себестоимость процедур при таком же спектре возможностей.', 'advantages-item-1.png')
+      li: +advantage-item('Сервисная поддержка', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe atque, autem accusantium sapiente quaerat facilis.', 'advantages-item-1.png')
+      li: +advantage-item('Надежность и безопасность', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe atque, autem accusantium sapiente quaerat facilis.', 'advantages-item-1.png')
+      li: +advantage-item('Клиническое обучение', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe atque, autem accusantium sapiente quaerat facilis.', 'advantages-item-1.png')
+      li: +advantage-item('Ценовая политика', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe atque, autem accusantium sapiente quaerat facilis.', 'advantages-item-1.png')
+  
+  section.section.section--procedures
+    .section__subtitle Процедуры
+    .procedures__left.section__left
+      .procedures__slider.swiper-container
+        ul.swiper-wrapper
+          li.procedures__slider-item.swiper-slide: +procedures-slide('Лазерные Системы MAGIC', '/', 'Общая хирургия')
+          li.procedures__slider-item.swiper-slide: +procedures-slide('Системные Лазеры', '/', 'Общая хирургия')
+          li.procedures__slider-item.swiper-slide: +procedures-slide('Лазерные Системы Системных Лазеров', '/', 'Общая хирургия')
+          li.procedures__slider-item.swiper-slide: +procedures-slide('Системы Лазерных Систем', '/', 'Общая хирургия')
+      .procedures__slider-nav.slider__nav
+        .slider__arrow.slider__arrow--left.procedures__slider-nav--left
+          +svg({ name: 'slider-arrow-left'})
+        .slider__arrow.slider__arrow--right.procedures__slider-nav--right
+          +svg({ name: 'slider-arrow-right'})
+    .procedures__right.section__right
+      .procedures__slider-right.swiper-container
+        ul.swiper-wrapper
+          li.procedures__slider-right-item.swiper-slide: +procedures-teaser('procedures-teaser-1.jpg')
+          li.procedures__slider-right-item.swiper-slide: +procedures-teaser('procedures-teaser-2.jpg')
+          li.procedures__slider-right-item.swiper-slide: +procedures-teaser('procedures-teaser-3.jpg')
+          li.procedures__slider-right-item.swiper-slide: +procedures-teaser('procedures-teaser-1.jpg')
 
+  section.section.section--reviews
+    .section__top 
+      .section__subtitle Отзывы
+    .section__left
+      h1.reviews__section-title.section__title Наши партнеры о&nbsp;нас
+      a(href="/").section__link Перейти в раздел
+      .reviews__slider-nav.slider__nav
+        .slider__arrow.slider__arrow--left.reviews__slider-nav--left
+          +svg({ name: 'slider-arrow-left'})
+        .slider__arrow.slider__arrow--right.reviews__slider-nav--right
+          +svg({ name: 'slider-arrow-right'})
+    .reviews__right.section__right
+      div.reviews__right-slider.swiper-container
+        ul.swiper-wrapper
+          li.swiper-slide: +reviews-teaser({text:'«Технология, реализованная в аппарате Magic Super Full, позволяет делать эпиляцию пациентам с любым фототипом кожи и любым цветом волос без риска ожогов. Большинство наших клиентов удовлетворены эффектом от процедуры: быстро, безболезненно и эффективно»', name:'Гольцова Елена Николаевна', desc:'Врач клиники эстетического омоложения в Перт, Австралия',avatar: 'reviews-avatar.jpg',media:'https://yootheme.com/site/images/media/yootheme-pro.mp4', poster:'/assets/reviews-poster.jpg'})
+          li.swiper-slide: +reviews-teaser({text:'«Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore earum qui laborum voluptate doloribus, quaerat eius ipsa error iusto beatae?»', name:'Гольцова Елена Николаевна', desc:'Врач клиники эстетического омоложения в Перт, Австралия',avatar: 'reviews-avatar.jpg',media:'https://yootheme.com/site/images/media/yootheme-pro.mp4', poster:'/assets/reviews-poster.jpg'})
 
-//- block script
-//-   script(type='text/javascript').
-//-     const foo = true;
-//-     let bar = function() {};
-//-     if (foo) {
-//-     bar(1 + 5)
-//-     }
+  section.section.section--partners
+    .section__top
+      .section__subtitle Партнеры
+    .partners__left.section__left
+      h1.reviews__section-title.section__title Клиники использующие наши лазерные системы
+      a(href="/").section__link Перейти в раздел
+    .partners__right.section__right
+      div(data-simplebar).partners__list
+        ul(uk-switcher="connect: .partners__drops")
+          li.partners__item: a(href="#").partners__item-link.drop--01 Центр врачебной косметологии 
+          li.partners__item: a(href="#").partners__item-link.drop--02 Центр врачебной косметологии 
+          li.partners__item: a(href="#").partners__item-link.drop--03 Центр врачебной косметологии 
+          li.partners__item: a(href="#").partners__item-link.drop--04 Центр врачебной косметологии 
+          li.partners__item: a(href="#").partners__item-link.drop--05 Центр врачебной косметологии 
+          li.partners__item: a(href="#").partners__item-link.drop--06 Центр врачебной косметологии 
+
+      .partners__drops.uk-switcher
+        +partners-drop({num: '01', title: 'Сеть клиник лазерной эпиляции и косметологии «Подружки»', address: 'г. Нижний Новгород, Автозаводский район, ул. Краснодонцев, дом 5', phone: '8 (831) 260-16-63'})
+        +partners-drop({num: '02', title: 'Сеть клиник лазерной эпиляции и косметологии «Друзьяшки»', address: 'г. Нижний Новгород, Автозаводский район, ул. Краснодонцев, дом 5', phone: '8 (831) 260-16-63'})
+        +partners-drop({num: '03', title: 'Сеть клиник лазерной эпиляции и косметологии «Ребятки»', address: 'г. Нижний Новгород, Автозаводский район, ул. Краснодонцев, дом 5', phone: '8 (831) 260-16-63'})
+        +partners-drop({num: '04', title: 'Сеть клиник лазерной эпиляции и косметологии «Подружайки»', address: 'г. Нижний Новгород, Автозаводский район, ул. Краснодонцев, дом 5', phone: '8 (831) 260-16-63'})
+        +partners-drop({num: '05', title: 'Сеть клиник лазерной эпиляции и косметологии «Чикули»', address: 'г. Нижний Новгород, Автозаводский район, ул. Краснодонцев, дом 5', phone: '8 (831) 260-16-63'})
+        +partners-drop({num: '06', title: 'Сеть клиник лазерной эпиляции и косметологии «Бабешки»', address: 'г. Нижний Новгород, Автозаводский район, ул. Краснодонцев, дом 5', phone: '8 (831) 260-16-63'})
+        
+    .partners__map
+      img(src="/assets/partners-map.jpg", alt="")
+  
+  section.section.section--news
+    .section__top 
+      .news__subtitle.section__subtitle Новости
+    .news__left.section__left
+      h1.news__title.section__title События и деятельность компании
+      a(href="/").news__link.section__link Перейти в Каталог
+      .news__slider-nav.slider__nav
+        .slider__arrow.slider__arrow--left.news__slider-nav--left
+          +svg({ name: 'slider-arrow-left'})
+        .slider__arrow.slider__arrow--right.news__slider-nav--right
+          +svg({ name: 'slider-arrow-right'})
+    .news__right.section__right
+      .news__slider.swiper-container
+        ul.swiper-wrapper
+          li.news__slider-item.swiper-slide: +news-teaser('Информированное согласие для оказания медицинских услуг','news-teaser-1.jpg','2020.07.20')
+          li.news__slider-item.swiper-slide: +news-teaser('Росздравнадзор наносит удар по подделкам в аппаратной косметологии','news-teaser-2.jpg','2020.07.20')
+          li.news__slider-item.swiper-slide: +news-teaser('Информированное согласие для оказания медицинских услуг','news-teaser-1.jpg','2020.07.20')
+          li.news__slider-item.swiper-slide: +news-teaser('Росздравнадзор наносит удар по подделкам в аппаратной косметологии','news-teaser-2.jpg','2020.07.20')

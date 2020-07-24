@@ -1,0 +1,59 @@
+.section {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  justify-content: space-between;
+
+  margin: percent-view(144px, $fhd-height, 'h') 0 percent-view(144px, $fhd-height, 'h') $container-margin;
+
+  &__top {
+    flex: 1 0 100%;
+  }
+
+  &__subtitle {
+    flex: 1 0 100%;
+    margin-bottom: percent-view(30px, $fhd-height, 'h');
+
+    color: rgba($color-red, 0.6);
+  }
+  &__title {
+    margin-bottom: percent-view(28px, $fhd-height, 'h');
+
+  }
+
+  &__link {
+    color: rgba($color-gray, 0.7);
+  }
+
+  &__left {
+    flex: 0 0 auto;
+    width: calc(#{$column-width} * 2);
+    max-width: calc(#{$column-width} * 2);
+    padding-right: percent-view(55px, $fhd-width, 'w');
+  }
+
+  &__right {
+    flex: 1 1 auto;
+    width: calc(100% - calc(#{$column-width} * 2);
+    // margin-right: -#{$container-margin};
+
+    display: flex;
+    justify-content: space-between;
+  }
+
+
+  &--advantages {
+  }
+}
+
+.ruler {
+
+  &--right {
+    position: fixed;
+    right: percent-view(136px, $fhd-width, 'w');
+    top:0;
+    bottom: 0;
+    width:1px;
+    background-color: rgba($color-gray, 0.2);
+  }
+}

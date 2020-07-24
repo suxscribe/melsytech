@@ -1,0 +1,73 @@
+.advantages {
+  &__title {
+    margin-bottom: percent-view(140px, $fhd-height, 'h');
+    max-width: 62.5%;
+  }
+
+  &__list {
+    & > li {
+      &:first-child > .advantages__list-item {
+        border-top: 1px solid $color-red;
+      }
+      &.uk-active .advantages__list-item {
+        color: $color-red;
+
+        & svg {
+          opacity: 1;
+          transform: translateY(-50%) scale(1);
+        }
+      }
+    }
+
+    &-item {
+      display: block;
+      text-decoration: none;
+      padding: percent-view(16px, $fhd-height, 'h')
+        percent-view(18px, $fhd-width, 'w') percent-view(16px, $fhd-height, 'h')
+        0;
+      border-bottom: 1px solid $color-red;
+      position: relative;
+
+      svg {
+        width: percent-view(18px, $fhd-width, 'w');
+        height: percent-view(18px, $fhd-height, 'h');
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%) scale(0);
+        transform-origin: center;
+        opacity: 0;
+        transition: all var(--transition);
+        fill: $color-red;
+      }
+    }
+  }
+
+  &__items {
+    background: $gradient-1;
+  }
+  &__item {
+    display: flex;
+    padding: percent-view(25px, $fhd-height, 'h') $right-margin
+      percent-view(25px, $fhd-height, 'h') percent-view(55px, $fhd-width, 'w');
+
+    &-image {
+      flex: 0 0 auto;
+      width: percent-view(565px, $fhd-width, 'w');
+    }
+
+    &-content {
+      flex: 1 1 auto;
+      margin-top: percent-view(102px, $fhd-height, 'h');
+    }
+
+    &-title {
+      @include font-h2;
+      margin-bottom: percent-view(29px, $fhd-width, 'w');
+    }
+
+    &-text {
+      @include font-small;
+    }
+  }
+}

@@ -3,6 +3,73 @@ mixin item(title, descr)
     h2.item-title= title
     p.item-descr= descr
 
+mixin product-teaser(title, image)
+  a(href="/").product.product--teaser
+    .product__plus
+      +svg({ name: 'plus' })
+    .product__image
+      img(src="../assets/products/" + image, alt=title)
+    .product__name= title
+
 mixin svg(args)
     svg&attributes(attributes)
         use(xlink:href=`#${args.name}`)
+
+
+mixin advantage-item(title,text,image)
+  .advantages__item
+    .advantages__item-image
+      img(src="../assets/" + image, alt=`${title}`)
+    .advantages__item-content
+      .advantages__item-title= title
+      .advantages__item-text= text
+
+mixin procedures-slide(title, link, branch)
+  .procedures__slide
+    .procedures__slide-top
+      h1.procedures__slide-title.section__title
+        a(href=`${link}`)= title
+      .procedures__slide-branch= branch
+    .procedures__slide-bottom
+      .procedures__slide-products-title Используемые аппараты
+      .procedures__slide-products
+        a(href="/") Magic One
+        | ,
+        a(href="") Magic Lite
+
+mixin procedures-teaser(image,link)
+  a(href=`${link}`).procedures__teaser
+    img(src="../assets/" + image, alt="")
+
+
+mixin reviews-teaser(args)
+  .reviews__teaser
+    .reviews__teaser-text= args.text
+    .reviews__teaser-columns
+      .reviews__teaser-left
+        .reviews__teaser-avatar
+          img(src="/assets/" + args.avatar, alt=args.name)
+        .reviews__teaser-name= args.name
+        .reviews__teaser-description= args.desc
+      .reviews__teaser-right
+        .reviews__teaser-media
+          video(src=args.media, controls, playsinline, uk-video="autoplay:false", poster=args.poster )
+
+mixin partners-drop(args)
+  li(class=`partners__item-drop drop--${args.num}`)
+    //- button(uk-toggle=`target: .drop--${args.num}; cls: drop--active`).partners__item-drop-close.uk-drop-close
+      +svg({name: 'plus'})
+    button.partners__item-drop-close.uk-drop-close
+      +svg({name: 'plus'})
+    .partners__item-title= args.title
+    .partners__item-address= args.address
+    .partners__item-phone: a(href="tel:+78310000000")= args.phone
+    a(href="/").partners__item-readmore Подробнее
+
+mixin news-teaser(title, image, date)
+  a(href="/").news__teaser
+    .news__teaser-image
+      img(src="../assets/" + image, alt=title)
+    .news__teaser-bottom
+      .news__teaser-name= title
+      .news__teaser-date= date

@@ -29,6 +29,14 @@ h4 {
 h1,
 .uk-h1 {
   @include font-h1;
+
+  & span {
+    color: $color-red;
+  }
+
+  & a {
+    text-decoration: none;
+  }
 }
 
 h2,

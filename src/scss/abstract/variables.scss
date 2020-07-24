@@ -1,14 +1,4 @@
 :root {
-  --font-main: Natasha, sans-serif;
-
-  --font-size: 1.6rem; //14px
-  --line-height: 1.5;
-  --text-small: 12px; // 12px
-  --text-large: 16px; // 16px;
-  --text-lead: 18px;
-  --line-height-small: 1.5em;
-
-
   --margin: 16px; //small
   --margin-m: 24px;
   --margin-2: calc(var(--margin) * 2);
@@ -45,9 +35,15 @@ $color-white: #fff;
 $color-black: #272730;
 $color-gray: #2b2e3f;
 $color-red: #ff0000;
-$color-light-gray: #F3F1F;
+$color-light-gray: #f3f1f1;
 $color-gradient-1: #dbe1e8;
 $color-gradient-2: #b48396;
+
+$gradient-1: linear-gradient(
+  to right,
+  rgba($color-gradient-1, 1 * 0.2) 0%,
+  rgba($color-gradient-2, 0.53 * 0.2) 100%
+);
 
 $grid-breakpoints: (
   xxxs: 0,
@@ -86,5 +82,11 @@ $mobile-min-height: 667px;
 $fhd-width: 1920px;
 $fhd-height: 1080px;
 
-$container-margin: percentage(80 / 1920);
 $header-height: 72px;
+$right-margin-px: 136px;
+$column-margin-px: 56px;
+
+$column-width: percent-view(220px, 1920px, 'w');
+$container-margin: percent-view(80px, $fhd-width, 'w');
+$right-margin: percent-view($right-margin-px, $fhd-width, 'w');
+$column-margin: percent-view($column-margin-px, $fhd-width, 'w');

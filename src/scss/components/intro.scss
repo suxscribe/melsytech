@@ -1,0 +1,129 @@
+.intro {
+  position: relative;
+  margin-top: -#{$header-height};
+
+  &__bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: $color-gray;
+    z-index: -1;
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: 0.6;
+    }
+    & video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.6;
+    }
+  }
+
+  &__content {
+    width: 100vw;
+    height: 100vh;
+    padding: 0 $container-margin;
+
+    &-1 {
+      padding-top: percent-view(176px, $fhd-height, 'h');
+      width: 60%;
+
+      @include font-h1;
+      color: #fff;
+
+      span {
+        color: $color-red;
+      }
+    }
+
+    &-2 {
+      position: absolute;
+      width: 30%;
+      bottom: percent-view(81px, $fhd-height, 'h');
+      right: $container-margin;
+      @include font-h2;
+      color: #fff;
+    }
+  }
+
+  &__scrolldown {
+    position: absolute;
+    left: $container-margin;
+    bottom: percent-view(56px, $fhd-height, 'h');
+    color: #fff;
+    display: flex;
+    align-items: center;
+
+    @include font-menu;
+    text-decoration: none;
+    color: rgba($color-white, 0.8);
+
+    &:hover {
+      // opacity: 0.6;
+    }
+
+    &:hover &-icon {
+      background-color: $color-red;
+      border-color: $color-red;
+    }
+
+    &-icon {
+      flex: 0 0 auto;
+      width: calc(
+        #{responsive-value(
+            30px / 2,
+            60px / 2,
+            $breakpoint-small,
+            $fhd-width,
+            'w'
+          )} + #{responsive-value(
+            30px / 2,
+            60px / 2,
+            $breakpoint-small,
+            $fhd-height,
+            'h'
+          )}
+      );
+      height: calc(
+        #{responsive-value(
+            30px / 2,
+            60px / 2,
+            $breakpoint-small,
+            $fhd-width,
+            'w'
+          )} + #{responsive-value(
+            30px / 2,
+            60px / 2,
+            $breakpoint-small,
+            $fhd-height,
+            'h'
+          )}
+      );
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid $color-white;
+      margin-right: 10px;
+      background-color: transparent;
+      transition: all var(--transition);
+
+      & svg {
+        flex: 0 0 auto;
+        width: 50%;
+        height: 50%;
+      }
+    }
+
+    & span {
+      flex: 0 0 auto;
+    }
+  }
+}

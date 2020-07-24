@@ -1,7 +1,21 @@
 .header {
   flex: 0 0 auto;
   background: $color-gray;
-  border-bottom: 1px solid rgba($color-white, 0.4);
+  position: relative;
+  z-index: 10;
+
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    border-bottom: 1px solid rgba($color-white, 0.4);
+    width: 100%;
+    bottom: 0;
+  }
+
+  .page--index & {
+    background: transparent;
+  }
 
   &__wrap {
     display: flex;
@@ -61,15 +75,21 @@
       @include font-menu;
       line-height: $header-height;
 
-      &--active:after {
-        content: '';
-        display: block;
-        height: 3px;
-        background: #f00;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
+      &--active {
+        &:after {
+          content: '';
+          display: block;
+          height: 3px;
+          background: #f00;
+          position: absolute;
+          top: calc(100% - 1px);
+          left: 0;
+          width: 100%;
+          z-index: 1;
+        }
+        &.uk-open:after {
+          z-index: 10000;
+        }
       }
 
       .header__nav:hover & {

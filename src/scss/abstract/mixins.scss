@@ -1,8 +1,8 @@
 @mixin font-h1 {
   $fhd-base-size: 5 * $base-font-size;
-  $tablet-base-size: $fhd-base-size * 0.6;
+  $tablet-base-size: $fhd-base-size * 0.5;
 
-  font-size: 4rem;
+  font-size: 2.6rem;
   line-height: 1.12;
   font-weight: 600;
   letter-spacing: 0.02em;
@@ -28,9 +28,9 @@
 
 @mixin font-h2 {
   $fhd-base-size: 3.4 * $base-font-size;
-  $tablet-base-size: $fhd-base-size * 0.6;
+  $tablet-base-size: $fhd-base-size * 0.5;
 
-  font-size: 2.8rem;
+  font-size: 2rem;
   line-height: 1.18;
   font-weight: 600;
   letter-spacing: 0.01em;
@@ -58,7 +58,7 @@
   $fhd-base-size: 2.3 * $base-font-size;
   $tablet-base-size: $fhd-base-size * 0.6;
 
-  font-size: 2rem;
+  font-size: 1.7rem;
   line-height: 1.48;
   font-weight: 600;
   letter-spacing: 0.01em;
@@ -86,7 +86,7 @@
   $fhd-base-size: 2.3 * $base-font-size;
   $tablet-base-size: $fhd-base-size * 0.6;
 
-  font-size: 2rem;
+  font-size: 1.7rem;
   line-height: 1.48;
   font-weight: 500;
   letter-spacing: 0.01em;
@@ -114,28 +114,28 @@
   $fhd-base-size: 1.9 * $base-font-size;
   $tablet-base-size: $fhd-base-size * 0.7;
 
-  // font-size: 1.6rem;
+  font-size: 1.4rem;
   line-height: 1.68;
   font-weight: 500;
   letter-spacing: 0.01em;
 
-  // @media (min-width: $breakpoint-small) {
-  //   font-size: calc(
-  //     #{responsive-value(
-  //         $tablet-base-size / 2,
-  //         $fhd-base-size / 2,
-  //         $breakpoint-small,
-  //         $fhd-width,
-  //         'w'
-  //       )} + #{responsive-value(
-  //         $tablet-base-size / 2,
-  //         $fhd-base-size / 2,
-  //         $mobile-min-height,
-  //         $fhd-height,
-  //         'h'
-  //       )}
-  //   );
-  // }
+  @media (min-width: $breakpoint-small) {
+    font-size: calc(
+      #{responsive-value(
+          $tablet-base-size / 2,
+          $fhd-base-size / 2,
+          $breakpoint-small,
+          $fhd-width,
+          'w'
+        )} + #{responsive-value(
+          $tablet-base-size / 2,
+          $fhd-base-size / 2,
+          $mobile-min-height,
+          $fhd-height,
+          'h'
+        )}
+    );
+  }
 }
 
 @mixin font-base {

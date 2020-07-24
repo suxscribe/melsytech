@@ -1,0 +1,61 @@
+.reviews {
+  &__section-title {
+  }
+
+  &__right {
+    &-slider {
+      width: 100%;
+
+      background: $gradient-1;
+      padding: percent-view(79px, $fhd-height, 'h') $right-margin
+        percent-view(82px, $fhd-height, 'h') percent-view(75px, $fhd-width, 'w');
+    }
+  }
+
+  &__teaser {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    &-text {
+      @include font-h3;
+      margin-bottom: percent-view(41px, $fhd-height, 'h');
+      flex: 1 0 auto;
+    }
+
+    &-columns {
+      display: flex;
+      align-items: flex-end;
+      flex: 0 0 auto;
+    }
+
+    &-left {
+      flex: 1 1 50%;
+    }
+    &-avatar {
+      margin-bottom: percent-view(28px, $fhd-height, 'h');
+
+      & img {
+        border-radius: 50%;
+        width: responsive-fhd(64px, 128px);
+        overflow: hidden;
+      }
+    }
+    &-name {
+      @include font-h3;
+      margin-bottom: percent-view(11px, $fhd-height, 'h');
+    }
+    &-description {
+      @include font-small;
+    }
+    &-right {
+      flex: 1 1 50%;
+      margin-bottom: -#{percent-view(82px, $fhd-height, 'h')};
+    }
+    &-media {
+      & video {
+        object-fit: cover;
+      }
+    }
+  }
+}

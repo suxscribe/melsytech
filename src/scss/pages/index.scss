@@ -1,0 +1,28 @@
+.index {
+  &__catalog {
+    &-title {
+      margin-bottom: percent-view(28px, $fhd-height, 'h');
+    }
+
+    &-slideshow {
+      width: 100%;
+      &-wrap {
+        flex: 1 1 auto;
+        // margin-right: percent-view(56px, $fhd-width, 'w');
+      }
+      &-item {
+        width: calc((100% - #{$right-margin}) / 3);
+      }
+
+      & .uk-slider-items li {
+        // width: 100%;
+      }
+
+      &-nav {
+        position: absolute;
+        display: flex;
+        left: 0;
+      }
+    }
+  }
+}
