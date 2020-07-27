@@ -18,8 +18,6 @@
       width: calc(#{$column-width} * 2);
     }
 
-
-
   }
 
   &__nav {
@@ -28,6 +26,10 @@
     & a {
       color: rgba($color-gray, 0.6);
       text-decoration: none;
+
+      &:hover {
+        color: rgba($color-gray, 0.8);
+      }
     }
 
     &-section {
@@ -38,8 +40,12 @@
         @include font-small;
         text-decoration: none;
 
-      color: $color-black;
-      text-transform: uppercase;
+        color: $color-black;
+        text-transform: uppercase;
+
+        &:hover {
+          color: $color-red;
+        }
       }
     }
   }

@@ -6,7 +6,7 @@ block variables
   - var pageClass = 'page--index';
 
 block content
-  .ruler--right
+  //- .ruler--right
   section.intro
     .intro__bg
       img(src="../assets/intro-bg.jpg", alt="Melsytech")
@@ -29,22 +29,37 @@ block content
     .index__catalog-left.section__left
       h1.index__catalog-title.section__title Лазерные Системы MAGIC
       a(href="/").index__catalog-link.section__link Перейти в Каталог
+
+      .index__catalog-slider-nav.slider__nav
+        .slider__arrow.slider__arrow--left.index__catalog-slider-nav--left
+          +svg({ name: 'slider-arrow-left'})
+        .slider__arrow.slider__arrow--right.index__catalog-slider-nav--right
+          +svg({ name: 'slider-arrow-right'})
+
     .index__catalog-right.section__right
-      .index__catalog-slideshow-wrap
-        div(uk-slider).index__catalog-slideshow
-          .uk-slider-container
-            ul(class="uk-slider-items uk-grid")
-              li.index__catalog-slideshow-item: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
-              li.index__catalog-slideshow-item: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
-              li.index__catalog-slideshow-item: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
-              li.index__catalog-slideshow-item: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
-              li.index__catalog-slideshow-item: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
-              li.index__catalog-slideshow-item: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
-          .index__catalog-slideshow-nav
-            a(href="#",uk-slider-item="previous").slider__arrow.slider__arrow--left
-              +svg({ name: 'slider-arrow-left'})
-            a(href="#",uk-slider-item="next").slider__arrow.slider__arrow--right
-              +svg({ name: 'slider-arrow-right'})
+      //- .index__catalog-slideshow-wrap
+      .index__catalog-slider.swiper-container
+        ul.swiper-wrapper
+          li.index__catalog-slider-item.swiper-slide: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
+          li.index__catalog-slider-item.swiper-slide: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
+          li.index__catalog-slider-item.swiper-slide: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
+          li.index__catalog-slider-item.swiper-slide: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
+          li.index__catalog-slider-item.swiper-slide: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
+          li.index__catalog-slider-item.swiper-slide: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
+        //- div(uk-slider).index__catalog-slideshow
+        //-   .uk-slider-container
+        //-     ul(class="uk-slider-items uk-grid")
+        //-       li.index__catalog-slideshow-item: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
+        //-       li.index__catalog-slideshow-item: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
+        //-       li.index__catalog-slideshow-item: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
+        //-       li.index__catalog-slideshow-item: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
+        //-       li.index__catalog-slideshow-item: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
+        //-       li.index__catalog-slideshow-item: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
+        //-   .index__catalog-slideshow-nav
+        //-     a(href="#",uk-slider-item="previous").slider__arrow.slider__arrow--left
+        //-       +svg({ name: 'slider-arrow-left'})
+        //-     a(href="#",uk-slider-item="next").slider__arrow.slider__arrow--right
+        //-       +svg({ name: 'slider-arrow-right'})
   
   section.section.section--advantages
     .section__subtitle Преимущества

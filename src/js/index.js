@@ -25,7 +25,43 @@ requireAll(require.context('../svg/', true, /\.svg$/));
 // });
 
 document.addEventListener('DOMContentLoaded', () => {
+  (function() {
+    const searchForm = document.querySelector('.header__search-form'),
+      textInput = searchForm.search,
+      clearBtn = textInput.nextSibling;
+
+    clearBtn.style.visibility = textInput.value.length ? 'visible' : 'hidden';
+
+    textInput.onkeyup = function() {
+      // Show the clear button if text input value is not empty
+      clearBtn.style.visibility = this.value.length ? 'visible' : 'hidden';
+    };
+    // Hide the clear button on click, and reset the input value
+    clearBtn.onclick = function() {
+      this.style.visibility = 'hidden';
+      textInput.value = '';
+    };
+  })();
+
   if (document.querySelector('.page--index')) {
+    var swiperProcedures = new Swiper('.index__catalog-slider', {
+      
+      loop: true,
+      loopedSlides: 6,
+      slidesPerView: 'auto',
+      grabCursor: false,
+      allowTouchMove: true,
+      navigation: {
+        nextEl: '.index__catalog-slider-nav--right',
+        prevEl: '.index__catalog-slider-nav--left',
+      },
+      keyboard: true,
+      onSlideChangeEnd: function(e) {
+        console.log(e);
+      },
+    });
+
+
     var swiperProcedures = new Swiper('.procedures__slider', {
       effect: 'fade',
       fadeEffect: {

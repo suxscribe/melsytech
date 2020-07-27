@@ -1,10 +1,18 @@
 .section {
+
+
   display: flex;
   flex-wrap: wrap;
   position: relative;
   justify-content: space-between;
+  flex-direction: column;
 
-  margin: percent-view(144px, $fhd-height, 'h') 0 percent-view(144px, $fhd-height, 'h') $container-margin;
+
+  margin: percent-view(94px, $fhd-height, 'h') 0 percent-view(144px, $fhd-height, 'h') $container-margin;
+
+  @media (min-width: $breakpoint-small) {
+    flex-direction: row;
+  }
 
   &__top {
     flex: 1 0 100%;
@@ -26,19 +34,27 @@
   }
 
   &__left {
-    flex: 0 0 auto;
-    width: calc(#{$column-width} * 2);
-    max-width: calc(#{$column-width} * 2);
+    flex: 1 1 auto;
     padding-right: percent-view(55px, $fhd-width, 'w');
+    position: relative;
+
+    @media (min-width: $breakpoint-small) {
+      width: calc(#{$column-width} * 2);
+      max-width: calc(#{$column-width} * 2);
+  
+    }
   }
 
   &__right {
     flex: 1 1 auto;
-    width: calc(100% - calc(#{$column-width} * 2);
-    // margin-right: -#{$container-margin};
+    
 
     display: flex;
     justify-content: space-between;
+
+    @media (min-width: $breakpoint-small) {
+      width: calc(100% - calc(#{$column-width} * 2);
+    }
   }
 
 

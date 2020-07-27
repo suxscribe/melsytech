@@ -36,6 +36,7 @@
       width: 60%;
 
       @include font-h1;
+      font-weight: 500;
       color: #fff;
 
       span {
@@ -45,10 +46,11 @@
 
     &-2 {
       position: absolute;
-      width: 30%;
+      width: calc(#{$column-width} * 3);
       bottom: percent-view(81px, $fhd-height, 'h');
       right: $container-margin;
       @include font-h2;
+      font-weight: 500;
       color: #fff;
     }
   }
@@ -111,14 +113,14 @@
       justify-content: center;
       align-items: center;
       border: 1px solid $color-white;
-      margin-right: 10px;
+      margin-right: 14%;
       background-color: transparent;
       transition: all var(--transition);
 
       & svg {
         flex: 0 0 auto;
-        width: 50%;
-        height: 50%;
+        width: 60%;
+        height: 60%;
       }
     }
 

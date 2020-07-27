@@ -1,10 +1,10 @@
-header.header
-  .header__wrap
+header(uk-sticky).header
+  div(uk-navbar="dropbar: true; boundary: .header; boundary-align: true").header__wrap
     a.header__logo(href="/")
       img(src="../../../assets/logo.svg", alt="Melsytech")
     nav.header__nav
       a(href="#").header__nav-item.header__nav-item--active Каталог
-      div(uk-dropdown="mode:click;boundary: .header; boundary-align: true").header__dropdown.header__dropdown--catalog
+      div(uk-dropdown="mode:hover; boundary: .header; boundary-align: true").header__dropdown.header__dropdown--catalog
         .header__catalog
           .header__catalog-column
             a(href="/").header__catalog-title Косметология эпиляция
@@ -51,8 +51,9 @@ header.header
                 img(src="assets/magic-superfull-logo.png", alt="")
               li: a(href="/").header__catalog-item
                 img(src="assets/magic-superfull-logo.png", alt="")
+
       a(href="#").header__nav-item Компания
-      div(uk-dropdown="mode:click;boundary: .header; boundary-align: true").header__dropdown.header__dropdown--company
+      div(uk-dropdown="boundary: .header; boundary-align: true").header__dropdown.header__dropdown--company
         ul.header__company-menu
           li: a.header__company-menu-item(href="/") О компании
           li: a.header__company-menu-item(href="/") Производство
@@ -60,8 +61,9 @@ header.header
           li: a.header__company-menu-item(href="/") Новости
           li: a.header__company-menu-item(href="/") Публикации в СМИ
           li: a.header__company-menu-item(href="/") Отзывы
+
       a(href="#").header__nav-item Применения
-      div(uk-dropdown="mode:click;boundary: .header; boundary-align: true").header__dropdown.header__dropdown--appliance
+      div(uk-dropdown="boundary: .header; boundary-align: true").header__dropdown.header__dropdown--appliance
         .header__dropdown-wrap
           .header__dropdown-left
             .header__dropdown-menu-wrap
@@ -122,17 +124,27 @@ header.header
                 img(src="assets/magic_super_full.png", alt="Magic Super Full")
               .header__dropdown-product-logo
                 img(src="assets/magic-superfull-logo.png", alt="Magic Super Full")
+
       a(href="#").header__nav-item Технологии
+
       a(href="#").header__nav-item Сервис
+
       a(href="#").header__nav-item Контакты
-    .header__tools
-      a(href="#").header__tools-item.header__consult Консультация
-      a(href="#").header__tools-item.header__search
-        +svg({ name: 'search' })
-      a.header__tools-item.header__language(href="#") RU
-      ul(uk-drop="mode: click").header__tools-item.header__language-dropdown
-        //- li: a RU
-        li: a(href="#") EN
-      .header__burger
-        .header__burger-link
-          span
+
+  .header__tools
+    a(href="#").header__tools-item.header__consult Консультация
+    a(href="#").header__tools-item.header__search
+      +svg({ name: 'search' })
+    div(uk-dropdown="mode: click; boundary: .header; boundary-align: true").header__dropdown.header__dropdown--search
+      form.header__search-form(action="")
+        input.header__search-input(type="search", placeholder="Поиск по сайту", name="search")
+        span.header__search-clear
+          +svg({name: 'plus'})
+        button.header__search-submit(type="submit")
+    a.header__tools-item.header__language(href="#") RU
+    ul(uk-drop="mode: click").header__tools-item.header__language-dropdown
+      //- li: a RU
+      li: a(href="#") EN
+    .header__burger
+      .header__burger-link
+        span

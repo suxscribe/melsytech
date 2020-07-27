@@ -1,5 +1,8 @@
 // 1. Your custom variables and variable overwrites.
-$global-link-color: #da7d02;
+
+@import 'abstract/mixins';
+@import 'abstract/functions';
+@import 'abstract/variables'; //base vars and styles
 
 // 2. Import default variables and available mixins.
 // @import "uikit/src/scss/variables-theme.scss";
@@ -59,7 +62,7 @@ $offcanvas-bar-background: #fff;
 // @import "uikit/src/scss/components/nav.scss";
 // @import 'uikit/src/scss/components/nav.scss'; // uikit nav mod
 
-// @import 'uikit/src/scss/components/navbar.scss'; // After: Card, Grid, Nav, Icon, Search
+@import 'uikit/src/scss/components/navbar.scss'; // After: Card, Grid, Nav, Icon, Search
 // @import 'uikit/src/scss/components/subnav.scss';
 @import 'uikit/src/scss/components/breadcrumb.scss';
 // @import "uikit/src/scss/components/pagination.scss";
@@ -142,10 +145,6 @@ $offcanvas-bar-background: #fff;
 @import 'swiper/swiper.scss';
 @import 'swiper/components/effect-fade/effect-fade.scss';
 @import '/node_modules/simplebar/dist/simplebar.css';
-
-@import 'abstract/mixins';
-@import 'abstract/functions';
-@import 'abstract/variables'; //base vars and styles
 
 @import 'vendor/simplebar.scss'; //simplebar override
 

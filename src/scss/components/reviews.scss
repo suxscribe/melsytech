@@ -12,6 +12,13 @@
     }
   }
 
+  &__slider {
+
+    &-nav {
+      transform: translateY(50%);
+    }
+  }
+
   &__teaser {
     height: 100%;
     display: flex;

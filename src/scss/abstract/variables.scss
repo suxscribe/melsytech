@@ -22,13 +22,6 @@
 
   --box-shadow: 0 10px 40px rgba(0, 80, 146, 0.2);
   --transition: 0.2s ease;
-
-  @media (min-width: $breakpoint-small) {
-    --gutter: 28px;
-  }
-  @media (min-width: $breakpoint-large) {
-    --gutter: 40px;
-  }
 }
 
 $color-white: #fff;
@@ -75,14 +68,19 @@ $base-font-size: 10px; //1 rem
 // $screen-lg-min: 992px;
 // $screen-xl-min: 1200px;
 
+$breakpoint-small: 640px !default;
+$breakpoint-medium: 960px !default;
+$breakpoint-large: 1200px !default;
+$breakpoint-xlarge: 1600px !default;
+
 $mobile-breakpoint: 768px;
 $mobile-min-width: 375px;
 $mobile-min-height: 667px;
 
 $fhd-width: 1920px;
-$fhd-height: 1080px;
+$fhd-height: 992px;
 
-$header-height: 72px;
+$header-height: percent-view(72px, $fhd-height, 'h');
 $right-margin-px: 136px;
 $column-margin-px: 56px;
 
