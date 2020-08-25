@@ -87,15 +87,24 @@
 
   // DETAIL
 
+  &__logo {
+  }
   &__top {
-    padding: percent-view(37px) $right-margin percent-view(40px)
-      $container-margin;
+    padding: 0 $container-margin 0 $container-margin;
     background: $color-white;
 
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    align-items: start;
     border-bottom: 1px solid rgba($color-red, 0.2);
+
+    @media (min-width: $breakpoint-medium) {
+      padding: 0 $right-margin 0 $container-margin;
+
+      flex-direction: row;
+      align-items: center;
+    }
 
     &.uk-sticky-fixed {
       z-index: 990;
@@ -103,7 +112,7 @@
 
     &-contact {
       & a {
-        @include font-small;
+        @include font-menu;
         text-transform: uppercase;
         text-decoration: none;
         color: rgba($color-red, 0.8);
@@ -113,11 +122,51 @@
         }
       }
     }
+
+    &-small {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+      height: responsive-value(
+        56px,
+        72px,
+        $mobile-min-width,
+        $tablet-width,
+        'w'
+      );
+
+      @media (min-width: $breakpoint-medium) {
+        display: none;
+      }
+
+      &-nav {
+        @include font-menu;
+        color: $color-black;
+        text-transform: uppercase;
+        text-decoration: none;
+      }
+    }
   }
   &__tabs {
     list-style-type: none;
     display: flex;
     justify-content: flex-start;
+
+    // padding: percent-view(37px) 0 percent-view(40px) 0;
+    height: responsive-value(56px, 108px, $mobile-min-width, $fhd-width, 'w');
+    align-items: center;
+    margin-right: -$container-margin;
+    border-bottom: 1px solid rgba($color-red, 0.2);
+    max-width: calc(100% + #{$container-margin});
+    padding-right: $container-margin;
+    overflow-x: scroll;
+
+    @media (min-width: $breakpoint-medium) {
+      border-bottom: none;
+      margin-right: 0;
+      overflow: hidden;
+    }
 
     &-item {
       margin-right: percent-view(40px, $fhd-width, 'w');
@@ -131,6 +180,7 @@
 
       & a {
         @include font-menu;
+        text-decoration: underline;
         text-decoration-color: transparent;
         text-transform: uppercase;
         color: $color-gray;
@@ -144,6 +194,11 @@
 
     &-content {
       display: flex;
+      flex-direction: column;
+
+      @media (min-width: $breakpoint-medium) {
+        flex-direction: row;
+      }
     }
   }
 
@@ -153,6 +208,11 @@
 
   &__sidebar {
     padding-right: percent-view(86px);
+    display: none;
+
+    @media (min-width: $breakpoint-medium) {
+      display: block;
+    }
   }
 
   &__files {
@@ -168,6 +228,7 @@
     &-link {
       @include font-small;
       color: rgba($color-gray, 0.8);
+      text-decoration: none;
 
       display: inline-flex;
       align-items: center;
@@ -176,9 +237,9 @@
         color: rgba($color-red, 0.8);
       }
       & svg {
-        width: percent-view(18px);
-        height: percent-view(23px);
-        margin-right: percent-view(17px);
+        width: 18px;
+        height: 23px;
+        margin-right: 17px;
       }
     }
   }
@@ -264,7 +325,13 @@
       margin-right: -#{$right-margin};
 
       &-item {
-        height: percent-view(512px);
+        height: responsive-value(
+          391px,
+          594px,
+          $mobile-min-width,
+          $fhd-width,
+          'w'
+        );
         width: auto;
         margin-right: $column-margin;
       }
@@ -294,9 +361,27 @@
     &__sidebar {
     }
 
+    &__mainbar {
+      order: -1;
+
+      @media (min-width: $breakpoint-small) {
+        order: 0;
+      }
+    }
+
     &__list {
+      display: flex;
+      gap: 21px;
+
+      @media (min-width: $breakpoint-small) {
+        display: block;
+      }
       &-item {
-        margin-bottom: percent-view(32px);
+        flex: 0 1 33%;
+
+        @media (min-width: $breakpoint-small) {
+          margin-bottom: percent-view(32px);
+        }
 
         & a {
           position: relative;
@@ -344,6 +429,48 @@
 
     &__button {
       align-self: flex-start;
+    }
+
+    &__content {
+      & > li {
+        position: relative;
+        padding-left: responsive-value(
+          40px,
+          55px,
+          $mobile-min-width,
+          $fhd-width,
+          'w'
+        );
+        @include font-h3;
+
+        margin-bottom: 33px;
+
+        @media (min-width: $breakpoint-medium) {
+          margin-bottom: percent-view(50px);
+          padding-left: 0;
+        }
+
+        &:before {
+          content: '';
+          display: block;
+          position: absolute;
+          width: responsive-value(
+            20px,
+            28px,
+            $mobile-min-width,
+            $fhd-width,
+            'w'
+          );
+          height: 2px;
+          background: $color-red;
+          left: 0;
+          top: 0.7em;
+
+          @media (min-width: $breakpoint-medium) {
+            display: none;
+          }
+        }
+      }
     }
   }
 

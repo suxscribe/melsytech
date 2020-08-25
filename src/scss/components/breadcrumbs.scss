@@ -1,5 +1,9 @@
 .breadcrumbs {
-  margin-bottom: percent-view(22px, $fhd-width, 'w');
+  margin-bottom: 26px;
+
+  @media (min-width: $breakpoint-small) {
+    margin-bottom: 27px;
+  }
 
   & > * {
     color: rgba($color-black, 0.6);

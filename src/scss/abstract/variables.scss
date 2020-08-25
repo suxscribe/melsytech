@@ -98,7 +98,7 @@ $header-height: responsive-value(
 );
 $header-height-small: 82px;
 
-$right-margin-px: 136px;
+$right-margin-px: 136px; // container margin + column margin
 $column-margin-px: 56px;
 
 $column-width: percent-view(220px, $fhd-width, 'w');

@@ -283,7 +283,7 @@
   display: inline-flex;
   align-items: center;
   margin-left: -#{percent-view(29px)};
-  white-space: nowrap;
+  // white-space: nowrap;
 
   & svg {
     flex: 0 0 auto;

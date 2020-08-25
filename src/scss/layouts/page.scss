@@ -8,16 +8,32 @@
     $lead-margin-bottom: percent-view(51px, $fhd-width, 'w');
 
     display: flex;
+    justify-content: space-between;
     flex-direction: column;
-    flex-wrap: wrap;
     position: relative;
     overflow: hidden;
 
-    padding: percent-view(162px, $fhd-width, 'w') $right-margin
-      $lead-margin-bottom $container-margin;
-
+    padding: percent-view(162px) $right-margin $lead-margin-bottom
+      $container-margin;
+    padding-top: responsive-value(
+      141px,
+      175px,
+      $mobile-min-width,
+      $tablet-width,
+      'w'
+    );
     @media (min-width: $breakpoint-medium) {
+      display: flex;
+      flex-wrap: wrap;
+
       flex-direction: row;
+      padding-top: responsive-value(
+        140px,
+        162px,
+        $breakpoint-medium-max,
+        $fhd-width,
+        'w'
+      );
     }
 
     &--product {
@@ -27,6 +43,13 @@
 
       & .page-lead__images-primary {
         flex: 0 0 50%;
+      }
+
+      & .page-lead__bg {
+        background: $color-black;
+      }
+      & .page-lead__content * {
+        color: $color-white;
       }
     }
     &--appliance {
@@ -112,17 +135,29 @@
     &__content {
       display: flex;
       flex-direction: column;
+      flex: 0 0 auto;
 
-      flex: 0 1 calc(#{$column-width} * 3);
+      @media (min-width: $breakpoint-medium) {
+        flex: 0 1 53.5%;
+      }
 
       @media (min-width: $breakpoint-large) {
-        flex: 0 1 calc(#{$column-width} * 4);
+        flex: 0 1 53.5%;
       }
     }
 
     &__description {
       flex: 1 0 auto;
       margin-bottom: percent-view(60px);
+      font-weight: 500;
+
+      .page-lead__title + & {
+        margin-top: percent-view(28px, $mobile-min-width, 'w');
+
+        @media (min-width: $breakpoint-small) {
+          margin-top: 51px;
+        }
+      }
     }
 
     &__bottom {
@@ -132,15 +167,26 @@
     }
 
     &__images {
-      flex: 1 1 46.81%; // to %
-      max-width: calc(#{$column-width} * 4 - #{$column-margin});
+      flex: 0 0 auto; // to %
       display: flex;
-      align-items: flex-end;
+      // align-items: flex-end;
       justify-content: flex-end;
       margin-bottom: -#{$lead-margin-bottom};
+      position: relative;
+
+      @media (min-width: $breakpoint-small) {
+        max-width: none;
+      }
+      @media (min-width: $breakpoint-medium) {
+        // flex: 0 1 calc(#{$column-width} * 4 - #{$column-margin}); // to %
+        flex: 0 0 46.5%; // to %
+
+        // max-width: calc(#{$column-width} * 4 - #{$column-margin}        ); //prevent wrap
+      }
 
       &-primary {
         flex: 0 0 auto;
+        z-index: 1;
 
         & img {
           width: 100%;
@@ -151,9 +197,37 @@
       }
 
       &-secondary {
-        flex: 0 0 50%;
+        flex: 0 0 auto;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: responsive-value(
+          30px,
+          55px,
+          $mobile-min-width,
+          $tablet-width,
+          'w'
+        );
+        bottom: responsive-value(
+          93px,
+          147px,
+          $mobile-min-width,
+          $tablet-width,
+          'w'
+        );
+        z-index: 0;
 
-        & img {
+        @media (min-width: $breakpoint-small) {
+        }
+
+        @media (min-width: $breakpoint-medium) {
+          top: auto;
+          bottom: 100px;
+          width: calc(#{$column-width} * 3);
+        }
+
+        & img,
+        & picture {
           width: 100%;
           height: 100%;
           object-fit: contain;
@@ -205,6 +279,27 @@
       max-width: calc(#{$column-width} * 4 - #{$column-margin});
       overflow: hidden;
       margin-bottom: -$lead-margin-bottom;
+    }
+
+    &__logo {
+      color: #fff;
+      display: flex;
+      align-items: center;
+      flex: 0 0 auto;
+      max-width: calc(#{$column-width-small} * 1.2);
+      position: absolute;
+      bottom: responsive-value(25px, 100px, $mobile-min-width, $fhd-width, 'w');
+
+      @media (min-width: $breakpoint-small) {
+        // position: absolute;
+        // left: $container-margin;
+        // bottom: percent-view(56px, $fhd-height, 'h');
+
+        max-width: calc(#{$column-width-medium} * 2);
+      }
+      @media (min-width: $breakpoint-medium) {
+        max-width: calc(#{$column-width} * 2);
+      }
     }
   }
 

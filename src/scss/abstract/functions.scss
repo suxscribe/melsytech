@@ -33,7 +33,7 @@
     #{responsive-value(
         $minSize / 2,
         $maxSize / 2,
-        $breakpoint-small,
+        $mobile-min-width,
         $fhd-width,
         'w'
       )} + #{responsive-value(
