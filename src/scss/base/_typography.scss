@@ -1,11 +1,13 @@
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: $font-family;
   @include font-body;
+  font-weight: 500;
+  color: $color-gray;
 }
 
 a {
-  color: $color-black;
-  text-underline-offset: 0.4em;
+  color: $color-gray;
+  text-underline-offset: 0.3em;
   text-decoration-color: rgba($color-red, 0.4);
   transition: all var(--transition);
 
@@ -24,10 +26,12 @@ h2,
 h3,
 h4 {
   font-weight: 700;
+  color: $color-black;
 }
 
 h1,
-.uk-h1 {
+.uk-h1,
+.h1 {
   @include font-h1;
 
   & span {
@@ -40,17 +44,44 @@ h1,
 }
 
 h2,
-.uk-h2 {
+.uk-h2,
+.h2 {
   @include font-h2;
 }
 
-h3 {
+h3,
+.uk-h3,
+.h3 {
   @include font-h3;
 }
 
 h4 {
 }
 
-input {
-  font-family: 'Montserrat', sans-serif;
+input,
+option,
+select {
+  font-family: $font-family;
+}
+
+p + h3 {
+  margin-top: percent-view(69px);
+}
+
+h3 + h3 {
+  margin-top: percent-view(69px);
+}
+
+p + p {
+  margin-top: percent-view(32px);
+}
+
+.text {
+  &-muted {
+    color: rgba($color-gray, 0.6);
+  }
+
+  &-lead {
+    @include font-lead;
+  }
 }

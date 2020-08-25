@@ -1,6 +1,13 @@
 .procedures {
   &__left {
+    margin-bottom: percent-view(24px, $mobile-min-width, 'w');
 
+    @media (min-width: $breakpoint-small) {
+      margin-bottom: percent-view(34px, $tablet-width, 'w');
+    }
+    @media (min-width: $breakpoint-medium) {
+      margin-bottom: 0;
+    }
   }
 
   &__slider {
@@ -12,48 +19,29 @@
 
     &-right {
       &-item {
-        $slide-width: 604px;
-        $slide-height: 550px;
+        $slide-width: calc(#{$column-width-small} * 2);
+        $slide-height: calc(#{$slide-width} * 0.91);
 
-        // margin-right: percent-view(56px, $fhd-width, 'w');
+        width: $slide-width;
+        height: $slide-height;
+
         box-sizing: border-box;
         padding-right: percent-view(56px, $fhd-width, 'w');
-        width: calc((100% - #{$right-margin} + #{$column-margin}) / 2);
-
-        // width: calc(
-        //   #{responsive-value(
-        //       $slide-width / 4,
-        //       $slide-width / 2,
-        //       $breakpoint-small,
-        //       $fhd-width,
-        //       'w'
-        //     )} + #{responsive-value(
-        //       $slide-width / 4,
-        //       $slide-width / 2,
-        //       $breakpoint-small,
-        //       $fhd-height,
-        //       'h'
-        //     )}
-        // );
-
-        height: calc(
-          #{responsive-value(
-              $slide-height / 4,
-              $slide-height / 2,
-              $breakpoint-small,
-              $fhd-width,
-              'w'
-            )} + #{responsive-value(
-              $slide-height / 4,
-              $slide-height / 2,
-              $breakpoint-small,
-              $fhd-height,
-              'h'
-            )}
-        );
 
         opacity: 0.6;
         transition: all var(--transition);
+
+        @media (min-width: $breakpoint-small) {
+          $slide-width: calc(#{$column-width-medium} * 3);
+          width: $slide-width;
+          height: calc(#{$slide-width} * 0.91);
+        }
+
+        @media (min-width: $breakpoint-medium) {
+          $slide-width: calc(#{$column-width} * 3);
+          width: $slide-width;
+          height: calc(#{$slide-width} * 0.91);
+        }
 
         &.swiper-slide-active {
           opacity: 1;
@@ -73,6 +61,11 @@
 
     &-bottom {
       flex: 0 0 40%;
+    }
+
+    &-text {
+      color: rgba($color-gray, 0.7);
+      margin-bottom: percent-view(38px);
     }
   }
   &__teaser {

@@ -1,7 +1,7 @@
-header(uk-sticky).header
+header(uk-sticky="bottom: .page-lead--product").header
   div(uk-navbar="dropbar: true; boundary: .header; boundary-align: true").header__wrap
     a.header__logo(href="/")
-      img(src="../../../assets/logo.svg", alt="Melsytech")
+      img(src="./assets/logo.svg", alt="Melsytech")
     nav.header__nav
       a(href="#").header__nav-item.header__nav-item--active Каталог
       div(uk-dropdown="mode:hover; boundary: .header; boundary-align: true").header__dropdown.header__dropdown--catalog
@@ -132,12 +132,12 @@ header(uk-sticky).header
       a(href="#").header__nav-item Контакты
 
   .header__tools
-    a(href="#").header__tools-item.header__consult Консультация
+    a(href="#offcanvas-consult", uk-toggle).header__tools-item.header__consult Консультация
     a(href="#").header__tools-item.header__search
       +svg({ name: 'search' })
     div(uk-dropdown="mode: click; boundary: .header; boundary-align: true").header__dropdown.header__dropdown--search
       form.header__search-form(action="")
-        input.header__search-input(type="search", placeholder="Поиск по сайту", name="search")
+        input.header__search-input(type="search", placeholder="Поиск по сайту", name="search", autocomplete="off")
         span.header__search-clear
           +svg({name: 'plus'})
         button.header__search-submit(type="submit")
@@ -146,5 +146,5 @@ header(uk-sticky).header
       //- li: a RU
       li: a(href="#") EN
     .header__burger
-      .header__burger-link
+      a.header__burger-link(href="#offcanvas", uk-toggle)
         span

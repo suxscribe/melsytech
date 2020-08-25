@@ -3,17 +3,19 @@
   flex: 0 0 auto;
   background: $color-gray;
   position: relative;
-  z-index: 10;
-
-
+  // z-index: 10000; // show over offcanvas
+  width: 100% !important; // override uk sticky
 
   &:after {
     content: '';
     display: block;
     position: absolute;
-    border-bottom: 1px solid rgba($color-white, 0.4);
     width: 100%;
     bottom: 0;
+
+    @media (min-width: $breakpoint-medium) {
+      border-bottom: 1px solid rgba($color-white, 0.4);
+    }
   }
 
   .page--index & {
@@ -22,6 +24,16 @@
 
     &.uk-active {
       background: $color-gray;
+
+      & .header__logo {
+        // line-height: 50px;
+
+        line-height: $header-height-small;
+
+        @media (min-width: $breakpoint-medium) {
+          line-height: $header-height;
+        }
+      }
     }
   }
 
@@ -33,14 +45,14 @@
 
   &__logo {
     $logo-width-max: 232px;
-    $logo-width-min: 140px;
+    $logo-width-min: 192px;
 
     flex: 0 0 auto;
     margin-left: $container-margin;
     margin-right: percent-view(25px, $fhd-width, 'w');
 
     width: $logo-width-min;
-    line-height: $header-height;
+    line-height: $header-height-small;
 
     @media (min-width: $breakpoint-small) {
       width: calc(
@@ -52,6 +64,9 @@
             'w'
           )}
       );
+    }
+    @media (min-width: $breakpoint-medium) {
+      line-height: $header-height;
     }
     @media (min-width: $fhd-width) {
       width: $logo-width-max;
@@ -84,7 +99,11 @@
       margin: 0 percent-view(22px, $fhd-width, 'w');
 
       @include font-menu;
-      line-height: $header-height;
+      line-height: $header-height-small;
+
+      @media (min-width: $breakpoint-medium) {
+        line-height: $header-height;
+      }
 
       &--active {
         &:after {
@@ -304,6 +323,12 @@
     // padding: 0 responsive-value(17px, 62px, $breakpoint-small, $fhd-width, 'w');
     border-left: 1px solid rgba($color-white, 0.2);
 
+    display: none;
+
+    @media (min-width: $breakpoint-medium) {
+      display: block;
+    }
+
     & > svg {
       fill: #fff;
       width: 24px;
@@ -371,6 +396,12 @@
     border-left: 1px solid rgba($color-white, 0.2);
     text-align: center;
 
+    display: none;
+
+    @media (min-width: $breakpoint-medium) {
+      display: block;
+    }
+
     &-dropdown {
       margin-top: 0;
       background-color: $color-gray;
@@ -392,8 +423,8 @@
     flex-direction: column;
     justify-content: center;
     transition: background 0.2s ease;
-    padding: 0 percent-view(62px, $fhd-width, 'w');
-    border-left: 1px solid rgba($color-white, 0.2);
+    padding: 0 28px;
+    // border-left: 1px solid rgba($color-white, 0.2);
 
     @media (min-width: $breakpoint-medium) {
       display: none;
@@ -417,8 +448,17 @@
       &:hover {
         text-decoration: none;
         opacity: 0.7;
+
+        & span {
+          &:before {
+          }
+          &:after {
+            width: 100%;
+          }
+        }
       }
 
+      .uk-offcanvas-page &,
       &.active {
         // transform: rotate(0);
 
@@ -433,6 +473,7 @@
         }
         & span:after {
           bottom: 0;
+          width: 100%;
           transform: rotate(-45deg);
           transition-delay: 0s, 0.3s;
         }
@@ -442,7 +483,7 @@
         display: inline-block;
         position: relative;
         left: 0;
-        height: 2px;
+        height: 3px;
         background: $color-white;
         width: 32px;
         vertical-align: middle;
@@ -454,24 +495,25 @@
         &:after {
           position: absolute;
           display: block;
-          left: 0;
+          right: 0;
           width: 100%;
-          height: 2px;
+          height: 3px;
           background: $color-white;
           content: '';
 
-          transition-duration: 0.3s, 0.3s;
-          transition-delay: 0.3s, 0s;
+          transition-duration: 0.3s, 0.3s, 0.3s;
+          transition-delay: 0.3s, 0s, 0s;
         }
 
         &:before {
           top: -9px;
-          transition-property: top, transform;
+          transition-property: top, transform, width;
         }
 
         &:after {
           bottom: -9px;
-          transition-property: bottom, transform;
+          transition-property: bottom, transform, width;
+          width: 50%;
         }
       }
     }
@@ -479,5 +521,9 @@
 
   & .uk-navbar-dropbar {
     top: $header-height;
+  }
+
+  & + .uk-sticky-placeholder {
+    // display: none;
   }
 }

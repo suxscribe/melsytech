@@ -100,10 +100,10 @@ $global-large-margin: 70px !default;
 $global-xlarge-margin: 140px !default;
 
 // Used in grid, column, container, align, card, padding
-$global-gutter: 20px !default;
-$global-small-gutter: 28px !default;
-$global-medium-gutter: 40px !default;
-$global-large-gutter: 70px !default;
+$global-gutter: $column-margin !default;
+$global-small-gutter: $column-margin !default;
+$global-medium-gutter: $column-margin !default;
+$global-large-gutter: $column-margin !default;
 
 //
 // Controls

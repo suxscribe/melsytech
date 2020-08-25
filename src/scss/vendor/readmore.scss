@@ -1,0 +1,8 @@
+[data-readmore] {
+  transition: height var(--transition);
+  overflow: hidden;
+}
+[data-readmore-dots='0'],
+[data-readmore-rest='0'] {
+  display: none !important;
+}

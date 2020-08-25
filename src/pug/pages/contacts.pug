@@ -1,0 +1,56 @@
+extends ../layout/main
+
+block variables
+  - var title = 'Контакты';
+  - var description = 'Description';
+  - var pageClass = 'page--contacts';
+
+block content
+  //- .ruler--right
+  section.page-lead.page-lead--contacts
+    .page-lead__breadcrumbs.breadcrumbs
+      span Контакты
+
+    .page-lead__content
+      h1.page-lead__title Контакты
+
+    .page-lead__contacts
+      .contacts__title Адрес
+      .contacts__info Россия, Нижегородская обл., г. Дзержинск, ул. Игумновское шоссе 11Д
+      .contacts__title Отдел продаж
+      .contacts__info 
+        a(href="tel:+78312809630") +7 (831) 280-96-30
+        br
+        a(href="mailto:sales@melsytech.com") sales@melsytech.com
+      .contacts__title Сервисный отдел
+      .contacts__info 
+        a(href="tel:+78312809630") +7 831 280 96 30 доб. 625
+        br
+        a(href="mailto:service@melsytech.com") service@melsytech.com
+
+    .page-lead__map
+      .company__map(id="map",data-coordinates="[56.349619, 43.798270]")
+
+  section.page-content
+    .page-content__sidebar
+      h2 Обратная связь
+
+    .page-content__mainbar
+      .contacts__text
+        p(class="uk-width-1-2@m") Наши сотрудники помогут вам подобрать оборудование в соответствии с вашими требованиями.
+      form(action="").contacts__form.form.form--modal
+        .form__grid(uk-grid="margin: ''", class="uk-child-width-1-2@m")
+          +form-row({name: "contacts-form-name", title: "Ваше имя", validate: 'empty', placeholder: ' '})
+          +form-row({name: "contacts-form-company", title: "Название компании", validate: 'empty', placeholder: ' '})
+          +form-row({name: "contacts-form-email", title: "Email", validate: 'email', placeholder: ' '})
+          +form-row({name: "contacts-form-phone", title: "Телефон", validate: 'phone', placeholder: ' '})
+        +form-row({textarea: true, name: "contacts-form-phone", title: "Телефон", validate: 'phone', placeholder: ' '})
+        
+        .form__row.form__submit
+          button(type="submit").form__submit-button.button Отправить запрос
+          .form__submit-note 
+            | Нажимая на кнопку, вы соглашаетесь с 
+            a(href="") Условиями использования
+            br
+            | и 
+            a(href="") Политикой конфиденциальности

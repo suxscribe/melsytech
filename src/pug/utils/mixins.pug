@@ -3,56 +3,141 @@ mixin item(title, descr)
     h2.item-title= title
     p.item-descr= descr
 
+mixin product-catalog-section(args)
+  .index__catalog-left.section__left
+    h1.index__catalog-title.section__title= args.title
+    if args.catalogLink === true
+      a(href="/").index__catalog-link.section__link Перейти в Каталог
+
+  .index__catalog-right.section__right
+    //- .index__catalog-slideshow-wrap
+    .index__catalog-slider.swiper-container
+      ul.swiper-wrapper
+        li.index__catalog-slider-item.swiper-slide: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
+        li.index__catalog-slider-item.swiper-slide: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
+        li.index__catalog-slider-item.swiper-slide: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
+        li.index__catalog-slider-item.swiper-slide: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
+        li.index__catalog-slider-item.swiper-slide: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
+        li.index__catalog-slider-item.swiper-slide: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
+    .index__catalog-slider-nav.slider__nav
+      .slider__arrow.slider__arrow--left.index__catalog-slider-nav--left
+        +svg({ name: 'slider-arrow-left'})
+      .slider__arrow.slider__arrow--right.index__catalog-slider-nav--right
+        +svg({ name: 'slider-arrow-right'})
+
 mixin product-teaser(title, image)
   a(href="/").product.product--teaser
     .product__plus
       +svg({ name: 'plus' })
     .product__image
-      img(src="../assets/products/" + image, alt=title)
+      img(src="./assets/products/" + image, alt=title)
     .product__name= title
 
 mixin svg(args)
     svg&attributes(attributes)
         use(xlink:href=`#${args.name}`)
 
+mixin sidebar-item(args)
+  li.page-content__sidebar-nav-item
+    a(href=args.link).page-content__sidebar-nav-link
+      +svg({name: 'arrow-right'})
+      =args.name
+
+mixin product-files-item(args)
+  li.product__files-item
+    a(href=args.link).product__files-link
+      +svg({name: 'download'})
+      = args.name
+
+mixin product-section-advantages-slide(args)
+  li.product-section-advantages__slider-item.swiper-slide
+    a(href="./assets/" + args.link).product-section-advantages__slider-link
+      img(src="./assets/" + args.image, alt="")
+
+mixin product-video-list-item(args)
+  li.product-section-video__list-item
+    a(href="")
+      img(src="./assets/" + args.image, alt="")
+
+mixin product-video-item(args)
+  li.product-section-video__item
+    video(src=args.media, controls, playsinline, uk-video="autoplay:false", poster=args.poster )
 
 mixin advantage-item(title,text,image)
   .advantages__item
     .advantages__item-image
-      img(src="../assets/" + image, alt=`${title}`)
+      img(src="./assets/" + image, alt=`${title}`)
     .advantages__item-content
       .advantages__item-title= title
       .advantages__item-text= text
 
-mixin procedures-slide(title, link, branch)
+mixin procedures-slide(title, link, text, showDevices)
   .procedures__slide
     .procedures__slide-top
       h1.procedures__slide-title.section__title
         a(href=`${link}`)= title
-      .procedures__slide-branch= branch
+      if showDevices == true
+        .procedures__slide-text= text
+      else
+        .procedures__slide-text Уменьшение проявлений как умеренных, так и выраженных морщин и складок на лице для заметно более молодого внешнего вида кожи.
     .procedures__slide-bottom
-      .procedures__slide-products-title Используемые аппараты
-      .procedures__slide-products
-        a(href="/") Magic One
-        | ,
-        a(href="") Magic Lite
+      if showDevices == true
+        .procedures__slide-products-title Используемые аппараты
+        .procedures__slide-products
+          a(href="/") Magic One
+          | , 
+          a(href="") Magic Lite
+      else
+        a(href="") Перейти к статье
+
+mixin product-section-results-slide(args)
+  .product-section-results__slide
+    .section__top 
+      .section__subtitle Результаты процедур
+      h3.section__title.h1= args.title
+      p.product-section-results__slide-text= args.text
+      a(href="").section__link Перейти к статье
+      
+
 
 mixin procedures-teaser(image,link)
-  a(href=`${link}`).procedures__teaser
-    img(src="../assets/" + image, alt="")
+  a(href=link).procedures__teaser
+    img(src="./assets/" + image, alt="")
 
 
-mixin reviews-teaser(args)
-  .reviews__teaser
-    .reviews__teaser-text= args.text
-    .reviews__teaser-columns
-      .reviews__teaser-left
-        .reviews__teaser-avatar
+mixin procedures-slider-section(args)
+  .procedures__left.section__left
+    .procedures__slider.swiper-container(class=`procedures__slider--${args.class}`)
+      ul.swiper-wrapper
+        li.procedures__slider-item.swiper-slide: +procedures-slide('Лазерные Системы MAGIC', '/', 'Общая хирургия', args.showDevices)
+        li.procedures__slider-item.swiper-slide: +procedures-slide('Системные Лазеры', '/', 'Общая хирургия', args.showDevices)
+        li.procedures__slider-item.swiper-slide: +procedures-slide('Лазерные Системы Системных Лазеров', '/', 'Общая хирургия', args.showDevices)
+        li.procedures__slider-item.swiper-slide: +procedures-slide('Системы Лазерных Систем', '/', 'Общая хирургия', args.showDevices)
+
+  .procedures__right.section__right
+    .procedures__slider-right.swiper-container(class=`procedures__slider-right--${args.class}`)
+      ul.swiper-wrapper
+        li.procedures__slider-right-item.swiper-slide: +procedures-teaser('procedures-teaser-1.jpg')
+        li.procedures__slider-right-item.swiper-slide: +procedures-teaser('procedures-teaser-2.jpg')
+        li.procedures__slider-right-item.swiper-slide: +procedures-teaser('procedures-teaser-3.jpg')
+        li.procedures__slider-right-item.swiper-slide: +procedures-teaser('procedures-teaser-1.jpg')
+    .procedures__slider-nav.slider__nav
+      .slider__arrow.slider__arrow--left.procedures__slider-nav--left(class=`procedures__slider--${args.class}-nav--left`)
+        +svg({ name: 'slider-arrow-left'})
+      .slider__arrow.slider__arrow--right.procedures__slider-nav--right(class=`procedures__slider--${args.class}-nav--right`)
+        +svg({ name: 'slider-arrow-right'})
+
+mixin reviews-slide(args)
+  .reviews__slide
+    .reviews__slide-text= args.text
+    .reviews__slide-columns
+      .reviews__slide-left
+        .reviews__slide-avatar
           img(src="/assets/" + args.avatar, alt=args.name)
-        .reviews__teaser-name= args.name
-        .reviews__teaser-description= args.desc
-      .reviews__teaser-right
-        .reviews__teaser-media
+        .reviews__slide-name= args.name
+        .reviews__slide-description= args.desc
+      .reviews__slide-right
+        .reviews__slide-media
           video(src=args.media, controls, playsinline, uk-video="autoplay:false", poster=args.poster )
 
 mixin partners-drop(args)
@@ -69,7 +154,140 @@ mixin partners-drop(args)
 mixin news-teaser(title, image, date)
   a(href="/").news__teaser
     .news__teaser-image
-      img(src="../assets/" + image, alt=title)
+      img(src="./assets/" + image, alt=title)
     .news__teaser-bottom
       .news__teaser-name= title
       .news__teaser-date= date
+
+mixin product-instrument(args)
+  li.product-section-instruments__item
+    a(href="").product-section-instruments__title.uk-accordion-title.h3= args.title
+      span.product-section-instruments__plus.product__plus: +svg({name: 'plus'})
+    .product-section-instruments__content.uk-accordion-content
+      | Позволяет реализовать широчайший спектр процедур, который невозможен ни с одной другой лазерной системой. Благодаря лазерной системе Magic Super Full, косметологические клиники могут ощутимо расширить ассортимент предлагаемых услуг за счет действенных и безопасных методик, получить значительное преимущество перед конкурентами и перейти на качественно новый уровень работы.
+
+
+mixin product-instruments(args)
+  .product-section-instruments__content
+    ul(uk-accordion)
+      +product-instrument({title: 'Оптическое совершенство манипулы'})
+      +product-instrument({title: 'Обратная связь между лазером и манипулой'})
+      +product-instrument({title: 'Сенсорный экран. Тонкие настройки.'})
+      +product-instrument({title: 'Программная логика MAGIC SUPER Full '})
+
+
+mixin reviews-slider(args)
+  div.reviews__right-slider.swiper-container
+    ul.swiper-wrapper
+      li.swiper-slide: +reviews-slide({text:'«Технология, реализованная в аппарате Magic Super Full, позволяет делать эпиляцию пациентам с любым фототипом кожи и любым цветом волос без риска ожогов. Большинство наших клиентов удовлетворены эффектом от процедуры: быстро, безболезненно и эффективно»', name:'Гольцова Елена Николаевна', desc:'Врач клиники эстетического омоложения в Перт, Австралия',avatar: 'reviews-avatar.jpg',media:'https://yootheme.com/site/images/media/yootheme-pro.mp4', poster:'/assets/reviews-poster.jpg'})
+      li.swiper-slide: +reviews-slide({text:'«Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore earum qui laborum voluptate doloribus, quaerat eius ipsa error iusto beatae?»', name:'Гольцова Елена Николаевна', desc:'Врач клиники эстетического омоложения в Перт, Австралия',avatar: 'reviews-avatar.jpg',media:'https://yootheme.com/site/images/media/yootheme-pro.mp4', poster:'/assets/reviews-poster.jpg'})
+  
+
+
+mixin reviews-item(args)
+  .reviews__list-item
+    .reviews__item
+      .reviews__item-text(data-readmore="400")= args.text
+      .reviews__item-info
+        if args.video
+          a.reviews__item-avatar(href=`#${args.video}`, uk-toggle)
+            img(src="assets/" + args.image, alt="")
+            .reviews__item-video-label
+              +svg({name: 'video-label'})
+        else 
+          .reviews__item-avatar
+            img(src="assets/" + args.image, alt="")
+
+        .reviews__item-user
+          .reviews__item-user-name= args.name
+          .reviews__item-user-desc= args.desc
+    if args.video
+      div(id=args.video, uk-modal)
+        .uk-modal-dialog.uk-width-auto.uk-margin-auto-vertical
+          +video({media: 'https://yootheme.com/site/images/media/yootheme-pro.mp4', poster:'/assets/reviews-poster.jpg'})
+
+mixin form-row(args)
+  .form__row
+    if args.textarea
+      textarea(placeholder=args.placeholder, name=args.name, class=`form__textarea validate--${args.validate}`)
+    else
+      input(type="text", placeholder=args.placeholder, name=args.name, class=`validate--${args.validate}`).form__input
+    .form__note
+    label.form__label(for=args.name)= args.title
+
+
+mixin appliance-item(args)
+  .appliance__item(id=args.id)
+    .appliance__item-desc 
+      p
+        strong= args.title 
+        =args.text
+      a(href="") Подробнее
+    .appliance__item-products
+      a.appliance__item-product-link(href="") Magic One
+      a.appliance__item-product-link(href="") Magic Lite
+    a(href="").appliance__item-image
+      img(src="./assets/appliance-item-image.jpg", alt="")
+
+
+mixin breadcrumb(args)
+  a(href="").breadcrumbs__back
+    +svg({name: 'arrow-left'})
+    span= args.name
+
+mixin technology-item(args)
+  a(href="",id=args.id).technology__item
+    .technology__item-left
+      .technology__item-title.h2= args.name 
+      .technology__item-desc= args.text
+      .technology__item-arrow.slider__arrow.slider__arrow--right
+        +svg({name: 'slider-arrow-right'})
+      
+    .technology__item-image
+      img(src="./assets/" + args.img, alt="")
+
+mixin video(args)
+  video(src=args.media, controls, playsinline, uk-video="autoplay:false", poster=args.poster, class=args.class )
+
+mixin history-year-swiper(args)
+  .history__accordion-slider.swiper-container(data-swiper="swiper")
+    ul.swiper-wrapper
+      li.history__accordion-slider-item.swiper-slide
+        .h2 Разветвленная дистрибьюторская сеть в России, партнерская сеть за рубежом 1
+      li.history__accordion-slider-item.swiper-slide
+        .h2 Разветвленная дистрибьюторская сеть в России, партнерская сеть за рубежом 2
+      li.history__accordion-slider-item.swiper-slide
+        .h2 Разветвленная дистрибьюторская сеть в России, партнерская сеть за рубежом 3
+    .history__accordion-slider-count
+      .history__accordion-slider-current.uk-flex-center
+      .history__accordion-slider-overall
+    .history__accordion-slider-nav.slider__nav
+      .slider__arrow.slider__arrow--left.history__accordion-slider-nav--left
+        +svg({ name: 'slider-arrow-left'})
+      .slider__arrow.slider__arrow--right.history__accordion-slider-nav--right
+        +svg({ name: 'slider-arrow-right'})
+
+
+mixin company-teaser(args)
+  .company__teaser-item
+    a.company__teaser-title
+      span= args.title
+      .company__teaser-link.slider__arrow.slider__arrow--right 
+        +svg({name: 'slider-arrow-right'})
+    .company__teaser-contacts
+      .company__teaser-address!= args.address1
+      .company__teaser-address!= args.address2
+      .company__teaser-address!= args.address3
+
+
+mixin publication-item(args)
+  li.publications__list-item
+    a.publications__item
+      .publications__item-image
+        img(src=`assets/${args.image}`, alt="")
+      .publications__item-title(href="")= args.title
+
+mixin offcanvas-title-item(args)
+  a(href="/").offcanvas__nav-title
+    +svg({name: 'arrow-right'})
+    =args.title

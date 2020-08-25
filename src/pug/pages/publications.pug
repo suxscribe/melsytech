@@ -1,0 +1,35 @@
+extends ../layout/main
+
+block variables
+  - var title = 'Публикации в сми';
+  - var description = 'Description';
+  - var pageClass = 'page--publications';
+
+block content
+  //- .ruler--right
+  section.page-lead.page-lead--news
+    .page-lead__content
+      .page-lead__breadcrumbs.breadcrumbs
+        +breadcrumb({name: 'О компании'})
+      h1.page-lead__title Публикации в СМИ
+  
+  section.page-content
+    .page-content__sidebar
+      .page-content__sidebar-sticky(uk-sticky="bottom: true; offset: 160")
+        ul.news__sections(uk-scrollspy-nav="closest: li; scroll: true; offset: 100")
+          li.news__sections-item.news__sections-item--order: a(href="") Все направления
+          li.news__sections-item: a(href="#year2020") Косметология
+          li.news__sections-item: a(href="#year2019") Гинекология
+          li.news__sections-item: a(href="#year2018") Хирургия
+          li.news__sections-item: a(href="#year2018") Флебология
+          li.news__sections-item: a(href="#year2018") Проктология
+          li.news__sections-item: a(href="#year2018") Отолорингология
+
+    .page-content__mainbar
+      ul.publications__list(uk-grid, class="uk-child-width-1-3@m uk-child-width-1-2@s")
+        +publication-item({image: 'publication-01.jpg', title: 'Современный подход к лечению с использованием аппаратных методик'})
+        +publication-item({image: 'publication-02.jpg', title: 'Как выбрать лазер для эпиляции: советы эксперта'})
+        +publication-item({image: 'publication-03.jpg', title: 'Лазерная эпиляция: от простого к сложному'})
+        +publication-item({image: 'publication-04.jpg', title: 'Роль врача эстетической медицины в выявлении онкологических заболеваний кожи'})
+        +publication-item({image: 'publication-05.jpg', title: 'Комбинированные методики в лечении морщин'})
+        +publication-item({image: 'publication-01.jpg', title: 'IPL и лазеры против пигментных дисхромий'})

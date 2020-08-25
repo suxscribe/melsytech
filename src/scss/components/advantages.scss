@@ -1,36 +1,76 @@
 .advantages {
   &__title {
-    margin-bottom: percent-view(140px, $fhd-height, 'h');
-    max-width: 62.5%;
+    margin-bottom: percent-view(140px);
+    margin-right: $right-margin;
+
+    @media (max-width: $breakpoint-small-max) {
+      font-size: 24px;
+    }
+    @media (min-width: $breakpoint-medium) {
+      max-width: 62.5%;
+    }
   }
 
   &__list {
+    line-height: 1.9;
+
     & > li {
-      &:first-child > .advantages__list-item {
-        border-top: 1px solid $color-red;
+      display: inline-block;
+      margin-right: 5px;
+
+      @media (min-width: $breakpoint-medium) {
+        display: block;
       }
+
+      &:after {
+        content: ', ';
+
+        @media (min-width: $breakpoint-medium) {
+          display: none;
+        }
+      }
+
       &.uk-active .advantages__list-item {
         color: $color-red;
+        font-weight: 600;
+      }
+    }
+    @media (min-width: $breakpoint-small) {
+    }
 
-        & svg {
-          opacity: 1;
-          transform: translateY(-50%) scale(1);
+    @media (min-width: $breakpoint-medium) {
+      & > li {
+        &:first-child > .advantages__list-item {
+          border-top: 1px solid $color-red;
+        }
+        &.uk-active .advantages__list-item {
+          font-weight: 400;
+
+          & svg {
+            opacity: 1;
+            transform: translateY(-50%) scale(1);
+          }
         }
       }
     }
 
     &-item {
-      display: block;
-      text-decoration: none;
-      padding: percent-view(16px, $fhd-height, 'h')
-        percent-view(18px, $fhd-width, 'w') percent-view(16px, $fhd-height, 'h')
-        0;
-      border-bottom: 1px solid $color-red;
-      position: relative;
+      @include font-lead;
+      letter-spacing: -0.01em;
+      text-decoration-style: dotted;
+
+      @media (min-width: $breakpoint-medium) {
+        display: block;
+        text-decoration: none;
+        position: relative;
+        border-bottom: 1px solid $color-red;
+        padding: percent-view(16px) percent-view(18px, $fhd-width, 'w')
+          percent-view(16px) 0;
+      }
 
       svg {
-        width: percent-view(18px, $fhd-width, 'w');
-        height: percent-view(18px, $fhd-height, 'h');
+        width: $arrow-size;
+        height: $arrow-size;
         position: absolute;
         right: 0;
         top: 50%;
@@ -43,27 +83,101 @@
     }
   }
 
+  &__nav {
+    order: 3;
+    position: relative;
+    padding-bottom: percent-view(56px, $mobile-min-width, 'w');
+
+    @media (min-width: $breakpoint-small) {
+      padding-bottom: percent-view(87px, $tablet-width, 'w');
+    }
+
+    @media (min-width: $breakpoint-medium) {
+      order: 0;
+      padding-bottom: 0;
+    }
+
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      background: $gradient-2;
+      left: -100px;
+      right: -100px;
+      top: 0;
+      bottom: 0;
+      z-index: -1;
+
+      @media (min-width: $breakpoint-medium) {
+        display: none;
+      }
+    }
+  }
+
   &__items {
-    background: $gradient-1;
+    position: relative;
+    padding: percent-view(36px, $mobile-min-width, 'w') 0
+      percent-view(42px, $mobile-min-width, 'w') 0;
+
+    @media (min-width: $breakpoint-small) {
+      padding: percent-view(126px, $tablet-width, 'w') 0
+        percent-view(122px, $tablet-width, 'w') 0;
+    }
+
+    @media (min-width: $breakpoint-medium) {
+      padding: 0;
+      margin-bottom: percent-view(43px, $mobile-min-width, 'w');
+
+      background: $gradient-1;
+      margin-bottom: 0;
+    }
+
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      background: $gradient-2;
+      left: -100px;
+      right: -100px;
+      top: 0;
+      bottom: 0;
+
+      @media (min-width: $breakpoint-medium) {
+        display: none;
+      }
+    }
+
+    & > li {
+      transform: rotate(0.000001deg);
+    }
   }
   &__item {
     display: flex;
-    padding: percent-view(25px, $fhd-height, 'h') $right-margin
-      percent-view(25px, $fhd-height, 'h') percent-view(55px, $fhd-width, 'w');
+    flex-direction: column;
+    @media (min-width: $breakpoint-small) {
+      flex-direction: row;
+    }
+    @media (min-width: $breakpoint-medium) {
+      padding: percent-view(25px) $right-margin percent-view(25px)
+        percent-view(55px, $fhd-width, 'w');
+    }
 
     &-image {
       flex: 0 0 auto;
-      width: percent-view(565px, $fhd-width, 'w');
+
+      @media (min-width: $breakpoint-small) {
+        width: percent-view(565px, $fhd-width, 'w');
+      }
     }
 
     &-content {
       flex: 1 1 auto;
-      margin-top: percent-view(102px, $fhd-height, 'h');
+      margin-top: percent-view(102px);
     }
 
     &-title {
       @include font-h2;
-      margin-bottom: percent-view(29px, $fhd-width, 'w');
+      margin-bottom: percent-view(29px);
     }
 
     &-text {

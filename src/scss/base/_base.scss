@@ -24,6 +24,9 @@ video {
   /* 3 */
   box-sizing: border-box;
 }
+video {
+  object-fit: cover;
+}
 /* 4 */
 @supports (display: block) {
   svg {
@@ -56,6 +59,7 @@ ol > li > ul {
 html {
   font-size: 62.5%; // 1rem = 10px
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 // TODO add dynamic font size based on window width. eg TES
@@ -64,8 +68,7 @@ body {
   // font-size: var(--font-size);
   // background-image: url(../images/om.jpg);
   // line-height: var(--line-height);
-  font-weight: 500;
-  color: $color-black;
+
   max-width: 100vw;
   overflow-x: hidden;
   display: flex;
@@ -76,7 +79,11 @@ body {
 
 .main {
   flex: 1 1 auto;
+  margin-top: calc(-1 * #{$header-height-small});
   // overflow: hidden;
+  @media (min-width: $breakpoint-medium) {
+    margin-top: calc(-1 * #{$header-height});
+  }
 }
 
 ul {

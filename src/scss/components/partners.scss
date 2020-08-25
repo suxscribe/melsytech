@@ -1,6 +1,13 @@
 .partners {
   &__left {
     padding-right: 0;
+    margin-bottom: percent-view(46px, $mobile-min-width, 'w');
+    @media (min-width: $breakpoint-small) {
+      margin-bottom: percent-view(57px, $tablet-width, 'w');
+    }
+    @media (min-width: $breakpoint-medium) {
+      margin-bottom: 0;
+    }
   }
   &__right {
     flex: 0 0 auto;
@@ -9,13 +16,17 @@
   }
 
   &__list {
-    width: percent-view(604px, $fhd-width, 'w');
     margin: 0 0 0 auto;
-    max-height: percent-view(557px, $fhd-height, 'h');
+    max-height: 80vh;
+
+    @media (min-width: $breakpoint-medium) {
+      width: percent-view(604px);
+      max-height: percent-view(557px, $fhd-height, 'h');
+    }
   }
 
   &__item {
-    margin-bottom: percent-view(24px, $fhd-height, 'h');
+    margin-bottom: responsive-fhd(17px, 24px);
 
     &.uk-active &-link {
       text-decoration: none;
@@ -118,14 +129,23 @@
     right: 0;
     bottom: 0;
     z-index: -1;
+    margin-left: -$container-margin;
 
-    margin: -#{percent-view(144px, $fhd-height, 'h')} -#{$container-margin};
+    @media (min-width: $breakpoint-medium) {
+      margin: -#{percent-view(144px, $fhd-height, 'h')} -#{$container-margin};
+    }
 
-    & img {
+    & img,
+    & picture {
       width: 100%;
       height: 100%;
-      object-fit: contain;
-      object-position: top left;
+      object-fit: cover;
+      object-position: top right;
+
+      @media (min-width: $breakpoint-medium) {
+        object-fit: contain;
+        object-position: top left;
+      }
     }
   }
 }

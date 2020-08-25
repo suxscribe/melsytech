@@ -1,0 +1,94 @@
+.scrolldown {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+
+  @include font-menu;
+  text-decoration: none;
+  color: rgba($color-white, 0.8);
+
+  @media (min-width: $breakpoint-small) {
+    position: absolute;
+    left: $container-margin;
+    bottom: percent-view(56px, $fhd-height, 'h');
+  }
+
+  &:hover {
+    // opacity: 0.6;
+  }
+
+  &:hover &__icon {
+    background-color: $color-red;
+    border-color: $color-red;
+  }
+
+  &__icon {
+    $icon-max-size: 60px;
+    $icon-min-size: 60px;
+
+    flex: 0 0 auto;
+    width: calc(
+      #{responsive-value(
+          $icon-min-size,
+          $icon-max-size,
+          $breakpoint-small,
+          $fhd-width,
+          'w'
+        )}
+    );
+    height: calc(
+      #{responsive-value(
+          $icon-min-size,
+          $icon-max-size,
+          $breakpoint-small,
+          $fhd-width,
+          'w'
+        )}
+    );
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $color-white;
+    background-color: transparent;
+    transition: all var(--transition);
+    margin-right: 15px;
+
+    @media (min-width: $breakpoint-medium) {
+      margin-right: 14%;
+    }
+
+    & svg {
+      fill: $color-white;
+      flex: 0 0 auto;
+      width: 60%;
+      height: 60%;
+    }
+  }
+
+  & span {
+    flex: 0 0 auto;
+  }
+
+  &--dark {
+    color: $color-black;
+
+    &:hover {
+      color: $color-red;
+
+      & .scrolldown__icon {
+        & svg {
+          fill: $color-white;
+        }
+      }
+    }
+
+    & .scrolldown__icon {
+      border-color: $color-gray-2;
+      & svg {
+        fill: $color-gray-2;
+      }
+    }
+  }
+}

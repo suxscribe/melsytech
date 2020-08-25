@@ -1,16 +1,16 @@
 .slider {
-  $slide-arrow-height: 22px;
-
   &__nav {
     display: flex;
     // transform: translateY(50%);
     z-index: 2;
-    margin: percent-view(28px, $fhd-height, 'h') 0;
+    margin: responsive-value(28px, 32px, $mobile-min-width, $tablet-width, 'w')
+      0;
 
-    @media (min-width: $breakpoint-small) {
+    @media (min-width: $breakpoint-medium) {
       position: absolute;
       bottom: 0;
-      margin:0;
+      left: calc(#{$column-width} * -2);
+      margin: 0;
     }
   }
 
@@ -20,7 +20,7 @@
     outline: none;
     cursor: pointer;
 
-    width: 48px;
+    width: $slide-arrow-width;
     height: $slide-arrow-height;
 
     transition: all var(--transition);
@@ -40,9 +40,9 @@
       position: relative;
       left: 1px;
       width: 100%;
-      top: 10px;
+      top: calc(#{$slide-arrow-height} / 2);
       height: 1px;
-      background-color: $color-gray;
+      background-color: rgba($color-gray, 0.9);
     }
     & svg {
       position: absolute;
@@ -54,23 +54,23 @@
     }
 
     &--left {
-      width: 48px;
+      width: $slide-arrow-width;
       margin-right: 10px;
 
       &:hover {
-        width: 64px;
+        width: calc(#{$slide-arrow-width} * 1.5);
 
         & + * {
-          width: 48px;
+          width: $slide-arrow-width;
         }
       }
     }
 
     &--right {
-      width: 64px;
+      width: calc(#{$slide-arrow-width} * 1.5);
 
       &:hover {
-        width: 100px;
+        width: calc(#{$slide-arrow-width} * 2.5);
       }
 
       &:before {
@@ -80,6 +80,31 @@
       & svg {
         left: auto;
         right: 0;
+      }
+    }
+
+    &.swiper-button-disabled {
+      width: $slide-arrow-width;
+      cursor: default;
+
+      &:hover + * {
+        width: calc(#{$slide-arrow-width} * 1.5);
+      }
+
+      &:before {
+        background-color: rgba($color-gray, 0.5);
+      }
+      & svg {
+        fill: rgba($color-gray, 0.5);
+      }
+
+      &:hover {
+        &:before {
+          background-color: rgba($color-gray, 0.5);
+        }
+        & svg {
+          fill: rgba($color-gray, 0.5);
+        }
       }
     }
   }

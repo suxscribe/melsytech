@@ -2,42 +2,90 @@
   &__section-title {
   }
 
+  &__left {
+    margin-bottom: percent-view(28px, $mobile-min-width, 'w');
+
+    @media (min-width: $breakpoint-small) {
+      margin-bottom: percent-view(48px, $tablet-width, 'w');
+    }
+    @media (min-width: $breakpoint-medium) {
+      margin-bottom: 0;
+    }
+  }
+
   &__right {
+    // panel on index page
+
+    background: $gradient-1;
+    padding: percent-view(79px) 0 0 percent-view(75px, $fhd-width, 'w'); // pb percent-view(82px, $fhd-height, 'h')
+    margin-left: -$container-margin;
+    width: 100vw;
+
+    @media (min-width: $breakpoint-small) {
+      margin-left: 0;
+      width: 100%;
+    }
+    @media (min-width: $breakpoint-medium) {
+      width: calc(100% - #{$column-width} * 2);
+    }
+
     &-slider {
       width: 100%;
+      flex: 1 0 100%;
 
-      background: $gradient-1;
-      padding: percent-view(79px, $fhd-height, 'h') $right-margin
-        percent-view(82px, $fhd-height, 'h') percent-view(75px, $fhd-width, 'w');
+      & .swiper-wrapper {
+        align-items: stretch;
+
+        > .swiper-slide {
+          height: auto;
+        }
+      }
     }
   }
 
   &__slider {
-
     &-nav {
       transform: translateY(50%);
     }
   }
 
-  &__teaser {
+  &__slide {
     height: 100%;
     display: flex;
     flex-direction: column;
+    padding-bottom: percent-view(53px, $mobile-min-width, 'w');
+    padding-right: $right-margin;
+    box-sizing: border-box;
+
+    @media (min-width: $breakpoint-small) {
+      padding-bottom: percent-view(82px);
+    }
 
     &-text {
       @include font-h3;
-      margin-bottom: percent-view(41px, $fhd-height, 'h');
+      margin-bottom: percent-view(150px);
       flex: 1 0 auto;
     }
 
     &-columns {
       display: flex;
-      align-items: flex-end;
+      align-items: flex-start;
       flex: 0 0 auto;
+
+      flex-direction: column;
+
+      @media (min-width: $breakpoint-small) {
+        flex-direction: row;
+      }
     }
 
     &-left {
       flex: 1 1 50%;
+      margin-top: calc(-1 * #{responsive-fhd(64px, 128px)});
+
+      @media (min-width: $breakpoint-small) {
+        margin-top: 0;
+      }
     }
     &-avatar {
       margin-bottom: percent-view(28px, $fhd-height, 'h');
@@ -57,11 +105,107 @@
     }
     &-right {
       flex: 1 1 50%;
-      margin-bottom: -#{percent-view(82px, $fhd-height, 'h')};
+      order: -1;
+      align-self: flex-end; // drag it to bottom
+      margin-right: -$right-margin;
+      width: calc(100% - #{$column-width-small});
+
+      @media (min-width: $breakpoint-small) {
+        order: 0;
+        margin-bottom: -#{percent-view(82px)};
+        margin-right: 0;
+      }
     }
     &-media {
+      @media (min-width: $breakpoint-small) {
+        height: 23vw;
+      }
+
       & video {
         object-fit: cover;
+        height: 100%;
+      }
+    }
+  }
+
+  &__list {
+  }
+
+  &__item {
+    padding: percent-view(58px) percent-view(64px);
+    border: 1px solid rgba($color-red, 0.2);
+    background: $gradient-1;
+    transition: all var(--transition);
+    position: relative;
+
+    &:before {
+      content: '';
+      background: $color-white;
+      opacity: 1;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 0;
+      transition: opacity var(--transition);
+    }
+    &:hover {
+      border-color: transparent;
+      &:before {
+        opacity: 0;
+      }
+    }
+
+    &-text {
+      @include font-lead;
+      margin-bottom: percent-view(42px);
+      position: relative;
+      z-index: 1;
+    }
+    &-info {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+    }
+    &-avatar {
+      flex: 0 0 percent-view(80px);
+      width: percent-view(80px);
+      height: percent-view(80px);
+      margin-right: percent-view(38px);
+      position: relative;
+
+      & img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        overflow: hidden;
+      }
+    }
+    &-video-label {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%) translateX(50%);
+      width: percent-view(32px);
+      height: percent-view(32px);
+
+      & svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    &-user {
+      flex: 1 1 auto;
+
+      &-name {
+        margin-bottom: percent-view(9px);
+      }
+      &-desc {
+        @include font-small;
+        color: rgba($color-gray, 0.8);
       }
     }
   }

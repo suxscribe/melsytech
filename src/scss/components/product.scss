@@ -1,12 +1,11 @@
 .product {
-
-
   display: block;
   position: relative;
   text-decoration: none;
 
+  // TEASER
   &__plus {
-    $plus-size: percent-view(22px, $fhd-width, 'w');
+    $plus-size: 22px;
 
     position: absolute;
     top: $plus-size;
@@ -41,11 +40,12 @@
     background-color: $color-light-gray;
     width: 100%;
     overflow: hidden;
-    margin-bottom: percent-view(14px, $fhd-height, 'h');
+    margin-bottom: percent-view(14px);
     position: relative;
 
+    // height: percent-view($product-image-height);
     height: 0;
-    padding-bottom: calc(#{$column-width} * 2 * 1.33333);
+    padding-bottom: 130%;
 
     & img {
       mix-blend-mode: multiply;
@@ -53,11 +53,15 @@
       transform-origin: center bottom;
 
       position: absolute;
+      left: 0;
+      top: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-
     }
+  }
+
+  &__image-lead {
   }
 
   &__name {
@@ -80,4 +84,399 @@
       }
     }
   }
+
+  // DETAIL
+
+  &__top {
+    padding: percent-view(37px) $right-margin percent-view(40px)
+      $container-margin;
+    background: $color-white;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba($color-red, 0.2);
+
+    &.uk-sticky-fixed {
+      z-index: 990;
+    }
+
+    &-contact {
+      & a {
+        @include font-small;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: rgba($color-red, 0.8);
+
+        &:hover {
+          color: rgba($color-gray, 1);
+        }
+      }
+    }
+  }
+  &__tabs {
+    list-style-type: none;
+    display: flex;
+    justify-content: flex-start;
+
+    &-item {
+      margin-right: percent-view(40px, $fhd-width, 'w');
+
+      &.uk-active {
+        & a {
+          color: $color-black;
+          text-decoration-color: rgba($color-red, 0.6);
+        }
+      }
+
+      & a {
+        @include font-menu;
+        text-decoration-color: transparent;
+        text-transform: uppercase;
+        color: $color-gray;
+        white-space: nowrap;
+
+        &:hover {
+          color: rgba($color-red, 1);
+        }
+      }
+    }
+
+    &-content {
+      display: flex;
+    }
+  }
+
+  &__content {
+    display: flex;
+  }
+
+  &__sidebar {
+    padding-right: percent-view(86px);
+  }
+
+  &__files {
+    &-item {
+      border: 0px solid rgba($color-red, 0.2);
+      border-top-width: 1px;
+      padding: percent-view(25px) 0 percent-view(15px) 0;
+
+      &:last-child {
+        border-bottom-width: 1px;
+      }
+    }
+    &-link {
+      @include font-small;
+      color: rgba($color-gray, 0.8);
+
+      display: inline-flex;
+      align-items: center;
+
+      &:hover {
+        color: rgba($color-red, 0.8);
+      }
+      & svg {
+        width: percent-view(18px);
+        height: percent-view(23px);
+        margin-right: percent-view(17px);
+      }
+    }
+  }
+
+  &__section {
+    position: relative;
+
+    & + & {
+      margin-top: percent-view(128px);
+    }
+
+    &-lead {
+      @include font-lead;
+      margin-top: percent-view(42px);
+      margin-bottom: percent-view(90px);
+    }
+  }
+
+  &-section-desc {
+    &__content {
+      align-items: stretch;
+    }
+    &__images {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    &__image-lead {
+      flex: 0 0 auto;
+      margin-bottom: $column-margin;
+    }
+
+    &__legal {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+
+      &-badge {
+        flex: 0 0 percent-view(96px);
+        height: percent-view(96px);
+        margin-right: percent-view(16px);
+      }
+      &-desc {
+        flex: 1 1 auto;
+        @include font-small;
+        color: rgba($color-gray, 0.6);
+      }
+    }
+  }
+
+  &-section-appliance {
+    @include product-section-gray;
+
+    &__list {
+      max-height: percent-view(448px, $fhd-height, 'h');
+    }
+    &__item {
+      margin-bottom: percent-view(24px);
+
+      &.uk-active a {
+        text-decoration: none;
+        color: $color-red;
+      }
+
+      & a {
+        @include font-h3;
+        text-decoration-style: dotted;
+      }
+    }
+  }
+
+  &-section-advantages {
+    &__image {
+      margin-top: percent-view(97px);
+    }
+
+    &__columns {
+      margin-bottom: percent-view(140);
+    }
+
+    &__slider {
+      margin-bottom: percent-view(46px);
+      margin-right: -#{$right-margin};
+
+      &-item {
+        height: percent-view(512px);
+        width: auto;
+        margin-right: $column-margin;
+      }
+      &-link {
+        display: block;
+        height: 100%;
+
+        & img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      &-nav {
+        position: relative !important;
+      }
+    }
+  }
+
+  &-section-video {
+    @include product-section-gray;
+
+    &__top {
+      margin-bottom: percent-view(55px);
+    }
+
+    &__sidebar {
+    }
+
+    &__list {
+      &-item {
+        margin-bottom: percent-view(32px);
+
+        & a {
+          position: relative;
+          display: block;
+
+          &:before {
+            content: '';
+            position: absolute;
+            display: block;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba($color-black, 0.4);
+            transition: opacity var(--transition);
+            opacity: 0;
+          }
+
+          & img {
+            width: 100%;
+          }
+        }
+
+        &.uk-active {
+          & a:before {
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    &__item {
+      & video {
+        object-fit: cover;
+      }
+    }
+  }
+
+  &-section-roi {
+    &__column-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    &__button {
+      align-self: flex-start;
+    }
+  }
+
+  &-section-results {
+    display: flex;
+    flex-wrap: wrap;
+
+    @include product-section-gray;
+
+    @media (min-width: $breakpoint-small) {
+      padding-right: 0;
+    }
+
+    &__slider {
+      padding-bottom: percent-view(32px);
+
+      &-nav {
+        bottom: percent-view(53px) !important;
+      }
+    }
+
+    &__slide {
+      &-text {
+        margin-bottom: percent-view(38px);
+      }
+    }
+
+    & .section__left,
+    & .section__right {
+      @media (min-width: $breakpoint-small) {
+        width: 50%;
+        max-width: 50%;
+      }
+    }
+  }
+
+  &-section-instruments {
+    &__title {
+      display: block;
+      padding: percent-view(39px) 0 percent-view(30px);
+      text-decoration: none;
+      position: relative;
+    }
+    &__plus {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &__item {
+      border: 0px solid rgba($color-red, 0.2);
+      border-top-width: 1px;
+
+      &:last-child {
+        border-bottom-width: 1px;
+      }
+    }
+    &__content {
+      margin-bottom: percent-view(45px);
+    }
+  }
+
+  &-section-reviews {
+    @include product-section-gray;
+    padding-bottom: 0;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    &__nav {
+      bottom: percent-view(66px) !important;
+    }
+  }
+
+  &-section-warranty {
+    &__title {
+      margin-bottom: percent-view(114px) !important;
+    }
+
+    &__image {
+      display: flex;
+      &-label {
+        flex: 0 0 percent-view(74px);
+        margin-right: percent-view(49px);
+      }
+      &-text {
+        flex: 1 1 auto;
+        @include font-small;
+      }
+    }
+  }
+
+  &__bottom {
+    background: $gradient-1;
+    padding: percent-view(94px, $fhd-height, 'h') 0
+      percent-view(144px, $fhd-height, 'h') $container-margin;
+  }
+
+  &-section-catalog {
+    margin-bottom: percent-view(90px);
+
+    &__content {
+      display: flex;
+    }
+  }
+
+  &-section-procedures {
+    &__content {
+      display: flex;
+    }
+  }
+
+  &-offcanvas {
+    &__title {
+      margin-bottom: percent-view(28px);
+    }
+    &__subtitle {
+      margin-bottom: percent-view(65px);
+    }
+    &__lead {
+      margin-bottom: percent-view(90px);
+    }
+  }
+}
+
+// UIKIT Slider buttons size.
+.uk-lightbox-button svg {
+  width: 100%;
+}
+.uk-lightbox-toolbar-icon {
+  padding: 2.083vw;
+  width: 2.604vw;
+  height: 2.604vw;
+  box-sizing: content-box;
 }

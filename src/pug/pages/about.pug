@@ -1,0 +1,100 @@
+extends ../layout/main
+
+block variables
+  - var title = 'О компании';
+  - var description = 'Description';
+  - var pageClass = 'page--about';
+
+block content
+  //- .ruler--right
+  section.page-lead.page-lead--about
+    .page-lead__content
+      .page-lead__breadcrumbs.breadcrumbs
+        span О компании
+      h1.page-lead__title МеЛСиТек — медицинские лазерные системы и технологии
+          
+  section.about-section-01.page-content.page-content--right
+    p.h2 Высокотехнологичная российская компания, проектирует и производит твердотельные лазерные системы и полупроводниковые лазеры любой сложности.
+    
+  section.about-section-02.page-content.page-content--right
+    .page-content__sidebar
+    .page-content__mainbar
+      p.text-lead Оборудование компании применяется в косметологии, медицине, гражданской промышленности, в сфере производства измерительной техники. Оборудование компании применяется в косметологии, медицине, гражданской промышленности, в сфере производства измерительной техники.
+
+  section.about__history.history
+    .history__bg
+      img(src="./assets/history-bg.jpg", alt="")
+    .history__content
+      ul.history__accordion(uk-accordion)
+        li.history__accordion-item.uk-open
+          a.history__accordion-title.uk-accordion-title(href="#")
+            +svg({name: 'arrow-right'})
+            | 2020
+          .history__accordion-content.uk-accordion-content
+            div.history__accordion-content-grid
+              div.history__accordion-content-left
+                .history__accordion-content-title Компания МеЛСиТек сегодня
+                .history__accordion-content-text Лидер российского и СНГ рынка в области инноваций и технологических исследований в области лазерных медицинских технологий.
+              div.history__accordion-content-right
+                +history-year-swiper()
+                
+        li.history__accordion-item
+          a.history__accordion-title.uk-accordion-title(href="#")
+            +svg({name: 'arrow-right'})
+            | 2020
+          .history__accordion-content.uk-accordion-content
+            div.history__accordion-content-grid
+              div.history__accordion-content-left
+                .history__accordion-content-title Компания МеЛСиТек сегодня
+                .history__accordion-content-text Лидер российского и СНГ рынка в области инноваций и технологических исследований в области лазерных медицинских технологий.
+              div.history__accordion-content-right
+                +history-year-swiper()
+        li.history__accordion-item
+          a.history__accordion-title.uk-accordion-title(href="#")
+            +svg({name: 'arrow-right'})
+            | 2020
+          .history__accordion-content.uk-accordion-content
+            div.history__accordion-content-grid
+              div.history__accordion-content-left
+                .history__accordion-content-title Компания МеЛСиТек сегодня
+                .history__accordion-content-text Лидер российского и СНГ рынка в области инноваций и технологических исследований в области лазерных медицинских технологий.
+              div.history__accordion-content-right
+                +history-year-swiper()
+    
+  section.about-section-03.page-content.page-content--right
+    h2 Компания Melsytech (МеЛСиТек – Медицинские Лазерные Системы и Технологии) – это ультрасовременное, крупнейшее в России частное производство лазерных систем медицинского и промышленного назначения. Мы являемся не только производителями, но и разработчиками уникальных инженерных решений в сфере лазерных технологий. Предприятие основано в 2010 году в нижегородской области с миллионными инвестициями в новейшее оборудование и технологии.  
+  
+  section.about-section-04.page-content.page-content--right
+    .page-content__sidebar
+      .section__subtitle Принципы и ценности
+    .page-content__mainbar.text-lead
+        .page-content__title.h1 Мы делаем только то, в чем хорошо разбираемся. Приоритетным принципом компании является качество. 
+        p Melsytech разрабатывает и производит все известные типы лазеров – неодимовый, фракционный, диодный, зеленый, желтый, эрбиевый, гольмиевый, тулиевый, Q-swtiched и пикосекундный – для таких областей, как косметология, дерматология, гинекология, флебология, отоларингология, эстетическая медицина, проктология, урология и др., и является лидером в производстве лазерного медицинского оборудования в России и странах СНГ. 
+        p Завод занимается не только производством ультрасовременных лазерных аппаратов и систем, но и предлагает другим производителям ОЕМ-решения для их бизнеса. Среди наших клиентов, для которых мы производим комплектующие и в том числе полупроводниковые лазерные диодные чипы, много зарубежных производителей лазерных систем из Европы, Южной Кореи, Израиля и Америки. 
+        p Серьезные производственные мощности 4000 м2, полный цикл производства, новейшие установки для производства лазерных аппаратов и уникальные технологии, применяемые на заводе, например, технология вертикально-излучающих диодов VCSEL, делают завод Melsytech одним из самых передовых не только в Европе, но и во всем мире! 
+
+  section.about-section-05.page-content.page-content--right
+    .page-content__sidebar
+      .section__subtitle Производство
+    .page-content__mainbar
+        .page-content__title.h1 МеЛСиТек имеет замкнутый цикл производства 
+        +video({media:'https://yootheme.com/site/images/media/yootheme-pro.mp4', poster:'/assets/reviews-poster.jpg', class:'about-section-05__video'})
+        p На основе производства собственных комплектующих и соответствует самым высоким мировым стандартам качества и надежности.
+        p: a(href="") Подробнеее о производстве
+
+  section.about-section-06.page-content.page-content--right
+    .page-content__sidebar
+      .section__subtitle Команда
+    .page-content__mainbar
+      .page-content__title.h1 Команда из более 90 высоко квалифицированных профессионалов.
+      div(uk-grid)
+        div(class="uk-width-2-5@m")
+          p.text-lead Включающая инженеров, разработчиков, физиков, врачей, среди который 15 докторов и кандидатов наук. 
+        div(class="uk-width-3-5@m")
+          p Мы стараемся добиться высочайших технических показателей наших лазерных систем сохраняя выгодные цены для наших клиентов по сравнению с раскрученными западными производителями за счет самостоятельного производства большинства комплектующих, включая собственное производство лазерных диодных чипов. Нашими преимуществами являются быстрые сроки поставки и конкурентоспособные цены, не зависящие от колебаний курсов валют. 
+  section.about-section-06.page-content.page-content--right
+    .page-content__sidebar
+      .section__subtitle Сертификаты
+    .page-content__mainbar
+      .page-content__title.h1 Предприятие сертифицировано по международной системе менеджмента качеством
+

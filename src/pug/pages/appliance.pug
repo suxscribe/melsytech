@@ -1,0 +1,97 @@
+extends ../layout/main
+
+block variables
+  - var title = 'Каталог применений';
+  - var description = 'Description';
+  - var pageClass = 'page--appliance';
+
+block content
+  //- .ruler--right
+  section.page-lead.page-lead--appliance
+    .page-lead__content
+      .page-lead__breadcrumbs.breadcrumbs
+        +breadcrumb({name: 'Вернуться к областям применения'})
+      h1.page-lead__title Безоперационное лазерное омоложение кожи 
+      .page-lead__description Это современный наиболее востребованный и вполне конкурентоспособный сегмент эстетической медицины, частично способный заменить даже пластическую хирургию. Само понятие «омоложение» включает в себя мероприятия, направленные на улучшение эстетического вида.
+      .page-lead__bottom.appliance__lead-devices
+        .appliance__lead-devices-title Используемые аппараты
+        p.appliance__lead-devices-links
+          a(href="") Magic One
+          | , 
+          a(href="") Magic Lite
+          
+    .page-lead__images
+      .page-lead__image
+        img(src="./assets/appliance-lead.jpg", alt="")
+
+  section.page-content
+    .page-content__sidebar
+      .page-content__sidebar-sticky(uk-sticky="bottom: true; offset: 160")
+        ul.page-content__sidebar-nav(uk-scrollspy-nav="closest: li; scroll: true; offset: 100")
+          +sidebar-item({name: 'Описание', link: '#appliance-01'})
+          +sidebar-item({name: 'Фото и видео', link: '#appliance-02'})
+          +sidebar-item({name: 'Результат после процедуры', link: '#appliance-03'})
+          +sidebar-item({name: 'Подходящие аппараты', link: '#appliance-04'})
+          +sidebar-item({name: 'Похожие процедуры', link: '#appliance-05'})
+    
+    .page-content__mainbar.page-content__mainbar--border
+      .appliance__section.appliance-section-advantages#appliance-01
+        .appliance__section-title.h2 Преимущества лазерных систем — Magic
+        .appliance__section-content 
+          p Результаты многочисленных клинических исследований подтвердили эффективность и безопасность применения Nd:YAG-лазерного излучения с  малой продолжительностью импульса, малым флюенсом и длиной волны 1064 или 532 нм (КТР) в коррекции татуажа, удалении гиперпигментации.
+          p В современных лазерных системах Magic используется специфическое воздействие светового пучка. Достигаемый эффект основан на двух различных воздействиях: фракционного фототермолиза и испарении. Эти физические характеристики дают основу для выбора типа лазера из всего имеющегося на сегодня разнообразия лазерных систем. Выгодное отличие Nd:YАG-лазера состоит в том, что он может воздействовать на ткани организма до глубины нескольких милиметров без повреждающего действия.
+          p Достижение клинического эффекта происходит следующим образом. Во время вспышки происходит фотокавитация пигментов и коллагеновых волокон, находящихся в эпидермальных и дермальных слоях кожи. Иными словами, произошедший микровзрыв делает доступными для утилизации макрофагальной системой организма частиц пигмента, дефектных коллагеновых и фибриновых волокон. Активация процессов иммунитета и фагоцитоза в обработанной лазером области позволяет достичь желаемого эффекта по удалению чужеродных или дефектных структур из структур кожи и восстановить коллагеногенез и стимулировать ферментативную активность.
+
+      .appliance__section.appliance-section-advantages#appliance-02
+        .appliance__section-content 
+          .appliance-section-advantages__slider.product-section-advantages__slider.swiper-container
+            ul.swiper-wrapper(uk-lightbox="animation: slide")
+              +product-section-advantages-slide({link:'product-section-advantages-slide-01-big.jpg', image: 'product-section-advantages-slide-01.jpg'})
+              +product-section-advantages-slide({link:'product-section-advantages-slide-02-big.jpg', image: 'product-section-advantages-slide-02.jpg'})
+              +product-section-advantages-slide({link:'product-section-advantages-slide-03-big.jpg', image: 'product-section-advantages-slide-03.jpg'})
+              +product-section-advantages-slide({link:'product-section-advantages-slide-01-big.jpg', image: 'product-section-advantages-slide-01.jpg'})
+              +product-section-advantages-slide({link:'product-section-advantages-slide-02-big.jpg', image: 'product-section-advantages-slide-02.jpg'})
+              +product-section-advantages-slide({link:'product-section-advantages-slide-03-big.jpg', image: 'product-section-advantages-slide-03.jpg'})
+
+          .product-section-advantages__slider-nav.slider__nav
+            .slider__arrow.slider__arrow--left.product-section-advantages__nav--left
+              +svg({ name: 'slider-arrow-left'})
+            .slider__arrow.slider__arrow--right.product-section-advantages__nav--right
+              +svg({ name: 'slider-arrow-right'})
+
+      .appliance__section.appliance-section-ba#appliance-03
+        .appliance__section-title.h2 Результаты после процедуры
+        .appliance__section-content.appliance-section-ba__content
+          .appliance-section-ba__left(uk-lightbox)
+            a(href="./assets/appliance-ba.jpg")
+              img(src="./assets/appliance-ba.jpg", alt="")
+          .appliance-section-ba__right
+            p Уменьшение проявлений как умеренных, так и выраженных морщин и складок на лице для заметно более молодого внешнего вида кожи.
+            p.text-muted Результаты после: 2 процедур
+
+      .appliance__section.appliance-section-products#appliance-04
+        .appliance__section-title.h2 Аппараты подходящие для омоложения кложи
+        .appliance__section-content
+          .appliance-section-products__slider.index__catalog-slider.swiper-container
+            ul.swiper-wrapper
+              li.index__catalog-slider-item.swiper-slide: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
+              li.index__catalog-slider-item.swiper-slide: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
+              li.index__catalog-slider-item.swiper-slide: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
+              li.index__catalog-slider-item.swiper-slide: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
+              li.index__catalog-slider-item.swiper-slide: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
+              li.index__catalog-slider-item.swiper-slide: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
+          .appliance-section-products__nav.slider__nav
+            .slider__arrow.slider__arrow--left.index__catalog-slider-nav--left
+              +svg({ name: 'slider-arrow-left'})
+            .slider__arrow.slider__arrow--right.index__catalog-slider-nav--right
+              +svg({ name: 'slider-arrow-right'})
+
+      .appliance__section#appliance-05
+        .appliance__section-title.h2 Похожие процедуры
+        .appliance__section-content 
+          +appliance-item({title: 'Лазерная эпиляция. ', text: 'В настоящее время среди множества различных методик эпиляции выделяют электроэпиляцию, фотоэпиляцию и лазерную эпиляцию. Последние две метода наиболее предпочтительны.', id: 'app-epil'})
+          +appliance-item({title: 'Удаление рубцов и шрамов. ', text: 'Сосудистых патологий основывается на принципе селективного фототермолиза. При использовании лазера с соответствующей длиной волны, энергия поглощается.', id: 'app-omolozh'})
+          +appliance-item({title: 'Удаление пигментации. ', text: 'Процедура лазерного удаления пигментных пятен основывается на принципе селективного фототермолиза. При применении лазера с соответствующей длиной волны, энергия поглощается хромофорами в тканях и преобразуется в тепло, которое разрушает пигмент.', id: 'app-pigment'})
+
+
+

@@ -29,15 +29,52 @@
   &__content {
     width: 100vw;
     height: 100vh;
-    padding: 0 $container-margin;
+
+    padding: percent-view(176px, $fhd-height, 'h') $right-margin
+      percent-view(81px, $fhd-height, 'h') $container-margin;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     &-1 {
-      padding-top: percent-view(176px, $fhd-height, 'h');
-      width: 60%;
-
       @include font-h1;
+      font-size: 2.4rem;
+      line-height: 1.333;
+
       font-weight: 500;
       color: #fff;
+
+      margin-bottom: percent-view(48px, $mobile-min-width, 'w');
+      flex: 0 0 auto;
+
+      @media (min-width: $breakpoint-small) {
+        $fhd-base-size: 5 * $base-font-size;
+        $tablet-base-size: $fhd-base-size * 0.5;
+
+        font-size: calc(
+          #{responsive-value(
+              $tablet-base-size / 2,
+              $fhd-base-size / 2,
+              $breakpoint-small,
+              $fhd-width,
+              'w'
+            )} + #{responsive-value(
+              $tablet-base-size / 2,
+              $fhd-base-size / 2,
+              $mobile-min-height,
+              $fhd-height,
+              'h'
+            )}
+        );
+        line-height: 1.12;
+
+        margin-bottom: 0;
+      }
+
+      @media (min-width: $breakpoint-medium) {
+        width: 60%;
+      }
 
       span {
         color: $color-red;
@@ -45,87 +82,41 @@
     }
 
     &-2 {
-      position: absolute;
-      width: calc(#{$column-width} * 3);
-      bottom: percent-view(81px, $fhd-height, 'h');
-      right: $container-margin;
       @include font-h2;
       font-weight: 500;
       color: #fff;
-    }
-  }
+      line-height: 1.75;
+      margin-bottom: percent-view(48px, $mobile-min-width, 'w');
 
-  &__scrolldown {
-    position: absolute;
-    left: $container-margin;
-    bottom: percent-view(56px, $fhd-height, 'h');
-    color: #fff;
-    display: flex;
-    align-items: center;
+      left: $container-margin;
+      flex: 1 0 auto;
 
-    @include font-menu;
-    text-decoration: none;
-    color: rgba($color-white, 0.8);
-
-    &:hover {
-      // opacity: 0.6;
-    }
-
-    &:hover &-icon {
-      background-color: $color-red;
-      border-color: $color-red;
-    }
-
-    &-icon {
-      flex: 0 0 auto;
-      width: calc(
-        #{responsive-value(
-            30px / 2,
-            60px / 2,
-            $breakpoint-small,
-            $fhd-width,
-            'w'
-          )} + #{responsive-value(
-            30px / 2,
-            60px / 2,
-            $breakpoint-small,
-            $fhd-height,
-            'h'
-          )}
-      );
-      height: calc(
-        #{responsive-value(
-            30px / 2,
-            60px / 2,
-            $breakpoint-small,
-            $fhd-width,
-            'w'
-          )} + #{responsive-value(
-            30px / 2,
-            60px / 2,
-            $breakpoint-small,
-            $fhd-height,
-            'h'
-          )}
-      );
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border: 1px solid $color-white;
-      margin-right: 14%;
-      background-color: transparent;
-      transition: all var(--transition);
-
-      & svg {
-        flex: 0 0 auto;
-        width: 60%;
-        height: 60%;
+      @media (min-width: $breakpoint-small) {
+        $fhd-base-size: 3.4 * $base-font-size;
+        $tablet-base-size: $fhd-base-size * 0.5;
+        font-size: calc(
+          #{responsive-value(
+              $tablet-base-size / 2,
+              $fhd-base-size / 2,
+              $breakpoint-small,
+              $fhd-width,
+              'w'
+            )} + #{responsive-value(
+              $tablet-base-size / 2,
+              $fhd-base-size / 2,
+              $mobile-min-height,
+              $fhd-height,
+              'h'
+            )}
+        );
+        line-height: 1.17;
+        width: calc(#{$column-width} * 3);
+        right: $container-margin;
+        left: auto;
+        position: absolute;
+        bottom: percent-view(81px, $fhd-height, 'h');
+        margin-bottom: 0;
       }
-    }
-
-    & span {
-      flex: 0 0 auto;
     }
   }
 }

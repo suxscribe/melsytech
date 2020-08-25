@@ -1,0 +1,31 @@
+extends ../layout/main
+
+block variables
+  - var title = 'Catalog';
+  - var description = 'Description';
+  - var pageClass = 'page--catalog';
+
+block content
+  //- .ruler--right
+  section.page-lead
+    .page-lead__breadcrumbs.breadcrumbs
+      span Каталог
+    h1.page-lead__title Каталог
+  
+  section.page-content.catalog__content
+    ul.catalog__sections.page-content__sidebar
+      li.catalog__sections-item.active: a(href="") Все области применений
+      li.catalog__sections-item: a(href="") Косметология
+      li.catalog__sections-item: a(href="") Гинекология
+      li.catalog__sections-item: a(href="") Хирургия
+      li.catalog__sections-item: a(href="") Флебология
+      li.catalog__sections-item: a(href="") Проктология
+      li.catalog__sections-item: a(href="") Отолорингология
+
+    ul(uk-grid).catalog__products.page-content__mainbar
+      li.catalog__products-item: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
+      li.catalog__products-item: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
+      li.catalog__products-item: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
+      li.catalog__products-item: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
+      li.catalog__products-item: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
+      li.catalog__products-item: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')

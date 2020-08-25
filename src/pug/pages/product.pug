@@ -1,0 +1,260 @@
+extends ../layout/main
+
+block variables
+  - var title = 'Catalog';
+  - var description = 'Description';
+  - var pageClass = 'page--product';
+
+block content
+  //- .ruler--right
+  section.page-lead.page-lead--product
+    .page-lead__bg
+      img(src="./assets/product-page-lead-bg.jpg", alt="")
+
+    .page-lead__content
+      .page-lead__breadcrumbs.breadcrumbs
+        +breadcrumb({name: 'Вернуться в каталог'})
+      h1.page-lead__title Magic Super Full
+      h2.page-lead__description Клиника лазерной косметологии в одном профессиональном аппарате, совмещающем три режима работы: Q-switch, короткий импульс, длинный импульс.
+      a(uk-scroll="offset: 72",href="#product-content").scrolldown.scrolldown--dark
+        .scrolldown__icon
+          +svg({ name: 'arrow-down' })
+        span Прокрутите вниз
+
+    .page-lead__images
+      .page-lead__images-primary
+        img(src="./assets/product-product-image.png", alt="")
+      //- .page-lead__images-secondary
+        img(src="", alt="")
+  
+  section(uk-sticky="bottom: .product__content").product__top
+    ul(uk-switcher="connect: .page-content; animation: uk-animation-fade").product__tabs
+      li.product__tabs-item: a(href="#") Описание
+      li.product__tabs-item: a(href="#") Характеристики
+      li.product__tabs-item: a(href="#") Режим работы
+      li.product__tabs-item: a(href="#") Комплект поставки
+      li.product__tabs-item: a(href="#") Пациентам
+    .product__top-contact
+      a(href="#product-ask", uk-toggle) Запросить стоимость
+        
+  section.page-content.page-content--product.uk-switcher#product__content
+    li.product__tabs-content
+      .product__sidebar.page-content__sidebar
+        .page-content__sidebar-sticky(uk-sticky="bottom: true; offset: 160")
+          ul.page-content__sidebar-nav(uk-scrollspy-nav="closest: li; scroll: true; offset: 100")
+            +sidebar-item({name: 'Описание', link: '#product-section-desc'})
+            +sidebar-item({name: 'Области применения', link: '#product-section-appliance'})
+            +sidebar-item({name: 'Преимущества', link: '#product-section-advantages'})
+            +sidebar-item({name: 'Фото и видео', link: '#product-section-video'})
+            +sidebar-item({name: 'Окупаемость', link: '#product-section-roi'})
+            +sidebar-item({name: 'Результаты процедур', link: '#product-section-results'})
+            +sidebar-item({name: 'Рабочие инструменты', link: '#product-section-instruments'})
+            +sidebar-item({name: 'Отзывы партнеров', link: '#product-section-reviews'})
+            +sidebar-item({name: 'Гарантийные обязательства', link: '#product-section-warranty'})
+
+          ul.product__files
+            +product-files-item({name: 'Буклет (3.6 MB)', link: '#'})
+            +product-files-item({name: 'Буклет (4.7 MB)', link: '#'})
+
+      .product__mainbar.page-content__mainbar.page-content__mainbar--border
+        .product__section.product-section-desc#product-section-desc
+          div(class="uk-width-1-2@s").product__section-wrap
+            .section__subtitle Каталог
+            h3.section__title.h1 Magic Super Full — превосходство в ваших руках
+          .product__section-lead Позволяет реализовать широчайший спектр процедур, который невозможен ни с одной другой лазерной системой. Благодаря лазерной системе Magic Super Full, косметологические клиники могут ощутимо расширить ассортимент предлагаемых услуг за счет действенных и безопасных методик, получить значительное преимущество перед конкурентами и перейти на качественно новый уровень работы.
+          div(uk-grid, class="uk-child-width-1-2@m").product-section-desc__content
+            div.product-section-desc__images
+              .product-section-desc__image-lead
+                img(src="./assets/product-image-lead.jpg", alt="")
+              .product-section-desc__legal
+                .product-section-desc__legal-badge
+                  img(src="./assets/product-legal-badge.jpg", alt="")
+                .product-section-desc__legal-desc
+                  | Регистрационное удостоверение Росздравнадзора РЗН&nbsp;2018/7808. 
+                  | Производитель: Melsytech (Россия).
+            div
+              p.text--small Magic Super – многофункциональная лазерная система с уникальными возможностями, которые отличают ее от стандартных ламповых лазеров. Наносекундный, микро и милисекундные режимы работы, манипала с настраиваемым фокусом с обратной связью.
+              p.text--small Прибор оснащен двумя выводами лазерного излучения. Стандартная комплектация поставляется с шарнирным манипулятором, который позволяет работать в любом доступном режиме системы. В качестве опции при этом также предусмотрен оптоволоконный вывод, который позволяет работать в режиме Q-switch с коротким и длинным импульсом с малой энергетикой. Для ряда процедур оптоволоконный вывод лазерного излучения в значительной степени повышает удобство работы с пациентом.
+
+        .product__section.product-section-appliance#product-section-appliance
+          div(uk-grid, class="uk-child-width-1-2@s")
+            div
+              .section__top 
+                .section__subtitle Каталог
+                h3.section__title.h1 Magic Super Full — превосходство в ваших руках
+            div
+              ul(data-simplebar).product-section-appliance__list
+                li.product-section-appliance__item: a(href="#appliance-01", uk-toggle) Удаление пигментных образований
+                li.product-section-appliance__item: a(href="#appliance-01") Методики омоложения кожи
+                li.product-section-appliance__item: a(href="#appliance-01") Коррекция рубцовых изменений
+                li.product-section-appliance__item: a(href="#appliance-01") Удаление сосудистых образований
+                li.product-section-appliance__item: a(href="#appliance-01") Удаление полноцветных татуировок
+                li.product-section-appliance__item: a(href="#appliance-01") Карбоновый пилинг
+                li.product-section-appliance__item: a(href="#appliance-01") Лечение акне
+                li.product-section-appliance__item: a(href="#appliance-01") Лазерная эпиляция
+                li.product-section-appliance__item: a(href="#appliance-01") Лечение грибковых поражений
+                li.product-section-appliance__item: a(href="#appliance-01") Лечение вирусных бородавок
+        .product__section.product-section-advantages#product-section-advantages
+          .section__top 
+            .section__subtitle Каталог
+          div(uk-grid, class="uk-child-width-1-2@s").product-section-advantages__columns
+            div
+              h3.section__title.h1 Magic Super Full — превосходство в ваших руках
+              .product-section-advantages__image
+                img(src="./assets/product-section-advantages-image.jpg", alt="")
+            div
+              .product-section-advantages__content
+                h3 Единственная лазерная система — работает сразу в трех режимах
+                p Q-Switch режим, короткий импульс, длинный импульс. Magic Super Full это лазерная система 4 в 1 — три отдельных лазера + комбинированное воздействие. Резонансный эффект омоложения за счет сочетания воздействий. 
+                h3 Полный спектр лазерных косметических процедур
+                p Реализация одиночных, двойных и пакетных импульсов для всех режимов работы позволяют охватить весь спектр лазерных косметических процедур на одном аппарате.
+                h3 Высокие технические характеристики
+                p Режимы позволяют охватить весь спектр лазерных косметических процедур на одном аппарате.
+                h3 Широкий спектр процедур
+                p Режимы позволяют охватить весь спектр лазерных косметических процедур на одном аппарате.
+          .product-section-advantages__slider.swiper-container
+            ul.swiper-wrapper(uk-lightbox="animation: slide")
+              +product-section-advantages-slide({link:'product-section-advantages-slide-01-big.jpg', image: 'product-section-advantages-slide-01.jpg'})
+              +product-section-advantages-slide({link:'product-section-advantages-slide-02-big.jpg', image: 'product-section-advantages-slide-02.jpg'})
+              +product-section-advantages-slide({link:'product-section-advantages-slide-03-big.jpg', image: 'product-section-advantages-slide-03.jpg'})
+              +product-section-advantages-slide({link:'product-section-advantages-slide-01-big.jpg', image: 'product-section-advantages-slide-01.jpg'})
+              +product-section-advantages-slide({link:'product-section-advantages-slide-02-big.jpg', image: 'product-section-advantages-slide-02.jpg'})
+              +product-section-advantages-slide({link:'product-section-advantages-slide-03-big.jpg', image: 'product-section-advantages-slide-03.jpg'})
+
+          .product-section-advantages__slider-nav.slider__nav
+            .slider__arrow.slider__arrow--left.product-section-advantages__nav--left
+              +svg({ name: 'slider-arrow-left'})
+            .slider__arrow.slider__arrow--right.product-section-advantages__nav--right
+              +svg({ name: 'slider-arrow-right'})
+
+        .product__section.product-section-video#product-section-video
+          div(class="uk-width-1-2@s").product__section-wrap.product-section-video__top
+            .section__subtitle Видео
+            h2.section__title Презентационный ролик аппарата MAGIC SUPER full
+          div(uk-grid).product-section-video__wrap
+            div(class="uk-width-1-6@s").product-section-video__sidebar
+              ul(uk-switcher="connect:.product-section-video__items").product-section-video__list
+                +product-video-list-item({image: 'product-section-video-image-01.jpg'})
+                +product-video-list-item({image: 'product-section-video-image-02.jpg'})
+                +product-video-list-item({image: 'product-section-video-image-03.jpg'})
+            div(class="uk-width-5-6@s").product-section-video__mainbar
+              ul.product-section-video__items.uk-switcher
+                +product-video-item({media:'https://yootheme.com/site/images/media/yootheme-pro.mp4', poster:'/assets/reviews-poster.jpg'})
+                +product-video-item({media:'https://yootheme.com/site/images/media/yootheme-pro.mp4', poster:'/assets/reviews-poster.jpg'})
+                +product-video-item({media:'https://yootheme.com/site/images/media/yootheme-pro.mp4', poster:'/assets/reviews-poster.jpg'})
+        .product__section.product-section-roi#product-section-roi
+          .section__top 
+            .section__subtitle Окупаемость
+          div(uk-grid, class="uk-child-width-1-2@s").product-section-roi__columns
+            div.product-section-roi__column-left
+              h3.section__title.h1 Невероятно низкая себестоимость процедур
+              a(href="#").product-section-roi__button.button Расчитать окупаемость
+                
+            div
+              .product-section-roi__content
+                h3 Выходит на окупаемость через 8 месяцев
+                h3 Срок службы диодного излучателя более 100 млн импульсов
+                h3 Исключена возможность оплавления электродов в манипулах
+                h3 Срок службы диодного излучателя более 100 млн импульсов
+        
+        .product__section.product-section-results#product-section-results
+          .section__subtitle Результаты процедур
+          +procedures-slider-section({class: '01'})
+
+        .product__section.product-section-instruments#product-section-instruments
+          .section__subtitle Рабочие инструменты
+          h3(class="uk-width-1-2@m").section__title.product-section-instruments__title.h1 Превосходство в ваших руках
+          +product-instruments()
+
+        .product__section.product-section-reviews#product-section-reviews
+          .section__subtitle Отзывы
+          +reviews-slider()
+          .product-section-reviews__nav.reviews__slider-nav.slider__nav
+            .slider__arrow.slider__arrow--left.reviews__slider-nav--left
+              +svg({ name: 'slider-arrow-left'})
+            .slider__arrow.slider__arrow--right.reviews__slider-nav--right
+              +svg({ name: 'slider-arrow-right'})
+
+        .product__section.product-section-warranty#product-section-warranty
+            div(class="uk-width-1-2@s").product__section-wrap
+              .section__subtitle Гарантийные обязательства
+
+            div(uk-grid, class="uk-child-width-1-2@m").product-section-warranty__content
+              div
+                h3.product-section-warranty__title.section__title.h1 В гарантийное обслуживание включены
+                .product-section-warranty__image
+                  .product-section-warranty__image-label
+                    img(src="./assets/product-section-warranty-image.png", alt="")
+                  .product-section-warranty__image-text
+                    | Медицинские лазеры MAGIC имеет блочно-модульную структуру. В случае выхода из строя какого-либо модуля, он в кратчайшие сроки заменяется новым модулем по гарантии.
+              div
+                h3 Единственная лазерная система — работает сразу в трех режимах
+                p Q-Switch режим, короткий импульс, длинный импульс. Magic Super Full это лазерная система 4 в 1 — три отдельных лазера + комбинированное воздействие. Резонансный эффект омоложения за счет сочетания воздействий. 
+                h3 Полный спектр лазерных косметических процедур
+                p Реализация одиночных, двойных и пакетных импульсов для всех режимов работы позволяют охватить весь спектр лазерных косметических процедур на одном аппарате.
+                h3 Высокие технические характеристики
+                p Режимы позволяют охватить весь спектр лазерных косметических процедур на одном аппарате.
+    li.product__tabs-content
+      | Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis incidunt laboriosam ea id quam eum laborum, voluptatibus dolore nostrum facilis iusto aspernatur reiciendis ipsum? Vero mollitia excepturi non laboriosam hic!Et debitis corrupti voluptatem numquam blanditiis, ad cum sapiente id explicabo distinctio dolore dicta ex quisquam repudiandae doloribus nostrum architecto voluptates ipsam perspiciatis saepe minus ea ipsa veritatis soluta! Quidem!Iste modi perferendis autem delectus accusamus, cumque in soluta culpa aliquam quibusdam ullam odit consequatur dicta asperiores inventore expedita iure dolore reprehenderit, temporibus provident vitae libero, veritatis dolorem? Suscipit, corporis.Nam officia nesciunt impedit atque explicabo, excepturi molestias voluptates at nulla consequuntur.
+    li.product__tabs-content
+      | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, reprehenderit.
+    li.product__tabs-content
+      | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, reprehenderit.
+    li.product__tabs-content
+      | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, reprehenderit.
+    li.product__tabs-content
+      | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, reprehenderit.
+  
+  section.product__bottom
+    .product-section-catalog
+      .section__top 
+        .section__subtitle Манипулы
+      .product-section-catalog__content
+        +product-catalog-section({title: 'Совместимые с аппаратом манипулы', catalogLink: false  })
+    
+    .product-section-procedures
+      .section__subtitle Процедуры
+      .product-section-procedures__content
+        +procedures-slider-section({class: '02', showDevices: true})
+
+  //- offcanvas
+  div(uk-offcanvas="flip:true")#appliance-01
+    .uk-offcanvas-bar.product-offcanvas__bar
+      button.uk-offcanvas-close
+        +svg({name: 'close'})
+      .product-offcanvas
+        h3.product-offcanvas__title.h1 Удаление татуировок
+        h3.product-offcanvas__subtitle.h3 и перманентного макияжа
+
+        .product-offcanvas__lead.h3
+          | — Диаметр рабочего луча до 7 мм
+          br 
+          | — Частота работы до 20 Гц
+          br
+          | — Длины волн: 1064, 532, 585, 650 нм
+
+        .product-offcanvas__content
+          p Длительность импульсов и флюенс можно подбирать для каждого пациента индивидуально. Это позволяет за один проход проработать все слои кожи без нарушения ее целостности. Эффект одного пакетного импульса в несколько раз превосходит эффект единичного импульса. Подобный способ воздействия сокращает время проведения процедуры и обеспечивает более выраженный результат, что объясняет его высокую популярность у пациентов
+
+  //- offcanvas
+  div(uk-offcanvas="flip:true")#product-ask
+    .uk-offcanvas-bar
+      button.uk-offcanvas-close
+        +svg({name: 'close'})
+      .product-offcanvas
+        h2.product-offcanvas__title Проконсультируем по всем вопросам
+        p.product-offcanvas__lead Наши сотрудники помогут вам подобрать оборудование в соответствии с вашими требованиями.
+
+        form(action="").product-offcanvas__form.form.form--modal
+          +form-row({name: "product-ask-name", title: "Ваше имя", validate: 'empty', placeholder: ' '})
+          +form-row({name: "product-ask-email", title: "Email", validate: 'email', placeholder: ' '})
+          +form-row({name: "product-ask-phone", title: "Телефон", validate: 'phone', placeholder: ' '})
+          
+          .form__row.form__submit
+            button(type="submit").form__submit-button.button Отправить запрос
+            .form__submit-note 
+              | Нажимая на кнопку, вы соглашаетесь с 
+              a(href="") Условиями использования
+              |  и 
+              a(href="") Политикой конфиденциальности
+          

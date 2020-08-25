@@ -22,7 +22,7 @@
 }
 
 // calculate fraction of size against fullhd width or height
-@function percent-view($size, $maxView, $dimension) {
+@function percent-view($size, $maxView: $fhd-width, $dimension: 'w') {
   $result: strip-unit($size) / strip-unit($maxView) * 100;
   @return $result + v + $dimension;
 }

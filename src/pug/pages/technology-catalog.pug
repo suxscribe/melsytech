@@ -1,0 +1,42 @@
+extends ../layout/main
+
+block variables
+  - var title = 'Каталог технологий';
+  - var description = 'Description';
+  - var pageClass = 'page--technology';
+
+block content
+  //- .ruler--right
+  section.page-lead.page-lead--technology
+    .page-lead__content
+      .page-lead__breadcrumbs.breadcrumbs
+        span Каталог
+      h1.page-lead__title Технологии — много-функциональные лазерные системы
+          
+  section.page-content
+    .page-content__sidebar
+      .page-content__sidebar-sticky(uk-sticky="bottom: true; offset: 160")
+        ul.page-content__sidebar-nav(uk-scrollspy-nav="closest: li; scroll: true; offset: 100")
+
+          +sidebar-item({name: 'Aixtron', link: '#technology-aixtron'})
+          +sidebar-item({name: 'Nanometrics', link: '#technology-02'})
+          +sidebar-item({name: 'SUSS MicroTec MA6 ', link: '#technology-03'})
+          +sidebar-item({name: 'SAWATEC', link: '#technology-04'})
+          +sidebar-item({name: 'Corial', link: '#technology-05'})
+          +sidebar-item({name: 'VINCI', link: '#technology-06'})
+          +sidebar-item({name: 'Dynatex ', link: '#technology-07'})
+          +sidebar-item({name: 'Levener', link: '#technology-08'})
+          +sidebar-item({name: 'Bondtec', link: '#technology-09'})
+          +sidebar-item({name: 'Finetec', link: '#technology-10'})
+    .page-content__mainbar
+      +technology-item({name: 'Aixtron', text: 'Установка эпитаксиального роста используется для получения излучающих структур на основе арсенида галлия', img: 'technology-teaser-01.jpg', id: 'technology-aixtron'})
+      +technology-item({name: 'Nanometrics', text: 'Установки для контроля качества излучающих структур на основе арсенида галлия', img: 'technology-teaser-02.jpg', id: 'technology-02'})
+      +technology-item({name: 'SUSS MicroTec MA6 ', text: 'Установка совмещения фотошаблона  используется в процессе фотолитографии для совмещения фотошаблона со структурой и экспонирования фоторезиста', img: 'technology-teaser-03.jpg',id: 'technology-03'})
+      +technology-item({name: 'SAWATEC', text: 'Установки по нанесению и проявлению фоторезиста', img: 'technology-teaser-03.jpg', id: 'technology-04'})
+      +technology-item({name: 'Corial', text: 'Используются для плазменного нанесения диэлектрики и плазменного травления диэлектрика в литографическом процессе', img: 'technology-teaser-03.jpg', id: 'technology-05'})
+      +technology-item({name: 'VINCI', text: 'Установка используется для нанесения контактов и металлических покрытий в литографическом процессе', img: 'technology-teaser-03.jpg', id: 'technology-06'})
+      +technology-item({name: 'Dynatex ', text: 'Установка скрайбирования и колки используется для разделения пластины с готовыми лазерными диодами на отдельные элементы', img: 'technology-teaser-03.jpg', id: 'technology-07'})
+      +technology-item({name: 'Levener', text: 'Lorem', img: 'technology-teaser-03.jpg', id: 'technology-08'})
+      +technology-item({name: 'Bondtec', text: 'Lorem', img: 'technology-teaser-03.jpg', id: 'technology-09'})
+      +technology-item({name: 'Finetec', text: 'Lorem', img: 'technology-teaser-03.jpg', id: 'technology-10'})
+

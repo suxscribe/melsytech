@@ -1,0 +1,82 @@
+.partners-page {
+  &__top {
+    @include block-margins;
+    margin-bottom: percent-view(64px);
+  }
+
+  &__switch {
+    display: flex;
+
+    &-item {
+      flex: 0 0 auto;
+      margin-right: percent-view(36px);
+
+      &.uk-active {
+        & a {
+          color: $color-black;
+          text-decoration: none;
+        }
+      }
+      & a {
+        @include font-h2;
+        color: rgba($color-black, 0.6);
+      }
+    }
+  }
+
+  &__map {
+    height: 100%;
+    width: 100%;
+    &-wrap {
+      position: relative;
+      height: percent-view(700px);
+    }
+  }
+
+  &__section {
+    &-title {
+      @include font-h3;
+      margin-bottom: percent-view(28px);
+    }
+  }
+  &__region {
+    border-top: 1px solid rgba($color-red, 0.2);
+    display: flex;
+    flex-wrap: wrap;
+
+    @media (min-width: $breakpoint-medium) {
+      flex-wrap: nowrap;
+    }
+    &-title {
+      flex: 0 0 100%;
+      padding-top: percent-view(22px);
+
+      @media (min-width: $breakpoint-medium) {
+        flex: 0 0 $column-width;
+        padding-right: $column-margin;
+      }
+    }
+
+    &-items {
+    }
+  }
+
+  &__filter {
+    position: absolute;
+    z-index: 2;
+    top: percent-view(24px);
+    left: $container-margin;
+    width: percent-view(384px);
+    max-width: 100%;
+
+    & select {
+      @include font-base;
+      color: rgba($color-gray, 1);
+    }
+
+    & option {
+      @include font-base;
+      color: rgba($color-gray, 1);
+    }
+  }
+}

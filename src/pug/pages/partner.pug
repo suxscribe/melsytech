@@ -1,0 +1,32 @@
+extends ../layout/main
+
+block variables
+  - var title = 'Партнер';
+  - var description = 'Description';
+  - var pageClass = 'page--company';
+
+block content
+  //- .ruler--right
+  section.page-lead.page-lead--company
+    .page-lead__content
+      .page-lead__breadcrumbs.breadcrumbs
+                +breadcrumb({name: 'Вернуться к партнерам'})
+          
+  section.page-content.company__detail
+    .company__left
+      h1.page-lead__title Сеть клиник лазерной эпиляции и косметологии «Подружки»
+      .company__left-content
+        .company__left-link
+          a(href="") Перейти на сайт
+        .company__left-contacts
+          .company__contact
+            .company__contact-address г. Нижний Новгород, Верхне-Волжская набережная, дом 2Б ДНК-центр "Геном"
+            a.company__contact-phone(href="") 8 (831) 260-16-63
+            .company__contact-schedule Пн-пт с 08:30 до 20:00. Сб, вс с 09:00 до 20:00
+          .company__contact
+            .company__contact-address г. Нижний Новгород, Верхне-Волжская набережная, дом 2Б ДНК-центр "Геном"
+            a.company__contact-phone(href="") 8 (831) 260-16-63
+            .company__contact-schedule Пн-пт с 08:30 до 20:00. Сб, вс с 09:00 до 20:00
+    .company__right
+      .company__map(id="map",data-coordinates="[56.349619, 43.798270]")
+    

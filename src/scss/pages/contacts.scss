@@ -1,0 +1,22 @@
+.contacts {
+  &__title {
+    margin-bottom: percent-view(17px);
+  }
+  &__info {
+    @include font-lead;
+    margin-bottom: percent-view(40px);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    & a {
+      text-decoration: none;
+    }
+  }
+
+  &__text {
+    @include font-lead;
+    margin-bottom: percent-view(83px);
+  }
+}

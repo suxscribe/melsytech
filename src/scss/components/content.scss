@@ -1,0 +1,28 @@
+.content {
+  $base-margin: 25px;
+
+  & h1 {
+    margin-bottom: percent-view($base-margin * 1.2);
+    margin-top: percent-view($base-margin * 3.36);
+    //todo margins 2.05x of font size
+  }
+
+  & h3 {
+    margin-top: percent-view($base-margin * 1.92);
+    margin-bottom: percent-view($base-margin * 0.8);
+  }
+  & h2 {
+    margin-top: percent-view($base-margin * 2.8);
+    margin-bottom: percent-view($base-margin);
+  }
+
+  & p {
+    margin: calc(#{$base-margin * 0.8}) 0;
+  }
+
+  & ul,
+  & table,
+  & dl {
+    margin: calc(#{$base-margin * 0.8}) 0;
+  }
+}

@@ -16,7 +16,7 @@
 
 // Base
 // @import "uikit/src/scss/components/variables.scss";
-@import './uikit/variables-uk'; // UIKIT variables
+// @import './uikit/variables-uk'; // UIKIT variables
 
 // VARIABLES redefine
 
@@ -75,7 +75,7 @@ $offcanvas-bar-background: #fff;
 // @import 'uikit/src/scss/components/thumbnav.scss';
 
 // JavaScript
-@import 'uikit/src/scss/components/accordion.scss';
+// @import 'uikit/src/scss/components/accordion.scss';
 @import 'uikit/src/scss/components/drop.scss'; // After: Card
 @import 'uikit/src/scss/components/dropdown.scss'; // After: Card
 @import 'uikit/src/scss/components/modal.scss'; // After: Close
@@ -145,8 +145,10 @@ $offcanvas-bar-background: #fff;
 @import 'swiper/swiper.scss';
 @import 'swiper/components/effect-fade/effect-fade.scss';
 @import '/node_modules/simplebar/dist/simplebar.css';
+// @import '/node_modules/choices.js/public/assets/styles/choices.min.css';
 
 @import 'vendor/simplebar.scss'; //simplebar override
+@import 'vendor/readmore.scss'; //
 
 @import 'base/base';
 @import 'base/fonts';
@@ -154,11 +156,11 @@ $offcanvas-bar-background: #fff;
 @import 'base/animations';
 
 @import 'layouts/header';
+@import 'layouts/page';
 @import 'layouts/footer';
 
 @import 'components/button';
 @import 'components/intro.scss';
-@import 'components/product.scss';
 @import 'components/section';
 @import 'components/slider';
 @import 'components/advantages';
@@ -166,5 +168,22 @@ $offcanvas-bar-background: #fff;
 @import 'components/reviews';
 @import 'components/partners';
 @import 'components/news';
+@import 'components/breadcrumbs';
+@import 'components/catalog';
+@import 'components/scrolldown';
+@import 'components/offcanvas'; //override
+@import 'components/form';
+@import 'components/history';
+@import 'components/company';
+@import 'components/sidebar';
+@import 'components/choices';
+@import 'components/publications';
+@import 'components/content';
 
 @import 'pages/index';
+@import 'components/product.scss';
+@import 'pages/appliance.scss';
+@import 'pages/technology.scss';
+@import 'pages/about.scss';
+@import 'pages/partners.scss';
+@import 'pages/contacts.scss';

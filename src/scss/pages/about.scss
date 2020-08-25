@@ -1,0 +1,11 @@
+.about {
+  &__history {
+    margin: percent-view(100px) 0;
+  }
+
+  &-section-05 {
+    &__video {
+      margin-bottom: percent-view(34px);
+    }
+  }
+}

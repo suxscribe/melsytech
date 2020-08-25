@@ -1,0 +1,20 @@
+.breadcrumbs {
+  margin-bottom: percent-view(22px, $fhd-width, 'w');
+
+  & > * {
+    color: rgba($color-black, 0.6);
+    text-decoration: none;
+  }
+
+  &__back {
+    display: inline-flex;
+    align-items: center;
+
+    & svg {
+      height: $arrow-size;
+      width: $arrow-size;
+      margin-right: percent-view(13px, $fhd-width, 'w');
+      fill: $color-red;
+    }
+  }
+}
