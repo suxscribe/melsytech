@@ -46,6 +46,7 @@
   &__slider {
     &-nav {
       transform: translateY(50%);
+      left: 0; // reviews nav is out of right column
     }
   }
 
@@ -88,7 +89,14 @@
       }
     }
     &-avatar {
-      margin-bottom: percent-view(28px, $fhd-height, 'h');
+      margin-bottom: 28px;
+
+      @media (min-width: $breakpoint-small) {
+        margin-bottom: percent-view(19px);
+      }
+      @media (min-width: $breakpoint-medium) {
+        margin-bottom: percent-view(26px);
+      }
 
       & img {
         border-radius: 50%;
@@ -98,7 +106,7 @@
     }
     &-name {
       @include font-h3;
-      margin-bottom: percent-view(11px, $fhd-height, 'h');
+      margin-bottom: percent-view(11px);
     }
     &-description {
       @include font-small;
@@ -123,7 +131,10 @@
 
       & video {
         object-fit: cover;
-        height: 100%;
+
+        @media (min-width: $breakpoint-medium) {
+          height: 100%;
+        }
       }
     }
   }
@@ -170,10 +181,10 @@
       align-items: center;
     }
     &-avatar {
-      flex: 0 0 percent-view(80px);
-      width: percent-view(80px);
-      height: percent-view(80px);
-      margin-right: percent-view(38px);
+      flex: 0 0 80px;
+      width: 80px;
+      height: 80px;
+      margin-right: 38px;
       position: relative;
 
       & img {
@@ -189,8 +200,8 @@
       top: 50%;
       right: 0;
       transform: translateY(-50%) translateX(50%);
-      width: percent-view(32px);
-      height: percent-view(32px);
+      width: 32px;
+      height: 32px;
 
       & svg {
         width: 100%;

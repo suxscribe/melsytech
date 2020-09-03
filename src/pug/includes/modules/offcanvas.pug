@@ -1,114 +1,113 @@
 div(uk-offcanvas="flip:true; overlay:true")#offcanvas.offcanvas-burger
-    .uk-offcanvas-bar.offcanvas__bar
-      //- button.uk-offcanvas-close
-      //-   +svg({name: 'close'})
-      .offcanvas__content
-        ul.offcanvas__nav(uk-nav)
-          li.offcanvas__nav-item.uk-parent
-            +offcanvas-title-item({title: 'Каталог'})
-            ul.offcanvas__nav-sub
-              li: a(href="/").offcanvas__nav-sub-item
-                img(src="assets/magic-superfull-logo.png", alt="")
-              li: a(href="/").offcanvas__nav-sub-item
-                img(src="assets/magic-superfull-logo.png", alt="")
-              li: a(href="/").offcanvas__nav-sub-item
-                img(src="assets/magic-superfull-logo.png", alt="")
-          li.offcanvas__nav-item.uk-parent
-            +offcanvas-title-item({title: 'Компания'})
-            ul.offcanvas__nav-sub
-              li: a.offcanvas__nav-sub-item(href="/") О компании
-              li: a.offcanvas__nav-sub-item(href="/") Производство
-              li: a.offcanvas__nav-sub-item(href="/") Наши партнеры
-              li: a.offcanvas__nav-sub-item(href="/") Новости
-              li: a.offcanvas__nav-sub-item(href="/") Публикации в СМИ
-              li: a.offcanvas__nav-sub-item(href="/") Отзывы
-          
-          li.offcanvas__nav-item.uk-parent
-            +offcanvas-title-item({title: 'Применения'})
-            ul.offcanvas__nav-sub
+  .uk-offcanvas-bar.offcanvas__bar
+    //- button.uk-offcanvas-close
+    //-   +svg({name: 'close'})
+    .offcanvas__content
+      ul.offcanvas__nav(uk-nav)
+        li.offcanvas__nav-item.uk-parent
+          +offcanvas-title-item({title: 'Каталог'})
+          ul.offcanvas__nav-sub
+            li: a(href="/").offcanvas__nav-sub-item
+              img(src="assets/magic-superfull-logo.png", alt="")
+            li: a(href="/").offcanvas__nav-sub-item
+              img(src="assets/magic-superfull-logo.png", alt="")
+            li: a(href="/").offcanvas__nav-sub-item
+              img(src="assets/magic-superfull-logo.png", alt="")
+        li.offcanvas__nav-item.uk-parent
+          +offcanvas-title-item({title: 'Компания'})
+          ul.offcanvas__nav-sub
+            li: a.offcanvas__nav-sub-item(href="/") О компании
+            li: a.offcanvas__nav-sub-item(href="/") Производство
+            li: a.offcanvas__nav-sub-item(href="/") Наши партнеры
+            li: a.offcanvas__nav-sub-item(href="/") Новости
+            li: a.offcanvas__nav-sub-item(href="/") Публикации в СМИ
+            li: a.offcanvas__nav-sub-item(href="/") Отзывы
+        
+        li.offcanvas__nav-item.uk-parent
+          +offcanvas-title-item({title: 'Области применения'})
+          ul.offcanvas__nav-sub
 
-              li.offcanvas__nav-sub-item.uk-parent
-                a(href="#").offcanvas__nav-sub-title Косметология
-                ul.offcanvas__nav-sub
-                  li: a.offcanvas__nav-sub-item(href="/") Эпиляция
-                  li: a.offcanvas__nav-sub-item(href="/") Лазерное омоложение
-                  li: a.offcanvas__nav-sub-item(href="/") Карбоновый пилинг
-                  li: a.offcanvas__nav-sub-item(href="/") Удаление татуировок
-                  li: a.offcanvas__nav-sub-item(href="/") Коррекция перманентного макияжа
-                  li: a.offcanvas__nav-sub-item(href="/") Полировка кожи
-                  li: a.offcanvas__nav-sub-item(href="/") Лечении внешних проявлений акне
-                  li: a.offcanvas__nav-sub-item(href="/") Лечении шрамов пост-акне
-                  li: a.offcanvas__nav-sub-item(href="/") Лечение мелазмы и гиперпигментации
-                  li: a.offcanvas__nav-sub-item(href="/") Удаление пигментных пятен
-                  li: a.offcanvas__nav-sub-item(href="/") Коррекция расширенных пор кожи
-                  li: a.offcanvas__nav-sub-item(href="/") Удаление гемангиом и винных пятен
-                  li: a.offcanvas__nav-sub-item(href="/") Лечение сосудистой патологии
-                  li: a.offcanvas__nav-sub-item(href="/") Эпиляция гормон-зависимых зон
-                  li: a.offcanvas__nav-sub-item(href="/") Коррекция рубцовой ткани
-                  li: a.offcanvas__nav-sub-item(href="/") Лечении вирусных бородавок
-                  li: a.offcanvas__nav-sub-item(href="/") Лечение онихомикозов
-              li.offcanvas__nav-sub-item.uk-parent
-                a(href="#").offcanvas__nav-sub-title Гинекология
-                ul.offcanvas__nav-sub
-                  li: a.offcanvas__nav-sub-item(href="/") Лечение стрессового недержания мочи
-                  li: a.offcanvas__nav-sub-item(href="/") Лечение пролапса гениталий 1-2 стадии
-                  li: a.offcanvas__nav-sub-item(href="/") Лечение синдрома вагинальной релаксации
-                  li: a.offcanvas__nav-sub-item(href="/") Лечение генито-уринарного синдрома
-                  li: a.offcanvas__nav-sub-item(href="/") Интимное омоложение
-                  li: a.offcanvas__nav-sub-item(href="/") Послеродовое восстановление
-                  li: a.offcanvas__nav-sub-item(href="/") Лечение вульво-вагинальной атрофии
-                  li: a.offcanvas__nav-sub-item(href="/") Лечение сексуальных дисфункций
-              li.offcanvas__nav-sub-item.uk-parent
-                a(href="#").offcanvas__nav-sub-title Флебология
-                ul.offcanvas__nav-sub
-                  li: a.offcanvas__nav-sub-item(href="/") Венозная лазерная коагуляция (EVLC)
-                  li: a.offcanvas__nav-sub-item(href="/") Чрезкожная лазерная коагуляция сосудистых образований
-                  li: a.offcanvas__nav-sub-item(href="/") Удаление артериальных и венозных сосудов диаметром
-              li.offcanvas__nav-sub-item.uk-parent
-                a(href="#").offcanvas__nav-sub-title Хирургия
-                ul.offcanvas__nav-sub
-                  li: a.offcanvas__nav-sub-item(href="/") Удаление новообразований кожи
-                  li: a.offcanvas__nav-sub-item(href="/") Липомоделирование / липосакция
-                  li: a.offcanvas__nav-sub-item(href="/") Лазерное лечение гипергидроза
-                  li: a.offcanvas__nav-sub-item(href="/") Неинвазивный лазерный липолиз
-              li.offcanvas__nav-sub-item.uk-parent
-                a(href="#").offcanvas__nav-sub-title Проктология
-                ul.offcanvas__nav-sub
-                  li: a.offcanvas__nav-sub-item(href="/") Лечение геморроя методом сосудистой коагуляции
-              li.offcanvas__nav-sub-item.uk-parent
-                a(href="#").offcanvas__nav-sub-title Отолорингология
-                ul.offcanvas__nav-sub
-                  li: a.offcanvas__nav-sub-item(href="/") Возможности аппарата в области отолорингологии
-          
-          li.offcanvas__nav-item.uk-parent
-            +offcanvas-title-item({title: 'Технологии'})
-            ul.offcanvas__nav-sub
-              li: a.offcanvas__nav-sub-item(href="/") О компании
-              li: a.offcanvas__nav-sub-item(href="/") Производство
-              li: a.offcanvas__nav-sub-item(href="/") Наши партнеры
-          li.offcanvas__nav-item.uk-parent
-            +offcanvas-title-item({title: 'Поддержка'})
-            ul.offcanvas__nav-sub
-              li: a.offcanvas__nav-sub-item(href="/") О компании
-              li: a.offcanvas__nav-sub-item(href="/") Производство
-              li: a.offcanvas__nav-sub-item(href="/") Наши партнеры
-          li.offcanvas__nav-item.uk-parent
-            +offcanvas-title-item({title: 'Контакты'})
+            li.offcanvas__nav-sub-item.uk-parent
+              a(href="#").offcanvas__nav-sub-title Косметология
+              ul.offcanvas__nav-sub
+                li: a.offcanvas__nav-sub-item(href="/") Эпиляция
+                li: a.offcanvas__nav-sub-item(href="/") Лазерное омоложение
+                li: a.offcanvas__nav-sub-item(href="/") Карбоновый пилинг
+                li: a.offcanvas__nav-sub-item(href="/") Удаление татуировок
+                li: a.offcanvas__nav-sub-item(href="/") Коррекция перманентного макияжа
+                li: a.offcanvas__nav-sub-item(href="/") Полировка кожи
+                li: a.offcanvas__nav-sub-item(href="/") Лечении внешних проявлений акне
+                li: a.offcanvas__nav-sub-item(href="/") Лечении шрамов пост-акне
+                li: a.offcanvas__nav-sub-item(href="/") Лечение мелазмы и гиперпигментации
+                li: a.offcanvas__nav-sub-item(href="/") Удаление пигментных пятен
+                li: a.offcanvas__nav-sub-item(href="/") Коррекция расширенных пор кожи
+                li: a.offcanvas__nav-sub-item(href="/") Удаление гемангиом и винных пятен
+                li: a.offcanvas__nav-sub-item(href="/") Лечение сосудистой патологии
+                li: a.offcanvas__nav-sub-item(href="/") Эпиляция гормон-зависимых зон
+                li: a.offcanvas__nav-sub-item(href="/") Коррекция рубцовой ткани
+                li: a.offcanvas__nav-sub-item(href="/") Лечении вирусных бородавок
+                li: a.offcanvas__nav-sub-item(href="/") Лечение онихомикозов
+            li.offcanvas__nav-sub-item.uk-parent
+              a(href="#").offcanvas__nav-sub-title Гинекология
+              ul.offcanvas__nav-sub
+                li: a.offcanvas__nav-sub-item(href="/") Лечение стрессового недержания мочи
+                li: a.offcanvas__nav-sub-item(href="/") Лечение пролапса гениталий 1-2 стадии
+                li: a.offcanvas__nav-sub-item(href="/") Лечение синдрома вагинальной релаксации
+                li: a.offcanvas__nav-sub-item(href="/") Лечение генито-уринарного синдрома
+                li: a.offcanvas__nav-sub-item(href="/") Интимное омоложение
+                li: a.offcanvas__nav-sub-item(href="/") Послеродовое восстановление
+                li: a.offcanvas__nav-sub-item(href="/") Лечение вульво-вагинальной атрофии
+                li: a.offcanvas__nav-sub-item(href="/") Лечение сексуальных дисфункций
+            li.offcanvas__nav-sub-item.uk-parent
+              a(href="#").offcanvas__nav-sub-title Флебология
+              ul.offcanvas__nav-sub
+                li: a.offcanvas__nav-sub-item(href="/") Венозная лазерная коагуляция (EVLC)
+                li: a.offcanvas__nav-sub-item(href="/") Чрезкожная лазерная коагуляция сосудистых образований
+                li: a.offcanvas__nav-sub-item(href="/") Удаление артериальных и венозных сосудов диаметром
+            li.offcanvas__nav-sub-item.uk-parent
+              a(href="#").offcanvas__nav-sub-title Хирургия
+              ul.offcanvas__nav-sub
+                li: a.offcanvas__nav-sub-item(href="/") Удаление новообразований кожи
+                li: a.offcanvas__nav-sub-item(href="/") Липомоделирование / липосакция
+                li: a.offcanvas__nav-sub-item(href="/") Лазерное лечение гипергидроза
+                li: a.offcanvas__nav-sub-item(href="/") Неинвазивный лазерный липолиз
+            li.offcanvas__nav-sub-item.uk-parent
+              a(href="#").offcanvas__nav-sub-title Проктология
+              ul.offcanvas__nav-sub
+                li: a.offcanvas__nav-sub-item(href="/") Лечение геморроя методом сосудистой коагуляции
+            li.offcanvas__nav-sub-item.uk-parent
+              a(href="#").offcanvas__nav-sub-title Отолорингология
+              ul.offcanvas__nav-sub
+                li: a.offcanvas__nav-sub-item(href="/") Возможности аппарата в области отолорингологии
+        
+        li.offcanvas__nav-item.uk-parent
+          +offcanvas-title-item({title: 'Технологии'})
+          ul.offcanvas__nav-sub
+            li: a.offcanvas__nav-sub-item(href="/") О компании
+            li: a.offcanvas__nav-sub-item(href="/") Производство
+            li: a.offcanvas__nav-sub-item(href="/") Наши партнеры
+        li.offcanvas__nav-item.uk-parent
+          +offcanvas-title-item({title: 'Поддержка'})
+          ul.offcanvas__nav-sub
+            li: a.offcanvas__nav-sub-item(href="/") О компании
+            li: a.offcanvas__nav-sub-item(href="/") Производство
+            li: a.offcanvas__nav-sub-item(href="/") Наши партнеры
+        li.offcanvas__nav-item
+          +offcanvas-title-item({title: 'Контакты'})
 
-      .offcanvas__tools
-        a(href="#offcanvas", uk-toggle).offcanvas__tools-item.offcanvas__consult Консультация
-        a(href="#").offcanvas__tools-item.offcanvas__search
-          +svg({ name: 'search' })
-        div(uk-dropdown="mode: click; boundary: .offcanvas__tools; boundary-align: true; pos: top-justify").offcanvas__dropdown.offcanvas__dropdown--search
-          form.offcanvas__search-form(action="")
-            input.offcanvas__search-input(type="search", placeholder="Поиск по сайту", name="search", autocomplete="off")
-            span.offcanvas__search-clear
-              +svg({name: 'plus'})
-            button.offcanvas__search-submit(type="submit")
-        a.offcanvas__tools-item.offcanvas__language(href="#") RU
-        ul(uk-drop="mode: click;pos: top-justify").offcanvas__tools-item.offcanvas__language-dropdown
-          //- li: a RU
-          li: a(href="#") EN
+    .offcanvas__tools
+      a(href="#offcanvas-consult", uk-toggle).offcanvas__tools-item.offcanvas__consult Консультация
+      a(href="#").offcanvas__tools-item.offcanvas__search
+        +svg({ name: 'search' })
+      div(uk-dropdown="mode: click; boundary: .offcanvas__tools; boundary-align: true; pos: top-justify").offcanvas__dropdown.offcanvas__dropdown--search
+        form.offcanvas__search-form(action="")
+          input.offcanvas__search-input(type="search", placeholder="Поиск по сайту", name="search", autocomplete="off")
+          span.offcanvas__search-clear
+            +svg({name: 'plus'})
+          button.offcanvas__search-submit(type="submit")
+      a.offcanvas__tools-item.offcanvas__language(href="#") RU
+      //- ul(uk-drop="mode: click;pos: top-left").offcanvas__tools-item.offcanvas__language-dropdown
+      //-   li: a(href="#") EN
           
 //- offcanvas
 div(uk-offcanvas="flip:true; overlay:true")#offcanvas-consult
@@ -123,7 +122,13 @@ div(uk-offcanvas="flip:true; overlay:true")#offcanvas-consult
         +form-row({name: "product-ask-name", title: "Ваше имя", validate: 'empty', placeholder: ' '})
         +form-row({name: "product-ask-email", title: "Email", validate: 'email', placeholder: ' '})
         +form-row({name: "product-ask-phone", title: "Телефон", validate: 'phone', placeholder: ' '})
-        
+        .form__row
+          select.form-control.js-choice(name="contacts-form-appliance")
+            option(value="choice0") Выберите область применения
+            option(value="choice1") Гинекология
+            option(value="choice2") Хирургия
+            option(value="choice3") Флебология
+            option(value="choice4") Проктология
         .form__row.form__submit
           button(type="submit").form__submit-button.button Отправить запрос
           .form__submit-note 

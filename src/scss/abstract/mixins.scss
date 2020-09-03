@@ -1,6 +1,7 @@
 @mixin font-h1 {
   $fhd-base-size: 5 * $base-font-size;
-  $tablet-base-size: $fhd-base-size * 0.5;
+  $tablet-base-size: $fhd-base-size * 0.8;
+  $desktop-min-size: $fhd-base-size * 0.6;
 
   font-size: 3.2rem;
   line-height: 1.12;
@@ -11,33 +12,29 @@
     font-size: responsive-value(
       $tablet-base-size,
       $fhd-base-size,
-      $breakpoint-small,
+      $tablet-width,
       $fhd-width,
       'w'
     );
-    // font-size: calc(
-    //   #{responsive-value(
-    //       $tablet-base-size / 2,
-    //       $fhd-base-size / 2,
-    //       $breakpoint-small,
-    //       $fhd-width,
-    //       'w'
-    //     )} + #{responsive-value(
-    //       $tablet-base-size / 2,
-    //       $fhd-base-size / 2,
-    //       $mobile-min-height,
-    //       $fhd-height,
-    //       'h'
-    //     )}
-    // );
+
+  }
+  @media (min-width: $breakpoint-medium) {
+      font-size: responsive-value(
+      $desktop-min-size,
+      $fhd-base-size,
+      $breakpoint-medium,
+      $fhd-width,
+      'w'
+    );
   }
 }
 
 @mixin font-h2 {
   $fhd-base-size: 3.4 * $base-font-size;
-  $tablet-base-size: $fhd-base-size * 0.5;
+  $tablet-base-size: $fhd-base-size * 0.82;
+  $desktop-min-size: $fhd-base-size * 0.6;
 
-  font-size: 1.6rem;
+  font-size: 2.2rem;
   line-height: 1.18;
   font-weight: 600;
   letter-spacing: 0.01em;
@@ -51,27 +48,21 @@
       'w'
     );
 
-    // font-size: calc(
-    //   #{responsive-value(
-    //       $tablet-base-size / 2,
-    //       $fhd-base-size / 2,
-    //       $breakpoint-small,
-    //       $fhd-width,
-    //       'w'
-    //     )} + #{responsive-value(
-    //       $tablet-base-size / 2,
-    //       $fhd-base-size / 2,
-    //       $mobile-min-height,
-    //       $fhd-height,
-    //       'h'
-    //     )}
-    // );
+  }
+    @media (min-width: $breakpoint-medium) {
+      font-size: responsive-value(
+      $desktop-min-size,
+      $fhd-base-size,
+      $breakpoint-medium,
+      $fhd-width,
+      'w'
+    );
   }
 }
 
 @mixin font-h3 {
   $fhd-base-size: 2.3 * $base-font-size;
-  $tablet-base-size: $fhd-base-size * 0.6;
+  $tablet-base-size: $fhd-base-size * 0.7;
 
   font-size: 1.7rem;
   line-height: 1.48;
@@ -228,9 +219,19 @@
     );
   }
 }
+
+@mixin font-button {
+
+  font-size: 1.6rem;
+  line-height: 1.5;
+  font-weight: 500;
+  letter-spacing: -0.01;
+
+}
+
 @mixin font-menu {
   $fhd-base-size: 1.4 * $base-font-size;
-  $tablet-base-size: $fhd-base-size * 0.6;
+  $tablet-base-size: $fhd-base-size * 0.8;
 
   font-size: 1.4rem;
   line-height: 1;
@@ -258,7 +259,36 @@
     );
   }
 }
+@mixin font-menu-2 {
+  $fhd-base-size: 1.4 * $base-font-size;
+  $tablet-base-size: $fhd-base-size * 0.6;
 
+  font-size: 1rem;
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+
+  text-decoration: none;
+  color: $color-white;
+  text-transform: uppercase;
+
+  &:hover {
+    text-decoration: none;
+    color: $color-white;
+  }
+
+  @media (min-width: $breakpoint-small) {
+    font-size: calc(
+      #{responsive-value(
+          $tablet-base-size,
+          $fhd-base-size,
+          $breakpoint-small,
+          $fhd-width,
+          'w'
+        )}
+    );
+  }
+}
 //
 
 @mixin block-margins {
@@ -272,24 +302,27 @@
 
 @mixin product-section-gray {
   background: $gradient-1;
-  margin-left: -#{$column-margin};
+  margin-left: -#{$container-margin};
   margin-right: -#{$right-margin};
 
-  padding: percent-view(126px) $right-margin percent-view(165px) $column-margin;
+  padding: $product-section-gray-top $right-margin $product-section-gray-bottom
+    $container-margin;
 }
 
 @mixin menu-item-arrow {
+  $arrow-margin: percent-view(12px);
   text-decoration: none;
   display: inline-flex;
-  align-items: center;
-  margin-left: -#{percent-view(29px)};
+  align-items: flex-start;
+  margin-left: calc(-1 * (#{$arrow-size} + #{$arrow-margin});
   // white-space: nowrap;
 
   & svg {
     flex: 0 0 auto;
     width: $arrow-size;
     height: $arrow-size;
-    margin-right: percent-view(12px);
+    margin-right: $arrow-margin;
+    margin-top: percent-view(5px);
     opacity: 0;
     transition: all var(--transition);
   }

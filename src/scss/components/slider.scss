@@ -4,13 +4,15 @@
     // transform: translateY(50%);
     z-index: 2;
     margin: responsive-value(28px, 32px, $mobile-min-width, $tablet-width, 'w')
-      0;
+      0 0;
 
-    @media (min-width: $breakpoint-medium) {
-      position: absolute;
-      bottom: 0;
-      left: calc(#{$column-width} * -2);
-      margin: 0;
+    &--offset {
+      @media (min-width: $breakpoint-medium) {
+        position: absolute;
+        bottom: 0;
+        left: calc(#{$column-width} * -2);
+        margin: 0;
+      }
     }
   }
 
@@ -108,4 +110,8 @@
       }
     }
   }
+}
+
+.swiper-wrapper {
+  // transition-timing-function: cubic-bezier(0.21, 0, 0, 0.995) !important;
 }

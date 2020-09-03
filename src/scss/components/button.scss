@@ -1,7 +1,7 @@
 .button {
   display: inline-block;
   position: relative;
-  @include font-small;
+  @include font-button;
   font-family: $font-family;
   font-weight: 600;
 
@@ -24,5 +24,15 @@
   &:hover,
   &:focus {
     border-color: $color-red;
+  }
+
+  &__sidebar {
+    font-weight: 500;
+    text-transform: none;
+    & svg {
+      width: 32px;
+      height: 32px;
+      margin-right: 24px;
+    }
   }
 }

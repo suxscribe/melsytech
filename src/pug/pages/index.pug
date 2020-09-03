@@ -24,11 +24,28 @@ block content
           +svg({ name: 'arrow-down' })
         span Прокрутите вниз
   
-  section#index-catalog.index__catalog.section
+  //- section#index-catalog.index__catalog.section
     .section__top 
       .index__catalog-subtitle.section__subtitle Каталог
-    +product-catalog-section({title: 'Лазерные Системы MAGIC', catalogLink: true  })
-  
+    +product-catalog-section({title: 'Лазерные Системы MAGIC', catalogLink: true, navClass: 'slider__nav--offset'})
+  section#index-catalog.section.section--catalog
+    .section__top
+      .section__subtitle Каталог
+    .section__left
+      h1.section__title Лазерные системы MAGIC
+      a.catalog__showmore.button.catalog__products-item--hidden(href="#", uk-toggle="target: .catalog__products-item--hidden; cls: uk-hidden;animation: uk-animation-fade") Показать все аппараты
+    .section__right
+      ul(uk-grid).catalog__products
+        li.catalog__products-item: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
+        li.catalog__products-item: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
+        li.catalog__products-item: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
+        li.catalog__products-item: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
+        li.catalog__products-item: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
+        li.catalog__products-item: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
+        li.catalog__products-item.catalog__products-item--hidden.uk-hidden: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
+        li.catalog__products-item.catalog__products-item--hidden.uk-hidden: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
+        li.catalog__products-item.catalog__products-item--hidden.uk-hidden: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
+
   section.section.section--advantages
     .section__subtitle Преимущества
     .section__top
@@ -61,7 +78,7 @@ block content
   
   section.section.section--procedures
     .section__subtitle Процедуры
-    +procedures-slider-section({class: '01', showDevices: true})
+    +procedures-slider-section({class: '01', showDevices: true, navClass: 'slider__nav--offset'})
 
   section.section.section--reviews
     .section__top 
@@ -72,7 +89,7 @@ block content
 
     .reviews__right.section__right
       +reviews-slider()
-    .reviews__slider-nav.slider__nav
+    .reviews__slider-nav.slider__nav.slider__nav--offset
       .slider__arrow.slider__arrow--left.reviews__slider-nav--left
         +svg({ name: 'slider-arrow-left'})
       .slider__arrow.slider__arrow--right.reviews__slider-nav--right
@@ -88,18 +105,20 @@ block content
       div(data-simplebar).partners__list
         ul 
           //- (uk-switcher="connect: .partners__drops")
-          li.partners__item: a(href="#").partners__item-link.drop--01 Центр врачебной косметологии 
-          li.partners__item: a(href="#").partners__item-link.drop--02 Центр врачебной косметологии 
-          li.partners__item: a(href="#").partners__item-link.drop--03 Центр врачебной косметологии 
-          li.partners__item: a(href="#").partners__item-link.drop--04 Центр врачебной косметологии 
-          li.partners__item: a(href="#").partners__item-link.drop--05 Центр врачебной косметологии 
-          li.partners__item: a(href="#").partners__item-link.drop--06 Центр врачебной косметологии 
-          li.partners__item: a(href="#").partners__item-link.drop--06 Центр врачебной косметологии 
-          li.partners__item: a(href="#").partners__item-link.drop--06 Центр врачебной косметологии 
-          li.partners__item: a(href="#").partners__item-link.drop--06 Центр врачебной косметологии 
-          li.partners__item: a(href="#").partners__item-link.drop--06 Центр врачебной косметологии 
-          li.partners__item: a(href="#").partners__item-link.drop--06 Центр врачебной косметологии 
-          li.partners__item: a(href="#").partners__item-link.drop--06 Центр врачебной косметологии 
+          li.partners__item: a(href="#partners__offcanvas", uk-toggle).partners__item-link.drop--01 
+            | Московская область 
+            sup 32
+          li.partners__item: a(href="#").partners__item-link.drop--02
+            | Ленинградская область 
+            sup 27
+          li.partners__item: a(href="#").partners__item-link.drop--03 Нижегородская область
+          li.partners__item: a(href="#").partners__item-link.drop--04 Новгородская область
+          li.partners__item: a(href="#").partners__item-link.drop--05 Владимирская область
+          li.partners__item: a(href="#").partners__item-link.drop--06 Смоленская область
+          li.partners__item: a(href="#").partners__item-link.drop--06 Свердловская область
+          li.partners__item: a(href="#").partners__item-link.drop--06 Оренбургская область
+          li.partners__item: a(href="#").partners__item-link.drop--06 Пензенская область
+          li.partners__item: a(href="#").partners__item-link.drop--06 Пермская область
 
       //- .partners__drops.uk-switcher
       //-   +partners-drop({num: '01', title: 'Сеть клиник лазерной эпиляции и косметологии «Подружки»', address: 'г. Нижний Новгород, Автозаводский район, ул. Краснодонцев, дом 5', phone: '8 (831) 260-16-63'})
@@ -118,7 +137,7 @@ block content
     .section__top 
       .news__subtitle.section__subtitle Новости
     .news__left.section__left
-      h1.news__title.section__title События и деятельность компании
+      h1.news__title.section__title События и деятель&shy;ность компании
       a(href="/").news__link.section__link Перейти в раздел
 
     .news__right.section__right
@@ -128,8 +147,32 @@ block content
           li.news__slider-item.swiper-slide: +news-teaser('Росздравнадзор наносит удар по подделкам в аппаратной косметологии','news-teaser-2.jpg','2020.07.20')
           li.news__slider-item.swiper-slide: +news-teaser('Информированное согласие для оказания медицинских услуг','news-teaser-1.jpg','2020.07.20')
           li.news__slider-item.swiper-slide: +news-teaser('Росздравнадзор наносит удар по подделкам в аппаратной косметологии','news-teaser-2.jpg','2020.07.20')
-      .news__slider-nav.slider__nav
+      .news__slider-nav.slider__nav.slider__nav--offset
         .slider__arrow.slider__arrow--left.news__slider-nav--left
           +svg({ name: 'slider-arrow-left'})
         .slider__arrow.slider__arrow--right.news__slider-nav--right
           +svg({ name: 'slider-arrow-right'})
+
+
+
+  div(uk-offcanvas="overlay:true; flip:true")#partners__offcanvas
+    .uk-offcanvas-bar
+      button.uk-offcanvas-close
+        +svg({name: 'close'})
+      .offcanvas__inner
+        .partners__offcanvas
+          .partners__offcanvas-title.h1 Владимирская область
+          .partners__offcanvas-items
+            a.partners__offcanvas-item(href="") Александров
+            a.partners__offcanvas-item(href="") Владимир
+            a.partners__offcanvas-item(href="") Вязники
+            a.partners__offcanvas-item(href="") Гороховец
+            a.partners__offcanvas-item(href="") Гусь-Хрустальный
+            a.partners__offcanvas-item(href="") Камешково
+            a.partners__offcanvas-item(href="") Карабаново
+            a.partners__offcanvas-item(href="") Киржач
+            a.partners__offcanvas-item(href="") Ковров
+            a.partners__offcanvas-item(href="") Кольчугино
+    
+  script.
+    const partners = '{"regions" : [ {"region": "Владимирская область", "cities": [{"city": "Александров", "link": "aleksandrov.html"},{"city": "Владимир", "link": "vladimir.html"}]},      {"region": "Ленинградская область", "cities": [{"city": "Александров", "link": "aleksandrov.html"},{"city": "Владимир", "link": "vladimir.html"}]} ]}';

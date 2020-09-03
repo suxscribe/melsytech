@@ -1,7 +1,27 @@
 .partners-page {
   &__top {
     @include block-margins;
-    margin-bottom: percent-view(64px);
+    margin-bottom: responsive-value(
+      32px,
+      64px,
+      $mobile-min-width,
+      $fhd-width,
+      'w'
+    );
+  }
+
+  &__content {
+    flex: 1 1 auto;
+    display: flex;
+  }
+
+  &__switcher {
+    flex: 1 1 auto;
+    display: flex;
+
+    &-item {
+      flex: 1 1 auto;
+    }
   }
 
   &__switch {
@@ -29,7 +49,8 @@
     width: 100%;
     &-wrap {
       position: relative;
-      height: percent-view(700px);
+      height: 100%;
+      min-height: 700px;
     }
   }
 
@@ -40,20 +61,26 @@
     }
   }
   &__region {
-    border-top: 1px solid rgba($color-red, 0.2);
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: 64px;
 
     @media (min-width: $breakpoint-medium) {
       flex-wrap: nowrap;
+      margin-bottom: 0;
+      border-top: 1px solid rgba($color-red, 0.2);
     }
     &-title {
       flex: 0 0 100%;
-      padding-top: percent-view(22px);
+      @include font-h3;
+      margin-bottom: 19px;
 
       @media (min-width: $breakpoint-medium) {
         flex: 0 0 $column-width;
         padding-right: $column-margin;
+        padding-top: percent-view(22px);
+
+        @include font-base;
       }
     }
 
@@ -68,6 +95,7 @@
     left: $container-margin;
     width: percent-view(384px);
     max-width: 100%;
+    min-width: 325px;
 
     & select {
       @include font-base;
@@ -78,5 +106,12 @@
       @include font-base;
       color: rgba($color-gray, 1);
     }
+  }
+}
+
+.page--partners {
+  & .main {
+    display: flex;
+    flex-direction: column;
   }
 }

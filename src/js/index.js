@@ -18,6 +18,18 @@ function requireAll(r) {
 
 requireAll(require.context('../svg/', true, /\.svg$/));
 
+// set default offset of scroll
+UIkit.mixin(
+  {
+    data: {
+      offset: 92,
+    },
+  },
+  'scroll'
+);
+
+const swiperSpeed = 500;
+
 // document.addEventListener('DOMContentLoaded', () => {
 //   UIkit.util.on('.header__dropdown', 'beforehide', function(e) {
 //     // do something
@@ -34,7 +46,7 @@ let procedureSliders = () => {
       fadeEffect: {
         crossFade: true,
       },
-
+      speed: swiperSpeed,
       loop: true,
       loopedSlides: 6,
       slidesPerView: '1',
@@ -71,7 +83,7 @@ let procedureSliders02 = () => {
       fadeEffect: {
         crossFade: true,
       },
-
+      speed: swiperSpeed,
       loop: true,
       loopedSlides: 6,
       slidesPerView: '1',
@@ -108,7 +120,7 @@ let reviewsSlider = () => {
       fadeEffect: {
         crossFade: true,
       },
-
+      speed: swiperSpeed,
       loop: true,
       slidesPerView: '1',
       grabCursor: false,
@@ -121,12 +133,32 @@ let reviewsSlider = () => {
     });
   }
 };
+let newsSlider = () => {
+  if (document.querySelector('.news__slider')) {
+    var swiperNews = new Swiper('.news__slider', {
+      effect: 'slide',
+      fadeEffect: {
+        crossFade: true,
+      },
+      speed: swiperSpeed,
+      loop: true,
+      slidesPerView: 'auto',
+      allowTouchMove: true,
+      navigation: {
+        nextEl: '.news__slider-nav--right',
+        prevEl: '.news__slider-nav--left',
+      },
+      keyboard: true,
+    });
+  }
+};
 
 let catalogSlider = () => {
   if (document.querySelector('.index__catalog-slider')) {
     var swiperProcedures = new Swiper('.index__catalog-slider', {
       loop: true,
       loopedSlides: 6,
+      speed: swiperSpeed,
       slidesPerView: 'auto',
       grabCursor: false,
       allowTouchMove: true,
@@ -147,6 +179,7 @@ let productAdvantagesSlider = () => {
     var swiperAdvantages = new Swiper('.product-section-advantages__slider', {
       // loop: true,
       // loopedSlides: 6,
+      speed: swiperSpeed,
       slidesPerView: 'auto',
       grabCursor: false,
       allowTouchMove: true,
@@ -164,6 +197,7 @@ let applianceProductsSlider = () => {
     var swiperProducts = new Swiper('.appliance-section-products__slider', {
       // loop: true,
       // loopedSlides: 6,
+      speed: swiperSpeed,
       slidesPerView: 'auto',
       grabCursor: false,
       allowTouchMove: true,
@@ -206,6 +240,7 @@ const historyYearSwipers = () => {
     let dataSwiper = new Swiper(swip, {
       loop: true,
       // loopedSlides: 6,
+      speed: swiperSpeed,
       slidesPerView: 1,
       grabCursor: false,
       allowTouchMove: true,
@@ -292,6 +327,112 @@ const headerScripts = () => {
   }
 };
 
+const headerApplianceHover = () => {
+  //function
+  // hover selector
+  // items container
+  // items with data attribute
+  const crossHover = (hoverSelector, targetContainer, targetItem) => {
+    document.querySelectorAll(hoverSelector).forEach((el) => {
+      const appliance = el.dataset.appliance;
+      const applianceContainer = document.querySelector(targetContainer);
+      const applianceArray = el.dataset.appliance.split(',');
+
+      // highlight product link when hover on appliance
+      el.addEventListener('mouseenter', function() {
+        applianceContainer.classList.add('hover');
+
+        applianceArray.forEach((applianceItem) => {
+          document
+            .querySelectorAll(`${targetItem}[data-appliance*=${applianceItem}]`)
+            .forEach((item) => {
+              item.classList.add('hover');
+            });
+        });
+      });
+      // remove highlight
+      el.addEventListener('mouseleave', function() {
+        applianceContainer.classList.remove('hover');
+
+        applianceArray.forEach((applianceItem) => {
+          document
+            .querySelectorAll(`${targetItem}[data-appliance*=${applianceItem}]`)
+            .forEach((item) => {
+              item.classList.remove('hover');
+            });
+        });
+      });
+    });
+  };
+  crossHover(
+    '.header__dropdown-left [data-appliance]',
+    '.header__appliance-items',
+    '.header__appliance-item'
+  );
+  crossHover(
+    '.header__appliance-item[data-appliance]',
+    '.header__dropdown-left',
+    '.header__dropdown-left '
+  );
+};
+
+const choicesInit = () => {
+  // Pass single element
+  const element = document.querySelector('.js-choice');
+  if (element) {
+    // Passing options (with default options)
+    const choices = new Choices(element, {
+      searchEnabled: false,
+      itemSelectText: '',
+      noResultsText: '',
+      noChoicesText: '',
+      shouldSort: false,
+      callbackOnInit: null,
+      callbackOnCreateTemplates: null,
+    });
+  }
+};
+
+const footerAccordion = () => {
+  // on resize
+  // if more than medium
+  // destroy accordion
+  // else
+  // init accordion
+  const footerAccordionInitDestroy = () => {
+    document
+      .querySelectorAll('.footer__column--accordion')
+      .forEach((column) => {
+        if (window.innerWidth < 640) {
+          UIkit.accordion(column, {
+            active: true,
+          });
+        } else {
+          if (column.__uikit__ && column.__uikit__.hasOwnProperty('accordion'))
+            column.__uikit__.accordion.$destroy();
+        }
+      });
+  };
+
+  footerAccordionInitDestroy();
+  window.addEventListener('resize', (e) => {
+    footerAccordionInitDestroy();
+  });
+};
+
+const closeOffcanvasIfScroll = () => {
+  // close offcanvas on mobile on scroll navigation
+  // 1 listen for click on a link with uk-scroll on an offcanvas element
+  // 2 close this offcanvas element
+  document.querySelectorAll('[uk-offcanvas]').forEach((offcanvas) => {
+    offcanvas.addEventListener('click', (ev) => {
+      if (ev.target.hasAttribute('uk-scroll')) {
+        UIkit.offcanvas(offcanvas).hide();
+      }
+    });
+  });
+};
+
 // DOCUMENT READY
 document.addEventListener('DOMContentLoaded', () => {
   // Search form clear button
@@ -331,36 +472,8 @@ document.addEventListener('DOMContentLoaded', () => {
   })();
 
   headerScripts();
-
-  const footerAccordion = () => {
-    // on resize
-    // if more than medium
-    // destroy accordion
-    // else
-    // init accordion
-    const footerAccordionInitDestroy = () => {
-      document
-        .querySelectorAll('.footer__column--accordion')
-        .forEach((column) => {
-          if (window.innerWidth < 640) {
-            UIkit.accordion(column, {
-              active: true,
-            });
-          } else {
-            if (
-              column.__uikit__ &&
-              column.__uikit__.hasOwnProperty('accordion')
-            )
-              column.__uikit__.accordion.$destroy();
-          }
-        });
-    };
-
-    footerAccordionInitDestroy();
-    window.addEventListener('resize', (e) => {
-      footerAccordionInitDestroy();
-    });
-  };
+  headerApplianceHover();
+  closeOffcanvasIfScroll();
 
   // INITIALIZE SWIPERS if present
   catalogSlider();
@@ -369,6 +482,7 @@ document.addEventListener('DOMContentLoaded', () => {
   procedureSliders02();
 
   reviewsSlider();
+  newsSlider();
 
   productAdvantagesSlider();
 
@@ -382,6 +496,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   footerAccordion();
 
+  choicesInit();
+
   // Page-specific scripts
   if (document.querySelector('.page--index')) {
     // document.querySelector('.partners__item-link').addEventListener('click', e => {
@@ -390,21 +506,12 @@ document.addEventListener('DOMContentLoaded', () => {
     //   })
     // });
 
-    var swiperNews = new Swiper('.news__slider', {
-      effect: 'slide',
-      fadeEffect: {
-        crossFade: true,
-      },
-
-      loop: true,
-      slidesPerView: 'auto',
-      allowTouchMove: true,
-      navigation: {
-        nextEl: '.news__slider-nav--right',
-        prevEl: '.news__slider-nav--left',
-      },
-      keyboard: true,
-    });
+    const intro = document.querySelector('.intro');
+    if (intro) {
+      let vh = window.innerHeight * 0.01;
+      // Then we set the value in the --vh custom property to the root of the document
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
 
     function partnersRemoveActive() {
       document.querySelectorAll('.partners__right .uk-active').forEach((el) => {
@@ -904,19 +1011,6 @@ document.addEventListener('DOMContentLoaded', () => {
       .catch((error) => console.log('Failed to load Yandex Maps', error));
 
     // MAP select
-    // Pass single element
-    const element = document.querySelector('.js-choice');
-
-    // Passing options (with default options)
-    const choices = new Choices(element, {
-      searchEnabled: false,
-      itemSelectText: '',
-      noResultsText: '',
-      noChoicesText: '',
-      shouldSort: false,
-      callbackOnInit: null,
-      callbackOnCreateTemplates: null,
-    });
 
     // TODO
   }

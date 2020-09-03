@@ -81,22 +81,53 @@
 
   &__item {
     display: flex;
-    margin-bottom: percent-view(64px);
+    margin-bottom: 64px;
 
+    display: grid;
+    grid-gap: $column-margin;
+
+    grid-template-areas: 'desc desc' 'products image';
+    grid-template-columns: 1fr 1fr;
+
+    @media (min-width: $breakpoint-small) {
+      grid-template-areas: 'desc image' 'products image';
+      grid-template-columns: 2fr 1fr;
+
+      margin-bottom: percent-view(72px, $tablet-width);
+    }
+
+    @media (min-width: $breakpoint-medium) {
+      grid-template-areas: 'desc products image';
+      grid-template-columns: 3fr 1fr 2fr;
+
+      margin-bottom: percent-view(64px);
+    }
     &:last-child {
       margin-bottom: 0;
     }
 
     &-desc {
-      flex: 1 0 calc(#{$column-width} * 3);
+      // flex: 1 1 calc(#{$column-width} * 3);
+      grid-area: desc;
       padding-right: $column-margin;
+
+      @media (min-width: $breakpoint-small) {
+      }
 
       & p {
         margin-bottom: percent-view(20px);
       }
     }
+    &-readmore {
+      display: none;
+
+      @media (min-width: $breakpoint-medium) {
+        display: inline-block;
+      }
+    }
     &-products {
-      flex: 1 0 calc(#{$column-width} - #{$column-margin});
+      // flex: 1 0 calc(#{$column-width} - #{$column-margin});
+      grid-area: products;
       margin-right: $column-margin;
 
       // padding-right: $column-margin;
@@ -108,11 +139,21 @@
         @include font-small;
         text-decoration: none;
         margin-bottom: percent-view(6px);
+
+        @media (min-width: $breakpoint-small) {
+          display: inline-block;
+          margin-right: 20px;
+        }
+        @media (min-width: $breakpoint-medium) {
+          display: block;
+          margin-right: 0;
+        }
       }
     }
     &-image {
       display: block;
-      flex: 1 0 calc(#{$column-width} * 2);
+      // flex: 1 0 calc(#{$column-width} * 2);
+      grid-area: image;
       overflow: hidden;
 
       &:hover {
@@ -144,9 +185,12 @@
     }
 
     &__left {
+      margin-bottom: 22px;
+
       @media (min-width: $breakpoint-medium) {
         flex: 0 0 calc(#{$column-width} * 3);
         padding-right: $column-margin;
+        margin-bottom: 0;
       }
     }
     &__right {
@@ -155,11 +199,17 @@
   }
 
   &-section-products {
+    & .appliance__section-content {
+      margin-right: -$right-margin;
+      position: relative;
+    }
+
     &__slider {
       margin-bottom: percent-view(77px);
     }
     &__nav {
       position: relative;
+      left: 0;
     }
   }
 }

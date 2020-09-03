@@ -19,7 +19,7 @@ mixin product-catalog-section(args)
         li.index__catalog-slider-item.swiper-slide: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
         li.index__catalog-slider-item.swiper-slide: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
         li.index__catalog-slider-item.swiper-slide: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
-    .index__catalog-slider-nav.slider__nav
+    .index__catalog-slider-nav.slider__nav(class=args.navClass)
       .slider__arrow.slider__arrow--left.index__catalog-slider-nav--left
         +svg({ name: 'slider-arrow-left'})
       .slider__arrow.slider__arrow--right.index__catalog-slider-nav--right
@@ -39,9 +39,14 @@ mixin svg(args)
 
 mixin sidebar-item(args)
   li.page-content__sidebar-nav-item
-    a(href=args.link).page-content__sidebar-nav-link
-      +svg({name: 'arrow-right'})
-      =args.name
+    if typeof args.scrollOffset === "undefined"
+      a(href=args.link).page-content__sidebar-nav-link
+        +svg({name: 'arrow-right'})
+        =args.name
+    else
+      a(href=args.link, uk-scroll=`offset: ${args.scrollOffset}`).page-content__sidebar-nav-link
+        +svg({name: 'arrow-right'})
+        =args.name
 
 mixin product-files-item(args)
   li.product__files-item
@@ -121,7 +126,7 @@ mixin procedures-slider-section(args)
         li.procedures__slider-right-item.swiper-slide: +procedures-teaser('procedures-teaser-2.jpg')
         li.procedures__slider-right-item.swiper-slide: +procedures-teaser('procedures-teaser-3.jpg')
         li.procedures__slider-right-item.swiper-slide: +procedures-teaser('procedures-teaser-1.jpg')
-    .procedures__slider-nav.slider__nav
+    .procedures__slider-nav.slider__nav(class=args.navClass)
       .slider__arrow.slider__arrow--left.procedures__slider-nav--left(class=`procedures__slider--${args.class}-nav--left`)
         +svg({ name: 'slider-arrow-left'})
       .slider__arrow.slider__arrow--right.procedures__slider-nav--right(class=`procedures__slider--${args.class}-nav--right`)
@@ -222,7 +227,7 @@ mixin appliance-item(args)
       p
         strong= args.title 
         =args.text
-      a(href="") Подробнее
+      a.appliance__item-readmore(href="") Подробнее
     .appliance__item-products
       a.appliance__item-product-link(href="") Magic One
       a.appliance__item-product-link(href="") Magic Lite
@@ -291,3 +296,17 @@ mixin offcanvas-title-item(args)
   a(href="/").offcanvas__nav-title
     +svg({name: 'arrow-right'})
     =args.title
+
+
+
+
+
+mixin mobile-nav-link(args)
+  .page-content__mobile-nav-link
+    a.button.button__sidebar(href=args.anchor,uk-toggle)
+      +svg({name: 'button-sidebar'})
+      =args.name
+      
+mixin header-appliance-item(args)
+  a(href=args.link, data-appliance=args.appliance).header__appliance-item
+    img(src=`assets/${args.image}`, alt="")

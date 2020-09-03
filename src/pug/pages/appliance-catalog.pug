@@ -5,6 +5,55 @@ block variables
   - var description = 'Description';
   - var pageClass = 'page--appliance-catalog';
 
+mixin appliance-catalog-nav(args)
+  ul.appliance__sections(uk-nav)
+    li.appliance__sections-item.uk-parent.uk-open
+      a.appliance__sections-link(href="")
+        +svg({name: 'arrow-right'})
+        | Косметология
+      ul.appliance__items
+        li.appliance__items-item: a.appliance__items-link(href="#app-epil", uk-scroll) Эпиляция
+        li.appliance__items-item: a.appliance__items-link(href="#app-omolozh", uk-scroll) Лазерное омоложение
+        li.appliance__items-item: a.appliance__items-link(href="#app-pigment", uk-scroll) Карбоновый пилинг
+        li.appliance__items-item: a.appliance__items-link(href="", uk-scroll) Удаление татуировок
+        li.appliance__items-item: a.appliance__items-link(href="", uk-scroll) Коррекция перманентного макияжа
+        li.appliance__items-item: a.appliance__items-link(href="", uk-scroll) Полировка кожи
+        li.appliance__items-item: a.appliance__items-link(href="", uk-scroll) Лечении внешних проявлений акне
+        li.appliance__items-item: a.appliance__items-link(href="", uk-scroll) Лечении шрамов пост-акне
+        li.appliance__items-item: a.appliance__items-link(href="", uk-scroll) Лечение мелазмы и гиперпигментации
+        li.appliance__items-item: a.appliance__items-link(href="", uk-scroll) Удаление пигментных пятен
+        li.appliance__items-item: a.appliance__items-link(href="", uk-scroll) Коррекция расширенных пор кожи
+        li.appliance__items-item: a.appliance__items-link(href="", uk-scroll) Удаление гемангиом и винных пятен
+        li.appliance__items-item: a.appliance__items-link(href="", uk-scroll) Лечение сосудистой патологии
+        li.appliance__items-item: a.appliance__items-link(href="", uk-scroll) Эпиляция гормон-зависимых зон
+        li.appliance__items-item: a.appliance__items-link(href="", uk-scroll) Коррекция рубцовой ткани
+        li.appliance__items-item: a.appliance__items-link(href="", uk-scroll) Лечении вирусных бородавок
+        li.appliance__items-item: a.appliance__items-link(href="", uk-scroll) Лечение онихомикозов
+    li.appliance__sections-item.uk-parent
+      a.appliance__sections-link(href="")
+        +svg({name: 'arrow-right'})
+        | Гинекология
+      ul.appliance__items
+        li.appliance__items-item: a.appliance__items-link(href="#app-0") Лечение мелазмы
+        li.appliance__items-item: a.appliance__items-link(href="#app-1") Удаление рубцов
+        li.appliance__items-item: a.appliance__items-link(href="#app-2") Карбоновый пилинг
+    li.appliance__sections-item
+      a.appliance__sections-link(href="")
+        +svg({name: 'arrow-right'})
+        | Хирургия
+    li.appliance__sections-item
+      a.appliance__sections-link(href="")
+        +svg({name: 'arrow-right'})
+        | Флебология
+    li.appliance__sections-item
+      a.appliance__sections-link(href="")
+        +svg({name: 'arrow-right'})
+        | Проктология
+    li.appliance__sections-item
+      a.appliance__sections-link(href="")
+        +svg({name: 'arrow-right'})
+        | Отолорингология
+
 block content
   //- .ruler--right
   section.page-lead
@@ -14,54 +63,9 @@ block content
   
   section.page-content
     .page-content__sidebar
-      ul.appliance__sections(uk-nav)
-        li.appliance__sections-item.uk-parent.uk-open
-          a.appliance__sections-link(href="")
-            +svg({name: 'arrow-right'})
-            | Косметология
-          ul.appliance__items
-            li.appliance__items-item: a.appliance__items-link(href="#app-epil") Эпиляция
-            li.appliance__items-item: a.appliance__items-link(href="#app-omolozh") Лазерное омоложение
-            li.appliance__items-item: a.appliance__items-link(href="#app-pigment") Карбоновый пилинг
-            li.appliance__items-item: a.appliance__items-link(href="") Удаление татуировок
-            li.appliance__items-item: a.appliance__items-link(href="") Коррекция перманентного макияжа
-            li.appliance__items-item: a.appliance__items-link(href="") Полировка кожи
-            li.appliance__items-item: a.appliance__items-link(href="") Лечении внешних проявлений акне
-            li.appliance__items-item: a.appliance__items-link(href="") Лечении шрамов пост-акне
-            li.appliance__items-item: a.appliance__items-link(href="") Лечение мелазмы и гиперпигментации
-            li.appliance__items-item: a.appliance__items-link(href="") Удаление пигментных пятен
-            li.appliance__items-item: a.appliance__items-link(href="") Коррекция расширенных пор кожи
-            li.appliance__items-item: a.appliance__items-link(href="") Удаление гемангиом и винных пятен
-            li.appliance__items-item: a.appliance__items-link(href="") Лечение сосудистой патологии
-            li.appliance__items-item: a.appliance__items-link(href="") Эпиляция гормон-зависимых зон
-            li.appliance__items-item: a.appliance__items-link(href="") Коррекция рубцовой ткани
-            li.appliance__items-item: a.appliance__items-link(href="") Лечении вирусных бородавок
-            li.appliance__items-item: a.appliance__items-link(href="") Лечение онихомикозов
-        li.appliance__sections-item.uk-parent
-          a.appliance__sections-link(href="")
-            +svg({name: 'arrow-right'})
-            | Гинекология
-          ul.appliance__items
-            li.appliance__items-item: a.appliance__items-link(href="#app-0") Лечение мелазмы
-            li.appliance__items-item: a.appliance__items-link(href="#app-1") Удаление рубцов
-            li.appliance__items-item: a.appliance__items-link(href="#app-2") Карбоновый пилинг
-        li.appliance__sections-item
-          a.appliance__sections-link(href="")
-            +svg({name: 'arrow-right'})
-            | Хирургия
-        li.appliance__sections-item
-          a.appliance__sections-link(href="")
-            +svg({name: 'arrow-right'})
-            | Флебология
-        li.appliance__sections-item
-          a.appliance__sections-link(href="")
-            +svg({name: 'arrow-right'})
-            | Проктология
-        li.appliance__sections-item
-          a.appliance__sections-link(href="")
-            +svg({name: 'arrow-right'})
-            | Отолорингология
+      +appliance-catalog-nav()
 
+    +mobile-nav-link({anchor: '#sidebar', name: 'Области применения'})
 
     .page-content__mainbar
       .appliance__section
@@ -76,4 +80,11 @@ block content
         +appliance-item({title: 'Удаление рубцов и шрамов. ', text: 'Сосудистых патологий основывается на принципе селективного фототермолиза. При использовании лазера с соответствующей длиной волны, энергия поглощается.', id: 'app-1'})
         +appliance-item({title: 'Удаление пигментации. ', text: 'Процедура лазерного удаления пигментных пятен основывается на принципе селективного фототермолиза. При применении лазера с соответствующей длиной волны, энергия поглощается хромофорами в тканях и преобразуется в тепло, которое разрушает пигмент.', id: 'app-2'})
         +appliance-item({title: 'Лазерная эпиляция. ', text: 'В настоящее время среди множества различных методик эпиляции выделяют электроэпиляцию, фотоэпиляцию и лазерную эпиляцию. Последние две метода наиболее предпочтительны.', id: 'app-3'})
-        
+
+  
+  div(uk-offcanvas="overlay:true")#sidebar
+    .uk-offcanvas-bar
+      button.uk-offcanvas-close
+        +svg({name: 'close'})
+      .offcanvas__inner
+        +appliance-catalog-nav()

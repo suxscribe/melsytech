@@ -10,7 +10,7 @@ block content
   section.page-lead
     .page-lead__breadcrumbs.breadcrumbs
       span Каталог
-    h1.page-lead__title Каталог
+    h1.page-lead__title Серия Magic — много-функциональные лазерные системы
   
   section.page-content.catalog__content
     ul.catalog__sections.page-content__sidebar
@@ -21,6 +21,16 @@ block content
       li.catalog__sections-item: a(href="") Флебология
       li.catalog__sections-item: a(href="") Проктология
       li.catalog__sections-item: a(href="") Отолорингология
+    
+    .catalog__sections-dropdown.page-content__mobile-nav
+      select.form-control.js-choice()
+        option(value="choice0") Все области применений
+        option(value="choice1") Косметология
+        option(value="choice2") Гинекология
+        option(value="choice3") Хирургия
+        option(value="choice4") Флебология
+        option(value="choice5") Проктология
+        option(value="choice6") Отолорингология
 
     ul(uk-grid).catalog__products.page-content__mainbar
       li.catalog__products-item: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')

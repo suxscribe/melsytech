@@ -1,14 +1,26 @@
 .form {
   $input_height: 80px;
-  $input-padding: percent-view(32px);
+  $input-padding: 32px;
 
   &__grid {
     align-items: start;
+
+    & + .form__row {
+      margin-top: 24px;
+
+      @media (min-width: $breakpoint-small) {
+        margin-top: 48px;
+      }
+    }
   }
   &__row {
     display: block;
-    margin-bottom: percent-view(48px);
+    margin-bottom: 24px;
     position: relative;
+
+    @media (min-width: $breakpoint-small) {
+      margin-bottom: 48px;
+    }
 
     // @media (min-width: $breakpoint-small) {
     //   margin-bottom: percent-view(48px);
@@ -23,7 +35,7 @@
   &__label {
     display: block;
     // transform: translateY(-#{$input_height * 1.5});
-    top: percent-view($input_height / 6.667);
+    top: $input_height / 6.667;
     margin-left: $input-padding;
     position: absolute;
     // top: percent-view(0px);
@@ -40,11 +52,11 @@
     @include font-base;
     font-family: $font-family;
 
-    height: percent-view($input_height);
+    height: $input_height;
     vertical-align: middle;
     max-width: 100%;
     width: 100%;
-    padding: percent-view($input_height / 4) $input-padding 0 $input-padding;
+    padding: $input_height/4 $input-padding 0 $input-padding;
     background: $color-white;
     color: $color-gray;
     border: 1px solid rgba($color-gray, 0.4);
@@ -73,12 +85,12 @@
     }
   }
   &__textarea {
-    height: percent-view(180px);
-    padding-top: percent-view($input_height / 2);
+    height: 180px;
+    padding-top: $input_height / 2;
 
     @media (min-width: $breakpoint-small) {
       height: auto;
-      min-height: percent-view(180px);
+      min-height: 180px;
     }
   }
 
@@ -103,20 +115,24 @@
   &__submit {
     // align-items: center;
     display: flex;
-    gap: percent-view(28px);
+    gap: 28px;
     align-items: flex-start;
     flex-direction: column;
 
-    @media (min-width: $breakpoint-medium) {
-      // flex-direction: row;
+    @media (min-width: $breakpoint-small) {
+      flex-direction: row;
     }
   }
   &__submit-button {
     flex: 0 0 auto;
-    margin-bottom: percent-view(28px);
+    margin-bottom: 28px;
+    width: 100%;
+
+    @media (min-width: $breakpoint-small) {
+      width: auto;
+    }
 
     @media (min-width: $breakpoint-medium) {
-      width: auto;
       margin-bottom: 0;
     }
   }
@@ -141,11 +157,11 @@
 
     opacity: 1;
     visibility: visible;
-    top: percent-view($input_height / 2);
+    top: $input_height / 2;
     transform: translateY(-50%);
   }
   & .form__textarea:placeholder-shown ~ .form__label {
-    top: percent-view($input_height / 2);
+    top: $input_height / 2;
   }
   & .form__input:focus ~ .form__label,
   & .form__textarea:focus ~ .form__label {

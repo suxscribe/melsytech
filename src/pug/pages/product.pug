@@ -4,6 +4,8 @@ block variables
   - var title = 'Catalog';
   - var description = 'Description';
   - var pageClass = 'page--product';
+  - var scrollOffsetProduct = 100;
+  - var scrollOffsetProductSmall = 180;
 
 block content
   //- .ruler--right
@@ -42,16 +44,16 @@ block content
     .product__top-contact(class="uk-visible@m")
       a(href="#product-ask", uk-toggle) Запросить стоимость
     .product__top-small
-      a.product__top-small-nav(href="") Навигация по разделу
+      a.product__top-small-nav(href="#product-tab-sidebar-01", uk-toggle) Навигация по разделу
       .product__top-contact
         a(href="#product-ask", uk-toggle) Запросить стоимость
-      //- Need to move this part to every tab if there's navigations on each tab
+      //- Need to move this part to inside tab if there's navigations on each tab
         
   section.page-content.page-content--product.uk-switcher#product__content
     li.product__tabs-content
       .product__sidebar.page-content__sidebar
         .page-content__sidebar-sticky(uk-sticky="bottom: true; offset: 160")
-          ul.page-content__sidebar-nav(uk-scrollspy-nav="closest: li; scroll: true; offset: 100")
+          ul.page-content__sidebar-nav(uk-scrollspy-nav="closest: li; scroll: true; offset: " + scrollOffsetProduct )
             +sidebar-item({name: 'Описание', link: '#product-section-desc'})
             +sidebar-item({name: 'Области применения', link: '#product-section-appliance'})
             +sidebar-item({name: 'Преимущества', link: '#product-section-advantages'})
@@ -87,11 +89,11 @@ block content
               p.text--small Прибор оснащен двумя выводами лазерного излучения. Стандартная комплектация поставляется с шарнирным манипулятором, который позволяет работать в любом доступном режиме системы. В качестве опции при этом также предусмотрен оптоволоконный вывод, который позволяет работать в режиме Q-switch с коротким и длинным импульсом с малой энергетикой. Для ряда процедур оптоволоконный вывод лазерного излучения в значительной степени повышает удобство работы с пациентом.
 
         .product__section.product-section-appliance#product-section-appliance
+          .section__top 
+            .section__subtitle Области применения
           div(uk-grid, class="uk-child-width-1-2@s")
             div
-              .section__top 
-                .section__subtitle Каталог
-                h3.section__title.h1 Magic Super Full — превосходство в ваших руках
+                h3.section__title.h1 Много-функциональная лазерная система
             div
               ul(data-simplebar).product-section-appliance__list
                 li.product-section-appliance__item: a(href="#appliance-01", uk-toggle) Удаление пигментных образований
@@ -106,10 +108,10 @@ block content
                 li.product-section-appliance__item: a(href="#appliance-01") Лечение вирусных бородавок
         .product__section.product-section-advantages#product-section-advantages
           .section__top 
-            .section__subtitle Каталог
+            .section__subtitle Приемущества
           div(uk-grid, class="uk-child-width-1-2@s").product-section-advantages__columns
             div
-              h3.section__title.h1 Magic Super Full — превосходство в ваших руках
+              h3.section__title.h1 Клиника лазерной косметологии в одном аппарате
               .product-section-advantages__image
                 img(src="./assets/product-section-advantages-image.jpg", alt="")
             div
@@ -155,18 +157,19 @@ block content
         .product__section.product-section-roi#product-section-roi
           .section__top 
             .section__subtitle Окупаемость
-          div(uk-grid, class="uk-child-width-1-2@s").product-section-roi__columns
+          div(uk-grid="margin: no-grid-margin", class="uk-child-width-1-2@m uk-grid-collapse").product-section-roi__columns
             div.product-section-roi__column-left
               h3.section__title.h1 Невероятно низкая себестоимость процедур
-              a(href="#").product-section-roi__button.button Расчитать окупаемость
+
                 
-            div
+            div.product-section-roi__column-right
               ul.product-section-roi__content
                 li Выходит на окупаемость через 8 месяцев
                 li Срок службы диодного излучателя более 100 млн импульсов
                 li Исключена возможность оплавления электродов в манипулах
                 li Срок службы диодного излучателя более 100 млн импульсов
-        
+              .product-section-roi__button-wrap
+                a(href="#").product-section-roi__button.button Расчитать окупаемость
         .product__section.product-section-results#product-section-results
           .section__subtitle Результаты процедур
           +procedures-slider-section({class: '01'})
@@ -204,6 +207,28 @@ block content
                 p Реализация одиночных, двойных и пакетных импульсов для всех режимов работы позволяют охватить весь спектр лазерных косметических процедур на одном аппарате.
                 h3 Высокие технические характеристики
                 p Режимы позволяют охватить весь спектр лазерных косметических процедур на одном аппарате.
+      
+      //- Mobile sidebar
+      div(uk-offcanvas="overlay:true")#product-tab-sidebar-01
+        .uk-offcanvas-bar
+          button.uk-offcanvas-close
+            +svg({name: 'close'})
+          .offcanvas__inner
+            ul.page-content__sidebar-nav()
+              +sidebar-item({name: 'Описание', link: '#product-section-desc', scrollOffset: scrollOffsetProductSmall})
+              +sidebar-item({name: 'Области применения', link: '#product-section-appliance', scrollOffset: scrollOffsetProductSmall})
+              +sidebar-item({name: 'Преимущества', link: '#product-section-advantages', scrollOffset: scrollOffsetProductSmall})
+              +sidebar-item({name: 'Фото и видео', link: '#product-section-video', scrollOffset: scrollOffsetProductSmall})
+              +sidebar-item({name: 'Окупаемость', link: '#product-section-roi', scrollOffset: scrollOffsetProductSmall})
+              +sidebar-item({name: 'Результаты процедур', link: '#product-section-results', scrollOffset: scrollOffsetProductSmall})
+              +sidebar-item({name: 'Рабочие инструменты', link: '#product-section-instruments', scrollOffset: scrollOffsetProductSmall})
+              +sidebar-item({name: 'Отзывы партнеров', link: '#product-section-reviews', scrollOffset: scrollOffsetProductSmall})
+              +sidebar-item({name: 'Гарантийные обязательства', link: '#product-section-warranty', scrollOffset: scrollOffsetProductSmall})
+
+            ul.product__files
+              +product-files-item({name: 'Буклет (3.6 MB)', link: '#'})
+              +product-files-item({name: 'Буклет (4.7 MB)', link: '#'})
+
     li.product__tabs-content
       | Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis incidunt laboriosam ea id quam eum laborum, voluptatibus dolore nostrum facilis iusto aspernatur reiciendis ipsum? Vero mollitia excepturi non laboriosam hic!Et debitis corrupti voluptatem numquam blanditiis, ad cum sapiente id explicabo distinctio dolore dicta ex quisquam repudiandae doloribus nostrum architecto voluptates ipsam perspiciatis saepe minus ea ipsa veritatis soluta! Quidem!Iste modi perferendis autem delectus accusamus, cumque in soluta culpa aliquam quibusdam ullam odit consequatur dicta asperiores inventore expedita iure dolore reprehenderit, temporibus provident vitae libero, veritatis dolorem? Suscipit, corporis.Nam officia nesciunt impedit atque explicabo, excepturi molestias voluptates at nulla consequuntur.
     li.product__tabs-content
@@ -216,13 +241,13 @@ block content
       | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, reprehenderit.
   
   section.product__bottom
-    .product-section-catalog
+    .product-section-catalog.section.section--padding
       .section__top 
         .section__subtitle Манипулы
       .product-section-catalog__content
         +product-catalog-section({title: 'Совместимые с аппаратом манипулы', catalogLink: false  })
     
-    .product-section-procedures
+    .product-section-procedures.section.section--padding
       .section__subtitle Процедуры
       .product-section-procedures__content
         +procedures-slider-section({class: '02', showDevices: true})

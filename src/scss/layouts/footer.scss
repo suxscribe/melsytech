@@ -47,9 +47,25 @@
         @media (min-width: $breakpoint-small) {
           width: 232px;
         }
+        @media (min-width: $breakpoint-medium) {
+          margin-top: percent-view(-11px);
+        }
+      }
+    }
+    &--catalog {
+      @media (min-width: $breakpoint-medium) {
+        flex: 0 0 $column-width;
+      }
+    }
+    &--company {
+      @media (min-width: $breakpoint-medium) {
+        flex: 0 0 calc(#{$column-width} + #{$column-margin});
       }
     }
     &--support {
+      @media (min-width: $breakpoint-medium) {
+        flex: 0 0 calc(#{$column-width} * 2 - #{$column-margin});
+      }
     }
     &--contacts {
       // border-top: 1px solid rgba($color-red, 0.2);
@@ -60,6 +76,7 @@
       //   $tablet-width,
       //   'w'
       // );
+      display: flex;
       margin-top: responsive-value(
         40px,
         67px,
@@ -77,6 +94,7 @@
       }
 
       @media (min-width: $breakpoint-medium) {
+        flex: 1 0 auto;
         display: block;
         padding-top: 0;
         margin-top: 0;
@@ -92,8 +110,19 @@
       color: rgba($color-gray, 0.6);
       text-decoration: none;
 
+      & svg {
+        fill: rgba($color-gray, 0.6);
+        width: 12px;
+        height: 12px;
+        margin-left: 9px;
+      }
+
       &:hover {
         color: rgba($color-gray, 0.8);
+
+        & svg {
+          fill: rgba($color-gray, 0.8);
+        }
       }
     }
 
@@ -159,12 +188,16 @@
   }
 
   &__contacts-wrap {
+    flex: 0 1 66.67%;
     @media (min-width: $breakpoint-small) {
-      flex: 0 0 calc(#{$column-width} * 2);
+      flex: 0 1 50%;
+    }
+    @media (min-width: $breakpoint-medium) {
+      flex-basis: auto;
     }
   }
   &__phone {
-    margin-bottom: percent-view(17px, $mobile-min-width);
+    margin-bottom: 17px;
 
     @media (min-width: $breakpoint-small) {
       margin-bottom: responsive-value(
@@ -188,7 +221,7 @@
     }
   }
   &__address {
-    flex: 1 0 auto;
+    flex: 1 1 auto;
     color: rgba($color-gray, 0.6);
   }
 }

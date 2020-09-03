@@ -21,7 +21,7 @@
   --radius: 3px;
 
   --box-shadow: 0 10px 40px rgba(0, 80, 146, 0.2);
-  --transition: 0.2s ease;
+  --transition: 0.4s cubic-bezier(0.77, 0, 0.175, 1);
 }
 
 $font-family: 'Montserrat', sans-serif;
@@ -78,7 +78,7 @@ $base-font-size: 10px; //1 rem
 // $screen-xl-min: 1200px;
 
 $breakpoint-small: 640px !default;
-$breakpoint-medium: 960px !default;
+$breakpoint-medium: 1024px !default;
 $breakpoint-large: 1200px !default;
 $breakpoint-xlarge: 1600px !default;
 
@@ -89,26 +89,50 @@ $mobile-min-height: 667px;
 $fhd-width: 1920px;
 $fhd-height: 992px;
 
-$header-height: responsive-value(
-  60px,
-  72px,
-  $breakpoint-small,
-  $fhd-width,
-  'w'
-);
+$header-height: 72px;
 $header-height-small: 82px;
 
 $right-margin-px: 136px; // container margin + column margin
+$right-margin-px-medium: 88px;
 $column-margin-px: 56px;
 
-$column-width: percent-view(220px, $fhd-width, 'w');
-$column-width-medium: percent-view(162px, $tablet-width);
-$column-width-small: percent-view(106px, $mobile-min-width, 'w');
+$column-width: percent-view(220px, $fhd-width, 'w'); // 8 columns
+$column-width-medium: percent-view(162px, $tablet-width); // 6 columns
+$column-width-small: percent-view(106px, $mobile-min-width, 'w'); // 3 columns
+
 $container-margin: percent-view(80px, $fhd-width, 'w');
+$container-margin-medium: 48px;
+$container-margin-small: 24px;
+
 $right-margin: percent-view($right-margin-px, $fhd-width, 'w');
+// $right-addon: responsive-value(
+//   0px,
+//   $column-margin-px,
+//   $breakpoint-small,
+//   $fhd-width,
+//   'w'
+// );
+// $right-margin: calc(#{$container-margin} + #{$right-addon});
+
 $column-margin: percent-view($column-margin-px, $fhd-width, 'w');
 
 $product-image-height: 525px;
+
+$section-top-margin-s: 60px;
+$product-section-gray-top: responsive-value(
+  60px,
+  94px,
+  $mobile-min-width,
+  $tablet-width,
+  'w'
+);
+$product-section-gray-bottom: responsive-value(
+  65px,
+  55px,
+  $mobile-min-width,
+  $fhd-width,
+  'w'
+);
 //  : 133%;
 
 $slide-arrow-height: 24px;

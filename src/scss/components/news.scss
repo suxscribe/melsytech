@@ -43,8 +43,12 @@
       bottom: auto;
 
       @media (min-width: $breakpoint-medium) {
+        bottom: 0;
+      }
+      @media (min-width: $breakpoint-large) {
         transform: translateY(-50%);
         top: $news-slide-image-height;
+        bottom: auto;
       }
     }
 
@@ -90,6 +94,13 @@
     text-decoration: none;
     height: 100%;
 
+    &--margin {
+      margin-top: 32px;
+      @media (min-width: $breakpoint-medium) {
+        margin-top: percent-view(64px);
+      }
+    }
+
     &-image {
       flex: 0 0 auto;
       height: 0;
@@ -108,7 +119,7 @@
       }
 
       .news__section & {
-        padding-bottom: percent-view(368px);
+        padding-bottom: 60.9%;
       }
 
       & img {

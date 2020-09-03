@@ -3,7 +3,7 @@ footer.footer
     img(src="./assets/logo-footer.svg", alt="Melsytech")
   ul.footer__column.footer__column--catalog
     li.footer__nav-section: a(href="/") Каталог
-    li.footer__nav-section: a(href="/") Применения
+    li.footer__nav-section: a(href="/") Области применения
     li.footer__nav-section: a(href="/") Технологии
     li.footer__nav-section: a(href="/") Контакты
   ul.footer__column.footer__column--company.footer__column--accordion
@@ -24,7 +24,10 @@ footer.footer
         +svg({name: 'chevron-down'})
         | Поддержка
       ul.footer__nav-section-sub.uk-accordion-content
-        li.footer__nav: a(href="/") Сервис
+        li.footer__nav
+          a(href="/")
+            | Сервис
+            +svg({name: 'link-outer'})
         li.footer__nav: a(href="/") Обучение
         li.footer__nav: a(href="/") Маркетинговая поддержка
         li.footer__nav: a(href="/") Как купить

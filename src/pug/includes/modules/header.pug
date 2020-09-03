@@ -62,16 +62,16 @@ header(uk-sticky="bottom: .page-lead--product").header
           li: a.header__company-menu-item(href="/") Публикации в СМИ
           li: a.header__company-menu-item(href="/") Отзывы
 
-      a(href="#").header__nav-item Применения
-      div(uk-dropdown="boundary: .header; boundary-align: true").header__dropdown.header__dropdown--appliance
+      a(href="#").header__nav-item Области применения
+      div.header__dropdown.header__dropdown--appliance.uk-dropdown-scrollable(uk-dropdown="boundary: .header; boundary-align: true")
         .header__dropdown-wrap
           .header__dropdown-left
             .header__dropdown-menu-wrap
-              a(href="#").header__dropdown-menu-section Косметология
+              a(href="#",data-appliance="cosmetology").header__dropdown-menu-section Косметология
               ul.header__dropdown-menu
-                li: a.header__dropdown-menu-item(href="/") Эпиляция
-                li: a.header__dropdown-menu-item(href="/") Лазерное омоложение
-                li: a.header__dropdown-menu-item(href="/") Карбоновый пилинг
+                li: a.header__dropdown-menu-item(href="/", data-appliance="cosmetology,surgeo") Эпиляция
+                li: a.header__dropdown-menu-item(href="/", data-appliance="phlebology,ololoringology") Лазерное омоложение
+                li: a.header__dropdown-menu-item(href="/", data-appliance="surgeo,ololoringology") Карбоновый пилинг
                 li: a.header__dropdown-menu-item(href="/") Удаление татуировок
                 li: a.header__dropdown-menu-item(href="/") Коррекция перманентного макияжа
                 li: a.header__dropdown-menu-item(href="/") Полировка кожи
@@ -87,7 +87,7 @@ header(uk-sticky="bottom: .page-lead--product").header
                 li: a.header__dropdown-menu-item(href="/") Лечении вирусных бородавок
                 li: a.header__dropdown-menu-item(href="/") Лечение онихомикозов
             .header__dropdown-menu-wrap
-              a(href="#").header__dropdown-menu-section Гинекология
+              a(href="#",data-appliance="ginekology").header__dropdown-menu-section Гинекология
               ul.header__dropdown-menu
                 li: a.header__dropdown-menu-item(href="/") Лечение стрессового недержания мочи
                 li: a.header__dropdown-menu-item(href="/") Лечение пролапса гениталий 1-2 стадии
@@ -98,32 +98,46 @@ header(uk-sticky="bottom: .page-lead--product").header
                 li: a.header__dropdown-menu-item(href="/") Лечение вульво-вагинальной атрофии
                 li: a.header__dropdown-menu-item(href="/") Лечение сексуальных дисфункций
             .header__dropdown-menu-wrap
-              a(href="#").header__dropdown-menu-section Флебология
+              a(href="#",data-appliance="phlebology").header__dropdown-menu-section Флебология
               ul.header__dropdown-menu
                 li: a.header__dropdown-menu-item(href="/") Венозная лазерная коагуляция (EVLC)
                 li: a.header__dropdown-menu-item(href="/") Чрезкожная лазерная коагуляция сосудистых образований
                 li: a.header__dropdown-menu-item(href="/") Удаление артериальных и венозных сосудов диаметром
             .header__dropdown-menu-wrap
-              a(href="#").header__dropdown-menu-section Хирургия
+              a(href="#",data-appliance="surgeo").header__dropdown-menu-section Хирургия
               ul.header__dropdown-menu
                 li: a.header__dropdown-menu-item(href="/") Удаление новообразований кожи
                 li: a.header__dropdown-menu-item(href="/") Липомоделирование / липосакция
                 li: a.header__dropdown-menu-item(href="/") Лазерное лечение гипергидроза
                 li: a.header__dropdown-menu-item(href="/") Неинвазивный лазерный липолиз
             .header__dropdown-menu-wrap
-              a(href="#").header__dropdown-menu-section Проктология
+              a(href="#",data-appliance="proktology").header__dropdown-menu-section Проктология
               ul.header__dropdown-menu
                 li: a.header__dropdown-menu-item(href="/") Лечение геморроя методом сосудистой коагуляции
             .header__dropdown-menu-wrap
-              a(href="#").header__dropdown-menu-section Отолорингология
+              a(href="#",data-appliance="ololoringology").header__dropdown-menu-section Отолорингология
               ul.header__dropdown-menu
                 li: a.header__dropdown-menu-item(href="/") Возможности аппарата в области отолорингологии
           .header__dropdown-right
-            a(href="#").header__dropdown-product
+            //- a(href="#").header__dropdown-product
               .header__dropdown-product-image
                 img(src="assets/magic_super_full.png", alt="Magic Super Full")
               .header__dropdown-product-logo
                 img(src="assets/magic-superfull-logo.png", alt="Magic Super Full")
+            .header__appliance
+              .header__appliance-title Аппараты серии Magic
+              .header__appliance-items
+                +header-appliance-item({appliance: 'ginekology,surgeo,cosmetology', image: 'magic-one-logo.png'})
+                +header-appliance-item({appliance: 'phlebology,surgeo', image: 'magic-lite-logo.png'})
+                +header-appliance-item({appliance: 'phlebology,ololoringology', image: 'magic-bella-logo.png'})
+                +header-appliance-item({appliance: 'ginekology,ololoringology', image: 'magic-slim-logo.png'})
+                +header-appliance-item({appliance: 'phlebology,surgeo', image: 'magic-super-logo.png'})
+                +header-appliance-item({appliance: 'phlebology,surgeo,cosmetology', image: 'magic-superfull-logo.png'})
+                +header-appliance-item({appliance: 'phlebology,cosmetology', image: 'magic-pico-logo.png'})
+                +header-appliance-item({appliance: 'cosmetology', image: 'magic-fr-logo.png'})
+                +header-appliance-item({appliance: ',cosmetology,surgeo', image: 'magic-max-logo.png'})
+                +header-appliance-item({appliance: ',cosmetology', image: 'magic-gyno-logo.png'})
+                +header-appliance-item({appliance: ',cosmetology,ololoringology', image: 'magic-oct-logo.png'})
 
       a(href="#").header__nav-item Технологии
 
@@ -142,8 +156,7 @@ header(uk-sticky="bottom: .page-lead--product").header
           +svg({name: 'plus'})
         button.header__search-submit(type="submit")
     a.header__tools-item.header__language(href="#") RU
-    ul(uk-drop="mode: click").header__tools-item.header__language-dropdown
-      //- li: a RU
+    //- ul(uk-drop="mode: click").header__tools-item.header__language-dropdown
       li: a(href="#") EN
     .header__burger
       a.header__burger-link(href="#offcanvas", uk-toggle)

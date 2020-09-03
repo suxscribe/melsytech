@@ -7,10 +7,12 @@
   justify-content: space-between;
   flex-direction: column;
 
-  margin: percent-view(94px) 0 percent-view(144px) $container-margin;
+  margin: $section-top-margin-s 0 $section-top-margin-s $container-margin; 
 
   @media (min-width: $breakpoint-small) {
     flex-direction: row;
+  margin: percent-view(94px) 0 percent-view(144px) $container-margin; //144px includes margin stack
+
   }
 
   &__top {
@@ -66,14 +68,22 @@
     justify-content: space-between;
 
     @media (min-width: $breakpoint-small) {
-      width: calc(100% - calc(#{$column-width} * 2);
+      // width: calc(100% - calc(#{$column-width} * 2);
+
     }
 
     @media (min-width: $breakpoint-medium) {
       position: relative;
+      width: calc(100% - calc(#{$column-width} * 2);
+
     }
   }
 
+  &--padding {
+    margin:0;
+    padding: $product-section-gray-top 0 $product-section-gray-bottom $container-margin;
+
+  }
 
   &--advantages {
     margin-right: $column-margin;
@@ -81,6 +91,9 @@
     @media (min-width: $breakpoint-small) {
       margin-right: 0;
     }
+  }
+  &--catalog {
+    margin-right: $right-margin;
   }
 }
 

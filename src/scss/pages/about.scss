@@ -1,6 +1,11 @@
 .about {
   &__history {
+    display: none;
     margin: percent-view(100px) 0;
+
+    @media (min-width: $breakpoint-medium) {
+      display: block;
+    }
   }
 
   &-section-05 {

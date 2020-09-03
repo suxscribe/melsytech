@@ -5,7 +5,13 @@
   }
 
   &-lead {
-    $lead-margin-bottom: percent-view(51px, $fhd-width, 'w');
+    $lead-margin-bottom: responsive-value(
+      32px,
+      51px,
+      $mobile-min-width,
+      $fhd-width,
+      'w'
+    );
 
     display: flex;
     justify-content: space-between;
@@ -47,6 +53,30 @@
 
       & .page-lead__bg {
         background: $color-black;
+        position: absolute;
+
+        &:before {
+          @media (min-width: $breakpoint-small) {
+            content: '';
+            display: block;
+            position: absolute;
+            background: radial-gradient(
+              80vw 60vw at center,
+              #0fb1b9 0,
+              rgba(5, 7, 11, 0) 80%,
+              rgba(5, 7, 11, 0) 100%
+            );
+            width: 200vw;
+            height: 150vw;
+            mix-blend-mode: screen;
+            opacity: 0.4;
+            transform: rotate(30deg);
+            bottom: -50vw;
+          }
+          @media (min-width: $breakpoint-medium) {
+            bottom: auto;
+          }
+        }
       }
       & .page-lead__content * {
         color: $color-white;
@@ -80,8 +110,17 @@
       padding-bottom: 0;
     }
 
-    &--news-detail {
+    &--news-detail,
+    &--content {
       @include page-lead-bg;
+
+      & .page-lead__content {
+        margin-bottom: 52px;
+
+        @media (min-width: $breakpoint-medium) {
+          margin-bottom: 0;
+        }
+      }
 
       & .page-lead__images-primary {
         margin-top: percent-view(52px);
@@ -91,13 +130,31 @@
     &--contacts {
       @include page-lead-bg;
 
-      & .page-lead__content {
-        flex: 0 1 calc(#{$column-width} * 2);
+      @media (max-width: $breakpoint-small-max) {
+        margin-bottom: responsive-value(
+          58px,
+          69px,
+          $mobile-min-width,
+          $tablet-width,
+          'w'
+        );
       }
-    }
 
-    &--content {
-      @include page-lead-bg;
+      @media (min-width: $breakpoint-medium) {
+      }
+
+      & .page-lead__content {
+        margin-bottom: responsive-value(
+          32px,
+          40px,
+          $mobile-min-width,
+          $tablet-width,
+          'w'
+        );
+        @media (min-width: $breakpoint-medium) {
+          flex: 0 1 calc(#{$column-width} * 2);
+        }
+      }
     }
 
     &__breadcrumbs {
@@ -136,6 +193,7 @@
       display: flex;
       flex-direction: column;
       flex: 0 0 auto;
+      padding-right: $column-margin;
 
       @media (min-width: $breakpoint-medium) {
         flex: 0 1 53.5%;
@@ -149,6 +207,7 @@
     &__description {
       flex: 1 0 auto;
       margin-bottom: percent-view(60px);
+      @include font-lead;
       font-weight: 500;
 
       .page-lead__title + & {
@@ -171,7 +230,7 @@
       display: flex;
       // align-items: flex-end;
       justify-content: flex-end;
-      margin-bottom: -#{$lead-margin-bottom};
+      margin-bottom: calc(#{$lead-margin-bottom} * -1);
       position: relative;
 
       @media (min-width: $breakpoint-small) {
@@ -236,8 +295,16 @@
       }
     }
     &__image {
+      flex: 1 1 auto;
       @media (min-width: $breakpoint-medium) {
         margin-top: percent-view(55px); //compensate breadcrumbs
+      }
+
+      & img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: bottom;
       }
     }
 
@@ -251,34 +318,50 @@
     &__socials {
       flex: 0 0 auto;
       border-top: 1px solid rgba($color-red, 0.2);
-      padding-top: percent-view(36px);
-      margin-top: percent-view(40px);
+      padding-top: 36px;
+      margin-top: 40px;
     }
 
     &__social {
       display: inline-block;
-      width: percent-view(36px);
-      height: percent-view(36px);
+      width: 36px;
+      height: 36px;
       @include font-small;
       border: 1px solid $color-black;
       color: $color-black;
       border-radius: 50%;
       text-align: center;
-      line-height: percent-view(36px);
+      line-height: 36px;
       text-decoration: none;
       text-transform: uppercase;
-      margin-right: percent-view(20px);
+      margin-right: 20px;
     }
 
     &__contacts {
       flex: 0 1 calc(#{$column-width} * 2);
       padding-right: $column-margin;
+      margin-bottom: responsive-value(
+        43px,
+        71px,
+        $mobile-min-width,
+        $tablet-width,
+        'w'
+      );
+
+      @media (min-width: $breakpoint-medium) {
+        margin-bottom: 0;
+      }
     }
     &__map {
-      flex: 0 1 46.81%; // calc(#{$column-width} * 4 - #{$column-margin}) in %
-      max-width: calc(#{$column-width} * 4 - #{$column-margin});
+      flex: 0 0 auto;
+
       overflow: hidden;
-      margin-bottom: -$lead-margin-bottom;
+      margin-bottom: calc(#{$lead-margin-bottom} * -1);
+
+      @media (min-width: $breakpoint-medium) {
+        flex: 0 1 46.81%; // calc(#{$column-width} * 4 - #{$column-margin}) in %
+        max-width: calc(#{$column-width} * 4 - #{$column-margin});
+      }
     }
 
     &__logo {
@@ -329,16 +412,25 @@
     }
 
     &--right {
-      margin-right: calc(#{$column-width} + #{$column-margin} * 2);
+      @media (min-width: $breakpoint-medium) {
+        margin-right: calc(#{$column-width} + #{$column-margin} * 2);
+      }
     }
 
     &__sidebar {
       flex: 0 0 100%;
-      margin-bottom: 40px;
+      display: none;
 
       @media (min-width: $breakpoint-medium) {
+        display: block;
         flex: 0 0 calc(#{$column-width} * 2 - #{$column-margin});
         padding-right: #{$column-margin};
+        margin-bottom: 40px;
+      }
+
+      &--visible-s {
+        display: block;
+        margin-bottom: 25px;
       }
 
       &-nav {
@@ -367,6 +459,14 @@
       }
     }
 
+    &__mobile-nav-link {
+      margin-bottom: 59px;
+
+      @media (min-width: $breakpoint-medium) {
+        display: none;
+      }
+    }
+
     &__mainbar {
       flex: 1 1 auto;
 
@@ -374,7 +474,7 @@
         flex: 1 1 auto;
         max-width: calc(#{$column-width} * 6);
 
-        padding-left: $column-margin;
+        padding-left: $container-margin;
       }
 
       &--border {

@@ -1,9 +1,36 @@
 extends ../layout/main
 
 block variables
-  - var title = 'О компании';
+  - var title = 'Партнеры';
   - var description = 'Description';
   - var pageClass = 'page--partners';
+
+mixin partners-regions-menu(args)
+  ul.sidebar__mnav(uk-nav)
+    li.sidebar__mnav-section.uk-parent.uk-open
+      a.sidebar__mnav-section-link(href="")
+        +svg({name: 'arrow-right'})
+        | Московская область
+      ul.sidebar__mnav-items
+        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="#region-msk",uk-scroll) Москва
+        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="#region-balash",uk-scroll) Балашиха
+        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="#region-odints",uk-scroll) Одинцово
+        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="",uk-scroll) Коломна
+        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="",uk-scroll) Красногорск
+        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="",uk-scroll) Люберцы
+    li.sidebar__mnav-section.uk-parent
+      a.sidebar__mnav-section-link(href="")
+        +svg({name: 'arrow-right'})
+        | Ленинградская область
+      ul.sidebar__mnav-items
+        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="#region-0") Санкт-Петербург
+
+    li.sidebar__mnav-section.uk-parent
+      a.sidebar__mnav-section-link(href="")
+        +svg({name: 'arrow-right'})
+        | Нижегородская област
+      ul.sidebar__mnav-items
+        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="#region-0") Нижний Новгород
 
 block content
   //- .ruler--right
@@ -19,62 +46,44 @@ block content
       li.partners-page__switch-item: a(href="#") Список
   
   section.partners-page__content
-    .uk-switcher
-      li
+    .uk-switcher.partners-page__switcher
+      li.partners-page__switcher-item
         .partners-page__map-wrap
           #map.partners-page__map
           .partners-page__filter
             select.form-control.js-choice()
-              option(value="choice0") Choice0
-              option(value="choice1") Choice1 Lorem ipsum dolor sit amet.
-              option(value="choice2") Choice2
-              option(value="choice3") Choice3
-              option(value="choice4") Choice4
+              option(value="choice0") Все области применения
+              option(value="choice1") Гинекология
+              option(value="choice2") Хирургия
+              option(value="choice3") Флебология
+              option(value="choice4") Проктология
             
-      li
+      li.partners-page__switcher-item
         .partners-page__list
           section.page-content
             .page-content__sidebar
               .page-content__sidebar-sticky(uk-sticky="bottom: true; offset: 160")
-                ul.sidebar__mnav(uk-nav)
-                  li.sidebar__mnav-section.uk-parent.uk-open
-                    a.sidebar__mnav-section-link(href="")
-                      +svg({name: 'arrow-right'})
-                      | Московская область
-                    ul.sidebar__mnav-items
-                      li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="#app-epil") Москва
-                      li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="#app-omolozh") Балашиха
-                      li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="#app-pigment") Одинцово
-                      li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="") Коломна
-                      li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="") Красногорск
-                      li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="") Люберцы
-                  li.sidebar__mnav-section.uk-parent
-                    a.sidebar__mnav-section-link(href="")
-                      +svg({name: 'arrow-right'})
-                      | Ленинградская область
-                    ul.sidebar__mnav-items
-                      li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="#app-0") Санкт-Петербург
+                +partners-regions-menu()
 
-                  li.sidebar__mnav-section.uk-parent
-                    a.sidebar__mnav-section-link(href="")
-                      +svg({name: 'arrow-right'})
-                      | Нижегородская област
-                    ul.sidebar__mnav-items
-                      li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="#app-0") Нижний Новгород
-
+            +mobile-nav-link({anchor: '#sidebar', name: 'Регионы'})
 
             .page-content__mainbar
               .partners-page__section
                 .partners-page__section-title Московская область
-                .partners-page__region
+                .partners-page__region#region-msk
                   .partners-page__region-title Москва
                   .partners-page__region-items
                     +company-teaser({title: 'Медицинский центр косметологии и эпиляции «Доктор Лазер»', address1: 'г. Москва, Петровский бульвар, 21 <br>8 (495) 178-00-20', address2: 'г. Москва, Мичуринский проспект, 25к2<br>8(495) 932-58-00', address3: 'г. Москва, посёлок завода Мосрентген, 37<br>8 (495) 645-25-95'})
                     +company-teaser({title: 'Медицинский центр косметологии и эпиляции «Доктор Лазер»', address1: 'г. Москва, Петровский бульвар, 21<br>8 (495) 178-00-20', address2: 'г. Москва, Мичуринский проспект, 25к2<br>8(495) 932-58-00', address3: 'г. Москва, посёлок завода Мосрентген, 37<br>8 (495) 645-25-95'})
-                .partners-page__region
+                .partners-page__region#region-balash
                   .partners-page__region-title Балашиха
                   .partners-page__region-items
                     +company-teaser({title: 'Медицинский центр косметологии и эпиляции «Доктор Лазер»', address1: 'г. Москва, Петровский бульвар, 21<br>8 (495) 178-00-20', address2: 'г. Москва, Мичуринский проспект, 25к2<br>8(495) 932-58-00', address3: 'г. Москва, посёлок завода Мосрентген, 37<br>8 (495) 645-25-95'})
                     +company-teaser({title: 'Медицинский центр косметологии и эпиляции «Доктор Лазер»', address1: 'г. Москва, Петровский бульвар, 21<br>8 (495) 178-00-20', address2: 'г. Москва, Мичуринский проспект, 25к2<br>8(495) 932-58-00', address3: 'г. Москва, посёлок завода Мосрентген, 37<br>8 (495) 645-25-95'})
 
-
+  div(uk-offcanvas="overlay:true")#sidebar
+    .uk-offcanvas-bar
+      button.uk-offcanvas-close
+        +svg({name: 'close'})
+      .offcanvas__inner
+        +partners-regions-menu()

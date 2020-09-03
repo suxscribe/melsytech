@@ -4,6 +4,11 @@
   }
   &__sections {
     list-style-type: none;
+    display: none; //hidden on mob & tab
+
+    @media (min-width: $breakpoint-medium) {
+      display: block;
+    }
 
     &-item {
       margin-bottom: percent-view(12px, $fhd-width, 'w');
@@ -13,6 +18,14 @@
       }
       & a {
         text-decoration: none;
+      }
+    }
+
+    &-dropdown {
+      margin-bottom: 42px;
+
+      @media (min-width: $breakpoint-medium) {
+        display: none;
       }
     }
   }
@@ -39,5 +52,13 @@
         margin-top: percent-view(59px, $fhd-width, 'w');
       }
     }
+  }
+
+  &__showmore {
+    position: absolute;
+    bottom: calc(
+      #{responsive-value(13.3px, 19px, $breakpoint-small, $fhd-width, 'w')} * 1.68 +
+        #{percent-view(14px)}
+    );
   }
 }

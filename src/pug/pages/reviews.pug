@@ -5,6 +5,19 @@ block variables
   - var description = 'Description';
   - var pageClass = 'page--reviews';
 
+mixin reviews-nav(args)
+  ul.news__sections(uk-scrollspy-nav="closest: li; scroll: true; offset: 100")
+    li.news__sections-item.news__sections-item--order: a(href="") Все аппараты
+    li.news__sections-item: a(href="#year2020") Magic Super
+    li.news__sections-item: a(href="#year2020") Magic Super Full
+    li.news__sections-item: a(href="#year2020") Magic Max
+    li.news__sections-item: a(href="#year2020") Magic One
+    li.news__sections-item: a(href="#year2020") Magic Lite
+    li.news__sections-item: a(href="#year2020") Magic Pico
+    li.news__sections-item: a(href="#year2020") Magic Bella
+    li.news__sections-item: a(href="#year2020") Magic Slim
+    li.news__sections-item: a(href="#year2020") Magic Gyno
+
 block content
   //- .ruler--right
   section.page-lead.page-lead--news
@@ -16,17 +29,9 @@ block content
   section.page-content
     .page-content__sidebar
       .page-content__sidebar-sticky(uk-sticky="bottom: true; offset: 160")
-        ul.news__sections(uk-scrollspy-nav="closest: li; scroll: true; offset: 100")
-          li.news__sections-item.news__sections-item--order: a(href="") Все аппараты
-          li.news__sections-item: a(href="#year2020") Magic Super
-          li.news__sections-item: a(href="#year2020") Magic Super Full
-          li.news__sections-item: a(href="#year2020") Magic Max
-          li.news__sections-item: a(href="#year2020") Magic One
-          li.news__sections-item: a(href="#year2020") Magic Lite
-          li.news__sections-item: a(href="#year2020") Magic Pico
-          li.news__sections-item: a(href="#year2020") Magic Bella
-          li.news__sections-item: a(href="#year2020") Magic Slim
-          li.news__sections-item: a(href="#year2020") Magic Gyno
+        +reviews-nav()
+
+    +mobile-nav-link({anchor: '#sidebar', name: 'Регионы'})
 
     .page-content__mainbar
       ul.reviews__list(uk-grid="masonry: true", class="uk-child-width-1-2@m uk-child-width-1-2@s")
@@ -35,3 +40,10 @@ block content
         +reviews-item({text: 'Технология, реализованная в аппарате Magic Super Full, позволяет делать эпиляцию пациентам с любым фототипом кожи и любым цветом волос без риска ожогов.', image: 'reviews-avatar.jpg', name: 'Селезнев Геннадий Петрович ', desc: 'Врач клиники эстетического омоложения в Перт, Австралия', video: 'video2'})
         +reviews-item({text: 'Уникальная двухволновая гибридная технология открывает беспрецедентные возможности настраивать параметры процедуры индивидуально для каждого пациента. Каждый пациент имеет различные проблемы в зависимости от выраженности поражения кожи солнцем и ожидаемого реабилитационного периода.', image: 'reviews-avatar.jpg', name: 'Селезнев Геннадий Петрович ', desc: 'Врач клиники эстетического омоложения в Перт, Австралия'})
         +reviews-item({text: 'Технология, реализованная в аппарате Magic Super Full, позволяет делать эпиляцию пациентам с любым фототипом кожи и любым цветом волос без риска ожогов. Технология, реализованная в аппарате Magic Super Full, позволяет делать эпиляцию пациентам с любым фототипом кожи и любым цветом волос без риска ожогов. Технология, реализованная в аппарате Magic Super Full, позволяет делать эпиляцию пациентам с любым фототипом кожи и любым цветом волос без риска ожогов. Технология, реализованная в аппарате Magic Super Full, позволяет делать эпиляцию пациентам с любым фототипом кожи и любым цветом волос без риска ожогов.', image: 'reviews-avatar.jpg', name: 'Селезнев Геннадий Петрович ', desc: 'Врач клиники эстетического омоложения в Перт, Австралия'})
+
+  div(uk-offcanvas="overlay:true")#sidebar
+    .uk-offcanvas-bar
+      button.uk-offcanvas-close
+        +svg({name: 'close'})
+      .offcanvas__inner
+        +reviews-nav()

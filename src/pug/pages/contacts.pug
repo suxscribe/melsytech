@@ -32,7 +32,7 @@ block content
       .company__map(id="map",data-coordinates="[56.349619, 43.798270]")
 
   section.page-content
-    .page-content__sidebar
+    .page-content__sidebar.page-content__sidebar--visible-s
       h2 Обратная связь
 
     .page-content__mainbar
@@ -40,11 +40,20 @@ block content
         p(class="uk-width-1-2@m") Наши сотрудники помогут вам подобрать оборудование в соответствии с вашими требованиями.
       form(action="").contacts__form.form.form--modal
         .form__grid(uk-grid="margin: ''", class="uk-child-width-1-2@m")
-          +form-row({name: "contacts-form-name", title: "Ваше имя", validate: 'empty', placeholder: ' '})
-          +form-row({name: "contacts-form-company", title: "Название компании", validate: 'empty', placeholder: ' '})
-          +form-row({name: "contacts-form-email", title: "Email", validate: 'email', placeholder: ' '})
-          +form-row({name: "contacts-form-phone", title: "Телефон", validate: 'phone', placeholder: ' '})
-        +form-row({textarea: true, name: "contacts-form-phone", title: "Телефон", validate: 'phone', placeholder: ' '})
+          .form__grid-column
+            +form-row({name: "contacts-form-name", title: "Ваше имя", validate: 'empty', placeholder: ' '})
+            +form-row({name: "contacts-form-company", title: "Название компании", validate: 'empty', placeholder: ' '})
+            +form-row({name: "contacts-form-email", title: "Email", validate: 'email', placeholder: ' '})
+            +form-row({name: "contacts-form-phone", title: "Телефон", validate: 'phone', placeholder: ' '})
+            .form__row
+              select.form-control.js-choice(name="contacts-form-appliance")
+                option(value="choice0") Выберите область применения
+                option(value="choice1") Гинекология
+                option(value="choice2") Хирургия
+                option(value="choice3") Флебология
+                option(value="choice4") Проктология
+          .form__grid-column
+            +form-row({textarea: true, name: "contacts-form-message", title: "Сообщение", validate: 'empty', placeholder: ' '})
         
         .form__row.form__submit
           button(type="submit").form__submit-button.button Отправить запрос

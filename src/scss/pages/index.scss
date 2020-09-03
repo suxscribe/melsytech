@@ -48,7 +48,7 @@
         // top: calc(#{$column-width} * 2 * 1.33333);
         // top: percent-view($product-image-height);
         // left: 0;
-        bottom: 0;
+        // bottom: 0;
 
         @media (min-width: $breakpoint-medium) {
           top: calc((#{$column-width} * 2 - #{$column-margin}) * 1.3);
