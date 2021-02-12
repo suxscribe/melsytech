@@ -18,6 +18,7 @@ a {
   }
   &:focus {
     // text-decoration: underline solid rgba(0,0,0,0.1);
+    outline: none;
   }
 }
 
@@ -55,7 +56,11 @@ h3,
   @include font-h3;
 }
 
-h4 {
+h4,
+.uk-h4,
+.h4 {
+  @include font-base;
+  font-weight: bold;
 }
 
 input,
@@ -64,16 +69,18 @@ select {
   font-family: $font-family;
 }
 
-p + h3 {
+p + h3,
+p + h4 {
   margin-top: percent-view(69px);
 }
 
-h3 + h3 {
+h3 + h3,
+h4 + h4 {
   margin-top: percent-view(69px);
 }
 
 p + p {
-  margin-top: percent-view(32px);
+  margin-top: $content-paragraph-margin;
 }
 
 .text {
@@ -83,5 +90,39 @@ p + p {
 
   &-lead {
     @include font-lead;
+  }
+}
+
+.text__content {
+  * + p,
+  * + ul,
+  * + ol,
+  * + dl,
+  * + pre,
+  * + address,
+  * + fieldset,
+  * + figure {
+    margin-top: $content-paragraph-margin;
+  }
+  & > ul + *,
+  & > ol + *,
+  & > p + ul,
+  & > p + ol {
+  }
+
+  & h1,
+  & h2,
+  & h3,
+  & h4 {
+    margin-bottom: percent-view(53px);
+  }
+
+  & ul {
+    list-style-type: disc;
+  }
+
+  & ul,
+  & ol {
+    padding-left: $base-list-padding-left;
   }
 }

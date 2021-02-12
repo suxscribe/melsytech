@@ -6,51 +6,51 @@ block variables
   - var pageClass = 'page--appliance-catalog';
 
 mixin appliance-catalog-nav(args)
-  ul.appliance__sections(uk-nav)
-    li.appliance__sections-item.uk-parent.uk-open
-      a.appliance__sections-link(href="")
+  ul.sidebar__mnav.sidebar__mnav--numbered(uk-nav, uk-sticky="bottom: true; offset: 160")
+    li.sidebar__mnav-section.uk-parent.uk-open
+      a.sidebar__mnav-section-link(href="", data-section="cosmetology")
         +svg({name: 'arrow-right'})
         | Косметология
-      ul.appliance__items
-        li.appliance__items-item: a.appliance__items-link(href="#app-epil", uk-scroll) Эпиляция
-        li.appliance__items-item: a.appliance__items-link(href="#app-omolozh", uk-scroll) Лазерное омоложение
-        li.appliance__items-item: a.appliance__items-link(href="#app-pigment", uk-scroll) Карбоновый пилинг
-        li.appliance__items-item: a.appliance__items-link(href="", uk-scroll) Удаление татуировок
-        li.appliance__items-item: a.appliance__items-link(href="", uk-scroll) Коррекция перманентного макияжа
-        li.appliance__items-item: a.appliance__items-link(href="", uk-scroll) Полировка кожи
-        li.appliance__items-item: a.appliance__items-link(href="", uk-scroll) Лечении внешних проявлений акне
-        li.appliance__items-item: a.appliance__items-link(href="", uk-scroll) Лечении шрамов пост-акне
-        li.appliance__items-item: a.appliance__items-link(href="", uk-scroll) Лечение мелазмы и гиперпигментации
-        li.appliance__items-item: a.appliance__items-link(href="", uk-scroll) Удаление пигментных пятен
-        li.appliance__items-item: a.appliance__items-link(href="", uk-scroll) Коррекция расширенных пор кожи
-        li.appliance__items-item: a.appliance__items-link(href="", uk-scroll) Удаление гемангиом и винных пятен
-        li.appliance__items-item: a.appliance__items-link(href="", uk-scroll) Лечение сосудистой патологии
-        li.appliance__items-item: a.appliance__items-link(href="", uk-scroll) Эпиляция гормон-зависимых зон
-        li.appliance__items-item: a.appliance__items-link(href="", uk-scroll) Коррекция рубцовой ткани
-        li.appliance__items-item: a.appliance__items-link(href="", uk-scroll) Лечении вирусных бородавок
-        li.appliance__items-item: a.appliance__items-link(href="", uk-scroll) Лечение онихомикозов
-    li.appliance__sections-item.uk-parent
-      a.appliance__sections-link(href="")
+      ul.sidebar__mnav-items
+        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="#app-epil", uk-scroll) Эпиляция
+        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="#app-omolozh", uk-scroll) Лазерное омоложение
+        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="#app-pigment", uk-scroll) Карбоновый пилинг
+        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="", uk-scroll) Удаление татуировок
+        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="", uk-scroll) Коррекция перманентного макияжа
+        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="", uk-scroll) Полировка кожи
+        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="", uk-scroll) Лечении внешних проявлений акне
+        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="", uk-scroll) Лечении шрамов пост-акне
+        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="", uk-scroll) Лечение мелазмы и гиперпигментации
+        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="", uk-scroll) Удаление пигментных пятен
+        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="", uk-scroll) Коррекция расширенных пор кожи
+        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="", uk-scroll) Удаление гемангиом и винных пятен
+        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="", uk-scroll) Лечение сосудистой патологии
+        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="", uk-scroll) Эпиляция гормон-зависимых зон
+        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="", uk-scroll) Коррекция рубцовой ткани
+        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="", uk-scroll) Лечении вирусных бородавок
+        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="", uk-scroll) Лечение онихомикозов
+    li.sidebar__mnav-section.uk-parent
+      a.sidebar__mnav-section-link(href="", data-section="ginekology")
         +svg({name: 'arrow-right'})
         | Гинекология
-      ul.appliance__items
-        li.appliance__items-item: a.appliance__items-link(href="#app-0") Лечение мелазмы
-        li.appliance__items-item: a.appliance__items-link(href="#app-1") Удаление рубцов
-        li.appliance__items-item: a.appliance__items-link(href="#app-2") Карбоновый пилинг
-    li.appliance__sections-item
-      a.appliance__sections-link(href="")
+      ul.sidebar__mnav-items
+        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="#app-0") Лечение мелазмы
+        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="#app-1") Удаление рубцов
+        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="#app-2") Карбоновый пилинг
+    li.sidebar__mnav-section
+      a.sidebar__mnav-section-link(href="", data-section="surgery")
         +svg({name: 'arrow-right'})
         | Хирургия
-    li.appliance__sections-item
-      a.appliance__sections-link(href="")
+    li.sidebar__mnav-section
+      a.sidebar__mnav-section-link(href="")
         +svg({name: 'arrow-right'})
         | Флебология
-    li.appliance__sections-item
-      a.appliance__sections-link(href="")
+    li.sidebar__mnav-section
+      a.sidebar__mnav-section-link(href="")
         +svg({name: 'arrow-right'})
         | Проктология
-    li.appliance__sections-item
-      a.appliance__sections-link(href="")
+    li.sidebar__mnav-section
+      a.sidebar__mnav-section-link(href="")
         +svg({name: 'arrow-right'})
         | Отолорингология
 

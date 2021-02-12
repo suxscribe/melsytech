@@ -172,7 +172,8 @@
     &-item {
       margin-bottom: percent-view(20px);
 
-      &--order {
+      &--order,
+      &.uk-active {
         font-weight: 600;
       }
       & a {

@@ -82,7 +82,7 @@
 
     &-left {
       flex: 1 1 50%;
-      margin-top: calc(-1 * #{responsive-fhd(64px, 128px)});
+      margin-top: calc(-1 * #{responsive-value(64px, 128px)});
 
       @media (min-width: $breakpoint-small) {
         margin-top: 0;
@@ -100,7 +100,7 @@
 
       & img {
         border-radius: 50%;
-        width: responsive-fhd(64px, 128px);
+        width: responsive-value(64px, 128px);
         overflow: hidden;
       }
     }

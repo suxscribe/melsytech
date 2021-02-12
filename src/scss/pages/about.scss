@@ -8,6 +8,10 @@
     }
   }
 
+  &-section-01 {
+    margin-top: responsive-value(24px, 51px, $mobile-min-width, $fhd-width);
+  }
+
   &-section-05 {
     &__video {
       margin-bottom: percent-view(34px);

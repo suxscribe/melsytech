@@ -52,6 +52,10 @@
     &-title {
       margin-bottom: percent-view(53px);
     }
+
+    &-content {
+
+    }
   }
 
   &__items {
@@ -133,6 +137,7 @@
       // padding-right: $column-margin;
       border-top: 1px solid $color-red;
       padding-top: percent-view(16px);
+      width: 100%;
 
       & a {
         display: block;

@@ -18,6 +18,10 @@
       }
       & a {
         text-decoration: none;
+
+        &.uk-active {
+          font-weight: 600;
+        }
       }
     }
 
@@ -34,7 +38,7 @@
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
-    margin-left: -#{$column-margin};
+    margin-left: calc(#{$column-margin} * -1);
 
     &-item {
       flex: 0 0 100%;
@@ -60,5 +64,7 @@
       #{responsive-value(13.3px, 19px, $breakpoint-small, $fhd-width, 'w')} * 1.68 +
         #{percent-view(14px)}
     );
+    left: 0;
+    right: $column-margin;
   }
 }

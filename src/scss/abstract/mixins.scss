@@ -1,5 +1,6 @@
 @mixin font-h1 {
-  $fhd-base-size: 5 * $base-font-size;
+  $fhd-base-size: 4.5 * $base-font-size;
+  $tablet-min-size: $fhd-base-size * 0.6;
   $tablet-base-size: $fhd-base-size * 0.8;
   $desktop-min-size: $fhd-base-size * 0.6;
 
@@ -10,10 +11,10 @@
 
   @media (min-width: $breakpoint-small) {
     font-size: responsive-value(
+      $tablet-min-size,
       $tablet-base-size,
-      $fhd-base-size,
-      $tablet-width,
-      $fhd-width,
+      $breakpoint-small,
+      $breakpoint-medium-max,
       'w'
     );
 
@@ -221,11 +222,25 @@
 }
 
 @mixin font-button {
+  $fhd-base-size: 1.6 * $base-font-size;
+  $tablet-base-size: $fhd-base-size * 0.8;
 
   font-size: 1.6rem;
   line-height: 1.5;
   font-weight: 500;
   letter-spacing: -0.01;
+
+  @media (min-width: $breakpoint-medium) {
+      font-size: calc(
+      #{responsive-value(
+          $tablet-base-size,
+          $fhd-base-size,
+          $breakpoint-medium,
+          $fhd-width,
+          'w'
+        )}
+    );
+  }
 
 }
 
@@ -273,7 +288,8 @@
   text-transform: uppercase;
 
   &:hover {
-    text-decoration: none;
+    // text-decoration: none;
+    
     color: $color-white;
   }
 
@@ -302,15 +318,20 @@
 
 @mixin product-section-gray {
   background: $gradient-1;
-  margin-left: -#{$container-margin};
+  margin-left: calc(#{$column-margin} * -1);
   margin-right: -#{$right-margin};
 
   padding: $product-section-gray-top $right-margin $product-section-gray-bottom
-    $container-margin;
+    $column-margin;
 }
 
 @mixin menu-item-arrow {
-  $arrow-margin: percent-view(12px);
+  $arrow-margin: responsive-value(
+            8px,
+            16px,
+            $mobile-min-width,
+            $fhd-width
+          );
   text-decoration: none;
   display: inline-flex;
   align-items: flex-start;
@@ -327,3 +348,4 @@
     transition: all var(--transition);
   }
 }
+

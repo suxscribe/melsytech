@@ -24,7 +24,7 @@ $dropdown-margin: 0;
 $offcanvas-bar-background: #fff;
 
 @import 'uikit/src/scss/components/mixin.scss';
-// @import 'uikit/src/scss/components/base.scss';
+@import 'uikit/src/scss/components/base.scss';
 
 // Elements
 // @import 'uikit/src/scss/components/link.scss';
@@ -144,8 +144,10 @@ $offcanvas-bar-background: #fff;
 ////////////////////////////////////////////////////////
 @import 'swiper/swiper.scss';
 @import 'swiper/components/effect-fade/effect-fade.scss';
-@import '/node_modules/simplebar/dist/simplebar.css';
+// @import '/node_modules/simplebar/dist/simplebar.css'; // Can't import css
 // @import '/node_modules/choices.js/public/assets/styles/choices.min.css';
+@import 'vendor/splitting.scss';
+@import 'vendor/splitting-cells.scss';
 
 @import 'vendor/simplebar.scss'; //simplebar override
 @import 'vendor/readmore.scss'; //
@@ -159,6 +161,7 @@ $offcanvas-bar-background: #fff;
 @import 'layouts/page';
 @import 'layouts/footer';
 
+@import 'components/preloader';
 @import 'components/button';
 @import 'components/intro.scss';
 @import 'components/section';
@@ -179,6 +182,7 @@ $offcanvas-bar-background: #fff;
 @import 'components/choices';
 @import 'components/publications';
 @import 'components/content';
+@import 'components/results';
 
 @import 'pages/index';
 @import 'components/product.scss';

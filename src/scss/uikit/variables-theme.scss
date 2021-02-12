@@ -93,9 +93,7 @@ $inverse-badge-color: $inverse-global-inverse-color !default;
 $inverse-badge-hover-color: $inverse-global-inverse-color !default;
 $base-body-background: $global-background !default;
 
-$global-font-family: 'PT Sans', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
-  sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
-  'Noto Color Emoji' !default;
+$global-font-family: $font-family !default;
 $base-body-font-family: $global-font-family !default;
 $base-body-font-weight: normal !default;
 $global-font-size: var(--font-size) !default;
@@ -106,10 +104,10 @@ $base-body-line-height: $global-line-height !default;
 $base-body-color: $global-color !default;
 $global-link-color: #0074d3 !default;
 $base-link-color: $global-link-color !default;
-$base-link-text-decoration: none !default;
+$base-link-text-decoration: underline !default;
 $global-link-hover-color: #0f6ecd !default;
 $base-link-hover-color: $global-link-hover-color !default;
-$base-link-hover-text-decoration: underline !default;
+$base-link-hover-text-decoration: ignore !default; //to ignore default underline
 $base-strong-font-weight: bolder !default;
 $base-code-font-size: $global-small-font-size !default;
 $base-code-font-family: Consolas, monaco, monospace !default;
@@ -122,7 +120,7 @@ $base-mark-color: $global-color !default;
 $base-quote-font-style: italic !default;
 $base-small-font-size: 80% !default;
 $base-margin-vertical: $global-margin !default;
-$base-heading-font-family: 'Roboto Condensed', sans-serif;
+$base-heading-font-family: $font-family;
 $base-heading-font-weight: 700 !default;
 $base-heading-color: $global-emphasis-color !default;
 $base-heading-text-transform: none !default;

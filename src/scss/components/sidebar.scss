@@ -14,7 +14,7 @@
     }
 
     &-section {
-      margin-bottom: percent-view(32px);
+      margin-bottom: 32px;
 
       &.uk-active,
       &:hover,
@@ -35,12 +35,13 @@
         }
       }
       &-link {
+        @include font-base;
         font-weight: 600;
 
         @include menu-item-arrow;
 
         & svg {
-          margin-right: percent-view(16px);
+          fill: $color-red;
         }
       }
     }
@@ -50,11 +51,19 @@
       margin-top: percent-view(24px);
 
       &-item {
-        margin-bottom: percent-view(12px);
+        display: flex;
+        margin-bottom: responsive-value(
+          6px,
+          12px,
+          $mobile-min-width,
+          $fhd-width
+        );
+        align-items: center;
 
         &:before {
+          flex: 0 0 auto;
           display: inline-block;
-          width: percent-view(25px);
+          width: 25px;
 
           counter-increment: section;
           content: counter(section, decimal-leading-zero);
@@ -65,8 +74,13 @@
       }
 
       &-link {
+        flex: 1 1 auto;
         @include font-small;
         text-decoration: none;
+
+        &:hover {
+          text-decoration: none;
+        }
       }
     }
   }

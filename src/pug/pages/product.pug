@@ -9,6 +9,8 @@ block variables
 
 block content
   //- .ruler--right
+  style.
+    .page-lead__bg:before {background: radial-gradient(80vw 60vw at center,#0fb1b9 0,rgba(5, 7, 11, 0) 80%,rgba(5, 7, 11, 0) 100%);}
   section.page-lead.page-lead--product
     .page-lead__bg.page-lead__bg--black
 
@@ -18,8 +20,7 @@ block content
       h1.page-lead__title Magic Super Full
       h2.page-lead__description Клиника лазерной косметологии в одном профессиональном аппарате, совмещающем три режима работы: Q-switch, короткий импульс, длинный импульс.
       .page-lead__logo
-        .product__logo
-          img(src="assets/magic-superfull-logo.png", alt="Magic Super Full")
+        img(src="assets/magic-superfull-logo.png", alt="Magic Super Full")
         //- a(uk-scroll="offset: 72",href="#product-content").scrolldown.scrolldown--dark
           .scrolldown__icon
             +svg({ name: 'arrow-down' })
@@ -53,7 +54,8 @@ block content
     li.product__tabs-content
       .product__sidebar.page-content__sidebar
         .page-content__sidebar-sticky(uk-sticky="bottom: true; offset: 160")
-          ul.page-content__sidebar-nav(uk-scrollspy-nav="closest: li; scroll: true; offset: " + scrollOffsetProduct )
+          //- (uk-scrollspy-nav="closest: li; scroll: true; offset: " + 300 )
+          ul.page-content__sidebar-nav.scrollspy
             +sidebar-item({name: 'Описание', link: '#product-section-desc'})
             +sidebar-item({name: 'Области применения', link: '#product-section-appliance'})
             +sidebar-item({name: 'Преимущества', link: '#product-section-advantages'})
@@ -91,21 +93,21 @@ block content
         .product__section.product-section-appliance#product-section-appliance
           .section__top 
             .section__subtitle Области применения
-          div(uk-grid, class="uk-child-width-1-2@s")
-            div
-                h3.section__title.h1 Много-функциональная лазерная система
-            div
-              ul(data-simplebar).product-section-appliance__list
-                li.product-section-appliance__item: a(href="#appliance-01", uk-toggle) Удаление пигментных образований
-                li.product-section-appliance__item: a(href="#appliance-01") Методики омоложения кожи
-                li.product-section-appliance__item: a(href="#appliance-01") Коррекция рубцовых изменений
-                li.product-section-appliance__item: a(href="#appliance-01") Удаление сосудистых образований
-                li.product-section-appliance__item: a(href="#appliance-01") Удаление полноцветных татуировок
-                li.product-section-appliance__item: a(href="#appliance-01") Карбоновый пилинг
-                li.product-section-appliance__item: a(href="#appliance-01") Лечение акне
-                li.product-section-appliance__item: a(href="#appliance-01") Лазерная эпиляция
-                li.product-section-appliance__item: a(href="#appliance-01") Лечение грибковых поражений
-                li.product-section-appliance__item: a(href="#appliance-01") Лечение вирусных бородавок
+          //div(uk-grid, class="uk-child-width-1-2@s")
+          //  div
+          //      h3.section__title.h1 Много-функциональная лазерная система
+          //  div
+          ul(class="uk-column-1-2@s").product-section-appliance__list
+            li.product-section-appliance__item: a(href="#appliance-01", uk-toggle) Удаление пигментных образований
+            li.product-section-appliance__item: a(href="#appliance-01") Методики омоложения кожи
+            li.product-section-appliance__item: a(href="#appliance-01") Коррекция рубцовых изменений
+            li.product-section-appliance__item: a(href="#appliance-01") Удаление сосудистых образований
+            li.product-section-appliance__item: a(href="#appliance-01") Удаление полноцветных татуировок
+            li.product-section-appliance__item: a(href="#appliance-01") Карбоновый пилинг
+            li.product-section-appliance__item: a(href="#appliance-01") Лечение акне
+            li.product-section-appliance__item: a(href="#appliance-01") Лазерная эпиляция
+            li.product-section-appliance__item: a(href="#appliance-01") Лечение грибковых поражений
+            li.product-section-appliance__item: a(href="#appliance-01") Лечение вирусных бородавок
         .product__section.product-section-advantages#product-section-advantages
           .section__top 
             .section__subtitle Приемущества
@@ -172,7 +174,49 @@ block content
                 a(href="#").product-section-roi__button.button Расчитать окупаемость
         .product__section.product-section-results#product-section-results
           .section__subtitle Результаты процедур
-          +procedures-slider-section({class: '01'})
+          //- +procedures-slider-section({class: '01'})
+          .results__slider.swiper-container
+            ul.swiper-wrapper
+              li.results__slider-item.swiper-slide
+                .results__left.section__left
+                  h1.results__slide-title.section__title Уменьшение морщин
+                  .results__slide-text Уменьшение проявлений как умеренных, так и выраженных морщин и складок на лице для заметно более молодого внешнего вида кожи.
+                  a(href=`#`) Перейти к статье
+                .results__right.section__right
+                  .results__slider-right.swiper-container(class=`results__slider-right--01`, data-swiper="results")
+                    ul.swiper-wrapper
+                      li.results__slider-right-item.swiper-slide: +procedures-teaser('procedures-teaser-1.jpg')
+                      li.results__slider-right-item.swiper-slide: +procedures-teaser('procedures-teaser-2.jpg')
+                      li.results__slider-right-item.swiper-slide: +procedures-teaser('procedures-teaser-3.jpg')
+                      li.results__slider-right-item.swiper-slide: +procedures-teaser('procedures-teaser-1.jpg')
+                    .results__slider-right-nav
+                      .results__slider-right-arrow.results__slider-right-arrow--left
+                        +svg({ name: 'arrow-left'})
+                      .results__slider-right-arrow.results__slider-right-arrow--right
+                        +svg({ name: 'arrow-right'})
+              li.results__slider-item.swiper-slide
+                .results__left.section__left
+                  h1.results__slide-title.section__title Уморщение меньшин
+                  .results__slide-text Уменьшение проявлений как умеренных, так и выраженных морщин и складок на лице для заметно более молодого внешнего вида кожи.
+                  a(href=`#`) Перейти к статье
+                .results__right.section__right
+                  .results__slider-right.swiper-container(class=`results__slider-right--01`, data-swiper="results")
+                    ul.swiper-wrapper
+                      li.results__slider-right-item.swiper-slide: +procedures-teaser('procedures-teaser-1.jpg')
+                      li.results__slider-right-item.swiper-slide: +procedures-teaser('procedures-teaser-2.jpg')
+                      li.results__slider-right-item.swiper-slide: +procedures-teaser('procedures-teaser-3.jpg')
+                      li.results__slider-right-item.swiper-slide: +procedures-teaser('procedures-teaser-1.jpg')
+                    .results__slider-right-nav
+                      .results__slider-right-arrow.results__slider-right-arrow--left
+                        +svg({ name: 'arrow-left'})
+                      .results__slider-right-arrow.results__slider-right-arrow--right
+                        +svg({ name: 'arrow-right'})
+
+            .results__slider-nav.slider__nav
+              .slider__arrow.slider__arrow--left.results__slider-nav--left
+                +svg({ name: 'slider-arrow-left'})
+              .slider__arrow.slider__arrow--right.results__slider-nav--right
+                +svg({ name: 'slider-arrow-right'})
 
         .product__section.product-section-instruments#product-section-instruments
           .section__subtitle Рабочие инструменты
@@ -245,12 +289,12 @@ block content
       .section__top 
         .section__subtitle Манипулы
       .product-section-catalog__content
-        +product-catalog-section({title: 'Совместимые с аппаратом манипулы', catalogLink: false  })
+        +product-catalog-section({title: 'Совместимые с аппаратом манипулы', catalogLink: false, navClass: 'slider__nav--offset'  })
     
     .product-section-procedures.section.section--padding
       .section__subtitle Процедуры
       .product-section-procedures__content
-        +procedures-slider-section({class: '02', showDevices: true})
+        +procedures-slider-section({class: '02', showDevices: true, navClass: 'slider__nav--offset'})
 
   //- offcanvas
   div(uk-offcanvas="flip:true")#appliance-01
@@ -267,6 +311,9 @@ block content
           | — Частота работы до 20 Гц
           br
           | — Длины волн: 1064, 532, 585, 650 нм
+          ul
+            li Диаметр рабочего луча до 7 мм
+            li Частота работы до 20 Гц
 
         .product-offcanvas__content
           p Длительность импульсов и флюенс можно подбирать для каждого пациента индивидуально. Это позволяет за один проход проработать все слои кожи без нарушения ее целостности. Эффект одного пакетного импульса в несколько раз превосходит эффект единичного импульса. Подобный способ воздействия сокращает время проведения процедуры и обеспечивает более выраженный результат, что объясняет его высокую популярность у пациентов

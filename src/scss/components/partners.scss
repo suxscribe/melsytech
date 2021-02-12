@@ -2,17 +2,40 @@
   &__left {
     padding-right: 0;
     margin-bottom: percent-view(46px, $mobile-min-width, 'w');
+    pointer-events: none;
+
     @media (min-width: $breakpoint-small) {
       margin-bottom: percent-view(57px, $tablet-width, 'w');
+      height: percent-view(600px);
     }
     @media (min-width: $breakpoint-medium) {
       margin-bottom: 0;
+      flex: 1 1 auto;
     }
+    // pointer-events: none;
+    z-index: 1;
   }
   &__right {
-    flex: 0 0 auto;
-    padding-right: $right-margin;
+    flex: 1 1 auto;
+    padding-right: $container-margin;
     position: relative;
+    z-index: 2;
+
+    @media (min-width: $breakpoint-medium) {
+      flex: 0 0 calc(#{$column-width} * 3 + #{$container-margin});
+
+      max-width: calc(11.45833vw * 3 + 4.16667vw);
+    }
+  }
+  &__top {
+    z-index: 1;
+    position: relative;
+  }
+
+  &__section {
+    &-title {
+      pointer-events: none;
+    }
   }
 
   &__list {
@@ -20,13 +43,13 @@
     max-height: 80vh;
 
     @media (min-width: $breakpoint-medium) {
-      width: percent-view(604px);
+      // width: percent-view(604px);
       max-height: percent-view(557px, $fhd-height, 'h');
     }
   }
 
   &__item {
-    margin-bottom: responsive-fhd(17px, 24px);
+    margin-bottom: responsive-value(17px, 24px);
 
     &.uk-active &-link {
       text-decoration: none;
@@ -39,8 +62,10 @@
       position: relative;
 
       &.drop--active,
-      &.uk-active {
-        text-decoration: none;
+      &.uk-active,
+      &.hover {
+        text-decoration-color: rgba($color-red, 0);
+        text-underline-offset: 0.7em;
         color: $color-red;
       }
 
@@ -50,54 +75,7 @@
         margin-left: 2px;
       }
     }
-
-    &-drop {
-      width: percent-view(604px, $fhd-width, 'w');
-      background-color: $color-white;
-      padding: percent-view(73px, $fhd-height, 'h')
-        percent-view(64px, $fhd-width, 'w') percent-view(49px, $fhd-height, 'h')
-        percent-view(56px, $fhd-width, 'w');
-      box-shadow: 0 10px 20px rgba($color-black, 0.16);
-      position: relative;
-      //hidden by default. drop--active enables
-      pointer-events: none;
-      opacity: 0;
-      visibility: hidden;
-
-      transition: opacity var(--transition), visibility 0s linear 0.3s;
-
-      &.drop--active,
-      &.uk-active {
-        opacity: 1;
-        visibility: visible;
-        pointer-events: all;
-        transition-delay: 0s, 0s;
-      }
-
-      &-close {
-        background: none;
-        border: none;
-        width: responsive-fhd(16px, 32px);
-        height: responsive-fhd(16px, 32px);
-
-        position: absolute;
-        right: percent-view(27px, $fhd-width, 'w');
-        top: percent-view(22px, $fhd-height, 'h');
-        cursor: pointer;
-
-        &:hover {
-          & svg {
-            fill: $color-red;
-          }
-        }
-
-        & svg {
-          max-width: 80%;
-          transform: rotate(45deg);
-        }
-      }
-    }
-
+    
     &-title {
       @include font-h3;
       margin-bottom: percent-view(24px, $fhd-height, 'h');
@@ -135,11 +113,56 @@
     top: 0;
     right: 0;
     bottom: 0;
-    z-index: -1;
+    z-index: 0;
     margin-left: -$container-margin;
 
     @media (min-width: $breakpoint-medium) {
-      margin: -#{percent-view(144px, $fhd-height, 'h')} -#{$container-margin};
+      // margin: -#{percent-view(92px, $fhd-height, 'h')} -#{$container-margin};
+      margin-right: calc(#{$column-width} * 3 + #{$container-margin});
+    }
+
+    &-markers {
+      display: none;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      width: 100%;
+
+      @media (min-width: $breakpoint-medium) {
+        display: block;
+      }
+    }
+
+    &-circle-0 {
+      transition: all var(--transition);
+      opacity: 0.6;
+      enable-background: new;
+      r: 8px;
+      fill: $color-red;
+
+      &:hover,
+      a:hover &,
+      a.hover & {
+        // fill: var(--color-accent);
+        // transform: scale(1.2);
+        opacity: 1;
+        r: 12px;
+      }
+    }
+
+    &-circle-1 {
+      display: block;
+      fill: #ffffff;
+      pointer-events: none;
+      r: 6px;
+      transition: all var(--transition);
+
+      &:hover,
+      a:hover &,
+      a.hover & {
+        fill: $color-red;
+      }
     }
 
     & img,
@@ -152,6 +175,7 @@
       @media (min-width: $breakpoint-medium) {
         object-fit: contain;
         object-position: top left;
+        height: auto;
       }
     }
   }

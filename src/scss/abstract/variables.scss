@@ -94,12 +94,15 @@ $header-height-small: 82px;
 
 $right-margin-px: 136px; // container margin + column margin
 $right-margin-px-medium: 88px;
+
+$column-margin-px-small: 25px;
 $column-margin-px: 56px;
 
 $column-width: percent-view(220px, $fhd-width, 'w'); // 8 columns
-$column-width-medium: percent-view(162px, $tablet-width); // 6 columns
+$column-width-medium: percent-view(112px, $tablet-width); // 6 columns
 $column-width-small: percent-view(106px, $mobile-min-width, 'w'); // 3 columns
 
+// $container-margin: percent-view(80px, $fhd-width, 'w');
 $container-margin: percent-view(80px, $fhd-width, 'w');
 $container-margin-medium: 48px;
 $container-margin-small: 24px;
@@ -114,7 +117,14 @@ $right-margin: percent-view($right-margin-px, $fhd-width, 'w');
 // );
 // $right-margin: calc(#{$container-margin} + #{$right-addon});
 
-$column-margin: percent-view($column-margin-px, $fhd-width, 'w');
+$column-margin: responsive-value(
+  $column-margin-px-small,
+  $column-margin-px,
+  $mobile-min-width,
+  $fhd-width,
+  'w'
+);
+// $column-margin: percent-view($column-margin-px, $fhd-width, 'w');
 
 $product-image-height: 525px;
 
@@ -123,7 +133,7 @@ $product-section-gray-top: responsive-value(
   60px,
   94px,
   $mobile-min-width,
-  $tablet-width,
+  $fhd-width,
   'w'
 );
 $product-section-gray-bottom: responsive-value(
@@ -139,3 +149,7 @@ $slide-arrow-height: 24px;
 $slide-arrow-width: calc(#{$slide-arrow-height} * 2);
 
 $arrow-size: 19px;
+
+$chevron-down: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 15.6 8.5' style='enable-background:new 0 0 15.6 8.5;' xml:space='preserve'%3E%3Cpolygon points='15.6,0.7 14.8,0 7.8,7.1 0.7,0 0,0.7 7.1,7.8 7.1,7.8 7.8,8.5 7.8,8.5 7.8,8.5 8.5,7.8 8.5,7.8 '/%3E%3C/svg%3E%0A");
+
+$content-paragraph-margin: percent-view(32px);

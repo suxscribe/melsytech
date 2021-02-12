@@ -24,6 +24,7 @@
   &:hover,
   &:focus {
     border-color: $color-red;
+    text-decoration: none;
   }
 
   &__sidebar {
@@ -34,5 +35,32 @@
       height: 32px;
       margin-right: 24px;
     }
+  }
+}
+
+[ripple] {
+  position: relative;
+  overflow: hidden;
+}
+[ripple] .ripple--container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+[ripple] .ripple--container span {
+  transform: translate(-50%, -50%) scale(0);
+  border-radius: 100%;
+  position: absolute;
+  opacity: 0.75;
+  background-color: $color-red;
+  animation: ripple var(--transition);
+}
+
+@keyframes ripple {
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(2);
   }
 }

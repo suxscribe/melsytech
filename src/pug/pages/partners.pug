@@ -6,31 +6,31 @@ block variables
   - var pageClass = 'page--partners';
 
 mixin partners-regions-menu(args)
-  ul.sidebar__mnav(uk-nav)
-    li.sidebar__mnav-section.uk-parent.uk-open
+  ul.sidebar__mnav(uk-nav="active: false")
+    li.sidebar__mnav-section.uk-parent.uk-open(data-region="moskovskaya")
       a.sidebar__mnav-section-link(href="")
         +svg({name: 'arrow-right'})
         | Московская область
       ul.sidebar__mnav-items
-        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="#region-msk",uk-scroll) Москва
-        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="#region-balash",uk-scroll) Балашиха
-        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="#region-odints",uk-scroll) Одинцово
+        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="#city-msk",uk-scroll) Москва
+        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="#city-balash",uk-scroll) Балашиха
+        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="#city-odints",uk-scroll) Одинцово
         li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="",uk-scroll) Коломна
         li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="",uk-scroll) Красногорск
         li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="",uk-scroll) Люберцы
-    li.sidebar__mnav-section.uk-parent
+    li.sidebar__mnav-section.uk-parent(data-region="leningradskaya")
       a.sidebar__mnav-section-link(href="")
         +svg({name: 'arrow-right'})
         | Ленинградская область
       ul.sidebar__mnav-items
-        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="#region-0") Санкт-Петербург
+        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="#city-spb") Санкт-Петербург
 
-    li.sidebar__mnav-section.uk-parent
+    li.sidebar__mnav-section.uk-parent(data-region="nizhegorodskaya")
       a.sidebar__mnav-section-link(href="")
         +svg({name: 'arrow-right'})
         | Нижегородская област
       ul.sidebar__mnav-items
-        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="#region-0") Нижний Новгород
+        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="#city-nn") Нижний Новгород
 
 block content
   //- .ruler--right
@@ -41,45 +41,31 @@ block content
       h1.page-lead__title Партнеры
           
   section.partners-page__top
-    ul.partners-page__switch(uk-switcher="connect: .uk-switcher")
-      li.partners-page__switch-item: a(href="#") Карта
-      li.partners-page__switch-item: a(href="#") Список
+    ul.partners-page__switch
+      li.partners-page__switch-item.uk-active: a(href="partners.html") Карта
+      li.partners-page__switch-item: a(href="partners-list.html") Список
   
   section.partners-page__content
-    .uk-switcher.partners-page__switcher
-      li.partners-page__switcher-item
-        .partners-page__map-wrap
-          #map.partners-page__map
-          .partners-page__filter
-            select.form-control.js-choice()
-              option(value="choice0") Все области применения
-              option(value="choice1") Гинекология
-              option(value="choice2") Хирургия
-              option(value="choice3") Флебология
-              option(value="choice4") Проктология
-            
-      li.partners-page__switcher-item
-        .partners-page__list
-          section.page-content
-            .page-content__sidebar
-              .page-content__sidebar-sticky(uk-sticky="bottom: true; offset: 160")
-                +partners-regions-menu()
+    .partners-page__map-wrap
+      .partners-page__filter
+        select.form-control.js-choice()
+          option(value="") Все области применения
+          option(value="25") Гинекология
+          option(value="ifa") Хирургия
+          option(value="30") Флебология
+          option(value="27") Проктология
+      #partners-map.partners-page__map
+      .partners-page__popup
+        .partners-page__popup-close
+          +svg({'name': 'close'})
+        .partners-page__popup-inner
+          .partner-teaser
+            .partners__item-title Сеть клиник лазерной эпиляции
+            .partners__item-address Ла ла ла адрес
+            .partners__item-phone: a(href="tel:+78310000000") 123-456-789
+            a(href="/").partners__item-readmore Подробнее
 
-            +mobile-nav-link({anchor: '#sidebar', name: 'Регионы'})
 
-            .page-content__mainbar
-              .partners-page__section
-                .partners-page__section-title Московская область
-                .partners-page__region#region-msk
-                  .partners-page__region-title Москва
-                  .partners-page__region-items
-                    +company-teaser({title: 'Медицинский центр косметологии и эпиляции «Доктор Лазер»', address1: 'г. Москва, Петровский бульвар, 21 <br>8 (495) 178-00-20', address2: 'г. Москва, Мичуринский проспект, 25к2<br>8(495) 932-58-00', address3: 'г. Москва, посёлок завода Мосрентген, 37<br>8 (495) 645-25-95'})
-                    +company-teaser({title: 'Медицинский центр косметологии и эпиляции «Доктор Лазер»', address1: 'г. Москва, Петровский бульвар, 21<br>8 (495) 178-00-20', address2: 'г. Москва, Мичуринский проспект, 25к2<br>8(495) 932-58-00', address3: 'г. Москва, посёлок завода Мосрентген, 37<br>8 (495) 645-25-95'})
-                .partners-page__region#region-balash
-                  .partners-page__region-title Балашиха
-                  .partners-page__region-items
-                    +company-teaser({title: 'Медицинский центр косметологии и эпиляции «Доктор Лазер»', address1: 'г. Москва, Петровский бульвар, 21<br>8 (495) 178-00-20', address2: 'г. Москва, Мичуринский проспект, 25к2<br>8(495) 932-58-00', address3: 'г. Москва, посёлок завода Мосрентген, 37<br>8 (495) 645-25-95'})
-                    +company-teaser({title: 'Медицинский центр косметологии и эпиляции «Доктор Лазер»', address1: 'г. Москва, Петровский бульвар, 21<br>8 (495) 178-00-20', address2: 'г. Москва, Мичуринский проспект, 25к2<br>8(495) 932-58-00', address3: 'г. Москва, посёлок завода Мосрентген, 37<br>8 (495) 645-25-95'})
 
   div(uk-offcanvas="overlay:true")#sidebar
     .uk-offcanvas-bar
@@ -87,3 +73,384 @@ block content
         +svg({name: 'close'})
       .offcanvas__inner
         +partners-regions-menu()
+  
+  script.
+    const mapMarkersJson = '{"11":{"name":"Сеть клиник лазерной эпиляции и косметологии «Подружки»","address":"г. Нижний Новгород, Автозаводский район, ул. Краснодонцев, дом 5","phone":"8 (831) 260-16-63","link":"company.html"},"12":{"name":"Сеть клиник лазерной эпиляции и косметологии «Друзьяшки»","address":"г. Нижний Новгород, Автозаводский район, ул. Краснодонцев, дом 5","phone":"8 (831) 260-16-63","link":"company.html"},"50":{"name":"Сеть клиник лазерной эпиляции и косметологии «Ребятушки»","address":"г. Нижний Новгород, Автозаводский район, ул. Краснодонцев, дом 5","phone":"8 (831) 260-16-63","link":"company.html"}}'
+    const mapMarkers5 = {
+            type: 'FeatureCollection',
+            features: [
+              {
+                type: 'Feature',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [56.249586999999998, 43.856462000000001],
+                },
+                properties: {
+                  poi_id: '109669',
+                  poi_service: '_74_8_13_7_',
+                  poi_doctors: '_covid_cov_ifa_igm_cov_ifa_igg_',
+                  poi_city: '41194',
+                  poi_region: '81',
+
+                },
+                options: { hasBalloon: true, preset: 'gemotest#labs' },
+              },
+              {
+                type: 'Feature',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [56.283085404139001, 43.981540238778003],
+                },
+                properties: {
+                  poi_id: '96881',
+                  poi_service: '_74_8_13_7_',
+                  poi_doctors: '_25_115_covid_cov_ifa_igm_cov_ifa_igg_',
+                  poi_city: '41194',
+                  poi_region: '81',
+
+                },
+                options: { hasBalloon: true, preset: 'gemotest#labs' },
+              },
+              {
+                type: 'Feature',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [56.238179239262998, 43.956534805555997],
+                },
+                properties: {
+                  poi_id: '90294',
+                  poi_service: '_74_8_13_7_',
+                  poi_doctors: '_25_covid_cov_ifa_igm_cov_ifa_igg_',
+                  poi_city: '41194',
+                  poi_region: '81',
+
+                },
+                options: { hasBalloon: true, preset: 'gemotest#labs' },
+              },
+              {
+                type: 'Feature',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [56.346831815412003, 43.867681855820003],
+                },
+                properties: {
+                  poi_id: '83067',
+                  poi_service: '_74_8_7_',
+                  poi_doctors: '_covid_cov_ifa_igm_cov_ifa_igg_',
+                  poi_city: '41194',
+                  poi_region: '81',
+
+                },
+                options: { hasBalloon: true, preset: 'gemotest#labs' },
+              },
+              {
+                type: 'Feature',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [56.336608195598998, 43.919419921322998],
+                },
+                properties: {
+                  poi_id: '78219',
+                  poi_service: '_74_8_13_7_',
+                  poi_doctors: '_25_27_covid_cov_ifa_igm_cov_ifa_igg_',
+                  poi_city: '41194',
+                  poi_region: '81',
+
+                },
+                options: { hasBalloon: true, preset: 'gemotest#labs' },
+              },
+              {
+                type: 'Feature',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [56.366485730423001, 43.822442978635998],
+                },
+                properties: {
+                  poi_id: '78118',
+                  poi_service: '_74_8_7_',
+                  poi_doctors: '_cov_ifa_igm_cov_ifa_igg_',
+                  poi_city: '41194',
+                  poi_region: '81',
+
+                },
+                options: { hasBalloon: true, preset: 'gemotest#labs' },
+              },
+              {
+                type: 'Feature',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [56.291581300548998, 44.004525991401998],
+                },
+                properties: {
+                  poi_id: '77975',
+                  poi_service: '_74_8_13_7_',
+                  poi_doctors: '_25_27_covid_cov_ifa_igm_cov_ifa_igg_',
+                  poi_city: '41194',
+                  poi_region: '81',
+
+                },
+                options: { hasBalloon: true, preset: 'gemotest#labs' },
+              },
+              {
+                type: 'Feature',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [56.316196183365001, 43.997555807951997],
+                },
+                properties: {
+                  poi_id: '77868',
+                  poi_service: '_102_74_8_13_7_',
+                  poi_doctors: '_25_27_covid_cov_ifa_igm_cov_ifa_igg_',
+                  poi_city: '41194',
+                  poi_region: '81',
+
+                },
+                options: { hasBalloon: true, preset: 'gemotest#labs' },
+              },
+              {
+                type: 'Feature',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [56.313947568373003, 44.018695237434002],
+                },
+                properties: {
+                  poi_id: '72703',
+                  poi_service: '_74_8_13_7_',
+                  poi_doctors: '_24_27_30_cov_ifa_igm_cov_ifa_igg_',
+                  poi_city: '41194',
+                  poi_region: '81',
+
+                },
+                options: { hasBalloon: true, preset: 'gemotest#labs' },
+              },
+              {
+                type: 'Feature',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [56.282882086268003, 44.034590181139002],
+                },
+                properties: {
+                  poi_id: '68693',
+                  poi_service: '_74_8_7_',
+                  poi_doctors: '_covid_cov_ifa_igm_cov_ifa_igg_',
+                  poi_city: '41194',
+                  poi_region: '81',
+
+                },
+                options: { hasBalloon: true, preset: 'gemotest#labs' },
+              },
+              {
+                type: 'Feature',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [56.295818334906997, 44.077699371946998],
+                },
+                properties: {
+                  poi_id: '68669',
+                  poi_service: '_74_8_7_',
+                  poi_doctors: '_covid_cov_ifa_igm_cov_ifa_igg_',
+                  poi_city: '41194',
+                  poi_region: '81',
+
+                },
+                options: { hasBalloon: true, preset: 'gemotest#labs' },
+              },
+              {
+                type: 'Feature',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [56.289873467234997, 43.932516601852001],
+                },
+                properties: {
+                  poi_id: '61029',
+                  poi_service: '_74_8_13_7_',
+                  poi_doctors: '_covid_cov_ifa_igm_cov_ifa_igg_',
+                  poi_city: '41194',
+                  poi_region: '81',
+
+                },
+                options: { hasBalloon: true, preset: 'gemotest#labs' },
+              },
+              {
+                type: 'Feature',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [56.260382171581, 43.857671660049],
+                },
+                properties: {
+                  poi_id: '30499',
+                  poi_service: '_74_8_13_7_',
+                  poi_doctors: '_covid_cov_ifa_igm_cov_ifa_igg_',
+                  poi_city: '41194',
+                  poi_region: '81',
+
+                },
+                options: { hasBalloon: true, preset: 'gemotest#labs' },
+              },
+              {
+                type: 'Feature',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [56.237211530655998, 43.843292537723997],
+                },
+                properties: {
+                  poi_id: '17951',
+                  poi_service: '_74_8_13_7_',
+                  poi_doctors: '_cov_ifa_igm_cov_ifa_igg_',
+                  poi_city: '41194',
+                  poi_region: '81',
+
+                },
+                options: { hasBalloon: true, preset: 'gemotest#labs' },
+              },
+              {
+                type: 'Feature',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [56.358122942705997, 43.852419421011],
+                },
+                properties: {
+                  poi_id: '16280',
+                  poi_service: '_74_8_13_7_',
+                  poi_doctors: '_cov_ifa_igm_cov_ifa_igg_',
+                  poi_city: '41194',
+                  poi_region: '81',
+
+                },
+                options: { hasBalloon: true, preset: 'gemotest#labs' },
+              },
+              {
+                type: 'Feature',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [56.343892473445003, 43.931983205724997],
+                },
+                properties: {
+                  poi_id: '14062',
+                  poi_service: '_74_8_13_7_',
+                  poi_doctors: '_covid_cov_ifa_igm_cov_ifa_igg_',
+                  poi_city: '41194',
+                  poi_region: '81',
+
+                },
+                options: { hasBalloon: true, preset: 'gemotest#labs' },
+              },
+              {
+                type: 'Feature',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [55.727693, 37.644333],
+                },
+                properties: {
+                  poi_id: '111001',
+                  poi_service: '_74_8_13_7_',
+                  poi_doctors: '_covid_cov_cov_ifa_',
+                  poi_city: '12345',
+                  poi_region: '77',
+
+                },
+                options: { hasBalloon: true, preset: 'gemotest#labs' },
+              },
+              {
+                type: 'Feature',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [55.725595, 37.643120],
+                },
+                properties: {
+                  poi_id: '111001',
+                  poi_service: '_74_8_13_7_',
+                  poi_doctors: '_covid__24_27_30_',
+                  poi_city: '12345',
+                  poi_region: '77',
+
+                },
+                options: { hasBalloon: true, preset: 'gemotest#labs' },
+              },
+              {
+              type: 'Feature',
+              geometry: {
+                type: 'Point',
+                coordinates: [55.767899, 37.618938],
+              },
+              properties: {
+                poi_id: '11',
+                poi_doctors: '_COSMETOLOGY_GINEKOLOGY_PHLEBOLOGY_PROCTOLOGY_',
+                poi_city: '41194',
+                poi_region: '81',
+              },
+              options: {
+                hasBalloon: true,
+              },
+            },
+            ],
+          };
+    const mapMarkers = {
+          type: 'FeatureCollection',
+          features: [
+            {
+              type: 'Feature',
+              geometry: {
+                type: 'Point',
+                coordinates: [55.767899, 37.618938],
+              },
+              properties: {
+                poi_id: '11',
+                poi_doctors: '_COSMETOLOGY_GINEKOLOGY_PHLEBOLOGY_PROCTOLOGY_',
+                poi_city: '41194',
+                poi_region: '81',
+              },
+              options: {
+                hasBalloon: true,
+              },
+            },
+            {
+              type: 'Feature',
+              geometry: {
+                type: 'Point',
+                coordinates: [55.696316, 37.504555],
+              },
+              properties: {
+                poi_id: '12',
+                poi_doctors: '_GINEKOLOGY_PHLEBOLOGY_PROCTOLOGY_',
+                poi_city: '41194',
+                poi_region: '81',
+              },
+              options: {
+                hasBalloon: true,
+              },
+            },
+            {
+              type: 'Feature',
+              geometry: {
+                type: 'Point',
+                coordinates: [55.755241, 37.617779],
+              },
+              properties: {
+                poi_id: '50',
+                poi_doctors: '__',
+                poi_city: '41194',
+                poi_region: '81',
+              },
+              options: {
+                hasBalloon: true,
+              },
+            },
+            {
+              type: 'Feature',
+              geometry: {
+                type: 'Point',
+                coordinates: [55.355241, 37.917779],
+              },
+              properties: {
+                poi_id: '49',
+                poi_doctors: '_COSMETOLOGY_GINEKOLOGY_PHLEBOLOGY_',
+                poi_city: '41194',
+                poi_region: '81',
+              },
+              options: {
+                hasBalloon: true,
+              },
+            },
+          ],
+        };

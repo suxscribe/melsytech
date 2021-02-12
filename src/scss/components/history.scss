@@ -30,8 +30,22 @@
       object-fit: cover;
     }
   }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: $breakpoint-medium) {
+      flex-direction: row;
+    }
+  }
+
   &__accordion {
     color: $color-white;
+
+    @media (min-width: $breakpoint-medium) {
+      flex: 0 0 calc(#{$column-width} * 4 - #{$column-margin});
+    }
 
     &-item {
       padding: percent-view(30px) 0;
@@ -80,6 +94,12 @@
       color: rgba($color-white, 0.6);
 
       @include menu-item-arrow;
+
+      align-items: center;
+
+      & svg {
+        top: 0;
+      }
     }
 
     &-content {
@@ -101,18 +121,6 @@
         // transition: all var(--transition);
         // opacity: 0;
         // transform: scale(0.9);
-
-        &:before {
-          content: '';
-          display: block;
-          position: absolute;
-          width: percent-view(404px);
-          height: percent-view(404px);
-          border: 1px solid $color-red;
-          border-radius: 50%;
-          left: percent-view(80px);
-          top: percent-view(-121px);
-        }
       }
       &-title {
         @include font-h1;
@@ -121,85 +129,117 @@
 
       &-text {
         @include font-lead;
+
+        & * {
+          color: $color-white;
+        }
       }
     }
-    &-slider {
-      padding-left: $column-width;
+  }
+
+  &__swiper {
+    padding-left: $column-width;
+    position: relative;
+    padding-bottom: percent-view(50px);
+
+    // position: absolute;
+    // right: 0;
+
+    & .swiper-wrapper {
+      max-width: 100%;
+    }
+
+    &-wrap {
       position: relative;
-      padding-bottom: percent-view(50px);
+      margin-top: percent-view(100px);
 
-      // position: absolute;
-      // right: 0;
-
-      & .swiper-wrapper {
-        max-width: 100%;
+      @media (min-width: $breakpoint-medium) {
+        flex: 0 0 calc(#{$column-width} * 3 + #{$column-margin});
+        max-width: calc(#{$column-width} * 3 + #{$column-margin});
       }
 
-      &-item {
-        opacity: 0;
-        transition: all var(--transition);
-        max-width: 100%;
+      &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        width: percent-view(404px);
+        height: percent-view(404px);
+        border: 1px solid $color-red;
+        border-radius: 50%;
+        left: percent-view(80px);
+        top: percent-view(-121px);
+      }
+    }
 
-        &.swiper-slide-active {
+    &-item {
+      opacity: 0;
+      transition: all var(--transition);
+      max-width: 100%;
+
+      &.swiper-slide-active {
+        opacity: 1;
+      }
+
+      &-text {
+        @include font-h2;
+        color: $color-white;
+      }
+    }
+
+    &-count {
+      @include font-h2;
+      font-weight: 400;
+      position: absolute;
+      right: calc(#{$column-width} * 3 - #{$column-margin} * 2);
+      top: 0;
+      color: $color-red;
+      display: flex;
+    }
+    &-current {
+      position: relative;
+      margin: 0;
+      padding: 0;
+      width: 20px;
+      text-align: right;
+
+      & li {
+        counter-increment: slide-counter;
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+
+        &:before {
+          content: counter(slide-counter);
+        }
+
+        &.uk-active {
           opacity: 1;
         }
       }
-
-      &-count {
-        @include font-h2;
-        font-weight: 400;
-        position: absolute;
-        right: calc(#{$column-width} * 3 - #{$column-margin} * 2);
-        top: 0;
-        color: $color-red;
-        display: flex;
+    }
+    &-overall {
+      &:before {
+        content: '/';
       }
-      &-current {
-        position: relative;
-        margin: 0;
-        padding: 0;
-        width: 20px;
-        text-align: right;
-
-        & li {
-          counter-increment: slide-counter;
-          position: absolute;
-          left: 0;
-          top: 0;
-          opacity: 0;
-
-          &:before {
-            content: counter(slide-counter);
-          }
-
-          &.uk-active {
-            opacity: 1;
-          }
-        }
-      }
-      &-overall {
+    }
+    &-nav {
+      margin-left: calc(#{$slide-arrow-width} * -1);
+      &--left,
+      &--right {
+        opacity: 0.6;
         &:before {
-          content: '/';
+          background-color: $color-red;
         }
-      }
-      &-nav {
-        margin-left: calc(#{$slide-arrow-width} * -1);
-        &--left,
-        &--right {
-          opacity: 0.6;
+        & svg {
+          fill: $color-red;
+        }
+        &:hover {
+          opacity: 1;
           &:before {
             background-color: $color-red;
           }
           & svg {
-            fill: $color-red;
-          }
-          &:hover {
-            opacity: 1;
-            &:before {
-              background-color: $color-red;
-            }
-            & svg {
-            }
           }
         }
       }

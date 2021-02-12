@@ -1,0 +1,151 @@
+extends ../layout/main
+
+block variables
+  - var title = 'Партнеры';
+  - var description = 'Description';
+  - var pageClass = 'page--partners';
+
+mixin partners-regions-menu(args)
+  ul.sidebar__mnav(uk-nav="active: false")
+    li.sidebar__mnav-section.uk-parent.uk-open(data-region="moskovskaya")
+      a.sidebar__mnav-section-link(href="")
+        +svg({name: 'arrow-right'})
+        | Московская область
+      ul.sidebar__mnav-items.js-filter
+        li.sidebar__mnav-items-item(data-tags="ginecology, phlebology, surgery"): a.sidebar__mnav-items-link(href="#city-msk",uk-scroll) Москва
+        li.sidebar__mnav-items-item(data-tags="ginecology, phlebology, surgery, proctology"): a.sidebar__mnav-items-link(href="#city-balash",uk-scroll) Балашиха
+        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="#city-odints",uk-scroll) Одинцово
+        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="",uk-scroll) Коломна
+        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="",uk-scroll) Красногорск
+        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="",uk-scroll) Люберцы
+    li.sidebar__mnav-section.uk-parent(data-region="leningradskaya")
+      a.sidebar__mnav-section-link(href="")
+        +svg({name: 'arrow-right'})
+        | Ленинградская область
+      ul.sidebar__mnav-items
+        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="#city-spb",uk-scroll) Санкт-Петербург
+
+    li.sidebar__mnav-section.uk-parent(data-region="nizhegorodskaya")
+      a.sidebar__mnav-section-link(href="")
+        +svg({name: 'arrow-right'})
+        | Нижегородская област
+      ul.sidebar__mnav-items
+        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="#city-nn",uk-scroll) Нижний Новгород
+    li.sidebar__mnav-section.uk-parent(data-region="nn2")
+      a.sidebar__mnav-section-link(href="")
+        +svg({name: 'arrow-right'})
+        | Нижегородская област 2
+      ul.sidebar__mnav-items
+        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="#city-nn",uk-scroll) Нижний Мудьгород
+    li.sidebar__mnav-section.uk-parent(data-region="nn3")
+      a.sidebar__mnav-section-link(href="")
+        +svg({name: 'arrow-right'})
+        | Нижегородская област 3
+      ul.sidebar__mnav-items
+        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="#city-nn",uk-scroll) Нижний Мудьгород 3
+    li.sidebar__mnav-section.uk-parent(data-region="nn4")
+      a.sidebar__mnav-section-link(href="")
+        +svg({name: 'arrow-right'})
+        | Нижегородская област 3
+      ul.sidebar__mnav-items
+        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="#city-nn",uk-scroll) Нижний Мудьгород 3
+    li.sidebar__mnav-section.uk-parent(data-region="nn5")
+      a.sidebar__mnav-section-link(href="")
+        +svg({name: 'arrow-right'})
+        | Нижегородская област 3
+      ul.sidebar__mnav-items
+        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="#city-nn",uk-scroll) Нижний Мудьгород 3
+    li.sidebar__mnav-section.uk-parent(data-region="nn6")
+      a.sidebar__mnav-section-link(href="")
+        +svg({name: 'arrow-right'})
+        | Нижегородская област 3
+      ul.sidebar__mnav-items
+        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="#city-nn",uk-scroll) Нижний Мудьгород 3
+    li.sidebar__mnav-section.uk-parent(data-region="nn7")
+      a.sidebar__mnav-section-link(href="")
+        +svg({name: 'arrow-right'})
+        | Нижегородская област 3
+      ul.sidebar__mnav-items
+        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="#city-nn",uk-scroll) Нижний Мудьгород 3
+    li.sidebar__mnav-section.uk-parent(data-region="nn8")
+      a.sidebar__mnav-section-link(href="")
+        +svg({name: 'arrow-right'})
+        | Нижегородская област 3
+      ul.sidebar__mnav-items
+        li.sidebar__mnav-items-item: a.sidebar__mnav-items-link(href="#city-nn",uk-scroll) Нижний Мудьгород 3
+
+block content
+  //- .ruler--right
+  section.page-lead.page-lead--partners
+    .page-lead__content
+      .page-lead__breadcrumbs.breadcrumbs
+        +breadcrumb({name: 'О компании'})
+      h1.page-lead__title Партнеры
+          
+  section.partners-page__top
+    ul.partners-page__switch
+      li.partners-page__switch-item: a(href="partners.html") Карта
+      li.partners-page__switch-item.uk-active: a(href="partners-list.html") Список
+  
+
+  section.page-content(uk-filter="target: .js-filter")
+    .partners-page__list
+      .page-content__sidebar
+        .page-content__sidebar-sticky()
+        //uk-sticky="bottom: true; offset: 160"
+        .partners-page__filter.partners-page__filter--sidebar
+          ul.uk-subnav.partners-page__filter-donor
+            li(value="",uk-filter-control) Все области применения
+            li(value="25", uk-filter-control="[data-tags*='ginecology']") Гинекология
+            li(value="ifa", uk-filter-control="[data-tags*='surgery']") Хирургия
+            li(value="30", uk-filter-control="[data-tags*='phlebology']") Флебология
+            li(value="27", uk-filter-control="[data-tags*='proctology']") Проктология
+          select.form-control.js-choice--partners-list()
+            option(value="") Все области применения
+            option(value="25", uk-filter-control="[data-tags*='ginecology']") Гинекология
+            option(value="ifa", uk-filter-control="[data-tags*='surgery']") Хирургия
+            option(value="30", uk-filter-control="[data-tags*='phlebology']") Флебология
+            option(value="27", uk-filter-control="[data-tags*='proctology']") Проктология
+        +partners-regions-menu()
+
+      +mobile-nav-link({anchor: '#sidebar', name: 'Регионы'})
+
+      .page-content__mainbar
+        .partners-page__section
+          .partners-page__section-title() Московская область
+          .partners-page__region#city-msk
+            .partners-page__region-title Москва
+            .partners-page__region-items.js-filter
+              +company-teaser({title: 'Медицинский центр косметологии и эпиляции «Доктор Лазер»', address1: 'г. Москва, Петровский бульвар, 21 <br>8 (495) 178-00-20', address2: 'г. Москва, Мичуринский проспект, 25к2<br>8(495) 932-58-00', address3: 'г. Москва, посёлок завода Мосрентген, 37<br>8 (495) 645-25-95', attribute: 'ginecology, phlebology'})
+              +company-teaser({title: 'Медицинский центр косметологии и эпиляции «Доктор Лазер»', address1: 'г. Москва, Петровский бульвар, 21<br>8 (495) 178-00-20', address2: 'г. Москва, Мичуринский проспект, 25к2<br>8(495) 932-58-00', address3: 'г. Москва, посёлок завода Мосрентген, 37<br>8 (495) 645-25-95', attribute: 'ginecology, surgery'})
+          .partners-page__region#city-balash
+            .partners-page__region-title Балашиха
+            .partners-page__region-items.js-filter
+              +company-teaser({title: 'Медицинский центр косметологии и эпиляции «Доктор Лазер»', address1: 'г. Москва, Петровский бульвар, 21<br>8 (495) 178-00-20', address2: 'г. Москва, Мичуринский проспект, 25к2<br>8(495) 932-58-00', address3: 'г. Москва, посёлок завода Мосрентген, 37<br>8 (495) 645-25-95', attribute: 'surgery, phlebology'})
+              +company-teaser({title: 'Медицинский центр косметологии и эпиляции «Доктор Лазер»', address1: 'г. Москва, Петровский бульвар, 21<br>8 (495) 178-00-20', address2: 'г. Москва, Мичуринский проспект, 25к2<br>8(495) 932-58-00', address3: 'г. Москва, посёлок завода Мосрентген, 37<br>8 (495) 645-25-95', attribute: 'ginecology, proctology'})
+          .partners-page__section-title Ленинградская
+            .partners-page__region#city-spb
+              .partners-page__region-title Санкт-Петербург
+              .partners-page__region-items
+                +company-teaser({title: 'Медицинский центр косметологии и эпиляции «Доктор Лазер»', address1: 'г. Москва, Петровский бульвар, 21 <br>8 (495) 178-00-20', address2: 'г. Москва, Мичуринский проспект, 25к2<br>8(495) 932-58-00', address3: 'г. Москва, посёлок завода Мосрентген, 37<br>8 (495) 645-25-95'})
+                +company-teaser({title: 'Медицинский центр косметологии и эпиляции «Доктор Лазер»', address1: 'г. Москва, Петровский бульвар, 21<br>8 (495) 178-00-20', address2: 'г. Москва, Мичуринский проспект, 25к2<br>8(495) 932-58-00', address3: 'г. Москва, посёлок завода Мосрентген, 37<br>8 (495) 645-25-95'})
+          .partners-page__section-title Нижегородская
+            .partners-page__region#city-nn
+              .partners-page__region-title Нижний Новгород
+              .partners-page__region-items
+                +company-teaser({title: 'Медицинский центр косметологии и эпиляции «Доктор Лазер»', address1: 'г. Москва, Петровский бульвар, 21 <br>8 (495) 178-00-20', address2: 'г. Москва, Мичуринский проспект, 25к2<br>8(495) 932-58-00', address3: 'г. Москва, посёлок завода Мосрентген, 37<br>8 (495) 645-25-95'})
+                +company-teaser({title: 'Медицинский центр косметологии и эпиляции «Доктор Лазер»', address1: 'г. Москва, Петровский бульвар, 21<br>8 (495) 178-00-20', address2: 'г. Москва, Мичуринский проспект, 25к2<br>8(495) 932-58-00', address3: 'г. Москва, посёлок завода Мосрентген, 37<br>8 (495) 645-25-95'})
+
+    div(uk-offcanvas="overlay:true")#sidebar
+      .uk-offcanvas-bar
+        button.uk-offcanvas-close
+          +svg({name: 'close'})
+        .offcanvas__inner
+          .partners-page__filter.partners-page__filter--sidebar
+            select.form-control.js-choice--partners-list-offcanvas()
+              option(value="") Все области применения
+              option(value="25", uk-filter-control="[data-tags*='ginecology']") Гинекология
+              option(value="ifa", uk-filter-control="[data-tags*='surgery']") Хирургия
+              option(value="30", uk-filter-control="[data-tags*='phlebology']") Флебология
+              option(value="27", uk-filter-control="[data-tags*='proctology']") Проктология
+          +partners-regions-menu()

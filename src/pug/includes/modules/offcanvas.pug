@@ -118,12 +118,12 @@ div(uk-offcanvas="flip:true; overlay:true")#offcanvas-consult
       h2.product-offcanvas__title Проконсультируем по всем вопросам
       p.product-offcanvas__lead Наши сотрудники помогут вам подобрать оборудование в соответствии с вашими требованиями.
 
-      form(action="").product-offcanvas__form.form.form--modal
+      form(action="index.html").product-offcanvas__form.form.form--modal
         +form-row({name: "product-ask-name", title: "Ваше имя", validate: 'empty', placeholder: ' '})
         +form-row({name: "product-ask-email", title: "Email", validate: 'email', placeholder: ' '})
-        +form-row({name: "product-ask-phone", title: "Телефон", validate: 'phone', placeholder: ' '})
+        +form-row({name: "product-ask-phone", title: "Телефон", validate: 'empty', placeholder: ' '})
         .form__row
-          select.form-control.js-choice(name="contacts-form-appliance")
+          select.form__select.form-control.js-choice(name="contacts-form-appliance", required)
             option(value="choice0") Выберите область применения
             option(value="choice1") Гинекология
             option(value="choice2") Хирургия

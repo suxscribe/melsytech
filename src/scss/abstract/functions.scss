@@ -13,7 +13,13 @@
   $dimension - w or h for vw or vh
 
 */
-@function responsive-value($minSize, $maxSize, $minView, $maxView, $dimension) {
+@function responsive-value(
+  $minSize,
+  $maxSize,
+  $minView: $mobile-min-width,
+  $maxView: $fhd-width,
+  $dimension: 'w'
+) {
   @return calc(
     #{$minSize} + (#{strip-unit($maxSize)} - #{strip-unit($minSize)}) * (
         100v#{$dimension} - #{$minView}

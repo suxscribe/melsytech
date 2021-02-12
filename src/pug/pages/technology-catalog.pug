@@ -8,7 +8,8 @@ block variables
 
 
 mixin technology-catalog-menu(args)
-  ul.page-content__sidebar-nav(uk-scrollspy-nav="closest: li; scroll: true; offset: 100")
+  //- (uk-scrollspy-nav="closest: li; scroll: true; offset: 100")
+  ul.page-content__sidebar-nav.scrollspy
     +sidebar-item({name: 'Aixtron', link: '#technology-aixtron'})
     +sidebar-item({name: 'Nanometrics', link: '#technology-02'})
     +sidebar-item({name: 'SUSS MicroTec MA6 ', link: '#technology-03'})

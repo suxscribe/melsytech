@@ -1,17 +1,35 @@
 .technology {
   &__item {
-    $slide-arrow-height: percent-view(24px, $fhd-width, 'w');
-    $slide-arrow-width: calc(#{$slide-arrow-height} * 2);
-
     display: flex;
     flex-direction: column;
     position: relative;
 
-    margin-bottom: percent-view(64px);
+    margin-bottom: responsive-value(24px, 60px, $mobile-min-width, $fhd-width);
     text-decoration: none;
 
-    @media (min-width: $breakpoint-medium) {
+    background: $gradient-1;
+    padding-top: 37px;
+    padding-left: 24px;
+
+    @media (min-width: $breakpoint-small) {
       flex-direction: row;
+      background: none;
+      padding-left: 0;
+      padding-top: percent-view(69px, $breakpoint-small-max);
+
+      &:before {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        left: $column-width-medium;
+        background: $gradient-1;
+        z-index: -1;
+      }
+    }
+
+    @media (min-width: $breakpoint-medium) {
       padding-top: percent-view(96px);
 
       &:before {
@@ -30,6 +48,9 @@
       & .technology__item-arrow {
         width: calc(#{$slide-arrow-width} * 2.5);
       }
+      & .technology__item-arrow-small {
+        width: calc(#{$slide-arrow-width} * 2);
+      }
       & .technology__item-image {
         & img {
           transform: scale(1.05);
@@ -38,8 +59,18 @@
     }
 
     &-left {
-      flex: 0 0 calc(#{$column-width} * 3);
+      flex: 0 0 auto;
+      padding-left: 0;
+      margin-bottom: 24px;
       padding-right: $column-margin;
+
+      @media (min-width: $breakpoint-small) {
+        flex: 0 0 calc(#{$column-width-medium} * 3);
+        margin-bottom: 0;
+      }
+      @media (min-width: $breakpoint-medium) {
+        flex: 0 0 calc(#{$column-width} * 3);
+      }
     }
     &-title {
       margin-bottom: percent-view(21px);
@@ -55,25 +86,54 @@
 
     &-image {
       flex: 1 1 auto;
-      display: block;
+      display: flex;
       overflow: hidden;
+      align-items: center;
+      justify-content: space-between;
+
       @media (min-width: $breakpoint-medium) {
         margin-right: $column-margin;
       }
 
       & img {
+        max-width: 60%;
+
+        @media (min-width: $breakpoint-small) {
+          max-width: 100%;
+        }
+
         width: 100%;
         transition: transform var(--transition);
+      }
+
+      &-arrow {
+        flex: 0 0 $column-width-small;
+        padding-right: $column-margin;
+
+        @media (min-width: $breakpoint-small) {
+          display: none;
+        }
       }
     }
 
     &-arrow {
+      display: none;
+
+      @media (min-width: $breakpoint-small) {
+        display: flex;
+      }
       &:before {
         background-color: $color-red;
       }
 
       & svg {
         fill: $color-red;
+      }
+
+      &-small {
+        &:hover {
+          width: calc(#{$slide-arrow-width} * 2);
+        }
       }
     }
   }

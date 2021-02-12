@@ -1,8 +1,6 @@
 include ../utils/mixins
-include ../utils/vars
 
 block variables
-
 
 doctype html
 html(lang='ru')
@@ -14,6 +12,7 @@ html(lang='ru')
     block head
 
   body(class=pageClass)
+    .preloader
     include ../includes/modules/header
     main.main
       block content

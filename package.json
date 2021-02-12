@@ -14,7 +14,9 @@
   "license": "ISC",
   "dependencies": {
     "choices.js": "^9.0.1",
+    "gsap": "^3.5.1",
     "simplebar": "^5.2.1",
+    "splitting": "^1.0.6",
     "swiper": "^6.0.4",
     "uikit": "^3.5.5",
     "ymaps": "^0.2.1"

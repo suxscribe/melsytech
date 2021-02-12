@@ -12,7 +12,16 @@
 
   &__content {
     flex: 1 1 auto;
-    display: flex;
+    position: relative;
+    min-height: calc(var(--vh, 1vh) * 100);
+
+    // min-height: 700px;
+
+    @media (min-width: $breakpoint-medium) {
+      min-height: 700px;
+      min-width: percent-view(800px);
+    }
+    // display: flex;
   }
 
   &__switcher {
@@ -47,10 +56,17 @@
   &__map {
     height: 100%;
     width: 100%;
+
     &-wrap {
-      position: relative;
+      position: absolute;
+      width: 100%;
       height: 100%;
-      min-height: 700px;
+      // display: flex;
+      // flex-direction: ;
+    }
+
+    & > * {
+      height: 100% !important;
     }
   }
 
@@ -89,13 +105,37 @@
   }
 
   &__filter {
-    position: absolute;
+    position: relative;
+    top: 0;
+    margin-bottom: 24px;
+
     z-index: 2;
-    top: percent-view(24px);
     left: $container-margin;
     width: percent-view(384px);
     max-width: 100%;
     min-width: 325px;
+
+    @media (min-width: $breakpoint-small) {
+      position: absolute;
+      top: responsive-value(24px, 53px, $mobile-min-width, $fhd-width);
+      margin-bottom: 0;
+    }
+
+    &--sidebar,
+    &--offcanvas {
+      position: relative;
+      top: auto;
+      left: auto;
+      width: auto;
+      min-width: auto;
+      margin-bottom: responsive-value(
+        24px,
+        35px,
+        $mobile-min-width,
+        $fhd-width,
+        'w'
+      );
+    }
 
     & select {
       @include font-base;
@@ -105,6 +145,76 @@
     & option {
       @include font-base;
       color: rgba($color-gray, 1);
+    }
+
+    &-donor {
+      //hidden filter controls which do all the magic
+
+      display: none;
+    }
+  }
+
+  &__popup {
+    width: percent-view(604px, $fhd-width, 'w');
+    background-color: $color-white;
+    padding: percent-view(73px, $fhd-height, 'h')
+      percent-view(64px, $fhd-width, 'w') percent-view(49px, $fhd-height, 'h')
+      percent-view(56px, $fhd-width, 'w');
+    box-shadow: 0 10px 20px rgba($color-black, 0.16);
+    position: relative;
+    //hidden by default. drop--active enables
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+
+    position: absolute;
+    top: $column-margin;
+    right: $column-margin;
+
+    transition: opacity var(--transition), visibility 0s linear 0.3s;
+
+    &.drop--active,
+    &.uk-active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: all;
+      transition-delay: 0s, 0s;
+    }
+
+    &-close {
+      background: none;
+      border: none;
+      width: responsive-value(16px, 32px);
+      height: responsive-value(16px, 32px);
+
+      position: absolute;
+      right: percent-view(27px, $fhd-width, 'w');
+      top: percent-view(22px, $fhd-height, 'h');
+      cursor: pointer;
+      opacity: 0.6;
+      transition: all var(--transition);
+
+      &:hover,
+      &:focus {
+        opacity: 1;
+        & svg {
+          fill: $color-red;
+        }
+      }
+
+      & svg {
+        max-width: 80%;
+      }
+    }
+  }
+
+  &__list {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+
+    @media (min-width: $breakpoint-medium) {
+      flex-direction: row;
     }
   }
 }

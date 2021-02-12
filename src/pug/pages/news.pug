@@ -6,11 +6,16 @@ block variables
   - var pageClass = 'page--news';
 
 mixin news-menu(args)
-  ul.news__sections(uk-scrollspy-nav="closest: li; scroll: true; offset: 100")
-    li.news__sections-item.news__sections-item--order: a(href="") По порядку
-    li.news__sections-item: a(href="#year2020") 2020
-    li.news__sections-item: a(href="#year2019") 2019
-    li.news__sections-item: a(href="#year2018") 2018
+  //- (uk-scrollspy-nav="closest: li; scroll: true; offset: 100")
+  ul.page-content__sidebar-nav.scrollspy
+    //- li.news__sections-item.news__sections-item--order: a(href="") По порядку
+    +sidebar-item({name: '2020', link: '#year2020'})
+    +sidebar-item({name: '2019', link: '#year2019'})
+    +sidebar-item({name: '2018', link: '#year2018'})
+
+    //- li.news__sections-item: a(href="#year2020") 2020
+    //- li.news__sections-item: a(href="#year2019") 2019
+    //- li.news__sections-item: a(href="#year2018") 2018
 
 block content
   //- .ruler--right

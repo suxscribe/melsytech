@@ -1,25 +1,14 @@
 .form {
-  $input_height: 80px;
+  $input-height: 72px;
   $input-padding: 32px;
 
-  &__grid {
-    align-items: start;
-
-    & + .form__row {
-      margin-top: 24px;
-
-      @media (min-width: $breakpoint-small) {
-        margin-top: 48px;
-      }
-    }
-  }
   &__row {
     display: block;
     margin-bottom: 24px;
     position: relative;
 
     @media (min-width: $breakpoint-small) {
-      margin-bottom: 48px;
+      margin-bottom: 40px;
     }
 
     // @media (min-width: $breakpoint-small) {
@@ -32,10 +21,37 @@
     }
   }
 
+  &__grid {
+    // grid-template-areas: 'column1 column2';
+    position: relative;
+    margin-bottom: 24px;
+
+    @media (min-width: $breakpoint-small) {
+      margin-bottom: 48px;
+    }
+    @media (min-width: $breakpoint-medium) {
+      margin-bottom: 40px;
+    }
+
+    & > * {
+      @media (min-width: $breakpoint-medium) {
+        width: calc(50% - #{$column-margin} / 2);
+      }
+    }
+
+    &-column-2 {
+      @media (min-width: $breakpoint-medium) {
+        right: 0;
+        top: 0;
+        position: absolute;
+      }
+    }
+  }
+
   &__label {
     display: block;
-    // transform: translateY(-#{$input_height * 1.5});
-    top: $input_height / 6.667;
+    // transform: translateY(-#{$input-height * 1.5});
+    top: $input-height / 6.667;
     margin-left: $input-padding;
     position: absolute;
     // top: percent-view(0px);
@@ -52,11 +68,11 @@
     @include font-base;
     font-family: $font-family;
 
-    height: $input_height;
+    height: $input-height;
     vertical-align: middle;
     max-width: 100%;
     width: 100%;
-    padding: $input_height/4 $input-padding 0 $input-padding;
+    padding: $input-height/4 $input-padding 0 $input-padding;
     background: $color-white;
     color: $color-gray;
     border: 1px solid rgba($color-gray, 0.4);
@@ -84,9 +100,17 @@
       border-color: var(--color-error);
     }
   }
+  &__select {
+    padding-top: 0;
+    appearance: none;
+    background-image: $chevron-down;
+    background-repeat: no-repeat;
+    background-position: calc(100% - 32px) center;
+    background-size: 16px 9px;
+  }
   &__textarea {
     height: 180px;
-    padding-top: $input_height / 2;
+    padding-top: $input-height / 2;
 
     @media (min-width: $breakpoint-small) {
       height: auto;
@@ -97,8 +121,8 @@
   &__note,
   .validation-error {
     @include font-small;
-
-    margin-top: 1rem;
+    position: absolute;
+    margin-top: 0.5rem;
 
     margin-bottom: -0.5rem;
     color: var(--color-error);
@@ -114,18 +138,20 @@
 
   &__submit {
     // align-items: center;
+    appearance: none;
     display: flex;
-    gap: 28px;
+    gap: 24px;
     align-items: flex-start;
     flex-direction: column;
 
     @media (min-width: $breakpoint-small) {
       flex-direction: row;
+      gap: 54px;
     }
   }
   &__submit-button {
     flex: 0 0 auto;
-    margin-bottom: 28px;
+    // margin-bottom: 28px;
     width: 100%;
 
     @media (min-width: $breakpoint-small) {
@@ -157,15 +183,17 @@
 
     opacity: 1;
     visibility: visible;
-    top: $input_height / 2;
+    top: $input-height / 2;
     transform: translateY(-50%);
   }
   & .form__textarea:placeholder-shown ~ .form__label {
-    top: $input_height / 2;
+    top: $input-height / 2;
   }
   & .form__input:focus ~ .form__label,
   & .form__textarea:focus ~ .form__label {
-    //top: percent-view($input_height / 3);
+    // top: percent-view($input-height / 1.5);
+    top: $input-height / 6.67;
+    transform: translateY(0);
   }
 }
 
@@ -174,4 +202,8 @@
   width: 100%;
   padding: 0;
   margin: 0;
+}
+table.form-table td {
+  padding: 0;
+  border: none;
 }

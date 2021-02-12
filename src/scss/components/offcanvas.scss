@@ -17,7 +17,8 @@
   & svg {
     width: 50%;
     height: 50%;
-    fill: $color-gray;
+    fill: $color-black;
+    transition: opacity var(--transition);
   }
 }
 
@@ -65,7 +66,7 @@
     display: flex;
     flex-direction: column;
 
-    background: $color-gray;
+    background: $color-black;
     color: $color-white;
 
     padding: $header-height-small 0 0 0;
@@ -138,6 +139,10 @@
         font-size: 16px;
         line-height: 24px;
         margin-bottom: percent-view(21px, $mobile-min-width, 'w');
+
+        & img {
+          height: 60px;
+        }
       }
     }
   }
@@ -170,7 +175,7 @@
   }
 
   &__dropdown {
-    background-color: $color-gray;
+    background-color: $color-black;
     width: 100vw;
 
     padding: 20px;
@@ -252,7 +257,7 @@
   &__language {
     &-dropdown {
       margin-top: 0;
-      background-color: $color-gray;
+      background-color: $color-black;
       width: auto;
       border-left: 1px solid rgba($color-white, 0.3);
       border-top: 1px solid rgba($color-white, 0.3);

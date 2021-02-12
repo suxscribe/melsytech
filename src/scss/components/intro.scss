@@ -81,8 +81,9 @@
         width: 60%;
       }
 
-      span {
+      &-highlight {
         color: $color-red;
+        // display: inline-block;
       }
     }
 

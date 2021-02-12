@@ -19,8 +19,13 @@
   }
 
   &:hover &__icon {
-    background-color: $color-red;
+    // background-color: $color-red;
     border-color: $color-red;
+
+    &:before {
+      transform: scale(1);
+      background-color: $color-red;
+    }
   }
 
   &__icon {
@@ -54,9 +59,23 @@
     background-color: transparent;
     transition: all var(--transition);
     margin-right: 15px;
+    position: relative;
+    overflow: hidden;
 
     @media (min-width: $breakpoint-medium) {
       margin-right: 14%;
+    }
+
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      transform: scale(0);
+      background-color: rgba($color-red, 0);
+      transition: all var(--transition);
     }
 
     & svg {
@@ -64,6 +83,8 @@
       flex: 0 0 auto;
       width: 60%;
       height: 60%;
+      position: relative;
+      z-index: 1;
     }
   }
 

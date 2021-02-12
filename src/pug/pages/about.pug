@@ -14,7 +14,8 @@ block content
       h1.page-lead__title МеЛСиТек — медицинские лазерные системы и технологии
           
   section.about-section-01.page-content.page-content--right
-    p.h2 Высокотехнологичная российская компания, проектирует и производит твердотельные лазерные системы и полупроводниковые лазеры любой сложности.
+    .page-content__fullwidth
+      p.h2 Высокотехнологичная российская компания, проектирует и производит твердотельные лазерные системы и полупроводниковые лазеры любой сложности.
     
   section.about-section-02.page-content.page-content--right
     .page-content__sidebar
@@ -31,38 +32,35 @@ block content
             +svg({name: 'arrow-right'})
             | 2020
           .history__accordion-content.uk-accordion-content
-            div.history__accordion-content-grid
-              div.history__accordion-content-left
+              div.history__accordion-content-text
                 .history__accordion-content-title Компания МеЛСиТек сегодня
                 .history__accordion-content-text Лидер российского и СНГ рынка в области инноваций и технологических исследований в области лазерных медицинских технологий.
-              div.history__accordion-content-right
-                +history-year-swiper()
+                
                 
         li.history__accordion-item
           a.history__accordion-title.uk-accordion-title(href="#")
             +svg({name: 'arrow-right'})
             | 2018
           .history__accordion-content.uk-accordion-content
-            div.history__accordion-content-grid
-              div.history__accordion-content-left
+              div.history__accordion-content-text
                 .history__accordion-content-title Компания МеЛСиТек сегодня
                 .history__accordion-content-text Лидер российского и СНГ рынка в области инноваций и технологических исследований в области лазерных медицинских технологий.
-              div.history__accordion-content-right
-                p Лидер российского и СНГ рынка в области инноваций и технологических исследований в области лазерных медицинских технологий.
+
         li.history__accordion-item
           a.history__accordion-title.uk-accordion-title(href="#")
             +svg({name: 'arrow-right'})
             | 2016
           .history__accordion-content.uk-accordion-content
-            div.history__accordion-content-grid
-              div.history__accordion-content-left
+              div.history__accordion-content-text
                 .history__accordion-content-title Компания МеЛСиТек сегодня
                 .history__accordion-content-text Лидер российского и СНГ рынка в области инноваций и технологических исследований в области лазерных медицинских технологий.
-              div.history__accordion-content-right
-                p Лидер российского и СНГ рынка в области инноваций и технологических исследований в области лазерных медицинских технологий.
+
+      .history__swiper-wrap
+        +history-year-swiper()
     
   section.about-section-03.page-content.page-content--right
-    h2 Компания Melsytech (МеЛСиТек – Медицинские Лазерные Системы и Технологии) – это ультрасовременное, крупнейшее в России частное производство лазерных систем медицинского и промышленного назначения. Мы являемся не только производителями, но и разработчиками уникальных инженерных решений в сфере лазерных технологий. Предприятие основано в 2010 году в нижегородской области с миллионными инвестициями в новейшее оборудование и технологии.  
+    .page-content__fullwidth
+      h2 Компания Melsytech (МеЛСиТек – Медицинские Лазерные Системы и Технологии) – это ультрасовременное, крупнейшее в России частное производство лазерных систем медицинского и промышленного назначения. Мы являемся не только производителями, но и разработчиками уникальных инженерных решений в сфере лазерных технологий. Предприятие основано в 2010 году в нижегородской области с миллионными инвестициями в новейшее оборудование и технологии.  
   
   section.about-section-04.page-content.page-content--right
     .page-content__sidebar.page-content__sidebar--visible-s

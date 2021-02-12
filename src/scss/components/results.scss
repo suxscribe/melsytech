@@ -1,0 +1,102 @@
+.results {
+  &__slider {
+    & > .swiper-wrapper {
+      height: auto;
+    }
+
+    &-item {
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+
+      @media (min-width: $breakpoint-medium) {
+        flex-direction: row;
+      }
+    }
+
+    &-nav {
+      position: relative;
+
+      @media (min-width: $breakpoint-medium) {
+        position: absolute;
+        bottom: $product-section-gray-bottom;
+      }
+    }
+
+    &-right {
+      position: relative;
+
+      & > .swiper-wrapper {
+        max-width: 100vw;
+      }
+
+      &-item {
+        box-sizing: border-box;
+
+        @media (min-width: $breakpoint-small) {
+          width: calc(#{$column-width-medium} * 4);
+        }
+
+        @media (min-width: $breakpoint-medium) {
+          width: calc(#{$column-width} * 3);
+          padding-right: $column-margin;
+        }
+      }
+
+      &-nav {
+        position: absolute;
+        left: $column-margin;
+        bottom: $column-margin;
+
+        display: flex;
+        z-index: 2;
+
+        @media (min-width: $breakpoint-medium) {
+          left: calc(#{$column-width} * 2);
+        }
+      }
+      &-arrow {
+        width: 40px;
+        height: 40px;
+        background-color: rgba($color-white, 0.6);
+        border-radius: 50%;
+        text-align: center;
+        line-height: 40px;
+        margin-right: 10px;
+        cursor: pointer;
+        transition: background-color var(--transition);
+
+        &:hover {
+          background-color: rgba($color-white, 1);
+        }
+
+        & svg {
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+  }
+
+  &__left {
+    margin-bottom: 40px;
+
+    @media (min-width: $breakpoint-medium) {
+      flex: 0 0 calc(#{$column-width} * 3);
+      max-width: calc(#{$column-width} * 3);
+      margin-bottom: 0;
+      padding-bottom: $product-section-gray-bottom;
+    }
+  }
+  &__slide {
+    &-text {
+      margin-bottom: responsive-value(
+        13px,
+        50px,
+        $mobile-min-width,
+        $fhd-width,
+        'w'
+      );
+    }
+  }
+}

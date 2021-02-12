@@ -7,16 +7,16 @@ block variables
 
 mixin reviews-nav(args)
   ul.news__sections(uk-scrollspy-nav="closest: li; scroll: true; offset: 100")
-    li.news__sections-item.news__sections-item--order: a(href="") Все аппараты
-    li.news__sections-item: a(href="#year2020") Magic Super
-    li.news__sections-item: a(href="#year2020") Magic Super Full
-    li.news__sections-item: a(href="#year2020") Magic Max
-    li.news__sections-item: a(href="#year2020") Magic One
-    li.news__sections-item: a(href="#year2020") Magic Lite
-    li.news__sections-item: a(href="#year2020") Magic Pico
-    li.news__sections-item: a(href="#year2020") Magic Bella
-    li.news__sections-item: a(href="#year2020") Magic Slim
-    li.news__sections-item: a(href="#year2020") Magic Gyno
+    li.news__sections-item.news__sections-item--order: a(href="",uk-filter-control) Все аппараты
+    li.news__sections-item: a(href="#year2020",uk-filter-control="[data-tags*='magicsuper']") Magic Super
+    li.news__sections-item: a(href="#year2020",uk-filter-control="[data-tags*='magicsuperfull']") Magic Super Full
+    li.news__sections-item: a(href="#year2020",uk-filter-control="[data-tags*='magicmax']") Magic Max
+    li.news__sections-item: a(href="#year2020",uk-filter-control="[data-tags*='magicone']") Magic One
+    li.news__sections-item: a(href="#year2020",uk-filter-control="[data-tags*='magiclite']") Magic Lite
+    li.news__sections-item: a(href="#year2020",uk-filter-control="[data-tags*='magicpico']") Magic Pico
+    li.news__sections-item: a(href="#year2020",uk-filter-control="[data-tags*='magicbella']") Magic Bella
+    li.news__sections-item: a(href="#year2020",uk-filter-control="[data-tags*='magicslim']") Magic Slim
+    li.news__sections-item: a(href="#year2020",uk-filter-control="[data-tags*='magicgyno']") Magic Gyno
 
 block content
   //- .ruler--right
@@ -26,7 +26,7 @@ block content
         +breadcrumb({name: 'О компании'})
       h1.page-lead__title Отзывы
   
-  section.page-content
+  section.page-content(uk-filter="target: .js-filter")
     .page-content__sidebar
       .page-content__sidebar-sticky(uk-sticky="bottom: true; offset: 160")
         +reviews-nav()
@@ -34,12 +34,12 @@ block content
     +mobile-nav-link({anchor: '#sidebar', name: 'Регионы'})
 
     .page-content__mainbar
-      ul.reviews__list(uk-grid="masonry: true", class="uk-child-width-1-2@m uk-child-width-1-2@s")
-        +reviews-item({text: 'Технология, реализованная в аппарате Magic Super Full, позволяет делать эпиляцию пациентам с любым фототипом кожи и любым цветом волос без риска ожогов.', image: 'reviews-avatar.jpg', name: 'Гольцова Елена Николаевна', desc: 'Врач клиники эстетического омоложения в Перт, Австралия', video: 'video1'})
-        +reviews-item({text: 'Уникальная двухволновая гибридная технология открывает беспрецедентные возможности настраивать параметры процедуры индивидуально для каждого пациента. Каждый пациент имеет различные проблемы в зависимости от выраженности поражения кожи солнцем и ожидаемого реабилитационного периода.', image: 'reviews-avatar.jpg', name: 'Селезнев Геннадий Петрович ', desc: 'Врач клиники эстетического омоложения в Перт, Австралия'})
-        +reviews-item({text: 'Технология, реализованная в аппарате Magic Super Full, позволяет делать эпиляцию пациентам с любым фототипом кожи и любым цветом волос без риска ожогов.', image: 'reviews-avatar.jpg', name: 'Селезнев Геннадий Петрович ', desc: 'Врач клиники эстетического омоложения в Перт, Австралия', video: 'video2'})
-        +reviews-item({text: 'Уникальная двухволновая гибридная технология открывает беспрецедентные возможности настраивать параметры процедуры индивидуально для каждого пациента. Каждый пациент имеет различные проблемы в зависимости от выраженности поражения кожи солнцем и ожидаемого реабилитационного периода.', image: 'reviews-avatar.jpg', name: 'Селезнев Геннадий Петрович ', desc: 'Врач клиники эстетического омоложения в Перт, Австралия'})
-        +reviews-item({text: 'Технология, реализованная в аппарате Magic Super Full, позволяет делать эпиляцию пациентам с любым фототипом кожи и любым цветом волос без риска ожогов. Технология, реализованная в аппарате Magic Super Full, позволяет делать эпиляцию пациентам с любым фототипом кожи и любым цветом волос без риска ожогов. Технология, реализованная в аппарате Magic Super Full, позволяет делать эпиляцию пациентам с любым фототипом кожи и любым цветом волос без риска ожогов. Технология, реализованная в аппарате Magic Super Full, позволяет делать эпиляцию пациентам с любым фототипом кожи и любым цветом волос без риска ожогов.', image: 'reviews-avatar.jpg', name: 'Селезнев Геннадий Петрович ', desc: 'Врач клиники эстетического омоложения в Перт, Австралия'})
+      ul.reviews__list.js-filter(uk-grid="masonry: true", class="uk-child-width-1-2@m uk-child-width-1-2@s")
+        +reviews-item({text: 'Технология, реализованная в аппарате Magic Super Full, позволяет делать эпиляцию пациентам с любым фототипом кожи и любым цветом волос без риска ожогов.', image: 'reviews-avatar.jpg', name: 'Гольцова Елена Николаевна', desc: 'Врач клиники эстетического омоложения в Перт, Австралия', video: 'video1',attribute: 'magicsuperfull,magicpico'})
+        +reviews-item({text: 'Уникальная двухволновая гибридная технология открывает беспрецедентные возможности настраивать параметры процедуры индивидуально для каждого пациента. Каждый пациент имеет различные проблемы в зависимости от выраженности поражения кожи солнцем и ожидаемого реабилитационного периода.', image: 'reviews-avatar.jpg', name: 'Селезнев Геннадий Петрович ', desc: 'Врач клиники эстетического омоложения в Перт, Австралия',attribute: 'magicsuper,magiclite'})
+        +reviews-item({text: 'Технология, реализованная в аппарате Magic Super Full, позволяет делать эпиляцию пациентам с любым фототипом кожи и любым цветом волос без риска ожогов.', image: 'reviews-avatar.jpg', name: 'Селезнев Геннадий Петрович ', desc: 'Врач клиники эстетического омоложения в Перт, Австралия', video: 'video2',attribute: 'magicone,magicbella'})
+        +reviews-item({text: 'Уникальная двухволновая гибридная технология открывает беспрецедентные возможности настраивать параметры процедуры индивидуально для каждого пациента. Каждый пациент имеет различные проблемы в зависимости от выраженности поражения кожи солнцем и ожидаемого реабилитационного периода.', image: 'reviews-avatar.jpg', name: 'Селезнев Геннадий Петрович ', desc: 'Врач клиники эстетического омоложения в Перт, Австралия',attribute: 'magicmax,magicslim'})
+        +reviews-item({text: 'Технология, реализованная в аппарате Magic Super Full, позволяет делать эпиляцию пациентам с любым фототипом кожи и любым цветом волос без риска ожогов. Технология, реализованная в аппарате Magic Super Full, позволяет делать эпиляцию пациентам с любым фототипом кожи и любым цветом волос без риска ожогов. Технология, реализованная в аппарате Magic Super Full, позволяет делать эпиляцию пациентам с любым фототипом кожи и любым цветом волос без риска ожогов. Технология, реализованная в аппарате Magic Super Full, позволяет делать эпиляцию пациентам с любым фототипом кожи и любым цветом волос без риска ожогов.', image: 'reviews-avatar.jpg', name: 'Селезнев Геннадий Петрович ', desc: 'Врач клиники эстетического омоложения в Перт, Австралия',attribute: 'magicsuperfull,magicgyno'})
 
   div(uk-offcanvas="overlay:true")#sidebar
     .uk-offcanvas-bar

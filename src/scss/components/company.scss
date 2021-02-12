@@ -10,6 +10,7 @@
 
       @media (min-width: $breakpoint-medium) {
         flex-direction: row;
+        align-items: start;
         padding-bottom: percent-view(64px);
       }
 
@@ -22,7 +23,7 @@
     &-title {
       display: block;
       flex: 0 0 auto;
-      cursor: pointer;
+      // cursor: pointer;
 
       @include font-h2;
       text-decoration: none;
@@ -31,10 +32,9 @@
         flex: 0 0 calc(#{$column-width} * 3);
         padding-right: $column-margin;
       }
+
       &:hover {
-        & .company__teaser-link {
-          width: calc(#{$slide-arrow-width} * 2.5);
-        }
+        text-decoration: none;
       }
       & span {
         display: block;
@@ -53,6 +53,11 @@
     &-link {
       margin-bottom: 16px;
     }
+  }
+
+  &__showall {
+    @include font-small;
+    color: rgba($color-gray, 0.6);
   }
 
   &__detail {

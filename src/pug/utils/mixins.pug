@@ -26,7 +26,7 @@ mixin product-catalog-section(args)
         +svg({ name: 'slider-arrow-right'})
 
 mixin product-teaser(title, image)
-  a(href="/").product.product--teaser
+  a(href="product.html").product.product--teaser
     .product__plus
       +svg({ name: 'plus' })
     .product__image
@@ -40,7 +40,7 @@ mixin svg(args)
 mixin sidebar-item(args)
   li.page-content__sidebar-nav-item
     if typeof args.scrollOffset === "undefined"
-      a(href=args.link).page-content__sidebar-nav-link
+      a(href=args.link, uk-scroll).page-content__sidebar-nav-link
         +svg({name: 'arrow-right'})
         =args.name
     else
@@ -114,8 +114,8 @@ mixin procedures-slider-section(args)
   .procedures__left.section__left
     .procedures__slider.swiper-container(class=`procedures__slider--${args.class}`)
       ul.swiper-wrapper
-        li.procedures__slider-item.swiper-slide: +procedures-slide('Лазерные Системы MAGIC', '/', 'Общая хирургия', args.showDevices)
-        li.procedures__slider-item.swiper-slide: +procedures-slide('Системные Лазеры', '/', 'Общая хирургия', args.showDevices)
+        li.procedures__slider-item.swiper-slide: +procedures-slide('Возможности аппарата в области отолорингологии', '/', 'Общая хирургия', args.showDevices)
+        li.procedures__slider-item.swiper-slide: +procedures-slide('Неинвазивный лазерный липолиз', '/', 'Общая хирургия', args.showDevices)
         li.procedures__slider-item.swiper-slide: +procedures-slide('Лазерные Системы Системных Лазеров', '/', 'Общая хирургия', args.showDevices)
         li.procedures__slider-item.swiper-slide: +procedures-slide('Системы Лазерных Систем', '/', 'Общая хирургия', args.showDevices)
 
@@ -138,7 +138,7 @@ mixin reviews-slide(args)
     .reviews__slide-columns
       .reviews__slide-left
         .reviews__slide-avatar
-          img(src="/assets/" + args.avatar, alt=args.name)
+          img(src="assets/" + args.avatar, alt=args.name)
         .reviews__slide-name= args.name
         .reviews__slide-description= args.desc
       .reviews__slide-right
@@ -184,13 +184,13 @@ mixin product-instruments(args)
 mixin reviews-slider(args)
   div.reviews__right-slider.swiper-container
     ul.swiper-wrapper
-      li.swiper-slide: +reviews-slide({text:'«Технология, реализованная в аппарате Magic Super Full, позволяет делать эпиляцию пациентам с любым фототипом кожи и любым цветом волос без риска ожогов. Большинство наших клиентов удовлетворены эффектом от процедуры: быстро, безболезненно и эффективно»', name:'Гольцова Елена Николаевна', desc:'Врач клиники эстетического омоложения в Перт, Австралия',avatar: 'reviews-avatar.jpg',media:'https://yootheme.com/site/images/media/yootheme-pro.mp4', poster:'/assets/reviews-poster.jpg'})
-      li.swiper-slide: +reviews-slide({text:'«Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore earum qui laborum voluptate doloribus, quaerat eius ipsa error iusto beatae?»', name:'Гольцова Елена Николаевна', desc:'Врач клиники эстетического омоложения в Перт, Австралия',avatar: 'reviews-avatar.jpg',media:'https://yootheme.com/site/images/media/yootheme-pro.mp4', poster:'/assets/reviews-poster.jpg'})
+      li.swiper-slide: +reviews-slide({text:'«Технология, реализованная в аппарате Magic Super Full, позволяет делать эпиляцию пациентам с любым фототипом кожи и любым цветом волос без риска ожогов. Большинство наших клиентов удовлетворены эффектом от процедуры: быстро, безболезненно и эффективно»', name:'Гольцова Елена Николаевна', desc:'Врач клиники эстетического омоложения в Перт, Австралия',avatar: 'reviews-avatar.jpg',media:'https://yootheme.com/site/images/media/yootheme-pro.mp4', poster:'assets/reviews-poster.jpg'})
+      li.swiper-slide: +reviews-slide({text:'«Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore earum qui laborum voluptate doloribus, quaerat eius ipsa error iusto beatae?»', name:'Гольцова Елена Николаевна', desc:'Врач клиники эстетического омоложения в Перт, Австралия',avatar: 'reviews-avatar.jpg',media:'https://yootheme.com/site/images/media/yootheme-pro.mp4', poster:'assets/reviews-poster.jpg'})
   
 
 
 mixin reviews-item(args)
-  .reviews__list-item
+  .reviews__list-item(data-tags=args.attribute)
     .reviews__item
       .reviews__item-text(data-readmore="400")= args.text
       .reviews__item-info
@@ -209,14 +209,14 @@ mixin reviews-item(args)
     if args.video
       div(id=args.video, uk-modal)
         .uk-modal-dialog.uk-width-auto.uk-margin-auto-vertical
-          +video({media: 'https://yootheme.com/site/images/media/yootheme-pro.mp4', poster:'/assets/reviews-poster.jpg'})
+          +video({media: 'https://yootheme.com/site/images/media/yootheme-pro.mp4', poster:'./assets/reviews-poster.jpg'})
 
 mixin form-row(args)
-  .form__row
+  .form__row(class=args.class)
     if args.textarea
       textarea(placeholder=args.placeholder, name=args.name, class=`form__textarea validate--${args.validate}`)
     else
-      input(type="text", placeholder=args.placeholder, name=args.name, class=`validate--${args.validate}`).form__input
+      input(type="text", placeholder=args.placeholder, name=args.name, class=`validate--${args.validate}`, required).form__input
     .form__note
     label.form__label(for=args.name)= args.title
 
@@ -249,32 +249,35 @@ mixin technology-item(args)
         +svg({name: 'slider-arrow-right'})
       
     .technology__item-image
+      .technology__item-image-arrow
+        .technology__item-arrow-small.slider__arrow.slider__arrow--right
+          +svg({name: 'slider-arrow-right'})
       img(src="./assets/" + args.img, alt="")
 
 mixin video(args)
   video(src=args.media, controls, playsinline, uk-video="autoplay:false", poster=args.poster, class=args.class )
 
 mixin history-year-swiper(args)
-  .history__accordion-slider.swiper-container(data-swiper="swiper")
+  .history__swiper.swiper-container(data-swiper="swiper")
     ul.swiper-wrapper
-      li.history__accordion-slider-item.swiper-slide
-        .h2 Разветвленная дистрибьюторская сеть в России, партнерская сеть за рубежом 1
-      li.history__accordion-slider-item.swiper-slide
-        .h2 Разветвленная дистрибьюторская сеть в России, партнерская сеть за рубежом 2
-      li.history__accordion-slider-item.swiper-slide
-        .h2 Разветвленная дистрибьюторская сеть в России, партнерская сеть за рубежом 3
-    .history__accordion-slider-count
-      .history__accordion-slider-current.uk-flex-center
-      .history__accordion-slider-overall
-    .history__accordion-slider-nav.slider__nav
-      .slider__arrow.slider__arrow--left.history__accordion-slider-nav--left
+      li.history__swiper-item.swiper-slide
+        .history__swiper-item-text Разветвленная дистрибьюторская сеть в России, партнерская сеть за рубежом 1
+      li.history__swiper-item.swiper-slide
+        .history__swiper-item-text Разветвленная дистрибьюторская сеть в России, партнерская сеть за рубежом 2
+      li.history__swiper-item.swiper-slide
+        .history__swiper-item-text Разветвленная дистрибьюторская сеть в России, партнерская сеть за рубежом 3
+    .history__swiper-count
+      .history__swiper-current.uk-flex-center
+      .history__swiper-overall
+    .history__swiper-nav.slider__nav
+      .slider__arrow.slider__arrow--left.history__swiper-nav--left
         +svg({ name: 'slider-arrow-left'})
-      .slider__arrow.slider__arrow--right.history__accordion-slider-nav--right
+      .slider__arrow.slider__arrow--right.history__swiper-nav--right
         +svg({ name: 'slider-arrow-right'})
 
 
 mixin company-teaser(args)
-  .company__teaser-item
+  .company__teaser-item(data-tags=args.attribute)
     a.company__teaser-title
       span= args.title
       .company__teaser-link.slider__arrow.slider__arrow--right 
@@ -282,11 +285,12 @@ mixin company-teaser(args)
     .company__teaser-contacts
       .company__teaser-address!= args.address1
       .company__teaser-address!= args.address2
-      .company__teaser-address!= args.address3
+      .company__teaser-address.company__teaser-address--hidden.uk-hidden!= args.address3
+      a.company__showall.company__teaser-address--hidden(href="#", uk-toggle="target: .company__teaser-address--hidden; cls: uk-hidden;animation: uk-animation-fade") Показать все адреса
 
 
 mixin publication-item(args)
-  li.publications__list-item
+  li.publications__list-item(data-tags=args.attribute)
     a.publications__item
       .publications__item-image
         img(src=`assets/${args.image}`, alt="")
@@ -298,9 +302,6 @@ mixin offcanvas-title-item(args)
     =args.title
 
 
-
-
-
 mixin mobile-nav-link(args)
   .page-content__mobile-nav-link
     a.button.button__sidebar(href=args.anchor,uk-toggle)
@@ -310,3 +311,10 @@ mixin mobile-nav-link(args)
 mixin header-appliance-item(args)
   a(href=args.link, data-appliance=args.appliance).header__appliance-item
     img(src=`assets/${args.image}`, alt="")
+
+
+mixin map-marker(args)
+  a(href=args.href, data-hover=args.code, title=args.title).partners__map-marker
+    g(transform=`translate(${args.translate})`)
+      circle.partners__map-circle-0()
+      circle.partners__map-circle-1()

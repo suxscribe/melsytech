@@ -4,6 +4,7 @@ block variables
   - var title = 'Melsytech';
   - var description = 'Description';
   - var pageClass = 'page--index';
+  - var scrollSpy = 'cls: uk-animation-slide-bottom-small; delay: 200'
 
 block content
   //- .ruler--right
@@ -13,29 +14,31 @@ block content
       video(playsinline="playsinline",muted="muted", autoplay="autoplay", loop="loop", src="./assets/intro-video.mp4")
     .intro__content
       .intro__content-1
-        p 
-          | Разработка и&nbsp;поставка полупроводниковых 
-          span лазерных систем 
-          | для эстетической медицины, промышленного применения и&nbsp;научных целей
+        | Разработка и&nbsp;поставка полупроводниковых 
+        span.intro__content-1-highlight лазерных систем 
+        | для эстетической медицины, промышленного применения и&nbsp;научных целей
       .intro__content-2
-        p МеЛСиТек международный разработчик, производитель и&nbsp;поставщик лазерных систем промышленного и&nbsp;медицинского назначения
+        | МеЛСиТек международный разработчик, производитель и&nbsp;поставщик лазерных систем промышленного и&nbsp;медицинского назначения
       a(uk-scroll="offset: 72",href="#index-catalog").scrolldown
         .scrolldown__icon
           +svg({ name: 'arrow-down' })
         span Прокрутите вниз
   
-  //- section#index-catalog.index__catalog.section
+  section#index-catalog-small.index__catalog.section(class="uk-hidden@m")
     .section__top 
       .index__catalog-subtitle.section__subtitle Каталог
     +product-catalog-section({title: 'Лазерные Системы MAGIC', catalogLink: true, navClass: 'slider__nav--offset'})
-  section#index-catalog.section.section--catalog
+
+  section#index-catalog.section.section--catalog(uk-scrollspy=scrollSpy, class="uk-visible@m")
     .section__top
       .section__subtitle Каталог
     .section__left
       h1.section__title Лазерные системы MAGIC
-      a.catalog__showmore.button.catalog__products-item--hidden(href="#", uk-toggle="target: .catalog__products-item--hidden; cls: uk-hidden;animation: uk-animation-fade") Показать все аппараты
+      a(href="/").index__catalog-link.section__link Перейти в Каталог
+      a.catalog__showmore.button.catalog__products-item--hidden(href="#", uk-toggle="target: .catalog__products-item--hidden; cls: uk-hidden;animation: uk-animation-fade",ripple) 
+        | Показать все аппараты
     .section__right
-      ul(uk-grid).catalog__products
+      ul(uk-grid, uk-scrollspy="cls: uk-animation-fade; target: .catalog__products-item; delay: 100").catalog__products.scrollspy__container
         li.catalog__products-item: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
         li.catalog__products-item: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
         li.catalog__products-item: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
@@ -46,7 +49,7 @@ block content
         li.catalog__products-item.catalog__products-item--hidden.uk-hidden: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
         li.catalog__products-item.catalog__products-item--hidden.uk-hidden: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
 
-  section.section.section--advantages
+  section.section.section--advantages(uk-scrollspy=scrollSpy)
     .section__subtitle Преимущества
     .section__top
       h1.section__title.advantages__title
@@ -76,16 +79,16 @@ block content
       li: +advantage-item('Клиническое обучение', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe atque, autem accusantium sapiente quaerat facilis.', 'advantages-item-1.png')
       li: +advantage-item('Ценовая политика', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe atque, autem accusantium sapiente quaerat facilis.', 'advantages-item-1.png')
   
-  section.section.section--procedures
+  section.section.section--procedures(uk-scrollspy=scrollSpy)
     .section__subtitle Процедуры
     +procedures-slider-section({class: '01', showDevices: true, navClass: 'slider__nav--offset'})
 
-  section.section.section--reviews
+  section.section.section--reviews(uk-scrollspy=scrollSpy)
     .section__top 
       .section__subtitle Отзывы
     .reviews__left.section__left
       h1.reviews__section-title.section__title Наши партнеры о&nbsp;нас
-      a(href="/").section__link Перейти в раздел
+      a(href="partners.html").section__link Перейти в раздел
 
     .reviews__right.section__right
       +reviews-slider()
@@ -95,45 +98,45 @@ block content
       .slider__arrow.slider__arrow--right.reviews__slider-nav--right
         +svg({ name: 'slider-arrow-right'})
 
-  section.section.section--partners
-    .section__top
+  section.section.section--partners(uk-scrollspy=scrollSpy)
+    .section__top.partners__top
       .section__subtitle Партнеры
     .partners__left.section__left
-      h1.reviews__section-title.section__title Клиники использующие наши лазерные системы
+      h1.partners__section-title.section__title Клиники использующие наши лазерные системы
       a(href="/").section__link Перейти в раздел
     .partners__right.section__right
       div(data-simplebar).partners__list
-        ul 
-          //- (uk-switcher="connect: .partners__drops")
-          li.partners__item: a(href="#partners__offcanvas", uk-toggle).partners__item-link.drop--01 
+        ul.scrollspy__container(uk-scrollspy="cls: uk-animation-fade; target: .partners__item; delay: 100")
+          //- each item has data-region attribute with it's cities data. that data gets rendered into offcanvas on item click.
+          li.partners__item: a(href="#partners__offcanvas", uk-toggle, data-hover="moskovskaya", data-region='{"region":"moskovskaya","regionName":"Ленинградская область","cities":[{"city":"Александров","link":"partners-list.html#city-spb"},{"city":"Владимир","link":"partners-list.html#city-spb"}]}').partners__item-link.drop--01 
             | Московская область 
             sup 32
-          li.partners__item: a(href="#").partners__item-link.drop--02
+          li.partners__item: a(href="#partners__offcanvas", uk-toggle, data-hover="leningradskaya", data-region='{"region":"leningradskaya","regionName":"Ленинградская область","cities":[{"city":"Санкт-Петербург","link":"partners-list.html#city-spb"},{"city":"Владимир","link":"partners-list.html#city-spb"}]}').partners__item-link.drop--02
             | Ленинградская область 
             sup 27
-          li.partners__item: a(href="#").partners__item-link.drop--03 Нижегородская область
-          li.partners__item: a(href="#").partners__item-link.drop--04 Новгородская область
-          li.partners__item: a(href="#").partners__item-link.drop--05 Владимирская область
-          li.partners__item: a(href="#").partners__item-link.drop--06 Смоленская область
-          li.partners__item: a(href="#").partners__item-link.drop--06 Свердловская область
-          li.partners__item: a(href="#").partners__item-link.drop--06 Оренбургская область
-          li.partners__item: a(href="#").partners__item-link.drop--06 Пензенская область
-          li.partners__item: a(href="#").partners__item-link.drop--06 Пермская область
-
-      //- .partners__drops.uk-switcher
-      //-   +partners-drop({num: '01', title: 'Сеть клиник лазерной эпиляции и косметологии «Подружки»', address: 'г. Нижний Новгород, Автозаводский район, ул. Краснодонцев, дом 5', phone: '8 (831) 260-16-63'})
-      //-   +partners-drop({num: '02', title: 'Сеть клиник лазерной эпиляции и косметологии «Друзьяшки»', address: 'г. Нижний Новгород, Автозаводский район, ул. Краснодонцев, дом 5', phone: '8 (831) 260-16-63'})
-      //-   +partners-drop({num: '03', title: 'Сеть клиник лазерной эпиляции и косметологии «Ребятки»', address: 'г. Нижний Новгород, Автозаводский район, ул. Краснодонцев, дом 5', phone: '8 (831) 260-16-63'})
-      //-   +partners-drop({num: '04', title: 'Сеть клиник лазерной эпиляции и косметологии «Подружайки»', address: 'г. Нижний Новгород, Автозаводский район, ул. Краснодонцев, дом 5', phone: '8 (831) 260-16-63'})
-      //-   +partners-drop({num: '05', title: 'Сеть клиник лазерной эпиляции и косметологии «Чикули»', address: 'г. Нижний Новгород, Автозаводский район, ул. Краснодонцев, дом 5', phone: '8 (831) 260-16-63'})
-      //-   +partners-drop({num: '06', title: 'Сеть клиник лазерной эпиляции и косметологии «Бабешки»', address: 'г. Нижний Новгород, Автозаводский район, ул. Краснодонцев, дом 5', phone: '8 (831) 260-16-63'})
-        
+          li.partners__item: a(href="#partners__offcanvas", uk-toggle, data-hover="nizhegorodskaya", data-region='{"region":"leningradskaya","regionName":"Нижегородская область","cities":[{"city":"Санкт-Петербург","link":"partners-list.html#city-spb"},{"city":"Владимир","link":"partners-list.html#city-spb"}]}').partners__item-link.drop--02
+            | Нижегородская область 
+            sup 27
+          li.partners__item: a(href="#partners__offcanvas", uk-toggle, data-hover="novgorodskaya", data-region='{"region":"leningradskaya","regionName":"Новгородская область","cities":[{"city":"Санкт-Петербург","link":"partners-list.html#city-spb"},{"city":"Владимир","link":"partners-list.html#city-spb"}]}').partners__item-link.drop--02
+            | Новгородская область 
+            sup 27
+          li.partners__item: a(href="#", data-hover="vladimirskaya").partners__item-link.drop--05 Владимирская область
+          li.partners__item: a(href="#", data-hover="smolenskaya").partners__item-link.drop--06 Смоленская область
+          li.partners__item: a(href="#", data-hover="leningradskaya").partners__item-link.drop--06 Свердловская область
+          li.partners__item: a(href="#", data-hover="leningradskaya").partners__item-link.drop--06 Оренбургская область
+          li.partners__item: a(href="#", data-hover="leningradskaya").partners__item-link.drop--06 Пензенская область
+          li.partners__item: a(href="#", data-hover="leningradskaya").partners__item-link.drop--06 Пермская область
     .partners__map
       picture
         source(srcset="assets/partners-map-s.jpg", media="(max-width: 959px")
-        img(src="/assets/partners-map.jpg", alt="")
+        img(src="assets/partners-map.jpg", alt="")
+      svg.partners__map-markers#Layer_1(version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', x='0px', y='0px', viewbox='0 0 1483.4 863.2', style='enable-background:new 0 0 1483.4 863.2;', xml:space='preserve')
+        +map-marker({code: 'leningradskaya', href: '#leningradskaya', title: 'Ленинградская область', translate: '650 250'})
+        +map-marker({code: 'moskovskaya', href: '#moskovskaya', title: 'Московская область', translate: '650 300'})
+        +map-marker({code: 'nizhegorodskaya', href: '#nizhegorodskaya', title: 'Нижегородская область', translate: '750 350'})
+        +map-marker({code: 'novgorodskaya', href: '#novgorodskaya', title: 'Новгородская область', translate: '600 300'})
   
-  section.section.section--news
+  section.section.section--news(uk-scrollspy=scrollSpy)
     .section__top 
       .news__subtitle.section__subtitle Новости
     .news__left.section__left
@@ -161,8 +164,8 @@ block content
         +svg({name: 'close'})
       .offcanvas__inner
         .partners__offcanvas
-          .partners__offcanvas-title.h1 Владимирская область
-          .partners__offcanvas-items
+          //- .partners__offcanvas-title.h1 Владимирская область
+          //- .partners__offcanvas-items
             a.partners__offcanvas-item(href="") Александров
             a.partners__offcanvas-item(href="") Владимир
             a.partners__offcanvas-item(href="") Вязники
@@ -175,4 +178,4 @@ block content
             a.partners__offcanvas-item(href="") Кольчугино
     
   script.
-    const partners = '{"regions" : [ {"region": "Владимирская область", "cities": [{"city": "Александров", "link": "aleksandrov.html"},{"city": "Владимир", "link": "vladimir.html"}]},      {"region": "Ленинградская область", "cities": [{"city": "Александров", "link": "aleksandrov.html"},{"city": "Владимир", "link": "vladimir.html"}]} ]}';
+    const partners = '{"regions":{"leningradskaya":{"region":"leningradskaya","regionName":"Ленинградская область","cities":[{"city":"Александров","link":"partners-list.html#city-spb"},{"city":"Владимир","link":"partners-list.html#city-nn"}]},"vladimirskaya":{"region":"vladimirskaya","regionName":"Владимирская область","cities":[{"city":"Санкт-Петербург","link":"partners-list.html#city-spb"},{"city":"Владимир","link":"partners-list.html#city-balash"}]}}}';

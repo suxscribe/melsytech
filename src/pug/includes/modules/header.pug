@@ -1,75 +1,77 @@
 header(uk-sticky="bottom: .page-lead--product").header
   div(uk-navbar="dropbar: true; boundary: .header; boundary-align: true").header__wrap
-    a.header__logo(href="/")
+    a.header__logo(href="index.html")
       img(src="./assets/logo.svg", alt="Melsytech")
     nav.header__nav
-      a(href="#").header__nav-item.header__nav-item--active Каталог
-      div(uk-dropdown="mode:hover; boundary: .header; boundary-align: true").header__dropdown.header__dropdown--catalog
+      span.header__target
+      a(href="catalog.html").header__nav-item.header__nav-item--active Каталог
+      div(uk-dropdown="mode:hover; boundary: .header; boundary-align: true; delay-hide: 200; delay-show: 200").header__dropdown.header__dropdown--catalog
         .header__catalog
           .header__catalog-column
-            a(href="/").header__catalog-title Косметология эпиляция
+            a(href="catalog.html").header__catalog-title Косметология эпиляция
             ul.header__catalog-items
-              li: a(href="/").header__catalog-item
+              li: a(href="product.html").header__catalog-item
                 img(src="assets/magic-superfull-logo.png", alt="")
-              li: a(href="/").header__catalog-item
+              li: a(href="product.html").header__catalog-item
                 img(src="assets/magic-superfull-logo.png", alt="")
-              li: a(href="/").header__catalog-item
+              li: a(href="product.html").header__catalog-item
                 img(src="assets/magic-superfull-logo.png", alt="")
           .header__catalog-column
-            a(href="/").header__catalog-title Косметология эпиляция
+            a(href="catalog.html").header__catalog-title Косметология эпиляция
             ul.header__catalog-items
-              li: a(href="/").header__catalog-item
+              li: a(href="product.html").header__catalog-item
                 img(src="assets/magic-superfull-logo.png", alt="")
-              li: a(href="/").header__catalog-item
+              li: a(href="product.html").header__catalog-item
                 img(src="assets/magic-superfull-logo.png", alt="")
-              li: a(href="/").header__catalog-item
+              li: a(href="product.html").header__catalog-item
                 img(src="assets/magic-superfull-logo.png", alt="")
           .header__catalog-column
-            a(href="/").header__catalog-title Косметология эпиляция
+            a(href="catalog.html").header__catalog-title Косметология эпиляция
             ul.header__catalog-items
-              li: a(href="/").header__catalog-item
+              li: a(href="product.html").header__catalog-item
                 img(src="assets/magic-superfull-logo.png", alt="")
-              li: a(href="/").header__catalog-item
+              li: a(href="product.html").header__catalog-item
                 img(src="assets/magic-superfull-logo.png", alt="")
-              li: a(href="/").header__catalog-item
+              li: a(href="product.html").header__catalog-item
                 img(src="assets/magic-superfull-logo.png", alt="")
           .header__catalog-column
-            a(href="/").header__catalog-title Косметология эпиляция
+            a(href="catalog.html").header__catalog-title Косметология эпиляция
             ul.header__catalog-items
-              li: a(href="/").header__catalog-item
+              li: a(href="product.html").header__catalog-item
                 img(src="assets/magic-superfull-logo.png", alt="")
-              li: a(href="/").header__catalog-item
+              li: a(href="product.html").header__catalog-item
                 img(src="assets/magic-superfull-logo.png", alt="")
-              li: a(href="/").header__catalog-item
+              li: a(href="product.html").header__catalog-item
                 img(src="assets/magic-superfull-logo.png", alt="")
           .header__catalog-column
-            a(href="/").header__catalog-title Косметология эпиляция
+            a(href="catalog.html").header__catalog-title Косметология эпиляция
             ul.header__catalog-items
-              li: a(href="/").header__catalog-item
+              li: a(href="product.html").header__catalog-item
                 img(src="assets/magic-superfull-logo.png", alt="")
-              li: a(href="/").header__catalog-item
+              li: a(href="product.html").header__catalog-item
                 img(src="assets/magic-superfull-logo.png", alt="")
-              li: a(href="/").header__catalog-item
+              li: a(href="product.html").header__catalog-item
                 img(src="assets/magic-superfull-logo.png", alt="")
 
-      a(href="#").header__nav-item Компания
-      div(uk-dropdown="boundary: .header; boundary-align: true").header__dropdown.header__dropdown--company
+      a(href="about.html").header__nav-item Компания
+      div(uk-dropdown="boundary: .header; boundary-align: true; delay-hide: 200; delay-show: 200").header__dropdown.header__dropdown--company
         ul.header__company-menu
-          li: a.header__company-menu-item(href="/") О компании
-          li: a.header__company-menu-item(href="/") Производство
-          li: a.header__company-menu-item(href="/") Наши партнеры
-          li: a.header__company-menu-item(href="/") Новости
-          li: a.header__company-menu-item(href="/") Публикации в СМИ
-          li: a.header__company-menu-item(href="/") Отзывы
+          li: a.header__company-menu-item(href="about.html") О компании
+          li: a.header__company-menu-item(href="partners.html") Наши партнеры
+          li: a.header__company-menu-item(href="news.html") Новости
+          li: a.header__company-menu-item(href="publicatons.html") Публикации в СМИ
+          li: a.header__company-menu-item(href="reviews.html") Отзывы
 
-      a(href="#").header__nav-item Области применения
-      div.header__dropdown.header__dropdown--appliance.uk-dropdown-scrollable(uk-dropdown="boundary: .header; boundary-align: true")
+      a(href="appliance-catalog.html").header__nav-item Области применения
+      div.header__dropdown.header__dropdown--appliance.uk-dropdown-scrollable(uk-dropdown="boundary: .header; boundary-align: true; delay-hide: 200; delay-show: 200")
+        .header__dropdown-close
+          +svg({name:'close'})
         .header__dropdown-wrap
           .header__dropdown-left
             .header__dropdown-menu-wrap
-              a(href="#",data-appliance="cosmetology").header__dropdown-menu-section Косметология
+              a(href="appliance-catalog.html#cosmetology").header__dropdown-menu-section Косметология
               ul.header__dropdown-menu
-                li: a.header__dropdown-menu-item(href="/", data-appliance="cosmetology,surgeo") Эпиляция
+                li: a.header__dropdown-menu-item(href="appliance.html", data-appliance="cosmetology,surgeo") Эпиляция
                 li: a.header__dropdown-menu-item(href="/", data-appliance="phlebology,ololoringology") Лазерное омоложение
                 li: a.header__dropdown-menu-item(href="/", data-appliance="surgeo,ololoringology") Карбоновый пилинг
                 li: a.header__dropdown-menu-item(href="/") Удаление татуировок
@@ -87,7 +89,7 @@ header(uk-sticky="bottom: .page-lead--product").header
                 li: a.header__dropdown-menu-item(href="/") Лечении вирусных бородавок
                 li: a.header__dropdown-menu-item(href="/") Лечение онихомикозов
             .header__dropdown-menu-wrap
-              a(href="#",data-appliance="ginekology").header__dropdown-menu-section Гинекология
+              a(href="appliance-catalog.html#ginekology").header__dropdown-menu-section Гинекология
               ul.header__dropdown-menu
                 li: a.header__dropdown-menu-item(href="/") Лечение стрессового недержания мочи
                 li: a.header__dropdown-menu-item(href="/") Лечение пролапса гениталий 1-2 стадии
@@ -98,24 +100,24 @@ header(uk-sticky="bottom: .page-lead--product").header
                 li: a.header__dropdown-menu-item(href="/") Лечение вульво-вагинальной атрофии
                 li: a.header__dropdown-menu-item(href="/") Лечение сексуальных дисфункций
             .header__dropdown-menu-wrap
-              a(href="#",data-appliance="phlebology").header__dropdown-menu-section Флебология
+              a(href="appliance.html").header__dropdown-menu-section Флебология
               ul.header__dropdown-menu
                 li: a.header__dropdown-menu-item(href="/") Венозная лазерная коагуляция (EVLC)
                 li: a.header__dropdown-menu-item(href="/") Чрезкожная лазерная коагуляция сосудистых образований
                 li: a.header__dropdown-menu-item(href="/") Удаление артериальных и венозных сосудов диаметром
             .header__dropdown-menu-wrap
-              a(href="#",data-appliance="surgeo").header__dropdown-menu-section Хирургия
+              a(href="appliance.html").header__dropdown-menu-section Хирургия
               ul.header__dropdown-menu
                 li: a.header__dropdown-menu-item(href="/") Удаление новообразований кожи
                 li: a.header__dropdown-menu-item(href="/") Липомоделирование / липосакция
                 li: a.header__dropdown-menu-item(href="/") Лазерное лечение гипергидроза
                 li: a.header__dropdown-menu-item(href="/") Неинвазивный лазерный липолиз
             .header__dropdown-menu-wrap
-              a(href="#",data-appliance="proktology").header__dropdown-menu-section Проктология
+              a(href="appliance.html").header__dropdown-menu-section Проктология
               ul.header__dropdown-menu
                 li: a.header__dropdown-menu-item(href="/") Лечение геморроя методом сосудистой коагуляции
             .header__dropdown-menu-wrap
-              a(href="#",data-appliance="ololoringology").header__dropdown-menu-section Отолорингология
+              a(href="appliance.html").header__dropdown-menu-section Отолорингология
               ul.header__dropdown-menu
                 li: a.header__dropdown-menu-item(href="/") Возможности аппарата в области отолорингологии
           .header__dropdown-right
@@ -139,17 +141,17 @@ header(uk-sticky="bottom: .page-lead--product").header
                 +header-appliance-item({appliance: ',cosmetology', image: 'magic-gyno-logo.png'})
                 +header-appliance-item({appliance: ',cosmetology,ololoringology', image: 'magic-oct-logo.png'})
 
-      a(href="#").header__nav-item Технологии
+      a(href="technology-catalog.html").header__nav-item Технологии
 
       a(href="#").header__nav-item Сервис
 
-      a(href="#").header__nav-item Контакты
+      a(href="contacts.html").header__nav-item Контакты
 
   .header__tools
     a(href="#offcanvas-consult", uk-toggle).header__tools-item.header__consult Консультация
     a(href="#").header__tools-item.header__search
       +svg({ name: 'search' })
-    div(uk-dropdown="mode: click; boundary: .header; boundary-align: true").header__dropdown.header__dropdown--search
+    div(uk-dropdown="mode: click; boundary: .header; boundary-align: true;animation: uk-animation-slide-top-small").header__dropdown.header__dropdown--search
       form.header__search-form(action="")
         input.header__search-input(type="search", placeholder="Поиск по сайту", name="search", autocomplete="off")
         span.header__search-clear

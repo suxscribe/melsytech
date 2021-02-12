@@ -12,18 +12,19 @@ block content
       span Каталог
     h1.page-lead__title Серия Magic — много-функциональные лазерные системы
   
-  section.page-content.catalog__content
-    ul.catalog__sections.page-content__sidebar
-      li.catalog__sections-item.active: a(href="") Все области применений
-      li.catalog__sections-item: a(href="") Косметология
-      li.catalog__sections-item: a(href="") Гинекология
-      li.catalog__sections-item: a(href="") Хирургия
-      li.catalog__sections-item: a(href="") Флебология
-      li.catalog__sections-item: a(href="") Проктология
-      li.catalog__sections-item: a(href="") Отолорингология
+  section.page-content.catalog__content(uk-filter="target: .js-filter")
+    .page-content__sidebar
+      ul.catalog__sections(uk-sticky="bottom: true; offset: 160")
+        li.catalog__sections-item: a(href="",uk-filter-control) Все области применений
+        li.catalog__sections-item: a(href="",uk-filter-control="[data-tags*='cosmetology']") Косметология
+        li.catalog__sections-item: a(href="",uk-filter-control="[data-tags*='ginekology']") Гинекология
+        li.catalog__sections-item: a(href="",uk-filter-control="[data-tags*='surgery']") Хирургия
+        li.catalog__sections-item: a(href="",uk-filter-control="[data-tags*='phlebology']") Флебология
+        li.catalog__sections-item: a(href="",uk-filter-control="[data-tags*='proktology']") Проктология
+        li.catalog__sections-item: a(href="",uk-filter-control="[data-tags*='otoloringology']") Отолорингология
     
     .catalog__sections-dropdown.page-content__mobile-nav
-      select.form-control.js-choice()
+      select.form-control.js-choice--catalog()
         option(value="choice0") Все области применений
         option(value="choice1") Косметология
         option(value="choice2") Гинекология
@@ -32,10 +33,10 @@ block content
         option(value="choice5") Проктология
         option(value="choice6") Отолорингология
 
-    ul(uk-grid).catalog__products.page-content__mainbar
-      li.catalog__products-item: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
-      li.catalog__products-item: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
-      li.catalog__products-item: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
-      li.catalog__products-item: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
-      li.catalog__products-item: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
-      li.catalog__products-item: +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
+    ul(uk-grid).catalog__products.page-content__mainbar.js-filter
+      li.catalog__products-item(data-tags='cosmetology,surgery'): +product-teaser('Magic Lite', 'magic-lite-teaser@2x.jpg')
+      li.catalog__products-item(data-tags='ginekology,cosmetology,surgery'): +product-teaser('Magic Super', 'magic-lite-teaser@2x.jpg')
+      li.catalog__products-item(data-tags='surgery,proktology,otoloringology'): +product-teaser('Magic Super Full', 'magic-lite-teaser@2x.jpg')
+      li.catalog__products-item(data-tags='phlebology,cosmetology'): +product-teaser('Magic Gyno', 'magic-lite-teaser@2x.jpg')
+      li.catalog__products-item(data-tags='proktology,surgery,phlebology'): +product-teaser('Magic Bella', 'magic-lite-teaser@2x.jpg')
+      li.catalog__products-item(data-tags='otoloringology,cosmetology'): +product-teaser('Magic Fr', 'magic-lite-teaser@2x.jpg')
