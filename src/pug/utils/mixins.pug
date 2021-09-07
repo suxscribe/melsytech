@@ -116,16 +116,17 @@ mixin procedures-slider-section(args)
       ul.swiper-wrapper
         li.procedures__slider-item.swiper-slide: +procedures-slide('Возможности аппарата в области отолорингологии', '/', 'Общая хирургия', args.showDevices)
         li.procedures__slider-item.swiper-slide: +procedures-slide('Неинвазивный лазерный липолиз', '/', 'Общая хирургия', args.showDevices)
-        li.procedures__slider-item.swiper-slide: +procedures-slide('Лазерные Системы Системных Лазеров', '/', 'Общая хирургия', args.showDevices)
-        li.procedures__slider-item.swiper-slide: +procedures-slide('Системы Лазерных Систем', '/', 'Общая хирургия', args.showDevices)
+        //- li.procedures__slider-item.swiper-slide: +procedures-slide('Лазерные Системы Системных Лазеров', '/', 'Общая хирургия', args.showDevices)
+        //- li.procedures__slider-item.swiper-slide: +procedures-slide('Системы Лазерных Систем', '/', 'Общая хирургия', args.showDevices)
 
   .procedures__right.section__right
-    .procedures__slider-right.swiper-container(class=`procedures__slider-right--${args.class}`)
-      ul.swiper-wrapper
-        li.procedures__slider-right-item.swiper-slide: +procedures-teaser('procedures-teaser-1.jpg')
-        li.procedures__slider-right-item.swiper-slide: +procedures-teaser('procedures-teaser-2.jpg')
-        li.procedures__slider-right-item.swiper-slide: +procedures-teaser('procedures-teaser-3.jpg')
-        li.procedures__slider-right-item.swiper-slide: +procedures-teaser('procedures-teaser-1.jpg')
+    .procedures__slider-right-wrap
+      .procedures__slider-right.swiper-container(class=`procedures__slider-right--${args.class}`)
+        ul.swiper-wrapper
+          li.procedures__slider-right-item.swiper-slide: +procedures-teaser('procedures-teaser-1.jpg')
+          li.procedures__slider-right-item.swiper-slide: +procedures-teaser('procedures-teaser-2.jpg')
+          //- li.procedures__slider-right-item.swiper-slide: +procedures-teaser('procedures-teaser-3.jpg')
+          //- li.procedures__slider-right-item.swiper-slide: +procedures-teaser('procedures-teaser-1.jpg')
     .procedures__slider-nav.slider__nav(class=args.navClass)
       .slider__arrow.slider__arrow--left.procedures__slider-nav--left(class=`procedures__slider--${args.class}-nav--left`)
         +svg({ name: 'slider-arrow-left'})

@@ -18,6 +18,24 @@
     }
 
     &-right {
+      //temp
+      width: calc(#{$column-width-small} * 2);
+
+      @media (min-width: $breakpoint-small) {
+        width: calc(#{$column-width-medium} * 3);
+      }
+
+      @media (min-width: $breakpoint-medium) {
+        width: calc(#{$column-width} * 3);
+      }
+
+      margin: 0;
+      overflow: visible;
+
+      &-wrap {
+        overflow: hidden;
+      }
+
       &-item {
         $slide-width: calc(#{$column-width-small} * 2);
         $slide-height: calc(#{$slide-width} * 0.91);

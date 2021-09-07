@@ -90,7 +90,7 @@
       cursor: default;
 
       &:hover + * {
-        width: calc(#{$slide-arrow-width} * 1.5);
+        // width: calc(#{$slide-arrow-width} * 1.5);
       }
 
       &:before {

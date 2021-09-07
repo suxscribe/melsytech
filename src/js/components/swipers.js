@@ -47,7 +47,8 @@ export let procedureSliders02 = () => {
       },
       speed: variables.swiperSpeed,
       loop: true,
-      loopedSlides: 6,
+      loopedSlides: 20,
+      loopAdditionalSlides: 20,
       slidesPerView: '1',
       grabCursor: false,
       allowTouchMove: false,
@@ -56,22 +57,23 @@ export let procedureSliders02 = () => {
         prevEl: '.procedures__slider--02-nav--left',
       },
       keyboard: true,
-      onSlideChangeEnd: function(e) {
-        console.log(e);
-      },
+      // onSlideChangeEnd: function(e) {
+      //   console.log(e);
+      // },
     });
 
     var swiperProceduresItems02 = new Swiper('.procedures__slider-right--02', {
       effect: 'slide',
 
       loop: true,
-      loopedSlides: 6,
+      loopedSlides: 20,
+      loopAdditionalSlides: 20,
       slidesPerView: 'auto',
     });
 
     // control each swiper
-    swiperProceduresItems02.controller.control = swiperProcedures02;
     swiperProcedures02.controller.control = swiperProceduresItems02;
+    swiperProceduresItems02.controller.control = swiperProcedures02;
   }
 };
 
@@ -118,7 +120,7 @@ export let newsSlider = () => {
 export let catalogSlider = () => {
   if (document.querySelector('.index__catalog-slider')) {
     var swiperProcedures = new Swiper('.index__catalog-slider', {
-      loop: true,
+      loop: false,
       loopedSlides: 6,
       speed: variables.swiperSpeed,
       slidesPerView: 'auto',
@@ -141,6 +143,8 @@ export let productAdvantagesSlider = () => {
     var swiperAdvantages = new Swiper('.product-section-advantages__slider', {
       // loop: true,
       // loopedSlides: 6,
+      observer: true, //fix slider not working until resized
+      observeParents: true, //fix slider not working until resized
       speed: variables.swiperSpeed,
       slidesPerView: 'auto',
       grabCursor: false,

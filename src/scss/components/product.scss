@@ -218,6 +218,14 @@
       @media (min-width: $breakpoint-medium) {
         flex-direction: row;
       }
+
+      &-push {
+        @media (min-width: $breakpoint-medium) {
+          margin-left: calc(11.45833vw * 2);
+          padding-left: $column-margin;
+          border-left: 1px solid rgba(255, 0, 0, 0.2);
+        }
+      }
     }
   }
 
@@ -228,8 +236,6 @@
   &__sidebar {
     display: none;
 
-    @media (min-width: $breakpoint-medium) {
-    }
     @media (min-width: $breakpoint-medium) {
       display: block;
       padding-right: $column-margin;
@@ -322,13 +328,23 @@
 
       &-badge {
         flex: 0 0 96px;
-        height: 96px;
+        min-height: 96px;
         margin-right: 16px;
       }
       &-desc {
         flex: 1 1 auto;
         @include font-small;
         color: rgba($color-gray, 0.6);
+
+        & a {
+          color: rgba($color-gray, 0.6);
+          text-decoration: none;
+          transition: color var(--transition);
+
+          &:hover {
+            color: rgba($color-gray, 0.8);
+          }
+        }
       }
     }
   }
@@ -366,6 +382,11 @@
         @media (min-width: $breakpoint-small) {
           margin-bottom: percent-view(24px);
         }
+      }
+
+      & ul {
+        list-style-type: disc;
+        padding-left: 16px;
       }
     }
     &__image {
@@ -472,8 +493,18 @@
     }
 
     &__item {
+      width: 100%;
+      height: 0;
+      padding-bottom: 56%;
+      position: relative;
+
       & video {
         object-fit: cover;
+      }
+      & iframe {
+        width: 100%;
+        height: 100%;
+        position: absolute;
       }
     }
   }

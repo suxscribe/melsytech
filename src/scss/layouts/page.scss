@@ -74,6 +74,11 @@
       }
       & .page-lead__breadcrumbs * {
         color: rgba($color-white, 0.6);
+        transition: color var(--transition);
+
+        &:hover {
+          color: rgba($color-white, 0.8);
+        }
       }
       & .page-lead__title,
       & .page-lead__description {
@@ -212,11 +217,11 @@
       padding-right: $column-margin;
 
       @media (min-width: $breakpoint-medium) {
-        flex: 0 1 50%;
+        flex: 0 1 43.75%;
       }
 
       @media (min-width: $breakpoint-large) {
-        flex: 0 1 50%;
+        flex: 0 1 43.75%;
       }
     }
 
@@ -254,7 +259,7 @@
       }
       @media (min-width: $breakpoint-medium) {
         // flex: 0 1 calc(#{$column-width} * 4 - #{$column-margin}); // to %
-        flex: 0 0 50%; // to %
+        flex: 0 0 56.25%; // to %
 
         // max-width: calc(#{$column-width} * 4 - #{$column-margin}        ); //prevent wrap
       }

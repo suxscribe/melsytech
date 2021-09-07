@@ -1,0 +1,43 @@
+.table,
+.product__tabs-content-characteristics table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+
+  @media (min-width: $breakpoint-small) {
+    min-width: 600px;
+  }
+
+  & th {
+    // , & tr:first-of-type > td
+    padding: 23px 8px 18px 0;
+    text-transform: none;
+    text-align: left;
+    vertical-align: bottom;
+    font-weight: bold;
+    color: $color-black;
+
+    &:first-child {
+      padding-left: 0;
+    }
+  }
+
+  & td {
+    padding: 15px 8px 15px 0;
+    vertical-align: top;
+  }
+
+  & > tr:not(:first-child),
+  & > :not(:first-child) > tr,
+  & > :first-child > tr:not(:first-child) {
+    border-top: 1px solid $color-light-gray;
+  }
+
+  & > :last-child > tr:last-child {
+    border-bottom: 1px solid $color-light-gray;
+  }
+}
+
+.uk-table-expand {
+  min-width: 150px;
+}

@@ -52,10 +52,11 @@ import {
   partnersListChoicesInit,
 } from './components/partners';
 import { validateForms } from './components/forms';
-import { reviewsSpoilers } from './components/reviews';
+// import { reviewsSpoilers } from './components/reviews';
 import { productTabsScroll } from './components/product';
 import { catalogChoicesInit, catalogSectionFilter } from './components/catalog';
 import { sidebarSectionInit } from './components/sidebar';
+import { menuUnderline } from './components/menu-underline';
 
 window.UIkit = UIkit; // fix not difined bug
 
@@ -153,44 +154,10 @@ document.addEventListener('DOMContentLoaded', () => {
   partnersMapInit();
 
   sidebarSectionInit(); // toggle menu item if in hash
+
   // Page-specific scripts
   // partnersRemoveActive();
   catalogSectionFilter(); // init corresponding filter in catalog root page
-
-  // sliding menu underline
-  (function() {
-    const target = document.querySelector('.header__target');
-    const links = document.querySelectorAll('.header__nav-item');
-
-    function mouseenterFunc() {
-      // if (!this.parentNode.classList.contains('active')) {
-      // for (let i = 0; i < links.length; i++) {
-      //   if (links[i].parentNode.classList.contains('active')) {
-      //     links[i].parentNode.classList.remove('active');
-      //   }
-      //   links[i].style.opacity = '0.25';
-      // }
-
-      this.parentNode.classList.add('active');
-      this.style.opacity = '1';
-
-      const width = this.getBoundingClientRect().width;
-      const height = this.getBoundingClientRect().height;
-      const left = this.offsetLeft;
-      const top = this.offsetTop;
-
-      target.style.width = `${width}px`;
-      target.style.height = `${height}px`;
-      target.style.left = `${left}px`;
-      target.style.top = `${top}px`;
-      target.style.transform = 'none';
-    }
-
-    for (let i = 0; i < links.length; i++) {
-      // links[i].addEventListener('click', (e) => e.preventDefault());
-      links[i].addEventListener('mouseenter', mouseenterFunc);
-    }
-  })();
 
   // close appliance dropdown menu button
   const applianceDropdownClose = document.querySelector(
@@ -209,4 +176,5 @@ document.addEventListener('DOMContentLoaded', () => {
 // Wait for everything to load
 window.addEventListener('load', function() {
   introAnimation();
+  menuUnderline();
 });
