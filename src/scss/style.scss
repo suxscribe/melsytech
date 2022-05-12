@@ -56,7 +56,7 @@ $offcanvas-bar-background: #fff;
 @import 'uikit/src/scss/components/overlay.scss'; // After: Icon
 // @import 'uikit/src/scss/components/article.scss'; // After: Subnav
 // @import 'uikit/src/scss/components/comment.scss'; // After: Subnav
-@import 'uikit/src/scss/components/search.scss'; // After: Icon
+// @import 'uikit/src/scss/components/search.scss'; // After: Icon
 
 // Navs
 // @import "uikit/src/scss/components/nav.scss";
@@ -185,6 +185,7 @@ $offcanvas-bar-background: #fff;
 @import 'components/results';
 @import 'components/table.scss';
 
+@import 'pages/page404';
 @import 'pages/index';
 @import 'components/product.scss';
 @import 'pages/appliance.scss';

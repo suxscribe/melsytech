@@ -538,4 +538,10 @@
       max-width: 100%;
     }
   }
+
+  &--404 {
+    & > footer {
+      display: none;
+    }
+  }
 }
