@@ -95,7 +95,7 @@ $fhd-height: 992px;
 //   $tablet-width,
 //   $fhd-width
 // ); //percent-view(72px)
-$header-height: percent-view(72px);
+$header-height: responsive-value(56px, 72px);
 $header-height-small: 82px;
 
 $right-margin-px: 136px; // container margin + column margin
