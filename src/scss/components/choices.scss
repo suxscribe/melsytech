@@ -222,6 +222,7 @@ $dropdown-item-height: 28px;
       margin-right: 0;
       margin-left: 3.75px;
     }
+
     &.is-highlighted {
       background-color: darken($choices-primary-color, 5%);
       border: 1px solid darken($choices-primary-color, 10%);
@@ -317,7 +318,8 @@ $dropdown-item-height: 28px;
         }
       }
     }
-    &.is-highlighted {
+    &.is-highlighted,
+    &.is-selected {
       background-color: rgba($color-black, 0.05);
       &:after {
         opacity: 0.5;
