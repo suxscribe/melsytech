@@ -20,6 +20,10 @@ a {
     // text-decoration: underline solid rgba(0,0,0,0.1);
     outline: none;
   }
+
+  &.link-nounderline {
+    text-decoration: none;
+  }
 }
 
 h1,
