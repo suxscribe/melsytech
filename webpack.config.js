@@ -4,7 +4,6 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 
@@ -72,22 +71,24 @@ const config = {
           {
             loader: 'postcss-loader',
             options: {
-              ident: 'postcss',
-              sourceMap: true,
-              plugins: () => [
-                // autoprefixer({ grid: true }),
-                require('cssnano')({
-                  preset: [
-                    'default',
-                    {
-                      calc: false,
-                      discardComments: {
-                        removeAll: true,
+              postcssOptions: {
+                ident: 'postcss',
+                sourceMap: true,
+                plugins: () => [
+                  // autoprefixer({ grid: true }),
+                  require('cssnano')({
+                    preset: [
+                      'default',
+                      {
+                        calc: false,
+                        discardComments: {
+                          removeAll: true,
+                        },
                       },
-                    },
-                  ],
-                }),
-              ],
+                    ],
+                  }),
+                ],
+              },
             },
           },
           {
@@ -105,7 +106,7 @@ const config = {
       },
       {
         test: /\.pug$/,
-        loader: 'pug-loader',
+        loader: '@webdiscus/pug-loader',
       },
       {
         test: /\.svg$/,
@@ -121,20 +122,22 @@ const config = {
     new MiniCssExtractPlugin({
       filename: './css/style.bundle.css',
     }),
-    new CopyWebpackPlugin([
-      {
-        from: './src/fonts',
-        to: './fonts',
-      },
-      {
-        from: './src/favicon',
-        to: './favicon',
-      },
-      {
-        from: './src/assets',
-        to: './assets',
-      },
-    ]),
+    new CopyWebpackPlugin({
+      patterns: [
+        // {
+        //   from: './src/fonts',
+        //   to: './fonts',
+        // },
+        // {
+        //   from: './src/favicon',
+        //   to: './favicon',
+        // },
+        {
+          from: './src/assets',
+          to: './assets',
+        },
+      ],
+    }),
     new SpriteLoaderPlugin({ plainSprite: true }),
     ...PAGES.map(
       (page) =>
