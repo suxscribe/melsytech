@@ -17,7 +17,6 @@ import { productSidebarNavScrollspy } from './components/scrollspy';
 import {
   closeOffcanvasIfScroll,
   setVh,
-  pageFadeOut,
   introAnimation,
 } from './components/helpers';
 
@@ -32,6 +31,7 @@ import {
   historyYearSwipers,
   resultsSwipers,
   resultSwiper,
+  contentSlider,
 } from './components/swipers';
 import { companyMap } from './components/company-map';
 import { choicesInit } from './components/choices-init';
@@ -43,8 +43,6 @@ import {
 } from './components/header';
 import { footerAccordion } from './components/footer';
 import {
-  renderPartnerOffcanvas,
-  partnersHover,
   partnersMapClick,
   partnersOpenSidebarRegion,
   partnersMapInit,
@@ -52,11 +50,12 @@ import {
   partnersListChoicesInit,
 } from './components/partners';
 import { validateForms } from './components/forms';
-// import { reviewsSpoilers } from './components/reviews';
+import { reviewsSpoilers, reviewsFilterUtils } from './components/reviews';
 import { productTabsScroll } from './components/product';
 import { catalogChoicesInit, catalogSectionFilter } from './components/catalog';
 import { sidebarSectionInit } from './components/sidebar';
 import { menuUnderline } from './components/menu-underline';
+import { scrollTop } from './components/scrolltop.js';
 
 window.UIkit = UIkit; // fix not difined bug
 
@@ -119,6 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
   newsSlider();
   productAdvantagesSlider();
   applianceProductsSlider();
+  contentSlider();
   // historySlider();
   historyYearSwipers(); // Init multiple swi-кшпре
   resultsSwipers();
@@ -171,10 +171,13 @@ document.addEventListener('DOMContentLoaded', () => {
       document.querySelector('.uk-navbar-dropbar').style.height = 0;
     });
   }
+
+  reviewsFilterUtils();
+  scrollTop();
 });
 
 // Wait for everything to load
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
   introAnimation();
   menuUnderline();
 });

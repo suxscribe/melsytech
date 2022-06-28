@@ -19,7 +19,7 @@ export let procedureSliders = () => {
         prevEl: '.procedures__slider--01-nav--left',
       },
       keyboard: true,
-      onSlideChangeEnd: function(e) {
+      onSlideChangeEnd: function (e) {
         console.log(e);
       },
     });
@@ -85,10 +85,10 @@ export let reviewsSlider = () => {
         crossFade: true,
       },
       speed: variables.swiperSpeed,
-      loop: true,
+      loop: false,
       slidesPerView: '1',
       grabCursor: false,
-      allowTouchMove: true,
+      allowTouchMove: false,
       navigation: {
         nextEl: '.reviews__slider-nav--right',
         prevEl: '.reviews__slider-nav--left',
@@ -119,6 +119,10 @@ export let newsSlider = () => {
 
 export let catalogSlider = () => {
   if (document.querySelector('.index__catalog-slider')) {
+    const catalogSliderNav = document.querySelector(
+      '.index__catalog-slider-nav'
+    );
+
     var swiperProcedures = new Swiper('.index__catalog-slider', {
       loop: false,
       loopedSlides: 6,
@@ -131,8 +135,16 @@ export let catalogSlider = () => {
         prevEl: '.index__catalog-slider-nav--left',
       },
       keyboard: true,
-      onSlideChangeEnd: function(e) {
+      onSlideChangeEnd: function (e) {
         console.log(e);
+      },
+      on: {
+        lock: () => {
+          catalogSliderNav.classList.add('uk-hidden');
+        },
+        unlock: () => {
+          catalogSliderNav.classList.remove('uk-hidden');
+        },
       },
     });
   }
@@ -158,8 +170,32 @@ export let productAdvantagesSlider = () => {
   }
 };
 
+export let contentSlider = () => {
+  if (document.querySelector('.content__slider')) {
+    var swiperAdvantages = new Swiper('.content__slider', {
+      // loop: true,
+      // loopedSlides: 6,
+      observer: true, //fix slider not working until resized
+      observeParents: true, //fix slider not working until resized
+      speed: variables.swiperSpeed,
+      slidesPerView: 'auto',
+      grabCursor: false,
+      allowTouchMove: true,
+      navigation: {
+        nextEl: '.content__nav--right',
+        prevEl: '.content__nav--left',
+      },
+      keyboard: true,
+    });
+  }
+};
+
 export let applianceProductsSlider = () => {
   if (document.querySelector('.appliance-section-products__slider')) {
+    const applienceProductSliderNav = document.querySelector(
+      '.appliance-section-products__nav'
+    );
+
     var swiperProducts = new Swiper('.appliance-section-products__slider', {
       // loop: true,
       // loopedSlides: 6,
@@ -167,11 +203,20 @@ export let applianceProductsSlider = () => {
       slidesPerView: 'auto',
       grabCursor: false,
       allowTouchMove: true,
+      watchOverflow: true,
       navigation: {
         nextEl: '.appliance-section-products__nav--right',
         prevEl: '.appliance-section-products__nav--left',
       },
       keyboard: true,
+      on: {
+        lock: () => {
+          applienceProductSliderNav.classList.add('uk-hidden');
+        },
+        unlock: () => {
+          applienceProductSliderNav.classList.remove('uk-hidden');
+        },
+      },
     });
   }
 };

@@ -1,0 +1,11 @@
+.legal {
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  &__item {
+    flex: 0 0 96px;
+    min-height: 96px;
+  }
+}

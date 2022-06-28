@@ -37,7 +37,9 @@
       max-width: calc(#{$column-width-medium} * 3);
     }
     @media (min-width: $breakpoint-medium) {
-      max-width: none;;
+      // max-width: none;
+      max-width: calc(#{$column-width} * 3);
+
       margin-bottom: percent-view(28px);
     }
   }

@@ -97,7 +97,7 @@ block content
           //  div
           //      h3.section__title.h1 Много-функциональная лазерная система
           //  div
-          ul(class="uk-column-1-2@s", data-simplebar).product-section-appliance__list
+          ul(class="uk-column-1-2@s").product-section-appliance__list
             li.product-section-appliance__item: a(href="#appliance-01", uk-toggle) Удаление пигментных образований
             li.product-section-appliance__item: a(href="#appliance-01") Методики омоложения кожи
             li.product-section-appliance__item: a(href="#appliance-01") Коррекция рубцовых изменений
@@ -163,7 +163,7 @@ block content
         .product__section.product-section-roi#product-section-roi
           .section__top 
             .section__subtitle Окупаемость
-          div(uk-grid="margin: no-grid-margin", class="uk-child-width-1-2@m uk-grid-collapse").product-section-roi__columns
+          div(uk-grid="margin: no-grid-margin", class="uk-child-width-1-2@m ").product-section-roi__columns
             div.product-section-roi__column-left
               h3.section__title.h1 Невероятно низкая себестоимость процедур
 
@@ -237,24 +237,36 @@ block content
               +svg({ name: 'slider-arrow-right'})
 
         .product__section.product-section-warranty#product-section-warranty
-            div(class="uk-width-1-2@s").product__section-wrap
-              .section__subtitle Гарантийные обязательства
-
-            div(uk-grid, class="uk-child-width-1-2@m").product-section-warranty__content
-              div
-                h3.product-section-warranty__title.section__title.h1 В гарантийное обслуживание включены
-                .product-section-warranty__image
-                  .product-section-warranty__image-label
-                    img(src="./assets/product-section-warranty-image.png", alt="")
-                  .product-section-warranty__image-text
-                    | Медицинские лазеры MAGIC имеет блочно-модульную структуру. В случае выхода из строя какого-либо модуля, он в кратчайшие сроки заменяется новым модулем по гарантии.
-              div
+            .section__subtitle Гарантийные обязательства
+            .product-section-warranty__grid 
+              h3.product-section-warranty__title.section__title.h1 В гарантийное обслуживание включены
+              .product-section-warranty__image
+                .product-section-warranty__image-label
+                  img(src="./assets/product-section-warranty-image.png", alt="")
+                .product-section-warranty__image-text
+                  | Медицинские лазеры MAGIC имеет блочно-модульную структуру. В случае выхода из строя какого-либо модуля, он в кратчайшие сроки заменяется новым модулем по гарантии.
+              .product-section-warranty__content 
                 h3 Единственная лазерная система — работает сразу в трех режимах
                 p Q-Switch режим, короткий импульс, длинный импульс. Magic Super Full это лазерная система 4 в 1 — три отдельных лазера + комбинированное воздействие. Резонансный эффект омоложения за счет сочетания воздействий. 
                 h3 Полный спектр лазерных косметических процедур
                 p Реализация одиночных, двойных и пакетных импульсов для всех режимов работы позволяют охватить весь спектр лазерных косметических процедур на одном аппарате.
                 h3 Высокие технические характеристики
                 p Режимы позволяют охватить весь спектр лазерных косметических процедур на одном аппарате.
+            //- div(uk-grid, class="uk-child-width-1-2@m").product-section-warranty__content
+            //-   div
+            //-     h3.product-section-warranty__title.section__title.h1 В гарантийное обслуживание включены
+            //-     .product-section-warranty__image
+            //-       .product-section-warranty__image-label
+            //-         img(src="./assets/product-section-warranty-image.png", alt="")
+            //-       .product-section-warranty__image-text
+            //-         | Медицинские лазеры MAGIC имеет блочно-модульную структуру. В случае выхода из строя какого-либо модуля, он в кратчайшие сроки заменяется новым модулем по гарантии.
+            //-   div
+            //-     h3 Единственная лазерная система — работает сразу в трех режимах
+            //-     p Q-Switch режим, короткий импульс, длинный импульс. Magic Super Full это лазерная система 4 в 1 — три отдельных лазера + комбинированное воздействие. Резонансный эффект омоложения за счет сочетания воздействий. 
+            //-     h3 Полный спектр лазерных косметических процедур
+            //-     p Реализация одиночных, двойных и пакетных импульсов для всех режимов работы позволяют охватить весь спектр лазерных косметических процедур на одном аппарате.
+            //-     h3 Высокие технические характеристики
+            //-     p Режимы позволяют охватить весь спектр лазерных косметических процедур на одном аппарате.
       
       //- Mobile sidebar
       div(uk-offcanvas="overlay:true")#product-tab-sidebar-01

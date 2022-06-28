@@ -59,6 +59,11 @@ mixin product-section-advantages-slide(args)
     a(href="./assets/" + args.link).product-section-advantages__slider-link
       img(src="./assets/" + args.image, alt="")
 
+mixin content-slide(args)
+  li.content__slider-item.swiper-slide
+    a(href="./assets/" + args.link).content__slider-link
+      img(src="./assets/" + args.image, alt="")
+
 mixin product-video-list-item(args)
   li.product-section-video__list-item
     a(href="")
@@ -142,6 +147,8 @@ mixin reviews-slide(args)
           img(src="assets/" + args.avatar, alt=args.name)
         .reviews__slide-name= args.name
         .reviews__slide-description= args.desc
+        .reviews__slide-instagram 
+          a(href="") instagram 
       .reviews__slide-right
         .reviews__slide-media
           video(src=args.media, controls, playsinline, uk-video="autoplay:false", poster=args.poster )
@@ -167,7 +174,8 @@ mixin news-teaser(title, image, date)
 
 mixin product-instrument(args)
   li.product-section-instruments__item
-    a(href="").product-section-instruments__title.uk-accordion-title.h3= args.title
+    a(href="").product-section-instruments__title.uk-accordion-title.h3
+      span.product-section-instruments__title-text= args.title
       span.product-section-instruments__plus.product__plus: +svg({name: 'plus'})
     .product-section-instruments__content.uk-accordion-content
       | Позволяет реализовать широчайший спектр процедур, который невозможен ни с одной другой лазерной системой. Благодаря лазерной системе Magic Super Full, косметологические клиники могут ощутимо расширить ассортимент предлагаемых услуг за счет действенных и безопасных методик, получить значительное преимущество перед конкурентами и перейти на качественно новый уровень работы.
@@ -319,3 +327,8 @@ mixin map-marker(args)
     g(transform=`translate(${args.translate})`)
       circle.partners__map-circle-0()
       circle.partners__map-circle-1()
+
+mixin legal-item(args)
+  .legal__item(uk-lightbox)
+    a(href="./assets/product-legal-badge.jpg") 
+      img(src="./assets/product-legal-badge.jpg", alt="")

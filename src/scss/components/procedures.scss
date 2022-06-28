@@ -14,7 +14,9 @@
     height: 100%;
 
     &-nav {
-      transform: translateY(50%);
+      @media (min-width: $breakpoint-medium) {
+        transform: translateY(50%);
+      }
     }
 
     &-right {

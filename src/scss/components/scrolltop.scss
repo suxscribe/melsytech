@@ -1,0 +1,129 @@
+$scrolltop-max-size: 60px;
+$scrolltop-min-size: 40px;
+
+.scrolltop {
+  display: flex;
+  justify-content: end;
+  // margin: 0 $container-margin $container-margin $container-margin;
+  pointer-events: none;
+
+  position: fixed;
+  top: auto !important;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  z-index: 100;
+
+  bottom: 20px;
+  right: calc(#{$container-margin} / 2);
+
+  // @media (min-width: $breakpoint-small) {
+  //   padding: percent-view(120px) $container-margin percent-view(120px)
+  //     $container-margin;
+  // }
+
+  &.static {
+    position: relative;
+  }
+
+  &__placeholder {
+    // width: calc(
+    //   #{responsive-value(
+    //       $scrolltop-min-size,
+    //       $scrolltop-max-size,
+    //       $mobile-min-width,
+    //       $fhd-width,
+    //       'w'
+    //     )}
+    // );
+    height: calc(
+      #{responsive-value(
+          $scrolltop-min-size,
+          $scrolltop-max-size,
+          $mobile-min-width,
+          $fhd-width,
+          'w'
+        )}
+    );
+  }
+
+  &__button {
+    flex: 0 0 auto;
+    width: calc(
+      #{responsive-value(
+          $scrolltop-min-size,
+          $scrolltop-max-size,
+          $mobile-min-width,
+          $fhd-width,
+          'w'
+        )}
+    );
+    height: calc(
+      #{responsive-value(
+          $scrolltop-min-size,
+          $scrolltop-max-size,
+          $mobile-min-width,
+          $fhd-width,
+          'w'
+        )}
+    );
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // border: 1px solid $color-white;
+    background-color: $color-light-gray;
+    transition: all var(--transition);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    pointer-events: all;
+
+    opacity: 0;
+    visibility: hidden;
+
+    &.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    &:hover {
+      // background-color: $color-gray-2;
+      // border-color: $color-red;
+      // border-color: $color-gray-2;
+
+      &:before {
+        transform: scale(1);
+        background-color: $color-gray-2;
+      }
+
+      & svg {
+        fill: $color-white;
+      }
+    }
+
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      transform: scale(0);
+      background-color: rgba($color-gray-2, 0);
+      transition: all var(--transition);
+    }
+
+    & svg {
+      fill: $color-black;
+      flex: 0 0 auto;
+      width: 60%;
+      height: 60%;
+      position: relative;
+      z-index: 1;
+      transform: rotate(180deg);
+      transition: all var(--transition);
+      pointer-events: none;
+    }
+  }
+}

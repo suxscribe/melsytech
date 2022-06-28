@@ -17,7 +17,7 @@
     // panel on index page
 
     background: $gradient-1;
-    padding: percent-view(79px) 0 0 percent-view(75px, $fhd-width, 'w'); // pb percent-view(82px, $fhd-height, 'h')
+    padding: percent-view(79px) 0 0 percent-view(75px, $fhd-width, 'w');
     margin-left: -$container-margin;
     width: 100vw;
 
@@ -32,6 +32,7 @@
     &-slider {
       width: 100%;
       flex: 1 0 100%;
+      // margin-bottom: responsive-value(30px, 50px);
 
       & .swiper-wrapper {
         align-items: stretch;
@@ -45,27 +46,34 @@
 
   &__slider {
     &-nav {
-      transform: translateY(50%);
       left: 0; // reviews nav is out of right column
+
+      @media (min-width: $breakpoint-small) {
+        transform: translateY(50%);
+      }
     }
   }
 
   &__slide {
+    $avatar-size: responsive-value(64px, 128px);
+
     height: 100%;
     display: flex;
     flex-direction: column;
-    padding-bottom: percent-view(53px, $mobile-min-width, 'w');
     padding-right: $right-margin;
     box-sizing: border-box;
 
     @media (min-width: $breakpoint-small) {
-      padding-bottom: percent-view(82px);
     }
 
     &-text {
       @include font-h3;
-      margin-bottom: percent-view(150px);
+      margin-bottom: responsive-value(15px, 30px);
       flex: 1 0 auto;
+
+      .product-section-reviews & {
+        margin-bottom: responsive-value(30px, 60px);
+      }
     }
 
     &-columns {
@@ -77,15 +85,24 @@
 
       @media (min-width: $breakpoint-small) {
         flex-direction: row;
+        gap: $column-margin;
+      }
+      @media (min-width: $breakpoint-medium) {
       }
     }
 
     &-left {
       flex: 1 1 50%;
-      margin-top: calc(-1 * #{responsive-value(64px, 128px)});
+
+      padding-bottom: responsive-value(30px, 60px);
 
       @media (min-width: $breakpoint-small) {
         margin-top: 0;
+        align-self: end;
+      }
+
+      .product-section-reviews & {
+        padding-bottom: responsive-value(100px, 110px);
       }
     }
     &-avatar {
@@ -100,7 +117,8 @@
 
       & img {
         border-radius: 50%;
-        width: responsive-value(64px, 128px);
+        width: $avatar-size;
+        height: $avatar-size;
         overflow: hidden;
       }
     }
@@ -110,30 +128,61 @@
     }
     &-description {
       @include font-small;
+
+      @media (min-width: $breakpoint-small) {
+        max-width: calc(#{$column-width} * 2);
+      }
+    }
+    &-instagram {
+      @include font-small;
+      margin-top: percent-view(11px);
     }
     &-right {
-      flex: 1 1 50%;
+      flex: 0 0 auto;
       order: -1;
       align-self: flex-end; // drag it to bottom
       margin-right: -$right-margin;
-      width: calc(100% - #{$column-width-small});
+      width: calc(100vw - #{$column-width-small});
+      margin-bottom: calc(#{$avatar-size} * -1);
 
       @media (min-width: $breakpoint-small) {
+        flex: 1 1 50%;
+
         order: 0;
-        margin-bottom: -#{percent-view(82px)};
+        // transform: translateY(percent-view(60px));
         margin-right: 0;
+        margin-bottom: 0;
       }
     }
     &-media {
       @media (min-width: $breakpoint-small) {
-        height: 23vw;
+        // height: 23vw;
       }
+
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
 
       & video {
         object-fit: cover;
 
         @media (min-width: $breakpoint-medium) {
           height: 100%;
+        }
+      }
+
+      & .video-js {
+        height: auto !important;
+        width: auto !important;
+
+        & .vjs-tech {
+          position: static !important;
+          min-height: 130px;
+          aspect-ratio: 16 / 10;
+
+          @media (min-width: $breakpoint-large) {
+            min-height: 230px;
+          }
         }
       }
     }

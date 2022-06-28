@@ -38,6 +38,7 @@ h1,
 .uk-h1,
 .h1 {
   @include font-h1;
+  overflow-wrap: break-word;
 
   & span {
     color: $color-red;

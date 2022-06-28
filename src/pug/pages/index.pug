@@ -106,7 +106,7 @@ block content
       a(href="/").section__link Перейти в раздел
     .partners__right.section__right
       div(data-simplebar).partners__list
-        ul.scrollspy__container(uk-scrollspy="cls: uk-animation-fade; target: .partners__item; delay: 100")
+        ul.partners__list-wrap.scrollspy__container(uk-scrollspy="cls: uk-animation-fade; target: .partners__item; delay: 100")
           //- each item has data-region attribute with it's cities data. that data gets rendered into offcanvas on item click.
           li.partners__item: a(href="#partners__offcanvas", uk-toggle, data-hover="moskovskaya", data-region='{"region":"moskovskaya","regionName":"Ленинградская область","cities":[{"city":"Александров","link":"partners-list.html#city-spb"},{"city":"Владимир","link":"partners-list.html#city-spb"}]}').partners__item-link.drop--01 
             | Московская область 

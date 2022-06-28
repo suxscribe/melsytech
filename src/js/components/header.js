@@ -23,7 +23,7 @@ export const crossHover = (
 
     if (applianceArray.length > 0) {
       // highlight product link when hover on appliance
-      el.addEventListener('mouseenter', function() {
+      el.addEventListener('mouseenter', function () {
         applianceContainer.classList.add('hover');
 
         applianceArray.forEach((applianceItem) => {
@@ -33,11 +33,11 @@ export const crossHover = (
             )
             .forEach((item) => {
               item.classList.add('hover');
-            });
+            }); // *= - note that attribute value should be unique. Or will false match with numeric id's (eg region-01, region-010)
         });
       });
       // remove highlight
-      el.addEventListener('mouseleave', function() {
+      el.addEventListener('mouseleave', function () {
         applianceContainer.classList.remove('hover');
 
         applianceArray.forEach((applianceItem) => {
@@ -47,7 +47,7 @@ export const crossHover = (
             )
             .forEach((item) => {
               item.classList.remove('hover');
-            });
+            }); // *= - note that attribute value should be unique. Or will false match with numeric id's (eg region-01, region-010)
         });
       });
     }
@@ -81,12 +81,12 @@ export const initSearch = (selector) => {
 
   clearBtn.style.visibility = textInput.value.length ? 'visible' : 'hidden';
 
-  textInput.onkeyup = function() {
+  textInput.onkeyup = function () {
     // Show the clear button if text input value is not empty
     clearBtn.style.visibility = this.value.length ? 'visible' : 'hidden';
   };
   // Hide the clear button on click, and reset the input value
-  clearBtn.onclick = function() {
+  clearBtn.onclick = function () {
     this.style.visibility = 'hidden';
     textInput.value = '';
   };

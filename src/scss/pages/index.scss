@@ -3,7 +3,7 @@
 
   &__catalog {
     &-left {
-      margin-bottom: percent-view(28px, $mobile-min-width, 'w');
+      margin-bottom: percent-view(29px, $mobile-min-width, 'w');
 
       @media (min-width: $breakpoint-small) {
         margin-bottom: percent-view(48px, $tablet-width, 'w');
@@ -14,7 +14,7 @@
     }
 
     &-title {
-      margin-bottom: percent-view(28px);
+      margin-bottom: responsive-value(18px, 28px);
     }
     &-link {
     }

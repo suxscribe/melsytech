@@ -26,6 +26,21 @@ block content
     .page-content__sidebar.page-content__sidebar--border
 
     .page-content__mainbar.page-content__mainbar--borde
+      .content__slider.swiper-container
+        ul.swiper-wrapper(uk-lightbox="animation: slide")
+          +content-slide({link:'product-section-advantages-slide-01-big.jpg', image: 'product-section-advantages-slide-01.jpg'})
+          +content-slide({link:'product-section-advantages-slide-02-big.jpg', image: 'product-section-advantages-slide-02.jpg'})
+          +content-slide({link:'product-section-advantages-slide-03-big.jpg', image: 'product-section-advantages-slide-03.jpg'})
+          +content-slide({link:'product-section-advantages-slide-01-big.jpg', image: 'product-section-advantages-slide-01.jpg'})
+          +content-slide({link:'product-section-advantages-slide-02-big.jpg', image: 'product-section-advantages-slide-02.jpg'})
+          +content-slide({link:'product-section-advantages-slide-03-big.jpg', image: 'product-section-advantages-slide-03.jpg'})
+      .content__slider-nav.slider__nav
+        .slider__arrow.slider__arrow--left.content__nav--left
+          +svg({ name: 'slider-arrow-left'})
+        .slider__arrow.slider__arrow--right.content__nav--right
+          +svg({ name: 'slider-arrow-right'})
+
+
       article.content
         h2 Заголовок H2 Montserrat 34/40. Приоритетным принципом компании является качество. 
         p Body Text Montserrat 19/32, medium

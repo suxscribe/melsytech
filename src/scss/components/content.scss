@@ -25,4 +25,34 @@
   & dl {
     margin: calc(#{$base-margin * 0.8}) 0;
   }
+
+  &__slider {
+    margin-bottom: percent-view(46px);
+    margin-right: -#{$right-margin};
+
+    &-item {
+      height: responsive-value(
+        391px,
+        594px,
+        $mobile-min-width,
+        $fhd-width,
+        'w'
+      );
+      width: auto;
+      margin-right: $column-margin;
+    }
+    &-link {
+      display: block;
+      height: 100%;
+
+      & img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    &-nav {
+      position: relative !important;
+    }
+  }
 }

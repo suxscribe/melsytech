@@ -17,4 +17,16 @@
       margin-bottom: percent-view(34px);
     }
   }
+
+  &-section-06 {
+    &__sidebar {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      & .section__subtitle {
+        flex: 0 0 auto;
+      }
+    }
+  }
 }

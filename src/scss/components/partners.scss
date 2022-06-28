@@ -1,10 +1,10 @@
 .partners {
   &__left {
-    padding-right: 0;
     margin-bottom: percent-view(46px, $mobile-min-width, 'w');
     pointer-events: none;
 
     @media (min-width: $breakpoint-small) {
+      padding-right: 0;
       margin-bottom: percent-view(57px, $tablet-width, 'w');
       height: percent-view(600px);
     }
@@ -46,6 +46,15 @@
       // width: percent-view(604px);
       max-height: percent-view(557px, $fhd-height, 'h');
     }
+
+    &-wrap {
+      padding-top: responsive-value(10px, 20px);
+
+      & sup {
+        top: 0;
+        line-height: 1em;
+      }
+    }
   }
 
   &__item {
@@ -75,7 +84,7 @@
         margin-left: 2px;
       }
     }
-    
+
     &-title {
       @include font-h3;
       margin-bottom: percent-view(24px, $fhd-height, 'h');

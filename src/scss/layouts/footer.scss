@@ -1,21 +1,64 @@
 .footer {
-  flex: 0 0 auto;
-  display: flex;
   background: var(--color-light);
-  flex-direction: column;
-  justify-content: space-between;
 
-  padding: percent-view(64px, $mobile-min-width, 'w') $container-margin
-    percent-view(30px, $mobile-min-width, 'w') $container-margin;
+  &__top {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    // margin-bottom: responsive-value(60px, 80px);
 
-  @media (min-width: $breakpoint-small) {
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding: percent-view(120px) $container-margin percent-view(134px)
+    padding: percent-view(64px, $mobile-min-width, 'w') $container-margin 0
       $container-margin;
+
+    @media (min-width: $breakpoint-small) {
+      padding: percent-view(120px) $container-margin percent-view(20px)
+        $container-margin;
+    }
+    @media (min-width: $breakpoint-medium) {
+      padding: percent-view(120px) $container-margin percent-view(60px)
+        $container-margin;
+    }
+
+    @media (min-width: $breakpoint-small) {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+    @media (min-width: $breakpoint-medium) {
+      flex-wrap: nowrap;
+    }
   }
-  @media (min-width: $breakpoint-medium) {
-    flex-wrap: nowrap;
+
+  &__bottom {
+    display: flex;
+    // justify-content: space-between;
+    flex-direction: column;
+    gap: 5px;
+    color: rgba($color-gray, 0.6);
+    width: 100%;
+
+    padding: percent-view(20px, $mobile-min-width, 'w') $container-margin
+      percent-view(30px, $mobile-min-width, 'w') $container-margin;
+
+    @media (min-width: $breakpoint-small) {
+      gap: 0;
+
+      padding: percent-view(20px) $container-margin percent-view(80px)
+        $container-margin;
+    }
+
+    @media (min-width: $breakpoint-medium) {
+      flex-direction: row;
+    }
+
+    & a {
+      color: rgba($color-gray, 0.6);
+      text-decoration: none;
+
+      &:hover {
+        color: rgba($color-gray, 0.8);
+      }
+    }
   }
 
   &__column {
@@ -84,6 +127,8 @@
         $tablet-width,
         'w'
       );
+      gap: 20px;
+
       @media (min-width: $breakpoint-small) {
         flex: 0 0 100%;
         display: flex;
@@ -136,6 +181,10 @@
         padding-top: 0;
         border-bottom: none;
         margin-bottom: 42px;
+
+        &:last-of-type {
+          margin-bottom: 0;
+        }
       }
       @media (min-width: $breakpoint-medium) {
       }
@@ -162,6 +211,17 @@
 
         &:hover {
           color: $color-red;
+          & svg {
+            fill: rgba($color-red, 1);
+          }
+        }
+
+        & svg {
+          fill: rgba($color-black, 1);
+          width: 12px;
+          height: 12px;
+          margin-left: 5px;
+          margin-top: -3px;
         }
       }
       &-title {
@@ -197,7 +257,7 @@
     }
   }
   &__phone {
-    margin-bottom: 17px;
+    margin-bottom: 10px;
 
     @media (min-width: $breakpoint-small) {
       margin-bottom: responsive-value(
@@ -214,7 +274,9 @@
     }
   }
   &__email {
-    margin-bottom: percent-view(62px);
+    @media (min-width: $breakpoint-medium) {
+      margin-bottom: percent-view(62px);
+    }
 
     & a {
       text-decoration: none;
@@ -223,5 +285,25 @@
   &__address {
     flex: 1 1 auto;
     color: rgba($color-gray, 0.6);
+
+    @media (max-width: #{$breakpoint-small} - 1) {
+      // font-size: 1.4rem;
+      font-size: 1.2rem;
+    }
+  }
+  &__copyright {
+    order: 3;
+
+    @media (min-width: $breakpoint-medium) {
+      flex: 0 0 calc(#{$column-width} * 2);
+      width: calc(#{$column-width} * 2);
+      order: 0;
+    }
+  }
+  &__privacy {
+    flex: 1 0 auto;
+  }
+  &__madeby {
+    flex: 0 0 auto;
   }
 }

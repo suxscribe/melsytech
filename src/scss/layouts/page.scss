@@ -186,6 +186,8 @@
     &__title {
       flex: 0 0 auto;
       // margin-bottom: percent-view(40px, $fhd-width, 'w');
+      margin-top: 0;
+      margin-bottom: 0;
 
       @media (min-width: $breakpoint-medium) {
         max-width: calc(#{$column-width} * 4);
@@ -231,12 +233,13 @@
       @include font-h2;
       font-weight: 500;
 
-      .page-lead__title + & {
-        margin-top: percent-view(28px, $mobile-min-width, 'w');
+      @media (max-width: #{$breakpoint-small - 1} ) {
+        font-size: 1.6rem;
+        line-height: 1.8;
+      }
 
-        @media (min-width: $breakpoint-small) {
-          margin-top: 51px;
-        }
+      .page-lead__title + & {
+        margin-top: responsive-value(28px, 51px);
       }
     }
 
@@ -447,7 +450,7 @@
 
       @media (min-width: $breakpoint-medium) {
         display: block;
-        flex: 0 0 calc(#{$column-width} * 2); // - #{$column-margin}
+        flex: 0 0 calc(#{$column-width} * 2 - #{$column-margin}); //
         padding-right: #{$column-margin};
         margin-bottom: 40px;
         position: relative;
@@ -499,6 +502,10 @@
           }
         }
       }
+
+      & > *:last-child {
+        margin-bottom: 0;
+      }
     }
 
     &__mobile-nav-link {
@@ -514,9 +521,9 @@
 
       @media (min-width: $breakpoint-medium) {
         flex: 1 1 auto;
-        max-width: calc(#{$column-width} * 6);
+        max-width: calc(#{$column-width} * 6); //- #{$container-margin}
 
-        // padding-left: $container-margin;
+        // padding-right: $container-margin;
       }
 
       &--border {
@@ -529,6 +536,7 @@
 
     &__title {
       margin-bottom: percent-view(51px);
+      overflow-wrap: break-word;
     }
 
     &__fullwidth {
@@ -536,6 +544,8 @@
 
     & iframe {
       max-width: 100%;
+      width: 100%;
+      aspect-ratio: 16 / 9;
     }
   }
 
