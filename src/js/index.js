@@ -5,7 +5,9 @@ import 'simplebar'; // or "import SimpleBar from 'simplebar';" if you want to us
 Swiper.use([Navigation, EffectFade, Keyboard, Controller]);
 import ymaps from 'ymaps';
 import Choices from 'choices.js';
-import readmore from './components/readmore.js';
+// import readmore from './components/readmore.js';
+import Readmore from 'readmore-js';
+
 import ripple from './components/ripple';
 
 import gsap from 'gsap';
@@ -172,8 +174,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  reviewsFilterUtils();
+  reviewsFilterUtils(); // reinit sidebar sticky to fix overlap
   scrollTop();
+
+  const readmore = new Readmore('.reviews__item-text', {
+    speed: 75,
+    moreLink: '<a href="#" class="reviews__item-text-readmore">Развернуть</a>',
+    lessLink: '',
+    afterToggle: () => {
+      UIkit.grid('.reviews__list', { masonry: true });
+    },
+  });
 });
 
 // Wait for everything to load

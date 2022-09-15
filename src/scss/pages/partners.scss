@@ -102,6 +102,15 @@
     }
 
     &-items {
+      position: relative;
+    }
+  }
+
+  &__regions {
+    position: relative;
+
+    &-wrap {
+      position: relative;
     }
   }
 
@@ -216,6 +225,12 @@
 
     @media (min-width: $breakpoint-medium) {
       flex-direction: row;
+    }
+  }
+
+  &__sidebar {
+    @media (min-width: $breakpoint-medium) {
+      width: calc(#{$column-width} * 2 - #{$column-margin});
     }
   }
 }

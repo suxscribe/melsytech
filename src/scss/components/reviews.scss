@@ -92,7 +92,7 @@
     }
 
     &-left {
-      flex: 1 1 50%;
+      flex: 1 1 44.5%;
 
       padding-bottom: responsive-value(30px, 60px);
 
@@ -146,12 +146,16 @@
       margin-bottom: calc(#{$avatar-size} * -1);
 
       @media (min-width: $breakpoint-small) {
-        flex: 1 1 50%;
+        flex: 1 1 54%;
 
         order: 0;
         // transform: translateY(percent-view(60px));
         margin-right: 0;
         margin-bottom: 0;
+      }
+
+      @media (min-width: $breakpoint-medium) {
+        flex: 1 1 calc(#{$column-width} * 3 - #{$column-margin});
       }
     }
     &-media {
@@ -183,6 +187,21 @@
           @media (min-width: $breakpoint-large) {
             min-height: 230px;
           }
+        }
+      }
+
+      &-youtube {
+        width: 100%;
+        height: 0;
+        padding-top: 60%;
+        position: relative;
+
+        &-iframe {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
         }
       }
     }
@@ -222,6 +241,50 @@
       margin-bottom: percent-view(42px);
       position: relative;
       z-index: 1;
+
+      &[aria-expanded='false'] {
+        margin-bottom: 0;
+        mix-blend-mode: multiply;
+
+        &:after {
+          content: '';
+          display: block;
+          position: absolute;
+          left: 0;
+          right: 0;
+          border: 0;
+          bottom: 0;
+          height: 50px;
+          background: linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0),
+            rgb(255, 255, 255)
+          );
+        }
+      }
+
+      &-readmore {
+        position: relative;
+        z-index: 1;
+        // margin-top: percent-view(-42px);
+        margin-bottom: percent-view(42px);
+
+        // &:before {
+        //   content: '';
+        //   display: block;
+        //   position: absolute;
+        //   left: 0;
+        //   right: 0;
+        //   border: 0;
+        //   bottom: 100%;
+        //   height: 50px;
+        //   background: linear-gradient(
+        //     to bottom,
+        //     rgba(255, 255, 255, 0),
+        //     rgb(255, 255, 255)
+        //   );
+        // }
+      }
     }
     &-info {
       position: relative;

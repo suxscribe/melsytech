@@ -17,12 +17,14 @@
   }
   &__right {
     flex: 1 1 auto;
-    padding-right: $container-margin;
+    padding-right: calc(#{$right-margin});
     position: relative;
     z-index: 2;
 
     @media (min-width: $breakpoint-medium) {
-      flex: 0 0 calc(#{$column-width} * 3 + #{$container-margin});
+      // flex: 0 0 calc(#{$column-width} * 3 + #{$container-margin});
+      flex: 0 0
+        calc(#{$column-width} * 3 + #{$column-margin} + #{$right-margin});
 
       max-width: calc(11.45833vw * 3 + 4.16667vw);
     }

@@ -34,7 +34,7 @@ export const partnersHover = (hoverSelector, targetContainer, targetItem) => {
 
     if (partnerArray.length > 0) {
       // highlight product link when hover on appliance
-      el.addEventListener('mouseenter', function() {
+      el.addEventListener('mouseenter', function () {
         partnerContainer.classList.add('hover');
 
         partnerArray.forEach((partnerItem) => {
@@ -46,7 +46,7 @@ export const partnersHover = (hoverSelector, targetContainer, targetItem) => {
         });
       });
       // remove highlight
-      el.addEventListener('mouseleave', function() {
+      el.addEventListener('mouseleave', function () {
         partnerContainer.classList.remove('hover');
 
         partnerArray.forEach((partnerItem) => {
@@ -200,7 +200,7 @@ export const partnersMapInit = () => {
             provider: 'yandex',
             mapStateAutoApply: true,
           })
-          .then(function(result) {
+          .then(function (result) {
             // Красным цветом пометим положение, вычисленное через ip.
             // result.geoObjects.options.set('preset', 'islands#redCircleIcon');
             // result.geoObjects.get(0).properties.set({
@@ -223,7 +223,7 @@ export const partnersMapInit = () => {
         //   });
 
         // UPDATE MAP ON SELECT CHANGE
-        mapSelect.addEventListener('change', function() {
+        mapSelect.addEventListener('change', function () {
           partnerPopup.classList.remove('uk-active');
 
           checkState();
@@ -301,7 +301,7 @@ export const partnersMapInit = () => {
             var clusterer = shownObjects.clusterize(GtClusterOptions);
             gtMap.geoObjects.add(clusterer);
 
-            clusterer.events.add('click', function(e) {
+            clusterer.events.add('click', function (e) {
               var target = e.get('target'),
                 type = e.get('type');
               if (typeof target.getGeoObjects == 'undefined') {
@@ -402,6 +402,12 @@ export const partnersListChoicesInit = () => {
       }
     );
 
+    partnerSelect.addEventListener('choice', (e) => {
+      // console.log('choice');
+      checkRegions();
+      checkSidebarRegions();
+    });
+
     // pass click on dropdown element to hidden filter element
 
     const filterControls = document.querySelectorAll(
@@ -420,4 +426,18 @@ export const partnersListChoicesInit = () => {
       });
     }
   }
+};
+
+const checkRegions = () => {
+  console.log('check regions');
+
+  //todo hide city block if no partners inside
+  //todo show city block if partners inside
+
+  //todo hide region block if no cities inside
+  //todo show region block if
+};
+
+const checkSidebarRegions = () => {
+  console.log('check sidebar regions');
 };

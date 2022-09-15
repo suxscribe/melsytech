@@ -8,8 +8,22 @@ export const menuUnderline = () => {
   // follow cursor to underline hovered item
   // return underline back to active item on mouse leave menu
 
+  const getActiveItem = () => {};
+
   const mouseenterFunc = (e) => {
     let _this;
+    const activeSubItem = document.querySelector(
+      '.header__company-menu-item--active'
+    );
+
+    if (activeSubItem) {
+      const activeItemParent = activeSubItem.closest('.header__dropdown');
+      if (activeItemParent) {
+        const activeItem = activeItemParent.previousElementSibling;
+        activeItem.classList.add('header__nav-item--active');
+      }
+    }
+
     if (e && e.target.classList.contains('header__nav-item')) _this = e.target;
     else _this = document.querySelector('.header__nav-item--active');
 

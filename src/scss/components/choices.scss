@@ -96,7 +96,7 @@ $dropdown-item-height: 28px;
     width: 16px;
 
     position: absolute;
-    right: 32px;
+    right: 26px;
     top: 50%;
     margin-top: percent-view(-2.5px);
     pointer-events: none;
@@ -196,6 +196,9 @@ $dropdown-item-height: 28px;
   }
   .#{$choices-selector}__item {
     width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding-right: 38px;
   }
 }
 
@@ -332,7 +335,7 @@ $dropdown-item-height: 28px;
   cursor: default;
 
   line-height: $item-height;
-  padding: 0 32px;
+  padding: 0 28px;
 }
 
 .#{$choices-selector}__item--selectable {

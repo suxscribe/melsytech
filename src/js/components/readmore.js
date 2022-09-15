@@ -1,6 +1,6 @@
 'use strict';
 
-(function() {
+(function () {
   var e = document.body.querySelectorAll('[data-readmore]'),
     x,
     l,
@@ -45,7 +45,7 @@
     ln.textContent = lt;
     ln.dataset.readmoreLink = mt;
     ln.href = '#';
-    aE(ln, 'click', function(e) {
+    aE(ln, 'click', function (e) {
       var t = ln.dataset.readmoreLink,
         p = ln.parentNode,
         h = p.dataset.readmoreHeight,
@@ -63,7 +63,7 @@
       p.dataset.readmoreHeight = p.style.height;
       p.style.height = h;
       tm = setTimeout(
-        function() {
+        function () {
           //swap link text
           l.dataset.readmoreLink = l.textContent;
           l.textContent = t;
@@ -130,7 +130,7 @@
       e[x].dataset.readmoreHeight = ho + 'px';
 
       tm = setTimeout(
-        function(p) {
+        function (p) {
           //now calculate collapsed height
           var hc = p.offsetHeight;
           p.style.height = hc + 'px';

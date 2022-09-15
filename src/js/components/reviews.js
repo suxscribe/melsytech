@@ -7,6 +7,7 @@ export const reviewsSpoilers = () => {
 };
 
 export const reviewsFilterUtils = () => {
+  // reinit sidebar sticky to fix overlap
   // On the afterFilter event, or whatever event happens to resize your container
   UIkit.util.on('[uk-filter]', 'afterFilter', () => {
     // Reinit the sticky component since the parent container height resizes
