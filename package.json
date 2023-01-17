@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack -d",
     "build": "webpack --mode production && prettier --parser html --write dist/*.html",
     "watch": "webpack --mode development --watch",
     "start": "webpack serve --mode development --env development --open-app-name firefox"
@@ -36,6 +35,7 @@
     "html-loader": "^3.1.0",
     "html-webpack-plugin": "^5.5.0",
     "image-webpack-loader": "^8.1.0",
+    "memfs": "^3.4.13",
     "mini-css-extract-plugin": "^2.6.0",
     "node-sass": "^7.0.1",
     "postcss-loader": "^6.2.1",
