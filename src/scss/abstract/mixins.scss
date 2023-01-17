@@ -17,10 +17,9 @@
       $breakpoint-medium-max,
       'w'
     );
-
   }
   @media (min-width: $breakpoint-medium) {
-      font-size: responsive-value(
+    font-size: responsive-value(
       $desktop-min-size,
       $fhd-base-size,
       $breakpoint-medium,
@@ -48,10 +47,9 @@
       $fhd-width,
       'w'
     );
-
   }
-    @media (min-width: $breakpoint-medium) {
-      font-size: responsive-value(
+  @media (min-width: $breakpoint-medium) {
+    font-size: responsive-value(
       $desktop-min-size,
       $fhd-base-size,
       $breakpoint-medium,
@@ -231,7 +229,7 @@
   letter-spacing: -0.01;
 
   @media (min-width: $breakpoint-medium) {
-      font-size: calc(
+    font-size: calc(
       #{responsive-value(
           $tablet-base-size,
           $fhd-base-size,
@@ -241,7 +239,6 @@
         )}
     );
   }
-
 }
 
 @mixin font-menu {
@@ -289,7 +286,7 @@
 
   &:hover {
     // text-decoration: none;
-    
+
     color: $color-white;
   }
 
@@ -326,16 +323,12 @@
 }
 
 @mixin menu-item-arrow {
-  $arrow-margin: responsive-value(
-            8px,
-            16px,
-            $mobile-min-width,
-            $fhd-width
-          );
+  $arrow-margin: responsive-value(6px, 12px, $mobile-min-width, $fhd-width);
   text-decoration: none;
   display: inline-flex;
   align-items: flex-start;
-  margin-left: calc(-1 * (#{$arrow-size} + #{$arrow-margin});
+  margin-bottom: 14px;
+  // margin-left: calc(-1 * (#{$arrow-size} + #{$arrow-margin});
   // white-space: nowrap;
 
   & svg {
@@ -346,6 +339,8 @@
     margin-top: percent-view(5px);
     opacity: 0;
     transition: all var(--transition);
+    position: absolute;
+    transform: translateX(-100%);
+    left: calc(-1 * (#{$arrow-size} + #{$arrow-margin}));
   }
 }
-

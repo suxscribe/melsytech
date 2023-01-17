@@ -93,3 +93,9 @@ ul {
   padding: 0;
   list-style-type: none;
 }
+
+.hide {
+  max-height: 0 !important;
+  overflow: hidden;
+  margin: 0 !important;
+}

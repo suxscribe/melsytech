@@ -1,4 +1,5 @@
-import UIkit from 'uikit';
+//import UIkit from 'uikit';
+import UIkit from './vendor/uikit';
 import Icons from 'uikit/dist/js/uikit-icons';
 import Swiper, { Navigation, EffectFade, Keyboard, Controller } from 'swiper';
 import 'simplebar'; // or "import SimpleBar from 'simplebar';" if you want to use it manually.

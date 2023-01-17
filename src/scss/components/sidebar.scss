@@ -6,7 +6,16 @@
           &-item {
             &:before {
               font-size: 0.7em;
+              line-height: calc(1.5 * 1.5);
               color: rgba($color-red, 0.6);
+              position: static;
+              width: 25px;
+
+              counter-increment: section;
+              content: counter(section, decimal-leading-zero);
+              // position: absolute;
+
+              margin-right: percent-view(8px);
             }
           }
         }
@@ -24,13 +33,14 @@
 
           & svg {
             opacity: 1;
+            transform: translateX(0);
           }
         }
       }
       &.uk-open {
         & .sidebar__mnav-section-link {
           & svg {
-            transform: rotate(90deg);
+            transform: translateX(0) rotate(90deg);
           }
         }
       }
@@ -48,7 +58,9 @@
 
     &-items {
       counter-reset: section;
-      margin-top: percent-view(24px);
+      // margin-top: percent-view(24px);
+      max-height: 2000px;
+      transition: all var(--transition);
 
       &-item {
         display: flex;
@@ -58,18 +70,13 @@
           $mobile-min-width,
           $fhd-width
         );
-        align-items: center;
+        @include font-small;
+
+        // align-items: center;
 
         &:before {
           flex: 0 0 auto;
           display: inline-block;
-          width: 25px;
-
-          counter-increment: section;
-          content: counter(section, decimal-leading-zero);
-          font-size: 0;
-
-          margin-right: percent-view(8px);
         }
       }
 
