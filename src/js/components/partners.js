@@ -66,7 +66,6 @@ export const partnersOpenSidebarRegion = () => {
 
   if (document.querySelector('.partners-page__list')) {
     const city = window.location.hash;
-    console.log(city);
 
     if (city.length > 1) {
       const cityLink = document.querySelector(`a[href="${city}"]`);
@@ -74,25 +73,6 @@ export const partnersOpenSidebarRegion = () => {
       // if sidebar__mnav-section not .uk-open -> get index
 
       cityLink.click();
-
-      // UIkit.scroll('#city-nn').scrollTo('#city-nn');
-      //UIkit.scroll(`#${city}`, { offset: 700 });
-
-      // Toggle sidebar menu item. Problem - causing scroll to move back to menu item.
-
-      // const region = cityLink.closest('.sidebar__mnav-section');
-      // console.log(region);
-
-      // // get index of current region menu item
-      // if (!region.classList.contains('uk-open')) {
-      //   const parent = region.parentNode;
-      //   // console.log(parent);
-
-      //   const index = Array.prototype.indexOf.call(parent.children, region);
-      //   console.log(index);
-
-      //   UIkit.nav('.sidebar__mnav').toggle(index); // place index here
-      // }
     }
   }
 };
@@ -154,17 +134,7 @@ export const partnersMapInit = () => {
           mapH = partnersMap.offsetHeight;
 
         let currentMapParams = {};
-        // if (!!cityBounds) {
-        //   currentMapParams = maps.util.bounds.getCenterAndZoom(
-        //     cityBounds,
-        //     [mapW, mapH],
-        //     false,
-        //     { margin: 30 }
-        //   );
-        //   if (currentMapParams.zoom > 15) {
-        //     currentMapParams.zoom = 14;
-        //   }
-        // } else {
+
         currentMapParams = {
           center: [55.722801, 37.674],
           zoom: 15,
@@ -182,13 +152,6 @@ export const partnersMapInit = () => {
           controls: ['zoomControl'], // ,'fullscreenControl'
         });
         gtMap.behaviors.disable('scrollZoom');
-        // ADD MARGIN ON THE RIGHT FOR INFO POPUPS
-        // gtMap.margin.addArea({
-        //   right: 100,
-        //   top: 0,
-        //   width: 310,
-        //   height: 800,
-        // });
 
         myObjects = maps.geoQuery(mapMarkers); // mapMarkers - is in html page
 
@@ -210,28 +173,12 @@ export const partnersMapInit = () => {
             // gtMap.setZoom(5);
           });
 
-        // geolocation
-        //   .get({
-        //     provider: 'browser',
-        //     mapStateAutoApply: true,
-        //   })
-        //   .then(function(result) {
-        //     // Синим цветом пометим положение, полученное через браузер.
-        //     // Если браузер не поддерживает эту функциональность, метка не будет добавлена на карту.
-        //     result.geoObjects.options.set('preset', 'islands#blueCircleIcon');
-        //     gtMap.geoObjects.add(result.geoObjects);
-        //   });
-
         // UPDATE MAP ON SELECT CHANGE
         mapSelect.addEventListener('change', function () {
           partnerPopup.classList.remove('uk-active');
 
           checkState();
         });
-
-        // $('.gt-map__aside input, .gt-map__aside select').on('change', function() {
-        //   checkState();
-        // });
 
         const renderPartnerPopup = (partnerId, partnerData) => {
           const markup = `
@@ -243,8 +190,7 @@ export const partnersMapInit = () => {
                   </div>
                     
                 </div>
-            `; //<button class="partners__item-close"><svg><use xlink:href="#close"></use></svg></button>
-          // <a class="partners__item-readmore" href="${partnerData.link}">Подробнее</a>
+            `;
 
           partnerPopupInner.innerHTML = '';
           partnerPopupInner.insertAdjacentHTML('afterbegin', markup);
@@ -253,14 +199,10 @@ export const partnersMapInit = () => {
         function checkState(regions) {
           var shownObjects,
             currentDoctorsId = mapSelect.value;
-          //currentServiceId = $('.gt-map__services input:checked');
 
           shownObjects = myObjects;
 
           if (regions != undefined) {
-            // $('.js-map-city')
-            //   .val('0')
-            //   .trigger('chosen:updated');
             var shownRegionParts = [];
             regions.forEach((val) => {
               shownRegionParts.push(
@@ -333,16 +275,6 @@ export const partnersMapInit = () => {
                   partnerPopup.classList.remove('uk-active');
                 }
 
-                // gemotest
-                // $.ajax({
-                //   url: '/ajax/labInfoPopup.php',
-                //   data: { ID: target.properties.get('poi_id') },
-                //   success: function(data) {
-                //     $('#popup-offices-map-balloon').html(data);
-                //     func.jsScroll();
-                //     $('#popup-offices-map').show();
-                //   },
-                // });
                 return false;
               }
             });
@@ -403,19 +335,17 @@ export const partnersListChoicesInit = () => {
     );
 
     partnerSelect.addEventListener('choice', (e) => {
-      // console.log('choice');
       checkRegions();
       checkSidebarRegions();
     });
 
-    // pass click on dropdown element to hidden filter element
+    // pass click on dropdown element to hidden uk filter element
 
     const filterControls = document.querySelectorAll(
       '.partners-page__filter-donor > li'
     );
     if (filterControls.length > 0) {
       choices.passedElement.element.addEventListener('choice', (e) => {
-        // console.log(e.detail.choice.id);
         const filterControlId = e.detail.choice.id - 1;
         filterControls[filterControlId].click();
       });
