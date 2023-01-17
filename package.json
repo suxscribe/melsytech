@@ -37,7 +37,7 @@
     "image-webpack-loader": "^8.1.0",
     "memfs": "^3.4.13",
     "mini-css-extract-plugin": "^2.6.0",
-    "node-sass": "^7.0.1",
+    "node-sass": "^7.0.3",
     "postcss-loader": "^6.2.1",
     "prettier": "^2.6.2",
     "pug": "^3.0.2",
