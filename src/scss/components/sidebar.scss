@@ -49,6 +49,7 @@
         font-weight: 600;
 
         @include menu-item-arrow;
+        margin-bottom: 0;
 
         & svg {
           fill: $color-red;
@@ -70,6 +71,7 @@
           $mobile-min-width,
           $fhd-width
         );
+        margin-top: responsive-value(6px, 12px, $mobile-min-width, $fhd-width);
         @include font-small;
 
         // align-items: center;

@@ -123,6 +123,10 @@
 
     &-sub {
       margin-top: percent-view(24px, $mobile-min-width, 'w');
+
+      &.nav {
+        margin-top: 0;
+      }
       &-title {
         display: block;
         color: $color-white;

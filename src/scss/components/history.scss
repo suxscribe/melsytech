@@ -96,9 +96,11 @@
       @include menu-item-arrow;
 
       align-items: center;
+      margin-bottom: 0;
 
       & svg {
         top: 0;
+        display: none;
       }
     }
 
