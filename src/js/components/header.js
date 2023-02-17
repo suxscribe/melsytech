@@ -60,6 +60,13 @@ export const headerApplianceHover = () => {
   // items container
   // items with data attribute
 
+  UIkit.drop('.header__dropdown--appliance', {
+    boundary: '.header',
+    boundaryAlign: true,
+    pos: 'bottom-left',
+    offset: 0,
+  });
+
   crossHover(
     '.header__dropdown-left [data-appliance]',
     '.header__appliance-items',
