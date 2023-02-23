@@ -14,7 +14,8 @@
   padding: 0 24px;
 
   border: 1px solid rgba($color-red, 0.4);
-  background-color: #fff;
+  background-color: $color-white;
+  color: $color-gray;
   overflow: hidden;
 
   transition: all var(--transition);
