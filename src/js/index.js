@@ -111,6 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // });
 
   setVh();
+  window.addEventListener('resize', setVh);
   validateForms();
 
   // INITIALIZE SWIPERS
