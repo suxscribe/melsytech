@@ -8,14 +8,17 @@ export const menuUnderline = () => {
   // follow cursor to underline hovered item
   // return underline back to active item on mouse leave menu
 
-  const getActiveItem = () => {};
+  const getActiveItem = () =>
+    document.querySelector('.header__nav-item--active');
 
   const mouseenterFunc = (e) => {
     let _this;
     const activeSubItem = document.querySelector(
       '.header__company-menu-item--active'
     );
+    const activeItem = document.querySelector('.header__nav-item--active');
 
+    // if subitem is active - find it's parent and add active class to it
     if (activeSubItem) {
       const activeItemParent = activeSubItem.closest('.header__dropdown');
       if (activeItemParent) {
@@ -24,10 +27,12 @@ export const menuUnderline = () => {
       }
     }
 
-    if (e && e.target.classList.contains('header__nav-item')) _this = e.target;
-    else _this = document.querySelector('.header__nav-item--active');
-
-    // console.log(_this);
+    // define item to underline
+    if (e && e.target.classList.contains('header__nav-item')) {
+      _this = e.target;
+    } else if (getActiveItem()) {
+      _this = getActiveItem();
+    } else _this = document.querySelector('.header__nav-item-dummy');
 
     const width = _this.offsetWidth;
     const height = _this.offsetHeight;
@@ -44,7 +49,6 @@ export const menuUnderline = () => {
   mouseenterFunc();
 
   for (let i = 0; i < links.length; i++) {
-    // links[i].addEventListener('click', (e) => e.preventDefault());
     links[i].addEventListener('mouseenter', (e) => {
       mouseenterFunc(e);
     });
@@ -54,11 +58,7 @@ export const menuUnderline = () => {
   }); // return underline to active item
 
   function resizeFunc() {
-    const active = document.querySelector('.header__nav-item--active');
-
-    if (active) {
-      mouseenterFunc();
-    }
+    mouseenterFunc();
   }
   window.addEventListener('resize', resizeFunc);
 };

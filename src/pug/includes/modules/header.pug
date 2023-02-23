@@ -4,6 +4,7 @@ header(uk-sticky="bottom: .page-lead--product").header
       img(src="./assets/logo.svg", alt="Melsytech")
     nav.header__nav
       span.header__target
+      .header__nav-item-dummy
       a(href="catalog.html").header__nav-item Каталог
       //- .header__nav-item--active
       div(uk-dropdown="mode:hover; boundary: .header; boundary-align: true; delay-hide: 200; delay-show: 200").header__dropdown.header__dropdown--catalog
@@ -61,10 +62,12 @@ header(uk-sticky="bottom: .page-lead--product").header
           li: a.header__company-menu-item(href="partners.html") Наши партнеры
           li: a.header__company-menu-item(href="news.html") Новости
           li: a.header__company-menu-item(href="publicatons.html") Публикации в СМИ
-          li: a.header__company-menu-item.header__company-menu-item--active(href="reviews.html") Отзывы
+          li: a.header__company-menu-item(href="reviews.html") Отзывы
+          //- .header__company-menu-item--active
 
       a(href="appliance-catalog.html").header__nav-item Области применения
-      div.header__dropdown.header__dropdown--appliance.uk-dropdown-scrollable(uk-dropdown="boundary: .header; boundary-align: true; delay-hide: 200; delay-show: 200")
+      div.header__dropdown.header__dropdown--appliance.uk-dropdown-scrollable()
+        //- uk-dropdown="boundary: .header;  delay-hide: 200; delay-show: 200"
         .header__dropdown-close
           +svg({name:'close'})
         .header__dropdown-wrap
