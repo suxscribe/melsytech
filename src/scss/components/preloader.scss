@@ -8,8 +8,43 @@
   transition: opacity var(--transition);
   z-index: 10000;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   &--hidden {
     opacity: 0;
     pointer-events: none;
+  }
+
+  &__logo {
+    flex: 0 0 auto;
+    height: 100%;
+    width: 30vw;
+
+    animation: preloader 1.5s ease-in-out infinite alternate none running;
+
+    @media (min-width: $breakpoint-medium) {
+      width: 30vw;
+    }
+
+    &-desktop {
+      display: none;
+
+      height: 100%;
+      width: 100%;
+
+      @media (min-width: $breakpoint-medium) {
+        display: block;
+      }
+    }
+    &-small {
+      height: 100%;
+      width: 100%;
+
+      @media (min-width: $breakpoint-medium) {
+        display: none;
+      }
+    }
   }
 }

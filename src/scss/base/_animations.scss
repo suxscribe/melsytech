@@ -45,3 +45,12 @@
     transform: translate(0);
   }
 }
+
+@keyframes preloader {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.4;
+  }
+}
